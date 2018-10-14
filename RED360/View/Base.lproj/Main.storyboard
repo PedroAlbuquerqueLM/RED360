@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="Kd3-Rt-jWg">
             <objects>
-                <viewController id="AU2-qZ-E6U" customClass="LoginViewController" customModule="RED360" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AU2-qZ-E6U" customClass="LoginViewController" customModule="RED360" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jmO-Pg-nGh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -518,7 +518,7 @@
         <!--Search View Controller-->
         <scene sceneID="BYn-C4-X3S">
             <objects>
-                <viewController id="5YG-zp-vXb" customClass="SearchViewController" customModule="RED360" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5YG-zp-vXb" customClass="SearchViewController" customModule="RED360" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KQH-OD-SRX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
