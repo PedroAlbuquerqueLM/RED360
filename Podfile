@@ -7,8 +7,9 @@ target 'RED360' do
 
   # Pods for RED360
   
-  pod 'PNChart'
+  pod 'Charts'
   pod 'SlideMenuControllerSwift'
+  pod 'SnapKit'
 
   target 'RED360Tests' do
     inherit! :search_paths

@@ -9,24 +9,29 @@
 import UIKit
 import SlideMenuControllerSwift
 
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var slideMenuController: SlideMenuController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let main = storyboard.instantiateViewController(withIdentifier: "DashboardViewController")
-        let menu = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
-        
-        let slideMenuController = SlideMenuController(mainViewController: main, leftMenuViewController: menu)
-        self.window?.rootViewController = slideMenuController
-        self.window?.makeKeyAndVisible()
-        
-        slideMenuController.addLeftGestures()
-        SlideMenuOptions.contentViewScale = 1
+        let login = true
+        if login {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let main = storyboard.instantiateViewController(withIdentifier: "DashboardViewController")
+            let menu = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
+            
+            slideMenuController = SlideMenuController(mainViewController: main, leftMenuViewController: menu)
+            self.window?.rootViewController = slideMenuController
+            self.window?.makeKeyAndVisible()
+            
+            slideMenuController?.addLeftGestures()
+            SlideMenuOptions.contentViewScale = 1
+        }
         
         return true
     }

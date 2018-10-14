@@ -1,5 +1,5 @@
 //
-//  MenuViewController.swift
+//  SearchViewController.swift
 //  RED360
 //
 //  Created by Pedro Albuquerque on 10/10/18.
@@ -8,17 +8,12 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class SearchViewController: SlideViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setTitle("PESQUISAR")
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
 }
