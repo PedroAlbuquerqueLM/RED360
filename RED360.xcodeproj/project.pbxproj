@@ -10,6 +10,9 @@
 		03263653CB406F3BDE6356C4 /* Pods_RED360.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F734AB938BAFCB4A4C1ACB /* Pods_RED360.framework */; };
 		10909EC8A8090579611F5E8E /* Pods_RED360Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EDD9F5460D6D07CD97BBD5B /* Pods_RED360Tests.framework */; };
 		1A72301962F33744AC432B2F /* Pods_RED360UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F69EEE99B86DC20C0E1BBB /* Pods_RED360UITests.framework */; };
+		7107E8292173E50F006EFF1E /* CombinatedChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107E8282173E50F006EFF1E /* CombinatedChartCell.swift */; };
+		7107E82C2173F651006EFF1E /* ChartValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */; };
+		7107E82E2173FC81006EFF1E /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107E82D2173FC81006EFF1E /* OrderCell.swift */; };
 		7158DC25216E3D4F0083B844 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC24216E3D4F0083B844 /* MenuViewController.swift */; };
 		7158DC2A216E623B0083B844 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC29216E623B0083B844 /* LoginViewController.swift */; };
 		7158DC2C216E626A0083B844 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC2B216E626A0083B844 /* SlideViewController.swift */; };
@@ -23,6 +26,7 @@
 		715B9901216E251E003BE5A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 715B98FF216E251E003BE5A5 /* LaunchScreen.storyboard */; };
 		715B990C216E251E003BE5A5 /* RED360Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B990B216E251E003BE5A5 /* RED360Tests.swift */; };
 		715B9917216E251E003BE5A5 /* RED360UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B9916216E251E003BE5A5 /* RED360UITests.swift */; };
+		71867D7E2173D394003A00F8 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71867D7D2173D394003A00F8 /* ChannelCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,9 @@
 		33EC9FE4D993D439C123C5A3 /* Pods-RED360.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RED360.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RED360/Pods-RED360.debug.xcconfig"; sourceTree = "<group>"; };
 		4057D3D2CFC156F1CB8E5560 /* Pods-RED360UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RED360UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RED360UITests/Pods-RED360UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		66F734AB938BAFCB4A4C1ACB /* Pods_RED360.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RED360.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7107E8282173E50F006EFF1E /* CombinatedChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinatedChartCell.swift; sourceTree = "<group>"; };
+		7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartValueFormatter.swift; sourceTree = "<group>"; };
+		7107E82D2173FC81006EFF1E /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		7158DC24216E3D4F0083B844 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		7158DC29216E623B0083B844 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7158DC2B216E626A0083B844 /* SlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +75,7 @@
 		715B9912216E251E003BE5A5 /* RED360UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RED360UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		715B9916216E251E003BE5A5 /* RED360UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RED360UITests.swift; sourceTree = "<group>"; };
 		715B9918216E251E003BE5A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71867D7D2173D394003A00F8 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		84A56D90A65C876D3AB59338 /* Pods-RED360Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RED360Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RED360Tests/Pods-RED360Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8EDD9F5460D6D07CD97BBD5B /* Pods_RED360Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RED360Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0F69EEE99B86DC20C0E1BBB /* Pods_RED360UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RED360UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +119,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7107E82A2173F633006EFF1E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		7158DC26216E61FB0083B844 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +161,9 @@
 			children = (
 				7158DC30216E84C80083B844 /* RankedCell.swift */,
 				7158DC32216E84FE0083B844 /* ChartCell.swift */,
+				71867D7D2173D394003A00F8 /* ChannelCell.swift */,
+				7107E8282173E50F006EFF1E /* CombinatedChartCell.swift */,
+				7107E82D2173FC81006EFF1E /* OrderCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -175,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				715B98F6216E251E003BE5A5 /* AppDelegate.swift */,
+				7107E82A2173F633006EFF1E /* Manager */,
 				7158DC28216E621F0083B844 /* Model */,
 				7158DC26216E61FB0083B844 /* View */,
 				7158DC27216E62090083B844 /* Controller */,
@@ -433,12 +453,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7158DC2E216E6D050083B844 /* SearchViewController.swift in Sources */,
+				71867D7E2173D394003A00F8 /* ChannelCell.swift in Sources */,
 				7158DC2A216E623B0083B844 /* LoginViewController.swift in Sources */,
 				7158DC2C216E626A0083B844 /* SlideViewController.swift in Sources */,
 				715B98F9216E251E003BE5A5 /* DashboardViewController.swift in Sources */,
 				7158DC33216E84FE0083B844 /* ChartCell.swift in Sources */,
 				7158DC25216E3D4F0083B844 /* MenuViewController.swift in Sources */,
 				7158DC31216E84C80083B844 /* RankedCell.swift in Sources */,
+				7107E8292173E50F006EFF1E /* CombinatedChartCell.swift in Sources */,
+				7107E82C2173F651006EFF1E /* ChartValueFormatter.swift in Sources */,
+				7107E82E2173FC81006EFF1E /* OrderCell.swift in Sources */,
 				715B98F7216E251E003BE5A5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

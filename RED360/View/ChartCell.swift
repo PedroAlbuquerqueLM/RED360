@@ -23,6 +23,7 @@ class ChartCell: UITableViewCell {
         self.chart.xAxis.labelPosition = .bottom
         self.chart.leftAxis.axisMinimum = 0.0
         self.chart.leftAxis.axisMaximum = 120.0
+        self.chart.xAxis.axisMinimum = -0.5
         self.chart.chartDescription?.text = ""
         self.chart.legend.enabled = false
         self.chart.scaleYEnabled = false
@@ -31,6 +32,7 @@ class ChartCell: UITableViewCell {
         self.chart.doubleTapToZoomEnabled = false
         self.chart.highlighter = nil
         self.chart.rightAxis.enabled = false
+        self.chart.leftAxis.enabled = false
         self.chart.xAxis.drawAxisLineEnabled = false
         self.chart.xAxis.centerAxisLabelsEnabled = false
         
@@ -39,8 +41,8 @@ class ChartCell: UITableViewCell {
         self.chart.xAxis.drawGridLinesEnabled = false
         self.chart.drawGridBackgroundEnabled = false
         
-        let months = ["Sovi", "", "", "Preço", "", "", "GDM", "", "", "Disp.", "", "", "Ativ.", "", "", "Total"]
-        self.chart.xAxis.valueFormatter = IndexAxisValueFormatter(values:months)
+        let titles = ["Sovi", "", "", "Preço", "", "", "GDM", "", "", "Disp.", "", "", "Ativ.", "", "", "Total"]
+        self.chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: titles)
         self.chart.leftAxis.valueFormatter = IndexAxisValueFormatter(values: [""])
         self.chart.xAxis.granularity = 3
         

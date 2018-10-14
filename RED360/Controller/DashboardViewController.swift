@@ -20,10 +20,13 @@ class DashboardViewController: SlideViewController {
 }
 extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 5
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 2 {
+            return 4
+        }
         return 1
     }
     
@@ -32,11 +35,30 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RankedCell", for: indexPath) as! RankedCell
             return cell
-        default:
+        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChartCell", for: indexPath) as! ChartCell
             let arr = [(actual: 65.3, anterior: 74.7), (actual: 98.4, anterior: 93.5), (actual: 31.5, anterior: 51.2), (actual: 53.5, anterior: 59.3), (actual: 29.1, anterior: 32.1), (actual: 52.9, anterior: 57.9)]
             
             cell.values = arr
+            return cell
+        case 2:
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ChannelCell", for: indexPath) as! ChannelCell
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ChannelCellList", for: indexPath) as! ChannelCellList
+                return cell
+            }
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CombinatedChartCell", for: indexPath) as! CombinatedChartCell
+            let line = [51.6, 53.3, 53.1, 55.0, 56.8, 58.7]
+            let bar = [51.6]
+            
+            cell.values = (line: line, bar: bar)
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath) as! OrderCell
             return cell
         }
     }
@@ -45,8 +67,19 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 0:
             return 185
-        default:
+        case 1:
             return 400
+        case 2:
+            switch indexPath.row {
+            case 0:
+                return 134
+            default:
+                return 50
+            }
+        case 3:
+            return 250
+        default:
+            return 65
         }
     }
     
@@ -59,23 +92,4 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
         headerView.backgroundColor = UIColor.clear
         return headerView
     }
-    
 }
-
-class ChartValueFormatter: NSObject, IValueFormatter {
-    fileprivate var numberFormatter: NumberFormatter?
-    
-    convenience init(numberFormatter: NumberFormatter) {
-        self.init()
-        self.numberFormatter = numberFormatter
-    }
-    
-    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
-        guard let numberFormatter = numberFormatter
-            else {
-                return ""
-        }
-        return numberFormatter.string(for: value)!
-    }
-}
-
