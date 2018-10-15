@@ -21,19 +21,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let login = true
         if login {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let main = storyboard.instantiateViewController(withIdentifier: "DashboardViewController")
-            let menu = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
-            
-            slideMenuController = SlideMenuController(mainViewController: main, leftMenuViewController: menu)
-            self.window?.rootViewController = slideMenuController
-            self.window?.makeKeyAndVisible()
-            
-            slideMenuController?.addLeftGestures()
-            SlideMenuOptions.contentViewScale = 1
+            self.login()
         }
         
         return true
+    }
+    
+    func login(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let main = storyboard.instantiateViewController(withIdentifier: "DashboardViewController")
+        let menu = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
+        
+        slideMenuController = SlideMenuController(mainViewController: main, leftMenuViewController: menu)
+        self.window?.rootViewController = slideMenuController
+        self.window?.makeKeyAndVisible()
+        
+        slideMenuController?.addLeftGestures()
+        SlideMenuOptions.contentViewScale = 1
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

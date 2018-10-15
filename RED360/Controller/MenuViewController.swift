@@ -37,7 +37,12 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: menuItens[indexPath.row].key)
         
-        appDelegate.slideMenuController?.changeMainViewController(viewController, close: true)
+        if menuItens[indexPath.row].key == "LoginViewController" {
+            appDelegate.slideMenuController = nil
+            appDelegate.window?.rootViewController = viewController
+        }else{
+            appDelegate.slideMenuController?.changeMainViewController(viewController, close: true)
+        }
     }
     
     

@@ -10,6 +10,7 @@ target 'RED360' do
   pod 'Charts'
   pod 'SlideMenuControllerSwift'
   pod 'SnapKit'
+  pod 'SkyFloatingLabelTextField'
 
   target 'RED360Tests' do
     inherit! :search_paths
