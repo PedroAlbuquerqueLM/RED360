@@ -11,6 +11,11 @@ target 'RED360' do
   pod 'SlideMenuControllerSwift'
   pod 'SnapKit'
   pod 'SkyFloatingLabelTextField'
+  pod 'Firebase/Core'
+  pod 'AKMaskField'
+  pod 'Alamofire', '~> 4.7'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
 
   target 'RED360Tests' do
     inherit! :search_paths

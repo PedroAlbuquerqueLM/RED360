@@ -26,6 +26,10 @@
 		715B9901216E251E003BE5A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 715B98FF216E251E003BE5A5 /* LaunchScreen.storyboard */; };
 		715B990C216E251E003BE5A5 /* RED360Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B990B216E251E003BE5A5 /* RED360Tests.swift */; };
 		715B9917216E251E003BE5A5 /* RED360UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B9916216E251E003BE5A5 /* RED360UITests.swift */; };
+		716C56EB217E047B00003759 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C56EA217E047B00003759 /* LoginManager.swift */; };
+		716C56ED217E061700003759 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 716C56EC217E061700003759 /* GoogleService-Info.plist */; };
+		716C56F0217E071000003759 /* VLoading.xib in Resources */ = {isa = PBXBuildFile; fileRef = 716C56EE217E070F00003759 /* VLoading.xib */; };
+		716C56F1217E071000003759 /* VLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C56EF217E071000003759 /* VLoading.swift */; };
 		71867D7E2173D394003A00F8 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71867D7D2173D394003A00F8 /* ChannelCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +79,10 @@
 		715B9912216E251E003BE5A5 /* RED360UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RED360UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		715B9916216E251E003BE5A5 /* RED360UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RED360UITests.swift; sourceTree = "<group>"; };
 		715B9918216E251E003BE5A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		716C56EA217E047B00003759 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		716C56EC217E061700003759 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		716C56EE217E070F00003759 /* VLoading.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VLoading.xib; sourceTree = "<group>"; };
+		716C56EF217E071000003759 /* VLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VLoading.swift; sourceTree = "<group>"; };
 		71867D7D2173D394003A00F8 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		84A56D90A65C876D3AB59338 /* Pods-RED360Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RED360Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RED360Tests/Pods-RED360Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8EDD9F5460D6D07CD97BBD5B /* Pods_RED360Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RED360Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */,
+				716C56EA217E047B00003759 /* LoginManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -130,9 +139,10 @@
 		7158DC26216E61FB0083B844 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				716C56EF217E071000003759 /* VLoading.swift */,
+				716C56EE217E070F00003759 /* VLoading.xib */,
 				7158DC2F216E84AA0083B844 /* Cells */,
-				715B98FA216E251E003BE5A5 /* Main.storyboard */,
-				715B98FF216E251E003BE5A5 /* LaunchScreen.storyboard */,
+				716C56F2217E075500003759 /* Storyboards */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -199,6 +209,7 @@
 				7158DC26216E61FB0083B844 /* View */,
 				7158DC27216E62090083B844 /* Controller */,
 				715B98FD216E251E003BE5A5 /* Assets.xcassets */,
+				716C56EC217E061700003759 /* GoogleService-Info.plist */,
 				715B9902216E251E003BE5A5 /* Info.plist */,
 			);
 			path = RED360;
@@ -220,6 +231,15 @@
 				715B9918216E251E003BE5A5 /* Info.plist */,
 			);
 			path = RED360UITests;
+			sourceTree = "<group>";
+		};
+		716C56F2217E075500003759 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				715B98FA216E251E003BE5A5 /* Main.storyboard */,
+				715B98FF216E251E003BE5A5 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		83C624CE7F1FA8AA180B3A4C /* Pods */ = {
@@ -347,6 +367,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				715B9901216E251E003BE5A5 /* LaunchScreen.storyboard in Resources */,
+				716C56ED217E061700003759 /* GoogleService-Info.plist in Resources */,
+				716C56F0217E071000003759 /* VLoading.xib in Resources */,
 				715B98FE216E251E003BE5A5 /* Assets.xcassets in Resources */,
 				715B98FC216E251E003BE5A5 /* Main.storyboard in Resources */,
 			);
@@ -394,17 +416,43 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RED360/Pods-RED360-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AKMaskField/AKMaskField.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AKMaskField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlideMenuControllerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -459,7 +507,9 @@
 				7158DC2A216E623B0083B844 /* LoginViewController.swift in Sources */,
 				7158DC2C216E626A0083B844 /* SlideViewController.swift in Sources */,
 				715B98F9216E251E003BE5A5 /* DashboardViewController.swift in Sources */,
+				716C56EB217E047B00003759 /* LoginManager.swift in Sources */,
 				7158DC33216E84FE0083B844 /* ChartCell.swift in Sources */,
+				716C56F1217E071000003759 /* VLoading.swift in Sources */,
 				7158DC25216E3D4F0083B844 /* MenuViewController.swift in Sources */,
 				7158DC31216E84C80083B844 /* RankedCell.swift in Sources */,
 				7107E8292173E50F006EFF1E /* CombinatedChartCell.swift in Sources */,
@@ -633,11 +683,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WN88JXG7EP;
+				DEVELOPMENT_TEAM = PC5TYU3PVQ;
 				INFOPLIST_FILE = RED360/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dimensiva.tecnologia.RED360;
+				PRODUCT_BUNDLE_IDENTIFIER = app.red360;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -650,11 +700,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WN88JXG7EP;
+				DEVELOPMENT_TEAM = PC5TYU3PVQ;
 				INFOPLIST_FILE = RED360/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dimensiva.tecnologia.RED360;
+				PRODUCT_BUNDLE_IDENTIFIER = app.red360;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

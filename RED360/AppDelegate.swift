@@ -8,6 +8,7 @@
 
 import UIKit
 import SlideMenuControllerSwift
+import Firebase
 
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -19,22 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let login = true
-        if login {
-            self.login()
-        }
+        FirebaseApp.configure()
+//        IQKeyboardManager.shared.enable = true
         
         return true
     }
     
-    func login(){
+    func loadMenu(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let main = storyboard.instantiateViewController(withIdentifier: "DashboardViewController")
         let menu = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
         
         slideMenuController = SlideMenuController(mainViewController: main, leftMenuViewController: menu)
-        self.window?.rootViewController = slideMenuController
-        self.window?.makeKeyAndVisible()
         
         slideMenuController?.addLeftGestures()
         SlideMenuOptions.contentViewScale = 1

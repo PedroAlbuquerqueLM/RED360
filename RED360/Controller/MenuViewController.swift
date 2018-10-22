@@ -38,10 +38,15 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         let viewController = storyboard.instantiateViewController(withIdentifier: menuItens[indexPath.row].key)
         
         if menuItens[indexPath.row].key == "LoginViewController" {
-            appDelegate.slideMenuController = nil
-            appDelegate.window?.rootViewController = viewController
+            self.logout()
         }else{
             appDelegate.slideMenuController?.changeMainViewController(viewController, close: true)
+        }
+    }
+    
+    private func logout(){
+        Login.signOut { (error) in
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
