@@ -45,9 +45,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func logout(){
-        Login.signOut { (error) in
-            self.dismiss(animated: true, completion: nil)
-        }
+        UserModel.signOut()
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withClass: LoginViewController.self)
+        ControllerManager.sharedInstance.setupRootViewController(withClass: LoginViewController.self, viewController: viewController, typeTransition: .showHideTransitionViews)
     }
     
     

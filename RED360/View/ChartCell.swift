@@ -49,12 +49,22 @@ class ChartCell: UITableViewCell {
         self.chart.animate(yAxisDuration: 1.5, easingOption: .easeInOutQuad)
     }
     
-    var values: [(actual: Double, anterior: Double)]? {
+    var notaPilar: [NotaPilar]? {
         didSet{
+            
+            guard let notaPilarActual = notaPilar?.first else {return}
+            guard let notaPilarAnterior = notaPilar?.last else {return}
+            let sovi = (actual: notaPilarActual.sovi!, anterior: notaPilarAnterior.sovi!)
+            let preco = (actual: notaPilarActual.preco!, anterior: notaPilarAnterior.preco!)
+            let gdm = (actual: notaPilarActual.gdm!, anterior: notaPilarAnterior.gdm!)
+            let disp = (actual: notaPilarActual.disponibilidade!, anterior: notaPilarAnterior.disponibilidade!)
+            let ativ = (actual: notaPilarActual.ativacao!, anterior: notaPilarAnterior.ativacao!)
+            let total = (actual: notaPilarActual.total!, anterior: notaPilarAnterior.total!)
+            let values = [sovi, preco, gdm, disp, ativ, total]
             
             var dataSets = [BarChartDataSet]()
             
-            values?.enumerated().forEach {
+            values.enumerated().forEach {
                 let dataSet = BarChartDataSet(values: [BarChartDataEntry(x: Double($0.offset + (dataSets.count * 2)), y: $0.element.anterior), BarChartDataEntry(x: Double($0.offset + 1 + (dataSets.count * 2)), y: $0.element.actual)], label: "")
                 dataSet.colors = [#colorLiteral(red: 0.5529411765, green: 0.5882352941, blue: 0.631372549, alpha: 1), #colorLiteral(red: 0.07754790038, green: 0.692034781, blue: 0.3123155236, alpha: 1)]
                 

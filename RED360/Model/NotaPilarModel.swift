@@ -8,48 +8,28 @@
 
 import Foundation
 struct NotaPilar : Codable {
-    let id : Int?
-    let dhd : String?
-    let nome : String?
-    let capa : String?
-    let cargaHoraria : String?
-    let sobreCurso : String?
-    let qtdeModulos : Int?
-    let qtdeModulosConcluidos : Int?
-    let percentualConclusao : String?
-    let percentualAproveitamento : String?
-    let concluido : Bool?
-    let percentualMinimo : String?
-    let motivis : Int?
-    let uuid : String?
-    let atual : Bool?
-    let validade : String?
-    let excluirAposValidade : Bool?
-    let refeito : Bool?
+    let dhpId : Int?
+    let total : Double?
+    let ativacao : Double?
+    let disponibilidade : Double?
+    let gdm : Double?
+    let preco : Double?
+    let sovi : Double?
+    let mesNome : String?
+    let ano : String?
     
     enum CodingKeys: String, CodingKey {
         
-        case id = "id"
-        case dhd = "dhd"
-        case nome = "nome"
-        case capa = "capa"
-        case cargaHoraria = "cargaHoraria"
-        case sobreCurso = "sobreCurso"
-        case qtdeModulos = "qtdeModulos"
-        case qtdeModulosConcluidos = "qtdeModulosConcluidos"
-        case percentualConclusao = "percentualConclusao"
-        case percentualAproveitamento = "percentualAproveitamento"
-        case concluido = "concluido"
-        case percentualMinimo = "percentualMinimo"
-        case motivis = "motivis"
-        case uuid = "uuid"
-        case atual = "atual"
-        case validade = "validade"
-        case excluirAposValidade = "excluirAposValidade"
-        case refeito = "refeito"
+        case dhpId = "dhpId"
+        case total = "total"
+        case ativacao = "ativacao"
+        case disponibilidade = "disponibilidade"
+        case gdm = "gdm"
+        case preco = "preco"
+        case sovi = "sovi"
+        case mesNome = "mesNome"
+        case ano = "ano"
     }
-    
-    
     
 }
 

@@ -11,12 +11,21 @@ import Charts
 
 class DashboardViewController: SlideViewController {
     
+    @IBOutlet weak var dashTableView: UITableView!
+    
+    var notasPilar: [NotaPilar]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setTitle("DASHBOARD")
+        
+        Rest.loadNotaPilar() { (notasPilar, accessDenied) in
+            self.notasPilar = notasPilar
+            self.dashTableView.reloadData()
+        }
+        
     }
-    
 }
 extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -37,9 +46,9 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChartCell", for: indexPath) as! ChartCell
-            let arr = [(actual: 65.3, anterior: 74.7), (actual: 98.4, anterior: 93.5), (actual: 31.5, anterior: 51.2), (actual: 53.5, anterior: 59.3), (actual: 29.1, anterior: 32.1), (actual: 52.9, anterior: 57.9)]
             
-            cell.values = arr
+            cell.notaPilar = self.notasPilar
+            
             return cell
         case 2:
             switch indexPath.row {

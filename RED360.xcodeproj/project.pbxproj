@@ -26,10 +26,19 @@
 		715B9901216E251E003BE5A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 715B98FF216E251E003BE5A5 /* LaunchScreen.storyboard */; };
 		715B990C216E251E003BE5A5 /* RED360Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B990B216E251E003BE5A5 /* RED360Tests.swift */; };
 		715B9917216E251E003BE5A5 /* RED360UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B9916216E251E003BE5A5 /* RED360UITests.swift */; };
-		716C56EB217E047B00003759 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C56EA217E047B00003759 /* LoginManager.swift */; };
 		716C56ED217E061700003759 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 716C56EC217E061700003759 /* GoogleService-Info.plist */; };
 		716C56F0217E071000003759 /* VLoading.xib in Resources */ = {isa = PBXBuildFile; fileRef = 716C56EE217E070F00003759 /* VLoading.xib */; };
 		716C56F1217E071000003759 /* VLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C56EF217E071000003759 /* VLoading.swift */; };
+		716C56F4217E1A8B00003759 /* Rest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C56F3217E1A8B00003759 /* Rest.swift */; };
+		716C56F6217E1B6A00003759 /* NotaPilarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C56F5217E1B6A00003759 /* NotaPilarModel.swift */; };
+		716C56F8217E1BA700003759 /* AccessDeniedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C56F7217E1BA700003759 /* AccessDeniedModel.swift */; };
+		716C56FA217E1F1400003759 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C56F9217E1F1400003759 /* UserModel.swift */; };
+		716C56FE217E205F00003759 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C56FD217E205F00003759 /* UserManager.swift */; };
+		716C5700217E212900003759 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C56FF217E212900003759 /* FirebaseManager.swift */; };
+		716C5710217E21DF00003759 /* Authenticable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C5709217E21DD00003759 /* Authenticable.swift */; };
+		716C5714217E2ACA00003759 /* FirebaseAuthenticable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C5713217E2ACA00003759 /* FirebaseAuthenticable.swift */; };
+		716C5716217E2EF300003759 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C5715217E2EF300003759 /* UserDefaultsKey.swift */; };
+		716C5718217E2F3400003759 /* ControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C5717217E2F3300003759 /* ControllerManager.swift */; };
 		71867D7E2173D394003A00F8 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71867D7D2173D394003A00F8 /* ChannelCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,10 +88,19 @@
 		715B9912216E251E003BE5A5 /* RED360UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RED360UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		715B9916216E251E003BE5A5 /* RED360UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RED360UITests.swift; sourceTree = "<group>"; };
 		715B9918216E251E003BE5A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		716C56EA217E047B00003759 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		716C56EC217E061700003759 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		716C56EE217E070F00003759 /* VLoading.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VLoading.xib; sourceTree = "<group>"; };
 		716C56EF217E071000003759 /* VLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VLoading.swift; sourceTree = "<group>"; };
+		716C56F3217E1A8B00003759 /* Rest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rest.swift; sourceTree = "<group>"; };
+		716C56F5217E1B6A00003759 /* NotaPilarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotaPilarModel.swift; sourceTree = "<group>"; };
+		716C56F7217E1BA700003759 /* AccessDeniedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessDeniedModel.swift; sourceTree = "<group>"; };
+		716C56F9217E1F1400003759 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		716C56FD217E205F00003759 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		716C56FF217E212900003759 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		716C5709217E21DD00003759 /* Authenticable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authenticable.swift; sourceTree = "<group>"; };
+		716C5713217E2ACA00003759 /* FirebaseAuthenticable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticable.swift; sourceTree = "<group>"; };
+		716C5715217E2EF300003759 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		716C5717217E2F3300003759 /* ControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerManager.swift; sourceTree = "<group>"; };
 		71867D7D2173D394003A00F8 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		84A56D90A65C876D3AB59338 /* Pods-RED360Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RED360Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RED360Tests/Pods-RED360Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8EDD9F5460D6D07CD97BBD5B /* Pods_RED360Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RED360Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,7 +149,10 @@
 			isa = PBXGroup;
 			children = (
 				7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */,
-				716C56EA217E047B00003759 /* LoginManager.swift */,
+				716C56FD217E205F00003759 /* UserManager.swift */,
+				716C56FF217E212900003759 /* FirebaseManager.swift */,
+				716C5717217E2F3300003759 /* ControllerManager.swift */,
+				716C5715217E2EF300003759 /* UserDefaultsKey.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -162,6 +183,11 @@
 		7158DC28216E621F0083B844 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				716C56F3217E1A8B00003759 /* Rest.swift */,
+				716C56F7217E1BA700003759 /* AccessDeniedModel.swift */,
+				716C56F5217E1B6A00003759 /* NotaPilarModel.swift */,
+				716C56F9217E1F1400003759 /* UserModel.swift */,
+				716C5703217E21C500003759 /* Protocols */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -240,6 +266,23 @@
 				715B98FF216E251E003BE5A5 /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		716C5703217E21C500003759 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				716C5704217E21CF00003759 /* Auth */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		716C5704217E21CF00003759 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				716C5709217E21DD00003759 /* Authenticable.swift */,
+				716C5713217E2ACA00003759 /* FirebaseAuthenticable.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		83C624CE7F1FA8AA180B3A4C /* Pods */ = {
@@ -422,6 +465,8 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SlideMenuControllerSwift/SlideMenuControllerSwift.framework",
@@ -442,6 +487,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlideMenuControllerSwift.framework",
@@ -502,20 +549,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				716C5714217E2ACA00003759 /* FirebaseAuthenticable.swift in Sources */,
 				7158DC2E216E6D050083B844 /* SearchViewController.swift in Sources */,
 				71867D7E2173D394003A00F8 /* ChannelCell.swift in Sources */,
 				7158DC2A216E623B0083B844 /* LoginViewController.swift in Sources */,
 				7158DC2C216E626A0083B844 /* SlideViewController.swift in Sources */,
 				715B98F9216E251E003BE5A5 /* DashboardViewController.swift in Sources */,
-				716C56EB217E047B00003759 /* LoginManager.swift in Sources */,
 				7158DC33216E84FE0083B844 /* ChartCell.swift in Sources */,
 				716C56F1217E071000003759 /* VLoading.swift in Sources */,
+				716C5700217E212900003759 /* FirebaseManager.swift in Sources */,
 				7158DC25216E3D4F0083B844 /* MenuViewController.swift in Sources */,
+				716C5716217E2EF300003759 /* UserDefaultsKey.swift in Sources */,
 				7158DC31216E84C80083B844 /* RankedCell.swift in Sources */,
+				716C56F6217E1B6A00003759 /* NotaPilarModel.swift in Sources */,
 				7107E8292173E50F006EFF1E /* CombinatedChartCell.swift in Sources */,
 				7107E82C2173F651006EFF1E /* ChartValueFormatter.swift in Sources */,
+				716C56F4217E1A8B00003759 /* Rest.swift in Sources */,
 				7107E82E2173FC81006EFF1E /* OrderCell.swift in Sources */,
+				716C5710217E21DF00003759 /* Authenticable.swift in Sources */,
 				715B98F7216E251E003BE5A5 /* AppDelegate.swift in Sources */,
+				716C5718217E2F3400003759 /* ControllerManager.swift in Sources */,
+				716C56FA217E1F1400003759 /* UserModel.swift in Sources */,
+				716C56FE217E205F00003759 /* UserManager.swift in Sources */,
+				716C56F8217E1BA700003759 /* AccessDeniedModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,13 +17,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var slideMenuController: SlideMenuController?
+    var user: UserModel?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-//        IQKeyboardManager.shared.enable = true
+        initiliazeSetup(application, launchOptions)
         
         return true
+    }
+    
+    public func initiliazeSetup(_ application: UIApplication, _ launchOptions: [UIApplicationLaunchOptionsKey : Any]?) {
+        
+        guard let user = Auth.auth().currentUser else {
+            if UserDefaults.standard.bool(forKey: UserDefaultsKey.notFirstTime) {
+                ControllerManager.toLogin()
+            } else {
+                UserDefaults.standard.set(true, forKey: UserDefaultsKey.notFirstTime)
+            }
+            return
+        }
+        
+        UserModel.getUser(email: user.email!) { (u) in
+            self.user = u
+            UserModel.getToken(completion: { (token) in
+                self.user?.token = token
+                ControllerManager.toMenu()
+            })
+        }
     }
     
     func loadMenu(){

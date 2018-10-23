@@ -31,41 +31,9 @@ class LoginViewController: UIViewController {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        if let vl = vLoading{
-            vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
-            vl.aiLoading.startAnimating()
-            view.addSubview(vl)
-        }
-        Login.validateSession(email: nil, password: nil) { (error) in
-            
-            if error != nil{
-                if let vl = self.vLoading{
-                    vl.removeFromSuperview()
-                }
-            }else{
-                self.goToMenu()
-            }
-        }
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-    
-    func goToMenu(){
-        appDelegate.loadMenu()
-        self.navigationController?.navigationBar.isHidden = false
-        guard let slideMenu = appDelegate.slideMenuController else {return}
-        present(slideMenu, animated: true, completion: nil)
-    }
-    
     
     @IBAction func login(_ sender: UIButton) {
         if let vl = vLoading{
@@ -80,9 +48,9 @@ class LoginViewController: UIViewController {
         login = login.replacingOccurrences(of: ".", with: "")
         login = login.replacingOccurrences(of: "-", with: "")
         
-        login = "\(login)@red360.app"
         password = tfPassword.text!
         
+        self.didSelectLogIn(with: login, and: password)
         
         if login.isEmpty{
             createAlertWith(title: "Erro", andMessage: "Insira um login válido")
@@ -92,21 +60,6 @@ class LoginViewController: UIViewController {
             createAlertWith(title: "Erro", andMessage: "Insira uma senha válida")
             return
         }
-        
-        Login.validateSession(email: login, password: password) { (error) in
-            
-            
-            
-            if let error = error {
-                
-                self.createAlertWith(title: "Erro", andMessage: error.localizedDescription)
-                if let vl = self.vLoading{
-                    vl.removeFromSuperview()
-                }
-            }else{
-                self.goToMenu()
-            }
-        }
     }
 
     func createAlertWith(title: String, andMessage message: String){
@@ -114,6 +67,19 @@ class LoginViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil))
         self.present(alert, animated: true)
+    }
+    
+    func didSelectLogIn(with cpf: String, and password: String) {
+        UserModel(cpf: cpf, password: password).signIn { (user) in
+            UserModel.getUser(email: (user?.email)!) { (u) in
+                appDelegate.user = u
+                UserModel.getToken(completion: { (token) in
+                    appDelegate.user?.token = token
+                    ControllerManager.toMenu()
+                })
+            }
+            ControllerManager.toMenu()
+        }
     }
 }
 
