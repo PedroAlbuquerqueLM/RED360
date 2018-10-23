@@ -27,8 +27,45 @@
                                 <rect key="frame" x="16" y="60" width="343" height="607"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalendarCell" id="aRJ-hz-FzG" customClass="CalendarCell" customModule="RED360" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aRJ-hz-FzG" id="Ttr-xh-7og">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="META" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRf-CX-S1U">
+                                                    <rect key="frame" x="150" y="9" width="45" height="26"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="26" id="8Dn-y3-bGI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.48860231160000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Xnx-GM-AHm">
+                                                    <rect key="frame" x="116" y="8.5" width="27" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="27" id="4B3-Ht-18s"/>
+                                                        <constraint firstAttribute="width" constant="27" id="6En-sL-j6K"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Xnx-GM-AHm" firstAttribute="centerY" secondItem="Ttr-xh-7og" secondAttribute="centerY" id="lSY-HH-odq"/>
+                                                <constraint firstItem="JRf-CX-S1U" firstAttribute="centerY" secondItem="Ttr-xh-7og" secondAttribute="centerY" id="nIB-Ll-zWc"/>
+                                                <constraint firstItem="JRf-CX-S1U" firstAttribute="leading" secondItem="Xnx-GM-AHm" secondAttribute="trailing" constant="7" id="pz1-cm-H1H"/>
+                                                <constraint firstItem="JRf-CX-S1U" firstAttribute="centerX" secondItem="Ttr-xh-7og" secondAttribute="centerX" constant="1" id="yLE-IZ-Ukk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="title" destination="JRf-CX-S1U" id="dWb-PG-GEE"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RankedCell" rowHeight="185" id="gsB-cw-UIt" customClass="RankedCell" customModule="RED360" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="185"/>
+                                        <rect key="frame" x="0.0" y="72" width="343" height="185"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gsB-cw-UIt" id="BPA-bO-shu">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="184.5"/>
@@ -148,7 +185,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChartCell" rowHeight="92" id="hxZ-1C-giL" customClass="ChartCell" customModule="RED360" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="213" width="343" height="92"/>
+                                        <rect key="frame" x="0.0" y="257" width="343" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hxZ-1C-giL" id="VqC-bN-1TD">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="91.5"/>
@@ -244,7 +281,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CombinatedChartCell" rowHeight="92" id="sbW-5h-j8m" customClass="CombinatedChartCell" customModule="RED360" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="305" width="343" height="92"/>
+                                        <rect key="frame" x="0.0" y="349" width="343" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sbW-5h-j8m" id="oWu-NK-iSh">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="91.5"/>
@@ -290,7 +327,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="OrderCell" rowHeight="65" id="0Bs-Sw-N9m" customClass="OrderCell" customModule="RED360" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="397" width="343" height="65"/>
+                                        <rect key="frame" x="0.0" y="441" width="343" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Bs-Sw-N9m" id="C3c-xU-ejd">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="64.5"/>
@@ -332,7 +369,7 @@
                                         <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChannelCell" rowHeight="134" id="Chd-ns-VBa" customClass="ChannelCell" customModule="RED360" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="462" width="343" height="134"/>
+                                        <rect key="frame" x="0.0" y="506" width="343" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Chd-ns-VBa" id="AGw-GI-FkY">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="133.5"/>
@@ -425,7 +462,7 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="1000" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChannelCellList" id="t8W-dm-jhC" customClass="ChannelCellList" customModule="RED360" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="596" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="640" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t8W-dm-jhC" id="RWg-2B-znP">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
@@ -697,6 +734,7 @@
     <resources>
         <image name="arrowIcon" width="19" height="13"/>
         <image name="background" width="800" height="315"/>
+        <image name="calendarIcon" width="32" height="31"/>
         <image name="expandIcon" width="23" height="23"/>
         <image name="login-topo" width="1024" height="576"/>
     </resources>

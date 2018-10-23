@@ -14,26 +14,33 @@ class DashboardViewController: SlideViewController {
     @IBOutlet weak var dashTableView: UITableView!
     
     var notasPilar: [NotaPilar]?
+    var rank: (nota: Double, vari: Double, meta: Double, rank: Int)?
+    var date = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setTitle("DASHBOARD")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         Rest.loadNotaPilar() { (notasPilar, accessDenied) in
             self.notasPilar = notasPilar
+            self.rank = ((nota: notasPilar?.first?.total!, vari: ((notasPilar?.first?.total)! - (notasPilar?.last?.total)!), meta: 10.0, rank: 10) as! (nota: Double, vari: Double, meta: Double, rank: Int))
+            self.date = "\(notasPilar?.first?.mesNome ?? "")/\(notasPilar?.first?.ano ?? "")"
             self.dashTableView.reloadData()
         }
-        
     }
 }
 extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 6
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 2 {
+        if section == 3 {
             return 4
         }
         return 1
@@ -41,16 +48,17 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RankedCell", for: indexPath) as! RankedCell
-            return cell
         case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RankedCell", for: indexPath) as! RankedCell
+            cell.rankSet = self.rank
+            return cell
+        case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChartCell", for: indexPath) as! ChartCell
             
             cell.notaPilar = self.notasPilar
             
             return cell
-        case 2:
+        case 3:
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ChannelCell", for: indexPath) as! ChannelCell
@@ -59,36 +67,42 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ChannelCellList", for: indexPath) as! ChannelCellList
                 return cell
             }
-        case 3:
+        case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CombinatedChartCell", for: indexPath) as! CombinatedChartCell
             let line = [51.6, 53.3, 53.1, 55.0, 56.8, 58.7]
             let bar = [51.6]
             
             cell.values = (line: line, bar: bar)
             return cell
-        default:
+        case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath) as! OrderCell
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
+            cell.title.text = self.date
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
-        case 0:
-            return 185
         case 1:
-            return 400
+            return 185
         case 2:
+            return 400
+        case 3:
             switch indexPath.row {
             case 0:
                 return 134
             default:
                 return 50
             }
-        case 3:
+        case 4:
             return 250
-        default:
+        case 5:
             return 65
+        default:
+            return 44
         }
     }
     
