@@ -54,12 +54,12 @@ class ChartCell: UITableViewCell {
             
             guard let notaPilarActual = notaPilar?.first else {return}
             guard let notaPilarAnterior = notaPilar?.last else {return}
-            let sovi = (actual: notaPilarActual.sovi!, anterior: notaPilarAnterior.sovi!)
-            let preco = (actual: notaPilarActual.preco!, anterior: notaPilarAnterior.preco!)
-            let gdm = (actual: notaPilarActual.gdm!, anterior: notaPilarAnterior.gdm!)
-            let disp = (actual: notaPilarActual.disponibilidade!, anterior: notaPilarAnterior.disponibilidade!)
-            let ativ = (actual: notaPilarActual.ativacao!, anterior: notaPilarAnterior.ativacao!)
-            let total = (actual: notaPilarActual.total!, anterior: notaPilarAnterior.total!)
+            let sovi = (actual: notaPilarActual.sovi!, anterior: (notaPilar?.count)! > 0 ? notaPilarAnterior.sovi! : 0)
+            let preco = (actual: notaPilarActual.preco!, anterior: (notaPilar?.count)! > 0 ?notaPilarAnterior.preco! : 0)
+            let gdm = (actual: notaPilarActual.gdm!, anterior: (notaPilar?.count)! > 0 ? notaPilarAnterior.gdm! : 0)
+            let disp = (actual: notaPilarActual.disponibilidade!, anterior: (notaPilar?.count)! > 0 ? notaPilarAnterior.disponibilidade! : 0)
+            let ativ = (actual: notaPilarActual.ativacao!, anterior: (notaPilar?.count)! > 0 ? notaPilarAnterior.ativacao! : 0)
+            let total = (actual: notaPilarActual.total!, anterior: (notaPilar?.count)! > 0 ? notaPilarAnterior.total! : 0)
             let values = [sovi, preco, gdm, disp, ativ, total]
             
             var dataSets = [BarChartDataSet]()
