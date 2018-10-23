@@ -28,9 +28,13 @@ class DashboardViewController: SlideViewController {
         
         Rest.loadNotaPilar() { (notasPilar, accessDenied) in
             self.notasPilar = notasPilar
-            self.rank = ((nota: notasPilar?.first?.total!, vari: ((notasPilar?.first?.total)! - (notasPilar?.last?.total)!), meta: 10.0, rank: 10) as! (nota: Double, vari: Double, meta: Double, rank: Int))
+            self.rank = ((nota: notasPilar?.first?.total!, vari: ((notasPilar?.first?.total)! - (notasPilar?.last?.total)!), meta: 10.0, rank: 0) as! (nota: Double, vari: Double, meta: Double, rank: Int))
             self.date = "\(notasPilar?.first?.mesNome ?? "")/\(notasPilar?.first?.ano ?? "")"
-            self.dashTableView.reloadData()
+            
+            Rest.loadPosicao { (posicao, accessDenied) in
+                self.rank?.rank = (posicao?.posicao!)!
+                self.dashTableView.reloadData()
+            }
         }
     }
 }
@@ -87,7 +91,9 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 1:
-            return 185
+            guard let rank = self.rank?.rank else { return 92 }
+            if (rank > 0 && rank < 7) { return 185 }
+            return 92
         case 2:
             return 400
         case 3:

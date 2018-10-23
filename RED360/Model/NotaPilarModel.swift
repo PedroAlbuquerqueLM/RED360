@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 struct NotaPilar : Codable {
     let dhpId : Int?
     let total : Double?
