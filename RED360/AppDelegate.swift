@@ -42,7 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.user = u
             UserModel.getToken(completion: { (token) in
                 self.user?.token = token
-                ControllerManager.toMenu()
+                UserModel.getMetas(cpf: user.email!) { (metas) in
+                    self.user?.metas = metas
+                    ControllerManager.toMenu()
+                }
             })
         }
     }

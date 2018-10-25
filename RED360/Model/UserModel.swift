@@ -30,11 +30,12 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
     var id: Int?
     var nivel: Int?
     var nome: String?
-    var regional: UIImage?
+    var regional: String?
     var rotaVendedor: String?
     var supervisao: String?
     var uid: String?
     var token: String?
+    var metas: MetasModel?
     
     init(cpf: String?, password: String?) {
         guard let cpf = cpf else {return}
@@ -53,7 +54,7 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
         return true
     }
     mutating func mapping(mapper: HelpingMapper) {
-        
+        mapper >>> self.metas
     }
     
     static func getUser(email: String, completion: @escaping (_ user: UserModel) -> Void){
@@ -68,6 +69,22 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
                 }
                 let json = snapshot.data()
                 completion(UserModel.deserialize(from: json)!)
+            }
+        }
+    }
+    
+    static func getMetas(cpf: String, completion: @escaping (_ metas: MetasModel) -> Void){
+        let cpf = cpf.replacingOccurrences(of: "@red360.app", with: "")
+        let reference = Firestore.firestore().collection("metas").document(cpf)
+        reference.addSnapshotListener { snapshot, error in
+            
+            guard let snapshot = snapshot else { return }
+            if snapshot.exists {
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                let json = snapshot.data()
+                completion(MetasModel.deserialize(from: json)!)
             }
         }
     }

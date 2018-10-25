@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import Firebase
 
 class DashboardViewController: SlideViewController {
     
@@ -28,7 +29,8 @@ class DashboardViewController: SlideViewController {
         
         Rest.loadNotaPilar() { (notasPilar, accessDenied) in
             self.notasPilar = notasPilar
-            self.rank = ((nota: notasPilar?.first?.total!, vari: ((notasPilar?.first?.total)! - (notasPilar?.last?.total)!), meta: 10.0, rank: 0) as! (nota: Double, vari: Double, meta: Double, rank: Int))
+            let meta = appDelegate.user?.metas?.getMetasDic()[notasPilar?.first?.mesNome ?? ""]
+            self.rank = ((nota: notasPilar?.first?.total!, vari: ((notasPilar?.first?.total)! - (notasPilar?.last?.total)!), meta: meta, rank: 0) as! (nota: Double, vari: Double, meta: Double, rank: Int))
             self.date = "\(notasPilar?.first?.mesNome ?? "")/\(notasPilar?.first?.ano ?? "")"
             
             Rest.loadPosicao { (posicao, accessDenied) in
