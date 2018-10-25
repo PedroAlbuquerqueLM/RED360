@@ -49,7 +49,7 @@ class ChartCell: UITableViewCell {
         self.chart.animate(yAxisDuration: 1.5, easingOption: .easeInOutQuad)
     }
     
-    var notaPilar: [NotaPilar]? {
+    var notaPilar: [NotaPilarModel]? {
         didSet{
             
             guard let notaPilarActual = notaPilar?.first else {return}

@@ -14,7 +14,8 @@ class DashboardViewController: SlideViewController {
     
     @IBOutlet weak var dashTableView: UITableView!
     
-    var notasPilar: [NotaPilar]?
+    var notasPilar: [NotaPilarModel]?
+    var notasCanal: [NotaCanalModel]?
     var rank: (nota: Double, vari: Double, meta: Double, rank: Int)?
     var date = ""
     
@@ -35,7 +36,10 @@ class DashboardViewController: SlideViewController {
             
             Rest.loadPosicao { (posicao, accessDenied) in
                 self.rank?.rank = (posicao?.posicao!)!
-                self.dashTableView.reloadData()
+                Rest.loadNotaCanal(type: NotaCanalType.total, onComplete: { (notasCanal, accessDenied) in
+                    self.notasCanal = notasCanal
+                    self.dashTableView.reloadData()
+                })
             }
         }
     }
@@ -47,7 +51,8 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 3 {
-            return 4
+            guard let notasCanal = self.notasCanal else {return 1}
+            return notasCanal.count
         }
         return 1
     }
@@ -68,9 +73,14 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ChannelCell", for: indexPath) as! ChannelCell
+                
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ChannelCellList", for: indexPath) as! ChannelCellList
+                
+                guard let notasCanal = self.notasCanal else {return cell}
+                cell.notaCanal = notasCanal[indexPath.row]
+                
                 return cell
             }
         case 4:

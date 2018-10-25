@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NotaPilar : Codable {
+struct NotaPilarModel : Codable {
     let dhpId : Int?
     let total : Double?
     let ativacao : Double?
