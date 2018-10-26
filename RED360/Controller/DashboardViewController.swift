@@ -16,8 +16,11 @@ class DashboardViewController: SlideViewController {
     
     var notasPilar: [NotaPilarModel]?
     var notasCanal: [NotaCanalModel]?
+    var historico: [HistoricoModel]?
+    var metas: [String:Double?]?
     var rank: (nota: Double, vari: Double, meta: Double, rank: Int)?
     var date = ""
+    var mes: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +33,21 @@ class DashboardViewController: SlideViewController {
         
         Rest.loadNotaPilar() { (notasPilar, accessDenied) in
             self.notasPilar = notasPilar
-            let meta = appDelegate.user?.metas?.getMetasDic()[notasPilar?.first?.mesNome ?? ""]
+            self.metas = appDelegate.user?.metas?.getMetasDic()
+            self.mes = notasPilar?.first?.mesNome?.getMonth
+            let meta = self.metas?[notasPilar?.first?.mesNome ?? ""]
             self.rank = ((nota: notasPilar?.first?.total!, vari: ((notasPilar?.first?.total)! - (notasPilar?.last?.total)!), meta: meta, rank: 0) as! (nota: Double, vari: Double, meta: Double, rank: Int))
             self.date = "\(notasPilar?.first?.mesNome ?? "")/\(notasPilar?.first?.ano ?? "")"
             
-            Rest.loadPosicao { (posicao, accessDenied) in
-                self.rank?.rank = (posicao?.posicao!)!
-                self.loadNotaCanal(type: .total)
-            }
+            Rest.loadHistorico(onComplete: { (historico, accessDenied) in
+                self.historico = historico
+                
+                Rest.loadPosicao { (posicao, accessDenied) in
+                    self.rank?.rank = (posicao?.posicao!)!
+                    self.loadNotaCanal(type: .total)
+                }
+            })
+
         }
     }
     
@@ -94,10 +104,24 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             }
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CombinatedChartCell", for: indexPath) as! CombinatedChartCell
-            let line = [51.6, 53.3, 53.1, 55.0, 56.8, 58.7]
-            let bar = [51.6]
+            let total = self.historico?.compactMap{Double($0.total ?? "0")}
+            let metas = self.metas?.values.compactMap{$0}
             
-            cell.values = (line: line, bar: bar)
+            guard let bar = total, let line = metas, let mes = self.mes else {return cell}
+            
+            var barElements = [Double]()
+            var lineElements = [Double]()
+            var finishMonths = false
+            if mes >= 6 {
+                barElements = Array(bar.dropFirst(6))
+                lineElements = Array(line.dropFirst(6))
+                finishMonths = true
+            }else{
+                barElements = Array(bar.dropLast(6))
+                lineElements = Array(line.dropLast(6))
+            }
+            
+            cell.values = (line: lineElements, bar: barElements, finishMonths: finishMonths)
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath) as! OrderCell

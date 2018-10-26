@@ -43,15 +43,21 @@ class CombinatedChartCell: UITableViewCell {
         self.chart.xAxis.drawGridLinesEnabled = false
         self.chart.drawGridBackgroundEnabled = false
         self.chart.xAxis.granularity = 1
-        self.chart.xAxis.valueFormatter = IndexAxisValueFormatter(values:months)
         
         self.chart.animate(yAxisDuration: 1.5, easingOption: .easeInOutQuad)
         
     }
     
-    var values: (line: [Double], bar: [Double])? {
+    var values: (line: [Double], bar: [Double], finishMonths: Bool)? {
         didSet{
             guard let values = values else {return}
+            var months = self.months
+            if values.finishMonths {
+                months = Array(self.months.dropFirst(6))
+            }
+            
+            self.chart.xAxis.valueFormatter = IndexAxisValueFormatter(values:months)
+            
             chart.noDataText = "Please provide data for the chart."
             
             self.chart.xAxis.axisMaximum = Double(values.bar.count > values.line.count ? values.bar.count : values.line.count) - 0.5
@@ -83,9 +89,9 @@ class CombinatedChartCell: UITableViewCell {
             
             let valuesNumberFormatter = ChartValueFormatter(numberFormatter: numberFormatter)
             barChartSet.valueFormatter = valuesNumberFormatter
-            barChartSet.valueFont = UIFont(name: "Helvetica Neue", size: 0)!
+            barChartSet.valueFont = UIFont(name: "Helvetica Neue", size: 7)!
             lineChartSet.valueFormatter = valuesNumberFormatter
-            lineChartSet.valueFont = UIFont(name: "Helvetica Neue", size: 10)!
+            lineChartSet.valueFont = UIFont(name: "Helvetica Neue", size: 7)!
             
             
             let data: CombinedChartData = CombinedChartData()

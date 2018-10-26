@@ -148,5 +148,40 @@ class Rest{
             
         }
     }
+    
+    class func loadHistorico(onComplete: @escaping ([HistoricoModel]?, AccessDenied?) -> Void){
+        
+        guard let user = appDelegate.user, let nivel = user.nivel else {return}
+        var cargo = ""
+        var supervisao = ""
+        if nivel == 4 {
+            cargo = user.diretoria != nil ? user.diretoria! : ""
+            supervisao = user.supervisao != nil ? user.supervisao! : ""
+        }
+        
+        let headers: HTTPHeaders = getHeaders()
+        let parameters = ["cargo" : cargo , "supervisao" : supervisao] as [String : Any]
+        
+        let url = baseURL+"api/dashboard/historico/\(nivel).json"
+        Alamofire.request(url, method: .post, parameters: parameters as [String: Any] , encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    let result = try JSONDecoder().decode([HistoricoModel].self, from: data)
+                    print(result)
+                    onComplete(result, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+            
+        }
+    }
 }
 
