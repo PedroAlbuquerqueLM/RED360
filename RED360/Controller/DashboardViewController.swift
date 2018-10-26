@@ -36,12 +36,19 @@ class DashboardViewController: SlideViewController {
             
             Rest.loadPosicao { (posicao, accessDenied) in
                 self.rank?.rank = (posicao?.posicao!)!
-                Rest.loadNotaCanal(type: NotaCanalType.total, onComplete: { (notasCanal, accessDenied) in
-                    self.notasCanal = notasCanal
-                    self.dashTableView.reloadData()
-                })
+                self.loadNotaCanal(type: .total)
             }
         }
+    }
+    
+    func loadNotaCanal(type: NotaCanalType, move: Bool = false){
+        Rest.loadNotaCanal(type: type, onComplete: { (notasCanal, accessDenied) in
+            self.notasCanal = notasCanal
+            self.dashTableView.reloadData()
+            if move {
+                self.dashTableView.scrollToRow(at: IndexPath(row: 0, section: 3), at: .top, animated: false)
+            }
+        })
     }
 }
 extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
@@ -73,6 +80,8 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             switch indexPath.row {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ChannelCell", for: indexPath) as! ChannelCell
+                
+                cell.delegate = self
                 
                 return cell
             default:
@@ -132,5 +141,11 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
         let headerView = UIView()
         headerView.backgroundColor = UIColor.clear
         return headerView
+    }
+}
+
+extension DashboardViewController: ChannelDelegate {
+    func selectedChannel(_ channel: NotaCanalType) {
+        self.loadNotaCanal(type: channel, move: true)
     }
 }

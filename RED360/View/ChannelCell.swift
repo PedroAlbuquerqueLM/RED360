@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import SCLAlertView
+
+protocol ChannelDelegate: class {
+    func selectedChannel(_ channel: NotaCanalType)
+}
 
 class ChannelCell: UITableViewCell {
     
-    
+    @IBOutlet weak var channelButton: UIButton!
+    weak var delegate: ChannelDelegate?
     
     override func awakeFromNib() {
         self.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.7959920805)
@@ -20,6 +26,52 @@ class ChannelCell: UITableViewCell {
     }
     
     @IBAction func selectChannelAction(_ sender: Any) {
+        self.showOptions()
+    }
+    
+    func showOptions(){
+        let appearance = SCLAlertView.SCLAppearance(
+            kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
+            kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+            kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
+            showCloseButton: false, showCircularIcon: false
+        )
+        
+        let alertView = SCLAlertView(appearance: appearance)
+        let totalBtn = alertView.addButton("Total") {
+            self.channelButton.setTitle("Total", for: .normal)
+            self.delegate?.selectedChannel(.total)
+        }
+        let ativBtn = alertView.addButton("Ativação") {
+            self.channelButton.setTitle("Ativação", for: .normal)
+            self.delegate?.selectedChannel(.ativacao)
+        }
+        let dispBtn = alertView.addButton("Disponibilidade") {
+            self.channelButton.setTitle("Disponibilidade", for: .normal)
+            self.delegate?.selectedChannel(.disponibilidade)
+        }
+        let gdmBtn = alertView.addButton("GDM") {
+            self.channelButton.setTitle("GDM", for: .normal)
+            self.delegate?.selectedChannel(.gdm)
+        }
+        let precoBtn = alertView.addButton("Preço") {
+            self.channelButton.setTitle("Preço", for: .normal)
+            self.delegate?.selectedChannel(.preco)
+        }
+        let soviBtn = alertView.addButton("Sovi") {
+            self.channelButton.setTitle("Sovi", for: .normal)
+            self.delegate?.selectedChannel(.sovi)
+        }
+        let closeBtn = alertView.addButton("Fechar") {}
+        
+        alertView.showTitle("Selecione o Canal", subTitle: "", style: .error)
+        totalBtn.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
+        ativBtn.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
+        dispBtn.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
+        gdmBtn.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
+        precoBtn.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
+        soviBtn.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
+        closeBtn.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
     }
     
     

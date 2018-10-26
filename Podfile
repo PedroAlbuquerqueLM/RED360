@@ -19,6 +19,7 @@ target 'RED360' do
   pod 'Firebase/Firestore'
   pod 'HandyJSON', '~> 4.2.0'
   pod 'PromiseKit'
+  pod 'SCLAlertView'
 
   target 'RED360Tests' do
     inherit! :search_paths

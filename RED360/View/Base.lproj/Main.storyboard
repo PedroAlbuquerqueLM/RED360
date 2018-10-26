@@ -402,13 +402,13 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6F-eB-Twr">
                                                     <rect key="frame" x="8" y="56" width="327" height="40"/>
-                                                    <color key="backgroundColor" red="0.96253305673599243" green="0.36771529912948608" blue="0.35351276397705078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.96078431372549022" green="0.36862745098039218" blue="0.3529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="dHz-kK-D0E"/>
                                                         <constraint firstAttribute="width" constant="327" id="odB-jm-hoO"/>
                                                     </constraints>
                                                     <inset key="imageEdgeInsets" minX="300" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <state key="normal" title="Disponibilidade" image="arrowIcon">
+                                                    <state key="normal" title="Total" image="arrowIcon">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <userDefinedRuntimeAttributes>
@@ -478,6 +478,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="1000" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="channelButton" destination="K6F-eB-Twr" id="UuY-qe-ZPP"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChannelCellList" id="t8W-dm-jhC" customClass="ChannelCellList" customModule="RED360" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="640" width="343" height="44"/>
