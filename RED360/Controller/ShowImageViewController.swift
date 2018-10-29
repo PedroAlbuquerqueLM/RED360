@@ -11,7 +11,6 @@ import SnapKit
 
 class ShowImageViewController: UIViewController {
     
-    var cards: CardsScrollView?
     var notasPilar: [NotaPilarModel]?
     var values: (line: [Double], bar: [Double])?
     var isCombinated: Bool = false
@@ -31,23 +30,9 @@ class ShowImageViewController: UIViewController {
             self.view.insertSubview(view, at: 0)
         }
     }
-    
-    @IBAction func prevImage(_ sender: Any) {
-        self.cards?.moveToPrevPage()
-    }
-    
-    @IBAction func nextImage(_ sender: Any) {
-        self.cards?.moveToNextPage()
-    }
-    
+
     @IBAction func closeAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-}
-
-extension ShowImageViewController: CardsScrollViewDelegate {
-    func changedPage(currentPage: Int) {
-        print(currentPage)
-    }
 }
