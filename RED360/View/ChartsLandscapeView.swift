@@ -12,60 +12,127 @@ import SnapKit
 
 class ChartsLandscapeView: UIView {
     
-    var chart: HorizontalBarChartView!
+    var charts = [BarChartView]()
+    var scrollView: UIScrollView!
+    var pageControl: UIPageControl!
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, qnt: Int) {
      
         super.init(frame: frame)
         
-        self.chart = HorizontalBarChartView(frame: CGRect.zero)
-        self.chart.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
-        self.backgroundColor = UIColor.white
-        self.addSubview(self.chart)
+        self.scrollView = UIScrollView(frame: CGRect(x:0, y:0, width:frame.width, height:frame.height))
+        self.scrollView.isPagingEnabled = true
         
-        self.chart.snp.makeConstraints({ (make) in
-            make.height.equalTo(self.frame.width)
-            make.width.equalTo(self.frame.height-50)
-            make.center.equalTo(CGPoint(x: self.center.x, y: self.center.y + 50))
+        self.scrollView.showsVerticalScrollIndicator = false
+        self.scrollView.showsHorizontalScrollIndicator = false
+        
+        for _ in 0..<qnt {
+            let chart = BarChartView(frame: CGRect.zero)
+            chart.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
+            backgroundColor = UIColor.white
+            self.charts.append(chart)
+            self.scrollView.addSubview(chart)
+        }
+        
+        self.scrollView.contentSize = CGSize(width:self.scrollView.frame.width, height:self.scrollView.frame.height * CGFloat(scrollView.subviews.count))
+        self.scrollView.delegate = self
+        
+        self.pageControl = UIPageControl(frame: CGRect(x: 0, y: frame.height - 35, width: frame.width, height: 35))
+        self.pageControl.currentPage = 0
+        self.pageControl.numberOfPages = scrollView.subviews.count
+        self.pageControl.isHidden = true
+        
+        self.addSubview(scrollView)
+        self.addSubview(pageControl)
+        
+        self.charts.enumerated().forEach{
+            let i = CGFloat($0.offset) * (self.center.y * 2)
+            $0.element.snp.makeConstraints({ (make) in
+                make.height.equalTo(self.frame.width)
+                make.width.equalTo(self.frame.height-10)
+                make.center.equalTo(CGPoint(x: self.center.x + 10, y: (self.center.y + i) + 10))
+                
+            })
             
-        })
-        
-        self.chart.xAxis.labelPosition = .bottom
-        self.chart.leftAxis.axisMinimum = 0.0
-        self.chart.leftAxis.axisMaximum = 120.0
-        self.chart.xAxis.axisMinimum = -0.5
-        self.chart.chartDescription?.text = ""
-        self.chart.legend.enabled = false
-        self.chart.scaleYEnabled = false
-        self.chart.scaleXEnabled = false
-        self.chart.pinchZoomEnabled = false
-        self.chart.doubleTapToZoomEnabled = false
-        self.chart.highlighter = nil
-        self.chart.rightAxis.enabled = false
-        self.chart.leftAxis.enabled = false
-        self.chart.xAxis.drawAxisLineEnabled = false
-        self.chart.xAxis.centerAxisLabelsEnabled = false
-        
-        self.chart.leftAxis.drawGridLinesEnabled = false
-        self.chart.rightAxis.drawGridLinesEnabled = false
-        self.chart.xAxis.drawGridLinesEnabled = false
-        self.chart.drawGridBackgroundEnabled = false
-        
-        let titles = ["Sovi", "", "", "Preço", "", "", "GDM", "", "", "Disp.", "", "", "Ativ.", "", "", "Total"]
-        self.chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: titles)
-        self.chart.leftAxis.valueFormatter = IndexAxisValueFormatter(values: [""])
-        self.chart.xAxis.granularity = 3
-        
-        self.chart.animate(yAxisDuration: 1.5, easingOption: .easeInOutQuad)
-        
+            $0.element.xAxis.labelPosition = .bottom
+            $0.element.leftAxis.axisMinimum = 0.0
+            $0.element.leftAxis.axisMaximum = 120.0
+            $0.element.xAxis.axisMinimum = -0.5
+            $0.element.chartDescription?.text = ""
+            $0.element.legend.enabled = false
+            $0.element.scaleYEnabled = false
+            $0.element.scaleXEnabled = false
+            $0.element.pinchZoomEnabled = false
+            $0.element.doubleTapToZoomEnabled = false
+            $0.element.highlighter = nil
+            $0.element.rightAxis.enabled = false
+            $0.element.leftAxis.enabled = false
+            $0.element.xAxis.drawAxisLineEnabled = false
+            $0.element.xAxis.centerAxisLabelsEnabled = false
+            
+            $0.element.leftAxis.drawGridLinesEnabled = false
+            $0.element.rightAxis.drawGridLinesEnabled = false
+            $0.element.xAxis.drawGridLinesEnabled = false
+            $0.element.drawGridBackgroundEnabled = false
+            
+            $0.element.leftAxis.valueFormatter = IndexAxisValueFormatter(values: [""])
+            $0.element.xAxis.granularity = 3
+            
+            $0.element.animate(yAxisDuration: 1.5, easingOption: .easeInOutQuad)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var values: (line: [Double], bar: [Double])? {
+        didSet{
+            
+            guard let values = values else {return}
+            let months1 = ["Jan","","", "Fev","","", "Mar","","", "Abr","","", "Mai","","", "Jun"]
+            let months2 =  ["Jul","","", "Ago","","", "Set","","", "Out","","", "Nov","","","Dez"]
+            
+            self.charts.first!.xAxis.valueFormatter = IndexAxisValueFormatter(values:months1)
+            self.charts.first!.noDataText = "Please provide data for the chart."
+            self.charts.last!.xAxis.valueFormatter = IndexAxisValueFormatter(values:months2)
+            self.charts.last!.noDataText = "Please provide data for the chart."
+            
+            var dataSets = [[BarChartDataSet]() ,[BarChartDataSet]()]
+            
+            var index = 0
+            var offset = 0
+            values.bar.enumerated().forEach {
+                if $0.offset == 6 {
+                    index = 1
+                    offset = 0
+                }
+                let dataSet = BarChartDataSet(values: [BarChartDataEntry(x: Double(offset + (dataSets[index].count * 2)), y: values.line[$0.offset]), BarChartDataEntry(x: Double(offset + 1 + (dataSets[index].count * 2)), y: $0.element)], label: "")
+                dataSet.colors = [#colorLiteral(red: 0.5529411765, green: 0.5882352941, blue: 0.631372549, alpha: 1), #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)]
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.locale = Locale.current
+                numberFormatter.negativeSuffix = "%"
+                numberFormatter.positiveSuffix = "%"
+                
+                let valuesNumberFormatter = ChartValueFormatter(numberFormatter: numberFormatter)
+                dataSet.valueFormatter = valuesNumberFormatter
+                dataSet.valueFont = UIFont(name: "Helvetica Neue", size: 12)!
+                dataSet.valueTextColor = #colorLiteral(red: 0.5529411765, green: 0.5882352941, blue: 0.631372549, alpha: 1)
+                dataSets[index].append(dataSet)
+                offset += 1
+            }
+            self.charts.first!.data = BarChartData(dataSets: dataSets.first)
+            self.charts.last!.data = BarChartData(dataSets: dataSets.last)
+        }
+    }
+    
     var notaPilar: [NotaPilarModel]? {
         didSet{
+            
+            let titles = ["Sovi", "", "", "Preço", "", "", "GDM", "", "", "Disp.", "", "", "Ativ.", "", "", "Total"]
+            self.charts.first!.xAxis.valueFormatter = IndexAxisValueFormatter(values: titles)
             
             guard let notaPilarActual = notaPilar?.first else {return}
             guard let notaPilarAnterior = notaPilar?.last else {return}
@@ -91,13 +158,26 @@ class ChartsLandscapeView: UIView {
                 
                 let valuesNumberFormatter = ChartValueFormatter(numberFormatter: numberFormatter)
                 dataSet.valueFormatter = valuesNumberFormatter
-                dataSet.valueFont = UIFont(name: "Helvetica Neue", size: 12)!
+                dataSet.valueFont = UIFont(name: "Helvetica Neue", size: 10)!
                 dataSet.valueTextColor = #colorLiteral(red: 0.5529411765, green: 0.5882352941, blue: 0.631372549, alpha: 1)
                 dataSets.append(dataSet)
             }
-            self.chart.data = BarChartData(dataSets: dataSets)
+            self.charts.first!.data = BarChartData(dataSets: dataSets)
         }
     }
-    
 }
 
+extension ChartsLandscapeView: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        return
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView){
+        // Test the offset and calculate the current page after scrolling ends
+        let pageWidth:CGFloat = scrollView.frame.height
+        let currentPage:CGFloat = floor((scrollView.contentOffset.y-pageWidth/2)/pageWidth)+1
+        // Change the indicator
+        self.pageControl.currentPage = Int(currentPage);
+        print(currentPage)
+    }
+}

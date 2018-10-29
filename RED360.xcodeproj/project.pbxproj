@@ -10,7 +10,6 @@
 		03263653CB406F3BDE6356C4 /* Pods_RED360.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F734AB938BAFCB4A4C1ACB /* Pods_RED360.framework */; };
 		10909EC8A8090579611F5E8E /* Pods_RED360Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EDD9F5460D6D07CD97BBD5B /* Pods_RED360Tests.framework */; };
 		1A72301962F33744AC432B2F /* Pods_RED360UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F69EEE99B86DC20C0E1BBB /* Pods_RED360UITests.framework */; };
-		7107E8292173E50F006EFF1E /* CombinatedChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107E8282173E50F006EFF1E /* CombinatedChartCell.swift */; };
 		7107E82C2173F651006EFF1E /* ChartValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */; };
 		7107E82E2173FC81006EFF1E /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107E82D2173FC81006EFF1E /* OrderCell.swift */; };
 		7158DC25216E3D4F0083B844 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC24216E3D4F0083B844 /* MenuViewController.swift */; };
@@ -46,7 +45,6 @@
 		716C571C217F880400003759 /* PosicaoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C571B217F880400003759 /* PosicaoModel.swift */; };
 		7173877C21868EB60059A856 /* ShowImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173877B21868EB60059A856 /* ShowImageViewController.swift */; };
 		7173877E218690340059A856 /* ChartsLandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173877D218690340059A856 /* ChartsLandscapeView.swift */; };
-		71738780218690860059A856 /* CombinatedChartsLandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173877F218690860059A856 /* CombinatedChartsLandscapeView.swift */; };
 		71867D7E2173D394003A00F8 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71867D7D2173D394003A00F8 /* ChannelCell.swift */; };
 		71EC933321816EA8001498A2 /* MetasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC933221816EA8001498A2 /* MetasModel.swift */; };
 		71EC93352181749C001498A2 /* NotaCanalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC93342181749C001498A2 /* NotaCanalModel.swift */; };
@@ -76,7 +74,6 @@
 		33EC9FE4D993D439C123C5A3 /* Pods-RED360.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RED360.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RED360/Pods-RED360.debug.xcconfig"; sourceTree = "<group>"; };
 		4057D3D2CFC156F1CB8E5560 /* Pods-RED360UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RED360UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RED360UITests/Pods-RED360UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		66F734AB938BAFCB4A4C1ACB /* Pods_RED360.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RED360.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7107E8282173E50F006EFF1E /* CombinatedChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinatedChartCell.swift; sourceTree = "<group>"; };
 		7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartValueFormatter.swift; sourceTree = "<group>"; };
 		7107E82D2173FC81006EFF1E /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		7158DC24216E3D4F0083B844 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +115,6 @@
 		716C571B217F880400003759 /* PosicaoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosicaoModel.swift; sourceTree = "<group>"; };
 		7173877B21868EB60059A856 /* ShowImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowImageViewController.swift; sourceTree = "<group>"; };
 		7173877D218690340059A856 /* ChartsLandscapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsLandscapeView.swift; sourceTree = "<group>"; };
-		7173877F218690860059A856 /* CombinatedChartsLandscapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinatedChartsLandscapeView.swift; sourceTree = "<group>"; };
 		71867D7D2173D394003A00F8 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		71EC933221816EA8001498A2 /* MetasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetasModel.swift; sourceTree = "<group>"; };
 		71EC93342181749C001498A2 /* NotaCanalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaCanalModel.swift; sourceTree = "<group>"; };
@@ -182,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				7173877D218690340059A856 /* ChartsLandscapeView.swift */,
-				7173877F218690860059A856 /* CombinatedChartsLandscapeView.swift */,
 				716C56EF217E071000003759 /* VLoading.swift */,
 				716C56EE217E070F00003759 /* VLoading.xib */,
 				7158DC2F216E84AA0083B844 /* Cells */,
@@ -227,7 +222,6 @@
 				7158DC32216E84FE0083B844 /* ChartCell.swift */,
 				716C5719217F83FE00003759 /* CalendarCell.swift */,
 				71867D7D2173D394003A00F8 /* ChannelCell.swift */,
-				7107E8282173E50F006EFF1E /* CombinatedChartCell.swift */,
 				7107E82D2173FC81006EFF1E /* OrderCell.swift */,
 			);
 			name = Cells;
@@ -607,7 +601,6 @@
 				716C5716217E2EF300003759 /* UserDefaultsKey.swift in Sources */,
 				7158DC31216E84C80083B844 /* RankedCell.swift in Sources */,
 				716C56F6217E1B6A00003759 /* NotaPilarModel.swift in Sources */,
-				7107E8292173E50F006EFF1E /* CombinatedChartCell.swift in Sources */,
 				7107E82C2173F651006EFF1E /* ChartValueFormatter.swift in Sources */,
 				716C56F4217E1A8B00003759 /* Rest.swift in Sources */,
 				7173877C21868EB60059A856 /* ShowImageViewController.swift in Sources */,
@@ -619,7 +612,6 @@
 				716524CF218345EB0088C772 /* HistoricoModel.swift in Sources */,
 				71EC93352181749C001498A2 /* NotaCanalModel.swift in Sources */,
 				716C56FE217E205F00003759 /* UserManager.swift in Sources */,
-				71738780218690860059A856 /* CombinatedChartsLandscapeView.swift in Sources */,
 				716C56F8217E1BA700003759 /* AccessDeniedModel.swift in Sources */,
 				7173877E218690340059A856 /* ChartsLandscapeView.swift in Sources */,
 			);

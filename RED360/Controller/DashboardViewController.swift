@@ -85,6 +85,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.viewController = self
             cell.notaPilar = self.notasPilar
+            cell.isCombinated = false
             
             return cell
         case 3:
@@ -105,7 +106,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
         case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CombinatedChartCell", for: indexPath) as! CombinatedChartCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChartCell", for: indexPath) as! ChartCell
             let total = self.historico?.compactMap{Double($0.total ?? "0")}
             let metas = self.metas?.values.compactMap{$0}
             
@@ -125,6 +126,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.viewController = self
             cell.valuesComplete = (line: line, bar: bar)
+            cell.isCombinated = true
             cell.values = (line: lineElements, bar: barElements, finishMonths: finishMonths)
             return cell
         case 5:
@@ -153,7 +155,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
                 return 50
             }
         case 4:
-            return 250
+            return 400
         case 5:
             return 65
         default:

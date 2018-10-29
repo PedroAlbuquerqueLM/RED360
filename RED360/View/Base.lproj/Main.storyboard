@@ -296,59 +296,14 @@
                                         <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="chart" destination="NAK-fd-TOH" id="Hw8-fb-vgF"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CombinatedChartCell" rowHeight="92" id="sbW-5h-j8m" customClass="CombinatedChartCell" customModule="RED360" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="349" width="343" height="92"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sbW-5h-j8m" id="oWu-NK-iSh">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="91.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23Q-fG-GGH" customClass="CombinedChartView" customModule="Charts">
-                                                    <rect key="frame" x="0.0" y="45" width="335" height="36.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Histórico" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Meb-R5-Y3J">
-                                                    <rect key="frame" x="34" y="0.0" width="182" height="48"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="182" id="VAc-HE-hQa"/>
-                                                        <constraint firstAttribute="height" constant="48" id="fAG-P1-btB"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <color key="textColor" red="0.55294117649999996" green="0.58823529409999997" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ssb-rR-eVW">
-                                                    <rect key="frame" x="301" y="17" width="20" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="gfo-y7-gw1"/>
-                                                        <constraint firstAttribute="width" constant="20" id="o98-ig-Zy5"/>
-                                                    </constraints>
-                                                    <state key="normal" image="expandIcon"/>
-                                                    <connections>
-                                                        <action selector="expandChartAction:" destination="sbW-5h-j8m" eventType="touchUpInside" id="l1C-AV-Hw3"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="23Q-fG-GGH" secondAttribute="trailing" constant="8" id="I0b-CL-lmb"/>
-                                                <constraint firstItem="Meb-R5-Y3J" firstAttribute="top" secondItem="oWu-NK-iSh" secondAttribute="top" id="LbK-EG-YfB"/>
-                                                <constraint firstItem="Meb-R5-Y3J" firstAttribute="leading" secondItem="oWu-NK-iSh" secondAttribute="leading" constant="34" id="QYq-0x-dN5"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ssb-rR-eVW" secondAttribute="trailing" constant="22" id="chG-oi-2rF"/>
-                                                <constraint firstItem="23Q-fG-GGH" firstAttribute="top" secondItem="Meb-R5-Y3J" secondAttribute="bottom" constant="-3" id="j1u-no-ish"/>
-                                                <constraint firstItem="23Q-fG-GGH" firstAttribute="leading" secondItem="oWu-NK-iSh" secondAttribute="leading" id="qrK-85-etV"/>
-                                                <constraint firstAttribute="bottom" secondItem="23Q-fG-GGH" secondAttribute="bottom" constant="10" id="rvx-wC-xl3"/>
-                                                <constraint firstItem="Ssb-rR-eVW" firstAttribute="top" secondItem="oWu-NK-iSh" secondAttribute="top" constant="17" id="un2-wq-8qo"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <connections>
-                                            <outlet property="chart" destination="23Q-fG-GGH" id="llU-nH-eYP"/>
+                                            <outlet property="titleBarGray" destination="rQJ-dq-IIo" id="1Vp-GV-tLF"/>
+                                            <outlet property="titleBarGreen" destination="2HS-84-ttf" id="g5E-6v-kcH"/>
+                                            <outlet property="titleLabel" destination="bxT-q4-Skt" id="l52-su-h1T"/>
+                                            <outlet property="viewBarGreen" destination="4Po-md-6oq" id="oti-Ih-ZHu"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="OrderCell" rowHeight="65" id="0Bs-Sw-N9m" customClass="OrderCell" customModule="RED360" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="441" width="343" height="65"/>
+                                        <rect key="frame" x="0.0" y="349" width="343" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Bs-Sw-N9m" id="C3c-xU-ejd">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="64.5"/>
@@ -390,7 +345,7 @@
                                         <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChannelCell" rowHeight="134" id="Chd-ns-VBa" customClass="ChannelCell" customModule="RED360" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="506" width="343" height="134"/>
+                                        <rect key="frame" x="0.0" y="414" width="343" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Chd-ns-VBa" id="AGw-GI-FkY">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="133.5"/>
@@ -489,7 +444,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChannelCellList" id="t8W-dm-jhC" customClass="ChannelCellList" customModule="RED360" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="640" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="548" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t8W-dm-jhC" id="RWg-2B-znP">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
@@ -790,7 +745,6 @@
                                 <state key="normal" image="iconClose"/>
                                 <connections>
                                     <action selector="closeAction:" destination="khm-mS-N7x" eventType="touchUpInside" id="v47-uL-hgA"/>
-                                    <action selector="prevImage:" destination="khm-mS-N7x" eventType="touchUpInside" id="g6K-ja-i77"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1028,7 +982,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJh-rj-Aoi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1074.4000000000001" y="945.87706146926541"/>
+            <point key="canvasLocation" x="-1084" y="946"/>
         </scene>
     </scenes>
     <resources>

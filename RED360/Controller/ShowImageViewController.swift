@@ -19,14 +19,12 @@ class ShowImageViewController: UIViewController {
         super.viewDidLoad()
         
         if !isCombinated {
-            let view = ChartsLandscapeView(frame: CGRect(x: 0, y: 0, width: Int(self.view.frame.width), height: Int(self.view.frame.height)))
+            let view = ChartsLandscapeView(frame: CGRect(x: 0, y: 0, width: Int(self.view.frame.width), height: Int(self.view.frame.height)), qnt: 1)
             view.notaPilar = notasPilar
             self.view.insertSubview(view, at: 0)
         }else{
-            let view = CombinatedChartsLandscapeView(frame: CGRect(x: 0, y: 0, width: Int(self.view.frame.width), height: Int(self.view.frame.height)))
-            
+            let view = ChartsLandscapeView(frame: CGRect(x: 0, y: 0, width: Int(self.view.frame.width), height: Int(self.view.frame.height)), qnt: 2)
             view.values = self.values
-            
             self.view.insertSubview(view, at: 0)
         }
     }
