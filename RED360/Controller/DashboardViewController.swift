@@ -99,6 +99,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ChannelCellList", for: indexPath) as! ChannelCellList
                 
                 guard let notasCanal = self.notasCanal else {return cell}
+                cell.borders = true
                 cell.notaCanal = notasCanal[indexPath.row]
                 
                 return cell
@@ -157,6 +158,25 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             return 65
         default:
             return 44
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 3:
+            switch indexPath.row {
+            case 0:
+                return
+            default:
+                guard let cell = tableView.cellForRow(at: indexPath) as? ChannelCellList else {return}
+                if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IndicatorViewController") as? IndicatorViewController {
+                    vc.channel = cell.notaCanal?.canal ?? ""
+                    vc.modalPresentationStyle = .overCurrentContext
+                    self.present(vc, animated: true, completion: nil)
+                }
+            }
+        default:
+            return
         }
     }
     
