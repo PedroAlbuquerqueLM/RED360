@@ -1,29 +1,37 @@
 //
-//  CombinatedChartCell.swift
+//  CombinatedChartsLandscapeView.swift
 //  RED360
 //
-//  Created by Pedro Albuquerque on 14/10/18.
+//  Created by Pedro Albuquerque on 28/10/18.
 //  Copyright © 2018 com.dimensiva.tecnologia.red360.app. All rights reserved.
 //
 
 import UIKit
 import Charts
+import SnapKit
 
-class CombinatedChartCell: UITableViewCell {
+class CombinatedChartsLandscapeView: UIView{
     
-    @IBOutlet weak var chart: CombinedChartView!
-    var viewController: UIViewController!
-    var valuesComplete: (line: [Double], bar: [Double])?
+    var chart: CombinedChartView!
     
     let months = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
     
-    override func awakeFromNib() {
+    override init(frame: CGRect) {
         
-        self.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.7959920805)
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 5
-        self.clipsToBounds = true
-    
+        super.init(frame: frame)
+        
+        self.chart = CombinedChartView(frame: CGRect.zero)
+        self.chart.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
+        self.backgroundColor = UIColor.white
+        self.addSubview(self.chart)
+        
+        self.chart.snp.makeConstraints({ (make) in
+            make.height.equalTo(self.frame.width-20)
+            make.width.equalTo(self.frame.height-70)
+            make.center.equalTo(CGPoint(x: self.center.x, y: self.center.y + 50))
+            
+        })
+        
         self.chart.xAxis.labelPosition = .bottom
         self.chart.leftAxis.axisMinimum = 0.0
         self.chart.leftAxis.axisMaximum = 100.0
@@ -50,22 +58,14 @@ class CombinatedChartCell: UITableViewCell {
         
     }
     
-    
-    @IBAction func expandChartAction(_ sender: Any) {
-        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShowImageViewController") as? ShowImageViewController {
-            vc.values = self.valuesComplete!
-            vc.isCombinated = true
-            self.viewController.present(vc, animated: true, completion: nil)
-        }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    var values: (line: [Double], bar: [Double], finishMonths: Bool)? {
+    var values: (line: [Double], bar: [Double])? {
         didSet{
             guard let values = values else {return}
-            var months = self.months
-            if values.finishMonths {
-                months = Array(self.months.dropFirst(6))
-            }
+            let months = self.months
             
             self.chart.xAxis.valueFormatter = IndexAxisValueFormatter(values:months)
             
@@ -113,3 +113,4 @@ class CombinatedChartCell: UITableViewCell {
         }
     }
 }
+

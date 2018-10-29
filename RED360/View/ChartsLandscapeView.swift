@@ -1,25 +1,34 @@
 //
-//  Chartself.swift
+//  ChartsLandscapeView.swift
 //  RED360
 //
-//  Created by Pedro Albuquerque on 10/10/18.
+//  Created by Pedro Albuquerque on 28/10/18.
 //  Copyright © 2018 com.dimensiva.tecnologia.red360.app. All rights reserved.
 //
 
 import UIKit
 import Charts
+import SnapKit
 
-class ChartCell: UITableViewCell {
+class ChartsLandscapeView: UIView {
     
-    @IBOutlet weak var chart: HorizontalBarChartView!
-    var viewController: UIViewController!
+    var chart: HorizontalBarChartView!
     
-    override func awakeFromNib() {
+    override init(frame: CGRect) {
+     
+        super.init(frame: frame)
         
-        self.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.7959920805)
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 5
-        self.clipsToBounds = true
+        self.chart = HorizontalBarChartView(frame: CGRect.zero)
+        self.chart.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
+        self.backgroundColor = UIColor.white
+        self.addSubview(self.chart)
+        
+        self.chart.snp.makeConstraints({ (make) in
+            make.height.equalTo(self.frame.width)
+            make.width.equalTo(self.frame.height-50)
+            make.center.equalTo(CGPoint(x: self.center.x, y: self.center.y + 50))
+            
+        })
         
         self.chart.xAxis.labelPosition = .bottom
         self.chart.leftAxis.axisMinimum = 0.0
@@ -48,13 +57,11 @@ class ChartCell: UITableViewCell {
         self.chart.xAxis.granularity = 3
         
         self.chart.animate(yAxisDuration: 1.5, easingOption: .easeInOutQuad)
+        
     }
     
-    @IBAction func expandChartAction(_ sender: Any) {
-        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShowImageViewController") as? ShowImageViewController {
-            vc.notasPilar = self.notaPilar
-            self.viewController.present(vc, animated: true, completion: nil)
-        }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     var notaPilar: [NotaPilarModel]? {
@@ -93,3 +100,4 @@ class ChartCell: UITableViewCell {
     }
     
 }
+

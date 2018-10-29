@@ -43,6 +43,10 @@
 		716C5718217E2F3400003759 /* ControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C5717217E2F3300003759 /* ControllerManager.swift */; };
 		716C571A217F83FE00003759 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C5719217F83FE00003759 /* CalendarCell.swift */; };
 		716C571C217F880400003759 /* PosicaoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C571B217F880400003759 /* PosicaoModel.swift */; };
+		7173877A21868EA70059A856 /* CardsScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173877921868EA70059A856 /* CardsScrollView.swift */; };
+		7173877C21868EB60059A856 /* ShowImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173877B21868EB60059A856 /* ShowImageViewController.swift */; };
+		7173877E218690340059A856 /* ChartsLandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173877D218690340059A856 /* ChartsLandscapeView.swift */; };
+		71738780218690860059A856 /* CombinatedChartsLandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173877F218690860059A856 /* CombinatedChartsLandscapeView.swift */; };
 		71867D7E2173D394003A00F8 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71867D7D2173D394003A00F8 /* ChannelCell.swift */; };
 		71EC933321816EA8001498A2 /* MetasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC933221816EA8001498A2 /* MetasModel.swift */; };
 		71EC93352181749C001498A2 /* NotaCanalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC93342181749C001498A2 /* NotaCanalModel.swift */; };
@@ -111,6 +115,10 @@
 		716C5717217E2F3300003759 /* ControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerManager.swift; sourceTree = "<group>"; };
 		716C5719217F83FE00003759 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		716C571B217F880400003759 /* PosicaoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosicaoModel.swift; sourceTree = "<group>"; };
+		7173877921868EA70059A856 /* CardsScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsScrollView.swift; sourceTree = "<group>"; };
+		7173877B21868EB60059A856 /* ShowImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowImageViewController.swift; sourceTree = "<group>"; };
+		7173877D218690340059A856 /* ChartsLandscapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsLandscapeView.swift; sourceTree = "<group>"; };
+		7173877F218690860059A856 /* CombinatedChartsLandscapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinatedChartsLandscapeView.swift; sourceTree = "<group>"; };
 		71867D7D2173D394003A00F8 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		71EC933221816EA8001498A2 /* MetasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetasModel.swift; sourceTree = "<group>"; };
 		71EC93342181749C001498A2 /* NotaCanalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaCanalModel.swift; sourceTree = "<group>"; };
@@ -173,6 +181,9 @@
 		7158DC26216E61FB0083B844 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7173877921868EA70059A856 /* CardsScrollView.swift */,
+				7173877D218690340059A856 /* ChartsLandscapeView.swift */,
+				7173877F218690860059A856 /* CombinatedChartsLandscapeView.swift */,
 				716C56EF217E071000003759 /* VLoading.swift */,
 				716C56EE217E070F00003759 /* VLoading.xib */,
 				7158DC2F216E84AA0083B844 /* Cells */,
@@ -187,6 +198,7 @@
 				7158DC24216E3D4F0083B844 /* MenuViewController.swift */,
 				7158DC2B216E626A0083B844 /* SlideViewController.swift */,
 				7158DC29216E623B0083B844 /* LoginViewController.swift */,
+				7173877B21868EB60059A856 /* ShowImageViewController.swift */,
 				715B98F8216E251E003BE5A5 /* DashboardViewController.swift */,
 				7158DC2D216E6D050083B844 /* SearchViewController.swift */,
 			);
@@ -592,11 +604,13 @@
 				716524D1218354CF0088C772 /* StringExtension.swift in Sources */,
 				7158DC25216E3D4F0083B844 /* MenuViewController.swift in Sources */,
 				716C5716217E2EF300003759 /* UserDefaultsKey.swift in Sources */,
+				7173877A21868EA70059A856 /* CardsScrollView.swift in Sources */,
 				7158DC31216E84C80083B844 /* RankedCell.swift in Sources */,
 				716C56F6217E1B6A00003759 /* NotaPilarModel.swift in Sources */,
 				7107E8292173E50F006EFF1E /* CombinatedChartCell.swift in Sources */,
 				7107E82C2173F651006EFF1E /* ChartValueFormatter.swift in Sources */,
 				716C56F4217E1A8B00003759 /* Rest.swift in Sources */,
+				7173877C21868EB60059A856 /* ShowImageViewController.swift in Sources */,
 				7107E82E2173FC81006EFF1E /* OrderCell.swift in Sources */,
 				716C5710217E21DF00003759 /* Authenticable.swift in Sources */,
 				715B98F7216E251E003BE5A5 /* AppDelegate.swift in Sources */,
@@ -605,7 +619,9 @@
 				716524CF218345EB0088C772 /* HistoricoModel.swift in Sources */,
 				71EC93352181749C001498A2 /* NotaCanalModel.swift in Sources */,
 				716C56FE217E205F00003759 /* UserManager.swift in Sources */,
+				71738780218690860059A856 /* CombinatedChartsLandscapeView.swift in Sources */,
 				716C56F8217E1BA700003759 /* AccessDeniedModel.swift in Sources */,
+				7173877E218690340059A856 /* ChartsLandscapeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

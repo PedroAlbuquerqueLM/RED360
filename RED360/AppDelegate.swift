@@ -12,6 +12,16 @@ import Firebase
 
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
+// Screen width.
+var screenWidth: CGFloat {
+    return UIScreen.main.bounds.width
+}
+
+// Screen height.
+var screenHeight: CGFloat {
+    return UIScreen.main.bounds.height
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

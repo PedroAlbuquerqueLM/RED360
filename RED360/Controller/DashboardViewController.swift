@@ -83,6 +83,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChartCell", for: indexPath) as! ChartCell
             
+            cell.viewController = self
             cell.notaPilar = self.notasPilar
             
             return cell
@@ -121,6 +122,8 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
                 lineElements = Array(line.dropLast(6))
             }
             
+            cell.viewController = self
+            cell.valuesComplete = (line: line, bar: bar)
             cell.values = (line: lineElements, bar: barElements, finishMonths: finishMonths)
             return cell
         case 5:
