@@ -10,10 +10,16 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
-    let menuItens = [(title: "Dashboard", key: "DashboardViewController"), (title: "Pesquisar", key: "SearchViewController"), (title: "Sair", key: "LoginViewController")]
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    
+    let menuItens = [(title: "Meu Resultado", key: "DashboardViewController"), (title: "Meu Time", key: "MyTeamsViewController"), (title: "Pesquisar", key: "SearchViewController"), (title: "Sair", key: "LoginViewController")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.nameLabel.text = appDelegate.user?.nome
+        self.subtitleLabel.text = appDelegate.user?.diretoria
         
     }
     
@@ -25,8 +31,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath)
-        cell.textLabel?.text = menuItens[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
+        cell.title.text = menuItens[indexPath.row].title
+        cell.icon.image = UIImage(named: "\(menuItens[indexPath.row].key)Icon")
         
         return cell
     }

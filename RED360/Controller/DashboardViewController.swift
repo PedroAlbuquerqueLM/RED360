@@ -25,7 +25,7 @@ class DashboardViewController: SlideViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setTitle("DASHBOARD")
+        self.setTitle("Meu Resultado")
     }
     
     override func viewWillAppear(_ animated: Bool) {
