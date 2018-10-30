@@ -343,6 +343,9 @@
                                             <constraint firstAttribute="bottom" secondItem="VZc-FP-zbK" secondAttribute="bottom" id="dz6-ym-Dl5"/>
                                         </constraints>
                                         <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="percentual" destination="iNU-5i-185" id="KKx-eR-tch"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChannelCell" rowHeight="134" id="Chd-ns-VBa" customClass="ChannelCell" customModule="RED360" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="414" width="343" height="134"/>

@@ -131,6 +131,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath) as! OrderCell
+            cell.percentual.text = "\(appDelegate.user?.metas?.percentualOs ?? 0)%"
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCell", for: indexPath) as! CalendarCell

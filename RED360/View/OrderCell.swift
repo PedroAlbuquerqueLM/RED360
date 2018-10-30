@@ -10,6 +10,8 @@ import UIKit
 
 class OrderCell: UITableViewCell {
     
+    @IBOutlet weak var percentual: UILabel!
+    
     override func awakeFromNib() {
         self.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.7959920805)
         self.layer.borderWidth = 1
