@@ -43,13 +43,29 @@ class Rest{
     }
     
     class func loadNotaPilar(user: UserModel?, onComplete: @escaping ([NotaPilarModel]?, AccessDenied?) -> Void){
-        let u = user == nil ? appDelegate.user : user
+        let my = (user == nil)
+        let u = my ? appDelegate.user : user
         guard let user = u, let nivel = user.nivel else {return}
         var cargo = ""
         var supervisao = ""
-        if nivel == 4 {
-            cargo = user.diretoria != nil ? user.diretoria! : ""
-            supervisao = user.supervisao != nil ? user.supervisao! : ""
+        if my {
+            if nivel == 4 {
+                cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
+                supervisao = user.supervisao != nil ? user.supervisao! : ""
+            }
+        }else{
+            switch nivel {
+            case 1:
+                cargo = user.diretoria != nil ? user.diretoria! : ""
+            case 2:
+                cargo = user.gerencia != nil ? user.gerencia! : ""
+            case 3:
+                cargo = user.supervisao != nil ? user.supervisao! : ""
+            case 4:
+                cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
+            default:
+                cargo = ""
+            }
         }
         
         let headers: HTTPHeaders = getHeaders()
@@ -79,13 +95,29 @@ class Rest{
     }
     
     class func loadNotaCanal(user: UserModel?, type: NotaCanalType, onComplete: @escaping ([NotaCanalModel]?, AccessDenied?) -> Void){
-        let u = user == nil ? appDelegate.user : user
+        let my = (user == nil)
+        let u = my ? appDelegate.user : user
         guard let user = u, let nivel = user.nivel else {return}
         var cargo = ""
         var supervisao = ""
-        if nivel == 4 {
-            cargo = user.diretoria != nil ? user.diretoria! : ""
-            supervisao = user.supervisao != nil ? user.supervisao! : ""
+        if my {
+            if nivel == 4 {
+                cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
+                supervisao = user.supervisao != nil ? user.supervisao! : ""
+            }
+        }else{
+            switch nivel {
+            case 1:
+                cargo = user.diretoria != nil ? user.diretoria! : ""
+            case 2:
+                cargo = user.gerencia != nil ? user.gerencia! : ""
+            case 3:
+                cargo = user.supervisao != nil ? user.supervisao! : ""
+            case 4:
+                cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
+            default:
+                cargo = ""
+            }
         }
         
         let headers: HTTPHeaders = getHeaders()
@@ -115,13 +147,29 @@ class Rest{
     }
     
     class func loadPosicao(user: UserModel?, onComplete: @escaping (PosicaoModel?, AccessDenied?) -> Void){
-        let u = user == nil ? appDelegate.user : user
+        let my = (user == nil)
+        let u = my ? appDelegate.user : user
         guard let user = u, let nivel = user.nivel else {return}
         var cargo = ""
         var supervisao = ""
-        if nivel == 4 {
-            cargo = user.diretoria != nil ? user.diretoria! : ""
-            supervisao = user.supervisao != nil ? user.supervisao! : ""
+        if my {
+            if nivel == 4 {
+                cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
+                supervisao = user.supervisao != nil ? user.supervisao! : ""
+            }
+        }else{
+            switch nivel {
+            case 1:
+                cargo = user.diretoria != nil ? user.diretoria! : ""
+            case 2:
+                cargo = user.gerencia != nil ? user.gerencia! : ""
+            case 3:
+                cargo = user.supervisao != nil ? user.supervisao! : ""
+            case 4:
+                cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
+            default:
+                cargo = ""
+            }
         }
         
         let headers: HTTPHeaders = getHeaders()
@@ -150,13 +198,29 @@ class Rest{
     }
     
     class func loadHistorico(user: UserModel?, onComplete: @escaping ([HistoricoModel]?, AccessDenied?) -> Void){
-        let u = user == nil ? appDelegate.user : user
+        let my = (user == nil)
+        let u = my ? appDelegate.user : user
         guard let user = u, let nivel = user.nivel else {return}
         var cargo = ""
         var supervisao = ""
-        if nivel == 4 {
-            cargo = user.diretoria != nil ? user.diretoria! : ""
-            supervisao = user.supervisao != nil ? user.supervisao! : ""
+        if my {
+            if nivel == 4 {
+                cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
+                supervisao = user.supervisao != nil ? user.supervisao! : ""
+            }
+        }else{
+            switch nivel {
+            case 1:
+                cargo = user.diretoria != nil ? user.diretoria! : ""
+            case 2:
+                cargo = user.gerencia != nil ? user.gerencia! : ""
+            case 3:
+                cargo = user.supervisao != nil ? user.supervisao! : ""
+            case 4:
+                cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
+            default:
+                cargo = ""
+            }
         }
         
         let headers: HTTPHeaders = getHeaders()
