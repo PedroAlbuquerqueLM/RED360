@@ -47,7 +47,11 @@ class DashboardViewController: SlideViewController {
         
         Rest.loadNotaPilar(user: self.user) { (notasPilar, accessDenied) in
             self.notasPilar = notasPilar
-            self.metas = appDelegate.user?.metas?.getMetasDic()
+            if self.user != nil {
+                self.metas = self.user?.metas?.getMetasDic()
+            }else{
+                self.metas = appDelegate.user?.metas?.getMetasDic()
+            }
             self.mes = notasPilar?.first?.mesNome?.getMonth
             let meta = self.metas?[notasPilar?.first?.mesNome ?? ""]
             if let notasFirst = notasPilar?.first {
@@ -147,7 +151,11 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath) as! OrderCell
-            cell.percentual.text = "\(appDelegate.user?.metas?.percentualOs ?? 0)%"
+            if self.user != nil {
+                cell.percentual.text = "\(user?.metas?.percentualOs ?? 0)%"
+            }else{
+                cell.percentual.text = "\(appDelegate.user?.metas?.percentualOs ?? 0)%"
+            }
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCell", for: indexPath) as! CalendarCell

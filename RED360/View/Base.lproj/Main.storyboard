@@ -320,11 +320,11 @@
                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="41,2%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNU-5i-185">
-                                                    <rect key="frame" x="16" y="0.0" width="98" height="65"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="41,2%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="21" translatesAutoresizingMaskIntoConstraints="NO" id="iNU-5i-185">
+                                                    <rect key="frame" x="12" y="0.0" width="91" height="65"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="65" id="9vU-HR-7O6"/>
-                                                        <constraint firstAttribute="width" constant="98" id="Ps2-Ct-JPe"/>
+                                                        <constraint firstAttribute="width" constant="91" id="Ps2-Ct-JPe"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                                     <color key="textColor" red="1" green="0.19215686269999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -333,8 +333,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="VZc-FP-zbK" secondAttribute="trailing" constant="8" id="8zL-9t-jiJ"/>
-                                                <constraint firstItem="iNU-5i-185" firstAttribute="leading" secondItem="C3c-xU-ejd" secondAttribute="leading" constant="16" id="BCJ-cI-Pjq"/>
+                                                <constraint firstItem="iNU-5i-185" firstAttribute="leading" secondItem="C3c-xU-ejd" secondAttribute="leading" constant="12" id="BCJ-cI-Pjq"/>
                                                 <constraint firstItem="iNU-5i-185" firstAttribute="top" secondItem="C3c-xU-ejd" secondAttribute="top" id="dQO-Dk-b4a"/>
+                                                <constraint firstItem="VZc-FP-zbK" firstAttribute="leading" secondItem="iNU-5i-185" secondAttribute="trailing" constant="8" id="iX9-LS-YZ2"/>
                                                 <constraint firstAttribute="bottom" secondItem="iNU-5i-185" secondAttribute="bottom" constant="-0.5" id="v4V-Fs-0FS"/>
                                                 <constraint firstItem="VZc-FP-zbK" firstAttribute="top" secondItem="C3c-xU-ejd" secondAttribute="top" constant="8" id="ymL-4t-wrS"/>
                                             </constraints>
