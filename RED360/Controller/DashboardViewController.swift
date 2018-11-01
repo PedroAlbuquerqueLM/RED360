@@ -29,6 +29,7 @@ class DashboardViewController: SlideViewController {
         self.setTitle("Meu Resultado")
         
         if self.user != nil {
+            self.setTitle(user!.nome ?? "Resultado")
             let doneItem = UIBarButtonItem(image: #imageLiteral(resourceName: "closeIcon"), style: .done, target: nil, action: #selector(closeAction))
             doneItem.tintColor = UIColor.white
         

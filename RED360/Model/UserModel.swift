@@ -50,6 +50,12 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
         self.uid = team.uid
     }
     
+    init(cpf: String?, nivel: Int?, nome: String?) {
+        self.cpf = cpf
+        self.nivel = nivel
+        self.nome = nome
+    }
+    
     init(cpf: String?, password: String?) {
         guard let cpf = cpf else {return}
         self.email = "\(cpf)@red360.app"

@@ -94,6 +94,18 @@ extension MyTeams2ViewController: UITableViewDelegate, UITableViewDataSource {
                     vc.user = user
                     self.present(vc, animated: true, completion: nil)
                 })
+            }else{
+                let regional = self.regionais[indexPath.row]
+                var user = UserModel(cpf: "11111111111", nivel: 11, nome: "Regional 1")
+                if regional == "Regional 2" {
+                    user = UserModel(cpf: "22222222222", nivel: 12, nome: "Regional 2")
+                }
+                
+                UserModel.getMetas(cpf: user.cpf!, completion: { (metas) in
+                    user.metas = metas
+                    vc.user = user
+                    self.present(vc, animated: true, completion: nil)
+                })
             }
         }
     }
