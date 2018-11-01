@@ -42,9 +42,9 @@ class Rest{
         return headers
     }
     
-    class func loadNotaPilar(onComplete: @escaping ([NotaPilarModel]?, AccessDenied?) -> Void){
-        
-        guard let user = appDelegate.user, let nivel = user.nivel else {return}
+    class func loadNotaPilar(user: UserModel?, onComplete: @escaping ([NotaPilarModel]?, AccessDenied?) -> Void){
+        let u = user == nil ? appDelegate.user : user
+        guard let user = u, let nivel = user.nivel else {return}
         var cargo = ""
         var supervisao = ""
         if nivel == 4 {
@@ -78,9 +78,9 @@ class Rest{
         
     }
     
-    class func loadNotaCanal(type: NotaCanalType, onComplete: @escaping ([NotaCanalModel]?, AccessDenied?) -> Void){
-        
-        guard let user = appDelegate.user, let nivel = user.nivel else {return}
+    class func loadNotaCanal(user: UserModel?, type: NotaCanalType, onComplete: @escaping ([NotaCanalModel]?, AccessDenied?) -> Void){
+        let u = user == nil ? appDelegate.user : user
+        guard let user = u, let nivel = user.nivel else {return}
         var cargo = ""
         var supervisao = ""
         if nivel == 4 {
@@ -114,9 +114,9 @@ class Rest{
         
     }
     
-    class func loadPosicao(onComplete: @escaping (PosicaoModel?, AccessDenied?) -> Void){
-        
-        guard let user = appDelegate.user, let nivel = user.nivel else {return}
+    class func loadPosicao(user: UserModel?, onComplete: @escaping (PosicaoModel?, AccessDenied?) -> Void){
+        let u = user == nil ? appDelegate.user : user
+        guard let user = u, let nivel = user.nivel else {return}
         var cargo = ""
         var supervisao = ""
         if nivel == 4 {
@@ -149,9 +149,9 @@ class Rest{
         }
     }
     
-    class func loadHistorico(onComplete: @escaping ([HistoricoModel]?, AccessDenied?) -> Void){
-        
-        guard let user = appDelegate.user, let nivel = user.nivel else {return}
+    class func loadHistorico(user: UserModel?, onComplete: @escaping ([HistoricoModel]?, AccessDenied?) -> Void){
+        let u = user == nil ? appDelegate.user : user
+        guard let user = u, let nivel = user.nivel else {return}
         var cargo = ""
         var supervisao = ""
         if nivel == 4 {
@@ -202,6 +202,42 @@ class Rest{
             if let data = response.data{
                 do{
                     let result = try JSONDecoder().decode([String: NotaCanalModel].self, from: data)
+                    print(result)
+                    onComplete(result, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+            
+        }
+        
+    }
+    
+    class func loadMeuTime(cargoTime: String, onComplete: @escaping ([MyTeamsModel]?, AccessDenied?) -> Void){
+        
+        guard let user = appDelegate.user, let nivel = user.nivel else {return}
+        var cargo = ""
+        var supervisao = ""
+        if nivel == 4 {
+            cargo = user.diretoria != nil ? user.diretoria! : ""
+            supervisao = user.supervisao != nil ? user.supervisao! : ""
+        }
+        
+        let headers: HTTPHeaders = getHeaders()
+        let parameters = ["cargo" : cargo , "cargoTime" : cargoTime] as [String : Any]
+        
+        let url = baseURL+"api/meutime/\(nivel).json"
+        Alamofire.request(url, method: .post, parameters: parameters as [String: Any] , encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    let result = try JSONDecoder().decode([MyTeamsModel].self, from: data)
                     print(result)
                     onComplete(result, nil)
                     

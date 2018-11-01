@@ -10,7 +10,7 @@ import UIKit
 
 class MyTeamsViewController: SlideViewController {
     
-    let menuItens = [(title: "Regionais", nivel: [0, 13], subItens: ["Regional 1", "Regional 2"]), (title: "Diretores", nivel: [0, 13], subItens: ["Dir. AL/SE", "Dir. BA", "Dir. CE", "Dir. MA", "Dir. MT", "Dir. PE", "Dir. PI", "Dir. RN/PB"]), (title: "Gerentes", nivel: [0, 1, 13], subItens: ["GER AS - CE", "GER AS - MA", "GER AS - MT", "GER AS - PE", "GER AS - PI", "GER AS - SE", "GER AS - SSA", "Dir. RN/PB"]), (title: "Supervisores", nivel: [0, 1, 2, 13], subItens: ["Regional 1", "Regional 2"]), (title: "Rotas Vendedores", nivel: [0, 1, 2, 3, 13], subItens: ["Regional 1", "Regional 2"])]
+    let menuItens = [(title: "Regionais", nivel: [0, 13]), (title: "Diretores", nivel: [0, 13]), (title: "Gerentes", nivel: [0, 1, 13]), (title: "Supervisores", nivel: [0, 1, 2, 13]), (title: "Rotas Vendedores", nivel: [0, 1, 2, 3, 13])]
     
     var menuShow = [String]()
     
@@ -45,8 +45,8 @@ extension MyTeamsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let cell = tableView.cellForRow(at: indexPath) as? ChannelCellList else {return}
-        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyTeams2ViewController") as? UINavigationController {
+        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyTeams2ViewController") as? MyTeams2ViewController {
+            vc.selectedTime = self.menuItens[indexPath.row].title
             self.present(vc, animated: true, completion: nil)
         }
     }

@@ -8,37 +8,43 @@
 
 import UIKit
 
-class MyTeams2ViewController: UIViewController {
+class MyTeams2ViewController: SlideViewController {
     
-    let menuItens = [(title: "Regionais", nivel: [0, 13], subItens: ["Regional 1", "Regional 2"]), (title: "Diretores", nivel: [0, 13], subItens: ["Dir. AL/SE", "Dir. BA", "Dir. CE", "Dir. MA", "Dir. MT", "Dir. PE", "Dir. PI", "Dir. RN/PB"]), (title: "Gerentes", nivel: [0, 1, 13], subItens: ["GER AS - CE", "GER AS - MA", "GER AS - MT", "GER AS - PE", "GER AS - PI", "GER AS - SE", "GER AS - SSA", "Dir. RN/PB"]), (title: "Supervisores", nivel: [0, 1, 2, 13], subItens: ["Regional 1", "Regional 2"]), (title: "Rotas Vendedores", nivel: [0, 1, 2, 3, 13], subItens: ["Regional 1", "Regional 2"])]
-    
-    var menuShow = [String]()
-    
+    @IBOutlet weak var tableMenu: UITableView!
+    var selectedTime = ""    
+    var menuShow: [MyTeamsModel]?
     var userNivel: Int?
+    
+    var regionais = ["Regional 1", "Regional 2"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.title = "Meu Time"
+        self.setTitle("Meu Time")
+        let doneItem = UIBarButtonItem(image: #imageLiteral(resourceName: "closeIcon"), style: .done, target: nil, action: #selector(closeAction))
+        doneItem.tintColor = UIColor.white
         
-        guard let nivel = appDelegate.user?.nivel else {return}
-        menuItens.forEach{
-            if $0.nivel.contains(nivel) {
-                self.menuShow.append($0.title)
-            }
-        }
+        self.navItem?.leftBarButtonItem = doneItem;
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = .lightContent
+        
+        if !(self.selectedTime == "Regionais") {
+            Rest.loadMeuTime(cargoTime: self.selectedTime) { (myTeams, accessDenied) in
+                self.menuShow = myTeams
+                self.tableMenu.reloadData()
+            }
+        }
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
     
-    @IBAction func closeAction(_ sender: Any) {
+    @objc func closeAction() {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -46,19 +52,50 @@ class MyTeams2ViewController: UIViewController {
 
 extension MyTeams2ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.selectedTime == "Regionais"{
+            return self.regionais.count
+        }
+        
+        guard let menuShow = self.menuShow else {return 0}
         return menuShow.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
-        
-        cell.textLabel?.text = menuShow[indexPath.row]
+        switch self.selectedTime {
+        case "Regionais":
+            cell.textLabel?.text = self.regionais[indexPath.row]
+        case "Diretores":
+            guard let time = self.menuShow?[indexPath.row] else {return cell}
+            cell.textLabel?.text = time.diretoria
+        case "Gerentes":
+            guard let time = self.menuShow?[indexPath.row] else {return cell}
+            cell.textLabel?.text = time.gerencia
+        case "Supervisores":
+            guard let time = self.menuShow?[indexPath.row] else {return cell}
+            cell.textLabel?.text = time.supervisao
+        case "Rotas Vendedores":
+            guard let time = self.menuShow?[indexPath.row] else {return cell}
+            cell.textLabel?.text = time.rotaVendedor
+        default:
+            cell.textLabel?.text = "-"
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DashboardViewController") as? DashboardViewController {
+            if !(self.selectedTime == "Regionais") {
+                guard let time = self.menuShow?[indexPath.row], let cpf = time.cpf else {return}
+                var user = UserModel(team: time)
+                UserModel.getMetas(cpf: cpf, completion: { (metas) in
+                    user.metas = metas
+                    vc.user = user
+                    self.present(vc, animated: true, completion: nil)
+                })
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

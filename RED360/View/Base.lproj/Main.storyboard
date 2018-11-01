@@ -1068,13 +1068,14 @@
         <!--Meu Time-->
         <scene sceneID="ewQ-D0-nFk">
             <objects>
-                <viewController title="Meu Time" id="CJH-X6-iaP" customClass="MyTeams2ViewController" customModule="RED360" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RX2-DQ-iVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="MyTeams2ViewController" title="Meu Time" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CJH-X6-iaP" customClass="MyTeams2ViewController" customModule="RED360" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vtf-vb-PPW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HqQ-4e-sIm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BasicCell" textLabel="c2e-uO-jQg" rowHeight="50" style="IBUITableViewCellStyleDefault" id="SDz-PX-fNM">
@@ -1107,7 +1108,7 @@
                             <constraint firstItem="3LM-Ha-L09" firstAttribute="trailing" secondItem="HqQ-4e-sIm" secondAttribute="trailing" id="3Ao-IE-Wpo"/>
                             <constraint firstItem="HqQ-4e-sIm" firstAttribute="leading" secondItem="3LM-Ha-L09" secondAttribute="leading" id="EK9-T4-w8X"/>
                             <constraint firstItem="3LM-Ha-L09" firstAttribute="bottom" secondItem="HqQ-4e-sIm" secondAttribute="bottom" id="bJw-3o-CDU"/>
-                            <constraint firstItem="HqQ-4e-sIm" firstAttribute="top" secondItem="3LM-Ha-L09" secondAttribute="top" id="fqW-Qg-WvT"/>
+                            <constraint firstItem="HqQ-4e-sIm" firstAttribute="top" secondItem="3LM-Ha-L09" secondAttribute="top" constant="40" id="fqW-Qg-WvT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3LM-Ha-L09"/>
                     </view>
@@ -1119,32 +1120,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RX2-DQ-iVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="458" y="-1260"/>
-        </scene>
-        <!--Meu Time-->
-        <scene sceneID="hvR-Rf-3Dt">
-            <objects>
-                <navigationController storyboardIdentifier="MyTeams2ViewController" title="Meu Time" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mOD-EB-4rw" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="3g4-GT-gWO">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.85490196078431369" green="0.2196078431372549" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="CJH-X6-iaP" kind="relationship" relationship="rootViewController" id="tSK-tA-u0m"/>
+                        <outlet property="tableMenu" destination="HqQ-4e-sIm" id="8d5-NK-y94"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zaC-1G-YPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
             </objects>
-            <point key="canvasLocation" x="-258.39999999999998" y="-1260.7196401799101"/>
+            <point key="canvasLocation" x="-186" y="-1260"/>
         </scene>
     </scenes>
     <resources>

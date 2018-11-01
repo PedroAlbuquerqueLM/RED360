@@ -21,28 +21,43 @@ class DashboardViewController: SlideViewController {
     var rank: (nota: Double, vari: Double, meta: Double, rank: Int)?
     var date = ""
     var mes: Int?
+    var user: UserModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setTitle("Meu Resultado")
+        
+        if self.user != nil {
+            let doneItem = UIBarButtonItem(image: #imageLiteral(resourceName: "closeIcon"), style: .done, target: nil, action: #selector(closeAction))
+            doneItem.tintColor = UIColor.white
+        
+            self.navItem?.leftBarButtonItem = doneItem;
+        }
+    }
+    
+    @objc func closeAction() {
+        self.user = nil
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        Rest.loadNotaPilar() { (notasPilar, accessDenied) in
+        Rest.loadNotaPilar(user: self.user) { (notasPilar, accessDenied) in
             self.notasPilar = notasPilar
             self.metas = appDelegate.user?.metas?.getMetasDic()
             self.mes = notasPilar?.first?.mesNome?.getMonth
             let meta = self.metas?[notasPilar?.first?.mesNome ?? ""]
-            self.rank = ((nota: notasPilar?.first?.total!, vari: ((notasPilar?.first?.total)! - (notasPilar?.last?.total)!), meta: meta, rank: 0) as! (nota: Double, vari: Double, meta: Double, rank: Int))
+            if let notasFirst = notasPilar?.first {
+                self.rank = ((nota: notasFirst.total!, vari: ((notasFirst.total)! - (notasFirst.total)!), meta: meta, rank: 0) as! (nota: Double, vari: Double, meta: Double, rank: Int))
+            }
             self.date = "\(notasPilar?.first?.mesNome ?? "")/\(notasPilar?.first?.ano ?? "")"
             
-            Rest.loadHistorico(onComplete: { (historico, accessDenied) in
+            Rest.loadHistorico(user: self.user, onComplete: { (historico, accessDenied) in
                 self.historico = historico
                 
-                Rest.loadPosicao { (posicao, accessDenied) in
+                Rest.loadPosicao(user: self.user) { (posicao, accessDenied) in
                     self.rank?.rank = (posicao?.posicao!)!
                     self.loadNotaCanal(type: .total)
                 }
@@ -52,7 +67,7 @@ class DashboardViewController: SlideViewController {
     }
     
     func loadNotaCanal(type: NotaCanalType, move: Bool = false){
-        Rest.loadNotaCanal(type: type, onComplete: { (notasCanal, accessDenied) in
+        Rest.loadNotaCanal(user: self.user, type: type, onComplete: { (notasCanal, accessDenied) in
             self.notasCanal = notasCanal
             self.dashTableView.reloadData()
             if move {

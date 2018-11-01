@@ -11,7 +11,7 @@ import SnapKit
 
 class SlideViewController: UIViewController {
     
-    private var navItem: UINavigationItem?
+    var navItem: UINavigationItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()

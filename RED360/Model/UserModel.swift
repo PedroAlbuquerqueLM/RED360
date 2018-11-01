@@ -37,6 +37,19 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
     var token: String?
     var metas: MetasModel?
     
+    init(team: MyTeamsModel) {
+        self.email = team.email
+        self.cpf = team.cpf
+        self.diretoria = team.diretoria
+        self.gerencia = team.gerencia
+        self.id = team.id
+        self.nivel = team.nivel
+        self.nome = team.nome
+        self.regional = team.regional
+        self.rotaVendedor = team.rotaVendedor
+        self.uid = team.uid
+    }
+    
     init(cpf: String?, password: String?) {
         guard let cpf = cpf else {return}
         self.email = "\(cpf)@red360.app"
