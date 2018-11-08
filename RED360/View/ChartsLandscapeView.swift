@@ -104,21 +104,37 @@ class ChartsLandscapeView: UIView {
         didSet{
             
             guard let values = values else {return}
-            let months1 = ["Jan","","", "Fev","","", "Mar","","", "Abr","","", "Mai","","", "Jun"]
-            let months2 =  ["Jul","","", "Ago","","", "Set","","", "Out","","", "Nov","","","Dez"]
-            
-            self.charts.first!.xAxis.valueFormatter = IndexAxisValueFormatter(values:months1)
-            self.charts.first!.noDataText = "Please provide data for the chart."
-            self.charts.last!.xAxis.valueFormatter = IndexAxisValueFormatter(values:months2)
-            self.charts.last!.noDataText = "Please provide data for the chart."
+            var months1 = ["Jan","","", "Fev","","", "Mar","","", "Abr","","", "Mai","","", "Jun"]
+            var months2 =  ["Jul","","", "Ago","","", "Set","","", "Out","","", "Nov","","","Dez"]
+            let months3 =  ["Set","","", "Out","","", "Nov","","","Dez"]
             
             var dataSets = [[BarChartDataSet]() ,[BarChartDataSet]()]
             
-            var index = 0
+            if !isLand {
+                months1 = ["Jan","","", "Fev","","", "Mar","","", "Abr"]
+                months2 = ["Mai","","", "Jun","","", "Jul","","", "Ago"]
+                self.charts.first!.xAxis.valueFormatter = IndexAxisValueFormatter(values:months1)
+                self.charts.first!.noDataText = "Please provide data for the chart."
+                self.charts[1].xAxis.valueFormatter = IndexAxisValueFormatter(values:months2)
+                self.charts[1].noDataText = "Please provide data for the chart."
+                self.charts.last!.xAxis.valueFormatter = IndexAxisValueFormatter(values:months3)
+                self.charts.last!.noDataText = "Please provide data for the chart."
+                dataSets = [[BarChartDataSet]() ,[BarChartDataSet](), [BarChartDataSet]()]
+            }else{
+                self.charts.first!.xAxis.valueFormatter = IndexAxisValueFormatter(values:months1)
+                self.charts.first!.noDataText = "Please provide data for the chart."
+                self.charts.last!.xAxis.valueFormatter = IndexAxisValueFormatter(values:months2)
+                self.charts.last!.noDataText = "Please provide data for the chart."
+            }
+            
+            
+            var index = -1
             var offset = 0
             values.bar.enumerated().forEach {
-                if $0.offset == 6 {
-                    index = 1
+                var nPV = 6
+                if !isLand { nPV = 4 }
+                if ($0.offset)%nPV == 0 {
+                    index += 1
                     offset = 0
                 }
                 let dataSet = BarChartDataSet(values: [BarChartDataEntry(x: Double(offset + (dataSets[index].count * 2)), y: values.line[$0.offset]), BarChartDataEntry(x: Double(offset + 1 + (dataSets[index].count * 2)), y: $0.element)], label: "")
@@ -142,6 +158,9 @@ class ChartsLandscapeView: UIView {
                 offset += 1
             }
             self.charts.first!.data = BarChartData(dataSets: dataSets.first)
+            if !isLand {
+                self.charts[1].data = BarChartData(dataSets: dataSets[1])
+            }
             self.charts.last!.data = BarChartData(dataSets: dataSets.last)
         }
     }

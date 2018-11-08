@@ -74,7 +74,7 @@ class ChartCell: UITableViewCell {
             self.titleBarGray.text = "Meta"
             self.viewBarGreen.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
             self.chartsLandscapeView?.removeFromSuperview()
-            self.chartsLandscapeView = ChartsLandscapeView(frame: CGRect(x: 0, y: 50, width: Int(self.frame.width), height: Int(self.frame.height) - 100), qnt: 2, isLand: false)
+            self.chartsLandscapeView = ChartsLandscapeView(frame: CGRect(x: 0, y: 50, width: Int(self.frame.width), height: Int(self.frame.height) - 100), qnt: 3, isLand: false)
             self.chartsLandscapeView!.values = self.valuesComplete
             self.insertSubview(self.chartsLandscapeView!, at: 1)
         }
