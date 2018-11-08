@@ -16,6 +16,7 @@ class MyTeams2ViewController: SlideViewController {
     var userNivel: Int?
     
     var regionais = ["Regional 1", "Regional 2"]
+    var vLoading = Bundle.main.loadNibNamed("VLoading", owner: self, options: nil)?.first as? VLoading
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +31,17 @@ class MyTeams2ViewController: SlideViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         UIApplication.shared.statusBarStyle = .lightContent
         
         if !(self.selectedTime == "Regionais") {
+            if let vl = vLoading{
+                vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+                vl.aiLoading.startAnimating()
+                view.addSubview(vl)
+            }
             Rest.loadMeuTime(cargoTime: self.selectedTime) { (myTeams, accessDenied) in
+                if let vl = self.vLoading{ vl.removeFromSuperview() }
                 self.menuShow = myTeams
                 self.tableMenu.reloadData()
             }

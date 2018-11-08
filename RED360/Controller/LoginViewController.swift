@@ -50,16 +50,19 @@ class LoginViewController: UIViewController {
         
         password = tfPassword.text!
         
-        self.didSelectLogIn(with: login, and: password)
         
         if login.isEmpty{
+            if let vl = vLoading{ vl.removeFromSuperview() }
             createAlertWith(title: "Erro", andMessage: "Insira um login válido")
             return
         }
         if password.isEmpty{
+            if let vl = vLoading{ vl.removeFromSuperview() }
             createAlertWith(title: "Erro", andMessage: "Insira uma senha válida")
             return
         }
+        
+        self.didSelectLogIn(with: login, and: password)
     }
 
     func createAlertWith(title: String, andMessage message: String){
@@ -75,6 +78,7 @@ class LoginViewController: UIViewController {
                 appDelegate.user = u
                 UserModel.getToken(completion: { (token) in
                     appDelegate.user?.token = token
+                    if let vl = self.vLoading{ vl.removeFromSuperview() }
                     ControllerManager.toMenu()
                 })
             }

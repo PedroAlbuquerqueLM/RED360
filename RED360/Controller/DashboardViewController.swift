@@ -22,6 +22,7 @@ class DashboardViewController: SlideViewController {
     var date = ""
     var mes: Int?
     var user: UserModel?
+    var vLoading = Bundle.main.loadNibNamed("VLoading", owner: self, options: nil)?.first as? VLoading
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +73,13 @@ class DashboardViewController: SlideViewController {
     }
     
     func loadNotaCanal(type: NotaCanalType, move: Bool = false){
+        if let vl = vLoading{
+            vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+            vl.aiLoading.startAnimating()
+            view.addSubview(vl)
+        }
         Rest.loadNotaCanal(user: self.user, type: type, onComplete: { (notasCanal, accessDenied) in
+            if let vl = self.vLoading{ vl.removeFromSuperview() }
             self.notasCanal = notasCanal
             self.dashTableView.reloadData()
             if move {
@@ -105,6 +112,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.viewController = self
             cell.notaPilar = self.notasPilar
+            cell.titleBarGreen.text = self.date
             cell.isCombinated = false
             
             return cell
@@ -180,7 +188,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
                 return 50
             }
         case 4:
-            return 400
+            return 280
         case 5:
             return 65
         default:

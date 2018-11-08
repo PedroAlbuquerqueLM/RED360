@@ -28,7 +28,7 @@ class RankedCell: UITableViewCell {
             self.notaRed.text = "\(rankSet.nota)%"
             self.variable.text = "\(String(format: "%.01f", rankSet.vari))%"
             self.meta.text = "\(rankSet.meta)%"
-            self.rank.text = "\(rankSet.rank)º"
+            self.rank.text = "\(String(format: "%.01f", rankSet.rank))º"
         }
     }
     

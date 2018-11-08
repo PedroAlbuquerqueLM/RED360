@@ -17,6 +17,7 @@ class ChartCell: UITableViewCell {
     @IBOutlet weak var viewBarGreen: UIView!
     
     @IBOutlet weak var chart: HorizontalBarChartView!
+    var chartsLandscapeView: ChartsLandscapeView?
     var viewController: UIViewController!
     var valuesComplete: (line: [Double], bar: [Double])?
     var isCombinated = false
@@ -60,51 +61,64 @@ class ChartCell: UITableViewCell {
             vc.notasPilar = self.notaPilar
             vc.values = self.valuesComplete
             vc.isCombinated = self.isCombinated
+            vc.date = self.titleBarGreen.text
             self.viewController.present(vc, animated: true, completion: nil)
         }
     }
     
     var values: (line: [Double], bar: [Double], finishMonths: Bool)? {
         didSet{
+            self.chart.isHidden = true
             self.titleLabel.text = "Histórico"
             self.titleBarGreen.text = "Nota RED"
             self.titleBarGray.text = "Meta"
             self.viewBarGreen.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
-            
-            guard let values = values else {return}
-            var months = ["Jan","","", "Fev","","", "Mar","","", "Abr","","", "Mai","","", "Jun","","", "Jul","","", "Ago","","", "Set","","", "Out","","", "Nov","","","Dez"]
-            if values.finishMonths {
-                months = Array(months.dropFirst(18))
-            }
-            
-            self.chart.xAxis.valueFormatter = IndexAxisValueFormatter(values:months)
-            
-            chart.noDataText = "Please provide data for the chart."
-            
-            var dataSets = [BarChartDataSet]()
-            
-            values.bar.enumerated().forEach {
-                let dataSet = BarChartDataSet(values: [BarChartDataEntry(x: Double($0.offset + (dataSets.count * 2)), y: values.line[$0.offset]), BarChartDataEntry(x: Double($0.offset + 1 + (dataSets.count * 2)), y: $0.element)], label: "")
-                dataSet.colors = [#colorLiteral(red: 0.5529411765, green: 0.5882352941, blue: 0.631372549, alpha: 1), #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)]
-                
-                let numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .decimal
-                numberFormatter.locale = Locale.current
-                numberFormatter.negativeSuffix = "%"
-                numberFormatter.positiveSuffix = "%"
-                
-                let valuesNumberFormatter = ChartValueFormatter(numberFormatter: numberFormatter)
-                dataSet.valueFormatter = valuesNumberFormatter
-                dataSet.valueFont = UIFont(name: "Helvetica Neue", size: 12)!
-                dataSet.valueTextColor = #colorLiteral(red: 0.5529411765, green: 0.5882352941, blue: 0.631372549, alpha: 1)
-                dataSets.append(dataSet)
-            }
-            self.chart.data = BarChartData(dataSets: dataSets)
+            self.chartsLandscapeView?.removeFromSuperview()
+            self.chartsLandscapeView = ChartsLandscapeView(frame: CGRect(x: 0, y: 50, width: Int(self.frame.width), height: Int(self.frame.height) - 100), qnt: 2, isLand: false)
+            self.chartsLandscapeView!.values = self.valuesComplete
+            self.insertSubview(self.chartsLandscapeView!, at: 1)
         }
+//            self.titleLabel.text = "Histórico"
+//            self.titleBarGreen.text = "Nota RED"
+//            self.titleBarGray.text = "Meta"
+//            self.viewBarGreen.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
+//
+//            guard let values = values else {return}
+//            var months = ["Jan","","", "Fev","","", "Mar","","", "Abr","","", "Mai","","", "Jun","","", "Jul","","", "Ago","","", "Set","","", "Out","","", "Nov","","","Dez"]
+//            if values.finishMonths {
+//                months = Array(months.dropFirst(18))
+//            }
+//
+//            self.chart.xAxis.valueFormatter = IndexAxisValueFormatter(values:months)
+//
+//            chart.noDataText = "Please provide data for the chart."
+//
+//            var dataSets = [BarChartDataSet]()
+//
+//            values.bar.enumerated().forEach {
+//                let dataSet = BarChartDataSet(values: [BarChartDataEntry(x: Double($0.offset + (dataSets.count * 2)), y: values.line[$0.offset]), BarChartDataEntry(x: Double($0.offset + 1 + (dataSets.count * 2)), y: $0.element)], label: "")
+//                dataSet.colors = [#colorLiteral(red: 0.5529411765, green: 0.5882352941, blue: 0.631372549, alpha: 1), #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)]
+//
+//                let numberFormatter = NumberFormatter()
+//                numberFormatter.numberStyle = .decimal
+//                numberFormatter.locale = Locale.current
+//                numberFormatter.negativeSuffix = "%"
+//                numberFormatter.positiveSuffix = "%"
+//
+//                let valuesNumberFormatter = ChartValueFormatter(numberFormatter: numberFormatter)
+//                dataSet.valueFormatter = valuesNumberFormatter
+//                dataSet.valueFont = UIFont(name: "Helvetica Neue", size: 12)!
+//                dataSet.valueTextColor = #colorLiteral(red: 0.5529411765, green: 0.5882352941, blue: 0.631372549, alpha: 1)
+//                dataSets.append(dataSet)
+//            }
+//            self.chart.data = BarChartData(dataSets: dataSets)
+//        }
     }
     
     var notaPilar: [NotaPilarModel]? {
         didSet{
+            self.chart.isHidden = false
+            self.chartsLandscapeView?.removeFromSuperview()
             self.titleLabel.text = "Nota por pilar"
             self.titleBarGreen.text = "Mês Atual"
             self.titleBarGray.text = "Mês Anterior"

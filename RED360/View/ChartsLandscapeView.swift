@@ -15,11 +15,12 @@ class ChartsLandscapeView: UIView {
     var charts = [BarChartView]()
     var scrollView: UIScrollView!
     var pageControl: UIPageControl!
+    var isLand = true
     
-    init(frame: CGRect, qnt: Int) {
+    init(frame: CGRect, qnt: Int, isLand: Bool = true) {
      
         super.init(frame: frame)
-        
+        self.isLand = isLand
         self.scrollView = UIScrollView(frame: CGRect(x:0, y:0, width:frame.width, height:frame.height))
         self.scrollView.isPagingEnabled = true
         
@@ -28,13 +29,18 @@ class ChartsLandscapeView: UIView {
         
         for _ in 0..<qnt {
             let chart = BarChartView(frame: CGRect.zero)
-            chart.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
+            if isLand{
+                chart.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
+            }
             backgroundColor = UIColor.white
             self.charts.append(chart)
             self.scrollView.addSubview(chart)
         }
-        
-        self.scrollView.contentSize = CGSize(width:self.scrollView.frame.width, height:self.scrollView.frame.height * CGFloat(scrollView.subviews.count))
+        if isLand{
+            self.scrollView.contentSize = CGSize(width:self.scrollView.frame.width, height:self.scrollView.frame.height * CGFloat(scrollView.subviews.count))
+        }else{
+            self.scrollView.contentSize = CGSize(width:self.scrollView.frame.width * CGFloat(scrollView.subviews.count), height:self.scrollView.frame.height)
+        }
         self.scrollView.delegate = self
         
         self.pageControl = UIPageControl(frame: CGRect(x: 0, y: frame.height - 35, width: frame.width, height: 35))
@@ -46,13 +52,21 @@ class ChartsLandscapeView: UIView {
         self.addSubview(pageControl)
         
         self.charts.enumerated().forEach{
-            let i = CGFloat($0.offset) * (self.center.y * 2)
-            $0.element.snp.makeConstraints({ (make) in
-                make.height.equalTo(self.frame.width)
-                make.width.equalTo(self.frame.height-10)
-                make.center.equalTo(CGPoint(x: self.center.x + 10, y: (self.center.y + i) + 10))
-                
-            })
+            if isLand{
+                let i = CGFloat($0.offset) * (self.center.y * 2)
+                $0.element.snp.makeConstraints({ (make) in
+                    make.height.equalTo(self.frame.width)
+                    make.width.equalTo(self.frame.height-10)
+                    make.center.equalTo(CGPoint(x: self.center.x + 10, y: (self.center.y + i) + 10))
+                })
+            }else{
+                let i = CGFloat($0.offset) * (self.center.x * 2)
+                $0.element.snp.makeConstraints({ (make) in
+                    make.height.equalTo(self.frame.height)
+                    make.width.equalTo(self.frame.width - 20)
+                    make.center.equalTo(CGPoint(x: self.center.y + 50 + i, y: self.center.y - 50))
+                })
+            }
             
             $0.element.xAxis.labelPosition = .bottom
             $0.element.leftAxis.axisMinimum = 0.0
@@ -118,7 +132,11 @@ class ChartsLandscapeView: UIView {
                 
                 let valuesNumberFormatter = ChartValueFormatter(numberFormatter: numberFormatter)
                 dataSet.valueFormatter = valuesNumberFormatter
-                dataSet.valueFont = UIFont(name: "Helvetica Neue", size: 12)!
+                if isLand {
+                    dataSet.valueFont = UIFont(name: "Helvetica Neue", size: 12)!
+                }else{
+                    dataSet.valueFont = UIFont(name: "Helvetica Neue", size: 8)!
+                }
                 dataSet.valueTextColor = #colorLiteral(red: 0.5529411765, green: 0.5882352941, blue: 0.631372549, alpha: 1)
                 dataSets[index].append(dataSet)
                 offset += 1
@@ -131,7 +149,7 @@ class ChartsLandscapeView: UIView {
     var notaPilar: [NotaPilarModel]? {
         didSet{
             
-            let titles = ["Sovi", "", "", "Preço", "", "", "GDM", "", "", "Disp.", "", "", "Ativ.", "", "", "Total"]
+            let titles = ["Total", "", "", "Ativ.", "", "", "Disp.", "", "", "GDM", "", "", "Preço.", "", "", "Sovi"]
             self.charts.first!.xAxis.valueFormatter = IndexAxisValueFormatter(values: titles)
             
             guard let notaPilarActual = notaPilar?.first else {return}
@@ -142,7 +160,7 @@ class ChartsLandscapeView: UIView {
             let disp = (actual: notaPilarActual.disponibilidade!, anterior: (notaPilar?.count)! > 0 ? notaPilarAnterior.disponibilidade! : 0)
             let ativ = (actual: notaPilarActual.ativacao!, anterior: (notaPilar?.count)! > 0 ? notaPilarAnterior.ativacao! : 0)
             let total = (actual: notaPilarActual.total!, anterior: (notaPilar?.count)! > 0 ? notaPilarAnterior.total! : 0)
-            let values = [sovi, preco, gdm, disp, ativ, total]
+            let values = [total, ativ, disp, gdm, preco, sovi]
             
             var dataSets = [BarChartDataSet]()
             
@@ -174,7 +192,11 @@ extension ChartsLandscapeView: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView){
         // Test the offset and calculate the current page after scrolling ends
-        let pageWidth:CGFloat = scrollView.frame.height
+        
+        var pageWidth:CGFloat = scrollView.frame.height
+        if !isLand{
+            pageWidth = scrollView.frame.width
+        }
         let currentPage:CGFloat = floor((scrollView.contentOffset.y-pageWidth/2)/pageWidth)+1
         // Change the indicator
         self.pageControl.currentPage = Int(currentPage);
