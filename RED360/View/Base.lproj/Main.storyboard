@@ -135,8 +135,8 @@
                                                     <color key="textColor" red="0.89340323209762573" green="0.79798644781112671" blue="0.054543681442737579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55,94%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtb-RI-vok">
-                                                    <rect key="frame" x="229" y="37" width="97" height="51"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55,9%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtb-RI-vok">
+                                                    <rect key="frame" x="235" y="37" width="97" height="51"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="97" id="QO6-PN-8eM"/>
                                                         <constraint firstAttribute="height" constant="51" id="dBS-SZ-Jag"/>
@@ -179,7 +179,7 @@
                                                 <constraint firstItem="UrW-SA-4dJ" firstAttribute="top" secondItem="BPA-bO-shu" secondAttribute="top" constant="8" id="IGE-dP-ELF"/>
                                                 <constraint firstItem="4tB-Jk-Owu" firstAttribute="top" secondItem="BPA-bO-shu" secondAttribute="top" constant="8" id="Mws-aF-w2r"/>
                                                 <constraint firstItem="N8w-st-9Ga" firstAttribute="top" secondItem="Vmp-Kf-y5G" secondAttribute="bottom" constant="20" id="NRp-z4-eah"/>
-                                                <constraint firstItem="xtb-RI-vok" firstAttribute="centerX" secondItem="UrW-SA-4dJ" secondAttribute="centerX" id="Nmr-5r-srB"/>
+                                                <constraint firstItem="xtb-RI-vok" firstAttribute="centerX" secondItem="UrW-SA-4dJ" secondAttribute="centerX" constant="6" id="Nmr-5r-srB"/>
                                                 <constraint firstItem="wbW-jw-eC7" firstAttribute="centerX" secondItem="BPA-bO-shu" secondAttribute="centerX" id="Qh5-XY-TpK"/>
                                                 <constraint firstItem="UrW-SA-4dJ" firstAttribute="leading" secondItem="wbW-jw-eC7" secondAttribute="trailing" constant="9" id="ThN-zk-y8P"/>
                                                 <constraint firstItem="N8w-st-9Ga" firstAttribute="leading" secondItem="BPA-bO-shu" secondAttribute="leading" constant="8" id="Xd8-wn-TLT"/>

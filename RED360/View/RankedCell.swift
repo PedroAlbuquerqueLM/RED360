@@ -25,10 +25,10 @@ class RankedCell: UITableViewCell {
     var rankSet: (nota: Double, vari: Double, meta: Double, rank: Int)? {
         didSet{
             guard let rankSet = rankSet else {return}
-            self.notaRed.text = "\(rankSet.nota)%"
+            self.notaRed.text = "\(String(format: "%.01f", rankSet.nota))%"
             self.variable.text = "\(String(format: "%.01f", rankSet.vari))%"
-            self.meta.text = "\(rankSet.meta)%"
-            self.rank.text = "\(String(format: "%.01f", rankSet.rank))º"
+            self.meta.text = "\(String(format: "%.01f", rankSet.meta))%"
+            self.rank.text = "\(rankSet.rank)º"
         }
     }
     
