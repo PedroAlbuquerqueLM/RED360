@@ -64,7 +64,7 @@ class ChartsLandscapeView: UIView {
                 $0.element.snp.makeConstraints({ (make) in
                     make.height.equalTo(self.frame.height)
                     make.width.equalTo(self.frame.width - 20)
-                    make.center.equalTo(CGPoint(x: self.center.y + 50 + i, y: self.center.y - 50))
+                    make.center.equalTo(CGPoint(x: self.center.x + i, y: self.center.y - 50))
                 })
             }
             
