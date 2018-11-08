@@ -9,6 +9,7 @@
 import UIKit
 import SlideMenuControllerSwift
 import Firebase
+import Alamofire
 
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -39,7 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     public func initiliazeSetup(_ application: UIApplication, _ launchOptions: [UIApplicationLaunchOptionsKey : Any]?) {
         
+        if !NetworkReachabilityManager()!.isReachable {
+            ControllerManager.toLogin()
+        }
+        
         guard let user = Auth.auth().currentUser else {
+            
             if UserDefaults.standard.bool(forKey: UserDefaultsKey.notFirstTime) {
                 ControllerManager.toLogin()
             } else {

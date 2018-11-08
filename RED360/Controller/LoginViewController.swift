@@ -9,6 +9,7 @@
 import UIKit
 import AKMaskField
 import FirebaseAuth
+import Alamofire
 
 class LoginViewController: UIViewController {
     
@@ -36,33 +37,37 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func login(_ sender: UIButton) {
-        if let vl = vLoading{
-            vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
-            vl.aiLoading.startAnimating()
-            view.addSubview(vl)
+        if NetworkReachabilityManager()!.isReachable {
+            if let vl = vLoading{
+                vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+                vl.aiLoading.startAnimating()
+                view.addSubview(vl)
+            }
+            var login: String
+            var password: String
+            
+            login = tfLogin.text!
+            login = login.replacingOccurrences(of: ".", with: "")
+            login = login.replacingOccurrences(of: "-", with: "")
+            
+            password = tfPassword.text!
+            
+            
+            if login.isEmpty{
+                if let vl = vLoading{ vl.removeFromSuperview() }
+                createAlertWith(title: "Erro", andMessage: "Insira um login válido")
+                return
+            }
+            if password.isEmpty{
+                if let vl = vLoading{ vl.removeFromSuperview() }
+                createAlertWith(title: "Erro", andMessage: "Insira uma senha válida")
+                return
+            }
+            
+            self.didSelectLogIn(with: login, and: password)
+        }else{
+            createAlertWith(title: "Erro", andMessage: "Sem acesso a internet!")
         }
-        var login: String
-        var password: String
-        
-        login = tfLogin.text!
-        login = login.replacingOccurrences(of: ".", with: "")
-        login = login.replacingOccurrences(of: "-", with: "")
-        
-        password = tfPassword.text!
-        
-        
-        if login.isEmpty{
-            if let vl = vLoading{ vl.removeFromSuperview() }
-            createAlertWith(title: "Erro", andMessage: "Insira um login válido")
-            return
-        }
-        if password.isEmpty{
-            if let vl = vLoading{ vl.removeFromSuperview() }
-            createAlertWith(title: "Erro", andMessage: "Insira uma senha válida")
-            return
-        }
-        
-        self.didSelectLogIn(with: login, and: password)
     }
 
     func createAlertWith(title: String, andMessage message: String){
