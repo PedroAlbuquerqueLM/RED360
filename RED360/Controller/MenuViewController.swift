@@ -13,7 +13,14 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     
-    let menuItens = [(title: "Meu Resultado", key: "DashboardViewController"), (title: "Meu Time", key: "MyTeamsViewController"), (title: "Pesquisar", key: "SearchViewController"), (title: "Sair", key: "LoginViewController")]
+    let menu = [
+                (title: "", itens:[(title: "Meu Resultado", key: "DashboardViewController"), (title: "Meu Time", key: "MyTeamsViewController")]),
+                
+                (title: "Pesquisas PDV", itens:[(title: "Por código PDV", key: "PDVViewController"), (title: "Por Área", key: "AreaViewController"), (title: "10 Maiores notas", key: "NotasViewController"), (title: "10 Maiores oportunidades", key: "OportunidadesViewController")]),
+                
+                (title: "", itens:[(title: "Sair", key: "LoginViewController")])
+    ]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +34,44 @@ class MenuViewController: UIViewController {
 
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuItens.count
+        return menu[section].itens.count
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.menu.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
+        let line = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 1))
+        line.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9176470588, blue: 0.9254901961, alpha: 1)
+        
+        let title = UILabel(frame: CGRect(x: 15, y: 10, width: tableView.frame.width, height: 30))
+        title.text = self.menu[section].title
+        title.textColor = #colorLiteral(red: 0.5333333333, green: 0.5294117647, blue: 0.5333333333, alpha: 1)
+        title.font = UIFont(name: "Avenir Black", size: 15)
+        view.addSubview(line)
+        view.addSubview(title)
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 1: return 40
+        case 2: return 2
+        default: return 0
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
-        cell.title.text = menuItens[indexPath.row].title
-        cell.icon.image = UIImage(named: "\(menuItens[indexPath.row].key)Icon")
+        cell.title.text = menu[indexPath.section].itens[indexPath.row].title
+        cell.icon.image = UIImage(named: "\(menu[indexPath.section].itens[indexPath.row].key)Icon")
         
         return cell
     }
@@ -42,9 +80,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.visibleCells[indexPath.row].isSelected = false
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: menuItens[indexPath.row].key)
+        let viewController = storyboard.instantiateViewController(withIdentifier: menu[indexPath.section].itens[indexPath.row].key)
         
-        if menuItens[indexPath.row].key == "LoginViewController" {
+        if menu[indexPath.section].itens[indexPath.row].key == "LoginViewController" {
             self.logout()
         }else{
             appDelegate.slideMenuController?.changeMainViewController(viewController, close: true)

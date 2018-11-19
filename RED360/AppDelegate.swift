@@ -46,11 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         guard let user = Auth.auth().currentUser else {
             
-            if UserDefaults.standard.bool(forKey: UserDefaultsKey.notFirstTime) {
-                ControllerManager.toLogin()
-            } else {
-                UserDefaults.standard.set(true, forKey: UserDefaultsKey.notFirstTime)
-            }
+            ControllerManager.toLogin()
+            
             return
         }
         
