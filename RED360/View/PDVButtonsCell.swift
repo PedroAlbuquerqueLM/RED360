@@ -10,14 +10,17 @@ import UIKit
 
 class PDVButtonsCell: UITableViewCell {
     
-    var superViewController: UIViewController!
+    var superViewController: DashboardPDVViewController!
     
     override func awakeFromNib() {
         
     }
     
     @IBAction func pesqCompleteAction(_ sender: UIButton) {
-        
+        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PDVCompleteViewController") as? PDVCompleteViewController {
+            vc.pdv = superViewController.pdv
+            superViewController.present(vc, animated: true, completion: nil)
+        }
     }
     
     @IBAction func redSimuladoAction(_ sender: UIButton) {

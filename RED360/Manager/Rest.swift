@@ -18,6 +18,14 @@ enum NotaCanalType: String {
     case sovi = "api/dashboard/pontuacao/canal/sovi/"
 }
 
+enum PDVCompleteType: String {
+    case ativacao = "api/pdv/pesquisa_ativacao.json"
+    case disponibilidade = "api/pdv/pesquisa_disponibilidade.json"
+    case gdm = "api/pdv/pesquisa_gdm.json"
+    case preco = "api/pdv/pesquisa_preco.json"
+    case sovi = "api/pdv/pesquisa_sovi.json"
+}
+
 class Rest{
     
     //Api de produção
@@ -364,6 +372,32 @@ class Rest{
             if let data = response.data{
                 do{
                     let result = try JSONDecoder().decode([String:[OportunitiesModel]].self, from: data)
+                    print(result)
+                    onComplete(result, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    class func searchPDVComplete(pdv: String, type: PDVCompleteType, onComplete: @escaping ([PDVCompleteModel]?, AccessDenied?) -> Void){
+        
+        let headers: HTTPHeaders = getHeaders()
+        let parameters = ["pdv" : pdv] as [String : Any]
+        
+        let url = baseURL+type.rawValue
+        Alamofire.request(url, method: .post, parameters: parameters as [String: Any] , encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    let result = try JSONDecoder().decode([PDVCompleteModel].self, from: data)
                     print(result)
                     onComplete(result, nil)
                     

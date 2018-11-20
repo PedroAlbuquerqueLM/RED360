@@ -19,6 +19,9 @@
 		7109348421A38A0600268EF1 /* PDVOpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109348321A38A0600268EF1 /* PDVOpCell.swift */; };
 		7109348621A38C4400268EF1 /* OportunitiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109348521A38C4400268EF1 /* OportunitiesModel.swift */; };
 		7109348821A398AB00268EF1 /* PDVButtonsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109348721A398AB00268EF1 /* PDVButtonsCell.swift */; };
+		7109348A21A39DC300268EF1 /* PDVCompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109348921A39DC300268EF1 /* PDVCompleteCell.swift */; };
+		7109348C21A39E8400268EF1 /* PDVCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109348B21A39E8400268EF1 /* PDVCompleteViewController.swift */; };
+		7109348E21A3A35A00268EF1 /* PDVCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109348D21A3A35A00268EF1 /* PDVCompleteModel.swift */; };
 		71125B0F218A9F1700880DFC /* MyTeams2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71125B0E218A9F1700880DFC /* MyTeams2ViewController.swift */; };
 		71125B11218AA1EE00880DFC /* MyTeamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71125B10218AA1EE00880DFC /* MyTeamsModel.swift */; };
 		7158DC25216E3D4F0083B844 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC24216E3D4F0083B844 /* MenuViewController.swift */; };
@@ -94,6 +97,9 @@
 		7109348321A38A0600268EF1 /* PDVOpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVOpCell.swift; sourceTree = "<group>"; };
 		7109348521A38C4400268EF1 /* OportunitiesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OportunitiesModel.swift; sourceTree = "<group>"; };
 		7109348721A398AB00268EF1 /* PDVButtonsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVButtonsCell.swift; sourceTree = "<group>"; };
+		7109348921A39DC300268EF1 /* PDVCompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVCompleteCell.swift; sourceTree = "<group>"; };
+		7109348B21A39E8400268EF1 /* PDVCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVCompleteViewController.swift; sourceTree = "<group>"; };
+		7109348D21A3A35A00268EF1 /* PDVCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVCompleteModel.swift; sourceTree = "<group>"; };
 		71125B0E218A9F1700880DFC /* MyTeams2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTeams2ViewController.swift; sourceTree = "<group>"; };
 		71125B10218AA1EE00880DFC /* MyTeamsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamsModel.swift; sourceTree = "<group>"; };
 		7158DC24216E3D4F0083B844 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +222,7 @@
 				7109348121A35BCE00268EF1 /* PDVNotaRedCell.swift */,
 				7109348321A38A0600268EF1 /* PDVOpCell.swift */,
 				7109348721A398AB00268EF1 /* PDVButtonsCell.swift */,
+				7109348921A39DC300268EF1 /* PDVCompleteCell.swift */,
 			);
 			name = PDV;
 			sourceTree = "<group>";
@@ -242,6 +249,7 @@
 				7173877B21868EB60059A856 /* ShowImageViewController.swift */,
 				715B98F8216E251E003BE5A5 /* DashboardViewController.swift */,
 				7109347C21A32B3600268EF1 /* DashboardPDVViewController.swift */,
+				7109348B21A39E8400268EF1 /* PDVCompleteViewController.swift */,
 				715E428521873A5E00193B11 /* IndicatorViewController.swift */,
 				7158DC2D216E6D050083B844 /* PDVViewController.swift */,
 			);
@@ -260,6 +268,7 @@
 				716C56F9217E1F1400003759 /* UserModel.swift */,
 				7109347921A320E300268EF1 /* PDVModel.swift */,
 				7109348521A38C4400268EF1 /* OportunitiesModel.swift */,
+				7109348D21A3A35A00268EF1 /* PDVCompleteModel.swift */,
 				71EC933221816EA8001498A2 /* MetasModel.swift */,
 				716C5703217E21C500003759 /* Protocols */,
 			);
@@ -652,6 +661,7 @@
 				7158DC33216E84FE0083B844 /* ChartCell.swift in Sources */,
 				71125B0F218A9F1700880DFC /* MyTeams2ViewController.swift in Sources */,
 				716C571A217F83FE00003759 /* CalendarCell.swift in Sources */,
+				7109348A21A39DC300268EF1 /* PDVCompleteCell.swift in Sources */,
 				7109348821A398AB00268EF1 /* PDVButtonsCell.swift in Sources */,
 				7109347A21A320E300268EF1 /* PDVModel.swift in Sources */,
 				716C56F1217E071000003759 /* VLoading.swift in Sources */,
@@ -659,6 +669,7 @@
 				716C5700217E212900003759 /* FirebaseManager.swift in Sources */,
 				716524D1218354CF0088C772 /* StringExtension.swift in Sources */,
 				7158DC25216E3D4F0083B844 /* MenuViewController.swift in Sources */,
+				7109348C21A39E8400268EF1 /* PDVCompleteViewController.swift in Sources */,
 				716C5716217E2EF300003759 /* UserDefaultsKey.swift in Sources */,
 				7158DC31216E84C80083B844 /* RankedCell.swift in Sources */,
 				716C56F6217E1B6A00003759 /* NotaPilarModel.swift in Sources */,
@@ -673,6 +684,7 @@
 				716C5718217E2F3400003759 /* ControllerManager.swift in Sources */,
 				716C56FA217E1F1400003759 /* UserModel.swift in Sources */,
 				716524CF218345EB0088C772 /* HistoricoModel.swift in Sources */,
+				7109348E21A3A35A00268EF1 /* PDVCompleteModel.swift in Sources */,
 				71EC93352181749C001498A2 /* NotaCanalModel.swift in Sources */,
 				71125B11218AA1EE00880DFC /* MyTeamsModel.swift in Sources */,
 				7109348221A35BCE00268EF1 /* PDVNotaRedCell.swift in Sources */,
