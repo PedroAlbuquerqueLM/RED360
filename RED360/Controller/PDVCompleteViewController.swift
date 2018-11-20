@@ -13,6 +13,8 @@ class PDVCompleteViewController: SlideViewController {
     @IBOutlet weak var dashTableView: UITableView!
     var pdv: PDVModel!
     var pdvComplete: [PDVCompleteModel]?
+    @IBOutlet weak var tabBarTypes: UITabBar!
+    var vLoading = Bundle.main.loadNibNamed("VLoading", owner: self, options: nil)?.first as? VLoading
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,13 +22,18 @@ class PDVCompleteViewController: SlideViewController {
         self.setTitle("Pesquisa por código PDV")
         let doneItem = UIBarButtonItem(image: #imageLiteral(resourceName: "closeIcon"), style: .done, target: nil, action: #selector(closeAction))
         doneItem.tintColor = UIColor.white
-        
         self.navItem?.leftBarButtonItem = doneItem;
         
+        if let vl = vLoading{
+            vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+            vl.aiLoading.startAnimating()
+            view.addSubview(vl)
+        }
+        self.tabBarTypes.selectedItem = tabBarTypes.items![0]
         Rest.searchPDVComplete(pdv: pdv.pdv!, type: .ativacao) { (pdvComplete, accessDenied) in
+            if let vl = self.vLoading{ vl.removeFromSuperview() }
             self.pdvComplete = pdvComplete
             self.setTitle("Ativação - \(pdvComplete?.first?.percentualMes ?? "-")%")
-
             self.dashTableView.reloadData()
         }
     }
@@ -54,6 +61,13 @@ extension PDVCompleteViewController: UITableViewDelegate, UITableViewDataSource 
             cell.ttcSugeridoLabel.text = pdv.ttcSugerido
             cell.ttcPesquisadoLabel.text = pdv.ttcPesquisado
             return cell
+        }else if pdv.percentualSovi != nil {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PDVCompleteSoviCell", for: indexPath) as! PDVCompleteSoviCell
+            cell.title.text = pdv.pergunta
+            cell.possiveisLabel.text = pdv.pontosPossiveis
+            cell.realizadosLabel.text = pdv.pontosRealizados
+            cell.percentualSovi.text = pdv.percentualSovi
+            return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PDVCompleteCell", for: indexPath) as! PDVCompleteCell
             cell.title.text = pdv.pergunta
@@ -68,8 +82,9 @@ extension PDVCompleteViewController: UITableViewDelegate, UITableViewDataSource 
         let pdv = self.pdvComplete![indexPath.row]
         if pdv.ttcPesquisado != nil || pdv.ttcSugerido != nil {
             return 147
+        }else if pdv.percentualSovi != nil {
+            return 117
         }
-        
         return 93
     }
     
@@ -86,7 +101,13 @@ extension PDVCompleteViewController: UITabBarDelegate {
             default: isSelected = .ativacao
         }
         
+        if let vl = vLoading{
+            vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+            vl.aiLoading.startAnimating()
+            view.addSubview(vl)
+        }
         Rest.searchPDVComplete(pdv: pdv.pdv!, type: isSelected) { (pdvComplete, accessDenied) in
+            if let vl = self.vLoading{ vl.removeFromSuperview() }
             self.pdvComplete = pdvComplete
             self.setTitle("\(item.title ?? "-") - \(pdvComplete?.first?.percentualMes ?? "-")%")
             self.dashTableView.reloadData()

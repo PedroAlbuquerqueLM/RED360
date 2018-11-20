@@ -24,7 +24,7 @@ class PDVNotaRedCell: UITableViewCell {
     var pdv: PDVModel? {
         didSet{
             guard let pdv = self.pdv else {return}
-            self.notaRedLabel.text = "\(pdv.notaRed ?? "-")%"
+            self.notaRedLabel.text = "\(pdv.notaRed?.replacingOccurrences(of: ".", with: ",") ?? "-")%"
             self.dateLabel.text = "Pesquisa realizada em \(pdv.dhp ?? "-")"
         }
     }

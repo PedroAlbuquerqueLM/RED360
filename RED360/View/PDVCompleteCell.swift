@@ -33,3 +33,16 @@ class PDVCompletePrecoCell: UITableViewCell {
     }
     
 }
+
+class PDVCompleteSoviCell: UITableViewCell {
+    
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var possiveisLabel: UILabel!
+    @IBOutlet weak var realizadosLabel: UILabel!
+    @IBOutlet weak var percentualSovi: UILabel!
+    
+    override func awakeFromNib() {
+        
+    }
+    
+}

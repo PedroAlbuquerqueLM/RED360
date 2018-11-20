@@ -414,4 +414,57 @@ class Rest{
             
         }
     }
+    
+    class func listUF(onComplete: @escaping ([String]?, AccessDenied?) -> Void){
+        
+        let headers: HTTPHeaders = getHeaders()
+        
+        let url = baseURL+"api/uf/index.json"
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    let result = try JSONDecoder().decode([String].self, from: data)
+                    print(result)
+                    onComplete(result, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    class func listCity(uf: String, onComplete: @escaping ([String]?, AccessDenied?) -> Void){
+        
+        let headers: HTTPHeaders = getHeaders()
+        let parameters = ["uf" : uf] as [String : Any]
+        
+        let url = baseURL+"api/uf/index.json"
+        Alamofire.request(url, method: .post, parameters: parameters as [String: Any], encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    let result = try JSONDecoder().decode([String].self, from: data)
+                    print(result)
+                    onComplete(result, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+            
+        }
+    }
 }

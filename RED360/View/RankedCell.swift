@@ -25,9 +25,9 @@ class RankedCell: UITableViewCell {
     var rankSet: (nota: Double, vari: Double, meta: Double, rank: Int)? {
         didSet{
             guard let rankSet = rankSet else {return}
-            self.notaRed.text = "\(String(format: "%.01f", rankSet.nota))%"
-            self.variable.text = "\(String(format: "%.01f", rankSet.vari))%"
-            self.meta.text = "\(String(format: "%.01f", rankSet.meta))%"
+            self.notaRed.text = "\(String(format: "%.01f", rankSet.nota).replacingOccurrences(of: ".", with: ","))%"
+            self.variable.text = "\(String(format: "%.01f", rankSet.vari).replacingOccurrences(of: ".", with: ","))%"
+            self.meta.text = "\(String(format: "%.01f", rankSet.meta).replacingOccurrences(of: ".", with: ","))%"
             self.rank.text = "\(rankSet.rank)º"
         }
     }
