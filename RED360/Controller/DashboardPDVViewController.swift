@@ -51,6 +51,7 @@ extension DashboardPDVViewController: UITableViewDelegate, UITableViewDataSource
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PDVDetailsCell", for: indexPath) as! PDVDetailsCell
             cell.pdv = self.pdv
+            cell.superViewController = self
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PDVNotaRedCell", for: indexPath) as! PDVNotaRedCell
