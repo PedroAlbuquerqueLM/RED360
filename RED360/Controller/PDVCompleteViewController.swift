@@ -25,6 +25,8 @@ class PDVCompleteViewController: SlideViewController {
         
         Rest.searchPDVComplete(pdv: pdv.pdv!, type: .ativacao) { (pdvComplete, accessDenied) in
             self.pdvComplete = pdvComplete
+            self.setTitle("Ativação - \(pdvComplete?.first?.percentualMes ?? "-")%")
+
             self.dashTableView.reloadData()
         }
     }
@@ -86,6 +88,7 @@ extension PDVCompleteViewController: UITabBarDelegate {
         
         Rest.searchPDVComplete(pdv: pdv.pdv!, type: isSelected) { (pdvComplete, accessDenied) in
             self.pdvComplete = pdvComplete
+            self.setTitle("\(item.title ?? "-") - \(pdvComplete?.first?.percentualMes ?? "-")%")
             self.dashTableView.reloadData()
         }
     }
