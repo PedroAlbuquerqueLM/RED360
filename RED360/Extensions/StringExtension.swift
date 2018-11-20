@@ -14,4 +14,8 @@ extension String {
     var getMonth: Int? {
         return months[self]
     }
+    
+    var toDouble: Double? {
+        return Double(self.replacingOccurrences(of: ",", with: "."))
+    }
 }

@@ -165,6 +165,48 @@ class ChartsLandscapeView: UIView {
         }
     }
     
+    var pdv: PDVModel? {
+        didSet{
+            guard let pdv = pdv else {return}
+            self.charts.first?.xAxis.granularity = 0
+            
+            let titles = ["Ativ.", "", "Disp.", "", "GDM", "", "Preço", "", "Sovi"]
+            
+            var dataSets = [[BarChartDataSet]()]
+            
+            self.charts.first!.xAxis.valueFormatter = IndexAxisValueFormatter(values:titles)
+            self.charts.first!.noDataText = "Please provide data for the chart."
+            
+            var offset = 0
+            
+            let values = [pdv.sovi?.toDouble, pdv.preco?.toDouble, pdv.gdm?.toDouble, pdv.disponibilidade?.toDouble, pdv.ativacao?.toDouble].reversed()
+            
+            values.enumerated().forEach {
+                guard let value = $0.element else {return}
+                let dataSet = BarChartDataSet(values: [BarChartDataEntry(x: Double($0.offset + offset), y: value)], label: "")
+                dataSet.colors = [#colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)]
+                
+                let numberFormatter = NumberFormatter()
+                numberFormatter.numberStyle = .decimal
+                numberFormatter.locale = Locale.current
+                numberFormatter.negativeSuffix = "%"
+                numberFormatter.positiveSuffix = "%"
+                
+                let valuesNumberFormatter = ChartValueFormatter(numberFormatter: numberFormatter)
+                dataSet.valueFormatter = valuesNumberFormatter
+                if isLand {
+                    dataSet.valueFont = UIFont(name: "Helvetica Neue", size: 12)!
+                }else{
+                    dataSet.valueFont = UIFont(name: "Helvetica Neue", size: 8)!
+                }
+                dataSet.valueTextColor = #colorLiteral(red: 0.5529411765, green: 0.5882352941, blue: 0.631372549, alpha: 1)
+                dataSets[0].append(dataSet)
+                offset += 1
+            }
+            self.charts.first!.data = BarChartData(dataSets: dataSets.first)
+        }
+    }
+    
     var notaPilar: [NotaPilarModel]? {
         didSet{
             

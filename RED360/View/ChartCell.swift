@@ -115,6 +115,17 @@ class ChartCell: UITableViewCell {
 //        }
     }
     
+    var pdv: PDVModel? {
+        didSet{
+            self.chart.isHidden = true
+            self.titleLabel.text = "NOTA POR PILAR"
+            self.chartsLandscapeView?.removeFromSuperview()
+            self.chartsLandscapeView = ChartsLandscapeView(frame: CGRect(x: 0, y: 50, width: Int(self.frame.width), height: Int(self.frame.height) - 70), qnt: 1, isLand: false)
+            self.chartsLandscapeView!.pdv = self.pdv
+            self.insertSubview(self.chartsLandscapeView!, at: 1)
+        }
+    }
+    
     var notaPilar: [NotaPilarModel]? {
         didSet{
             self.chart.isHidden = false

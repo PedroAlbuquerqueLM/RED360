@@ -12,12 +12,19 @@
 		1A72301962F33744AC432B2F /* Pods_RED360UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F69EEE99B86DC20C0E1BBB /* Pods_RED360UITests.framework */; };
 		7107E82C2173F651006EFF1E /* ChartValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */; };
 		7107E82E2173FC81006EFF1E /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107E82D2173FC81006EFF1E /* OrderCell.swift */; };
+		7109347A21A320E300268EF1 /* PDVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109347921A320E300268EF1 /* PDVModel.swift */; };
+		7109347D21A32B3600268EF1 /* DashboardPDVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109347C21A32B3600268EF1 /* DashboardPDVViewController.swift */; };
+		7109347F21A3303800268EF1 /* PDVDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109347E21A3303800268EF1 /* PDVDetailsCell.swift */; };
+		7109348221A35BCE00268EF1 /* PDVNotaRedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109348121A35BCE00268EF1 /* PDVNotaRedCell.swift */; };
+		7109348421A38A0600268EF1 /* PDVOpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109348321A38A0600268EF1 /* PDVOpCell.swift */; };
+		7109348621A38C4400268EF1 /* OportunitiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109348521A38C4400268EF1 /* OportunitiesModel.swift */; };
+		7109348821A398AB00268EF1 /* PDVButtonsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109348721A398AB00268EF1 /* PDVButtonsCell.swift */; };
 		71125B0F218A9F1700880DFC /* MyTeams2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71125B0E218A9F1700880DFC /* MyTeams2ViewController.swift */; };
 		71125B11218AA1EE00880DFC /* MyTeamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71125B10218AA1EE00880DFC /* MyTeamsModel.swift */; };
 		7158DC25216E3D4F0083B844 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC24216E3D4F0083B844 /* MenuViewController.swift */; };
 		7158DC2A216E623B0083B844 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC29216E623B0083B844 /* LoginViewController.swift */; };
 		7158DC2C216E626A0083B844 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC2B216E626A0083B844 /* SlideViewController.swift */; };
-		7158DC2E216E6D050083B844 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC2D216E6D050083B844 /* SearchViewController.swift */; };
+		7158DC2E216E6D050083B844 /* PDVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC2D216E6D050083B844 /* PDVViewController.swift */; };
 		7158DC31216E84C80083B844 /* RankedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC30216E84C80083B844 /* RankedCell.swift */; };
 		7158DC33216E84FE0083B844 /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC32216E84FE0083B844 /* ChartCell.swift */; };
 		715B98F7216E251E003BE5A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B98F6216E251E003BE5A5 /* AppDelegate.swift */; };
@@ -80,12 +87,19 @@
 		66F734AB938BAFCB4A4C1ACB /* Pods_RED360.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RED360.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartValueFormatter.swift; sourceTree = "<group>"; };
 		7107E82D2173FC81006EFF1E /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		7109347921A320E300268EF1 /* PDVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVModel.swift; sourceTree = "<group>"; };
+		7109347C21A32B3600268EF1 /* DashboardPDVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPDVViewController.swift; sourceTree = "<group>"; };
+		7109347E21A3303800268EF1 /* PDVDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVDetailsCell.swift; sourceTree = "<group>"; };
+		7109348121A35BCE00268EF1 /* PDVNotaRedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVNotaRedCell.swift; sourceTree = "<group>"; };
+		7109348321A38A0600268EF1 /* PDVOpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVOpCell.swift; sourceTree = "<group>"; };
+		7109348521A38C4400268EF1 /* OportunitiesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OportunitiesModel.swift; sourceTree = "<group>"; };
+		7109348721A398AB00268EF1 /* PDVButtonsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVButtonsCell.swift; sourceTree = "<group>"; };
 		71125B0E218A9F1700880DFC /* MyTeams2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTeams2ViewController.swift; sourceTree = "<group>"; };
 		71125B10218AA1EE00880DFC /* MyTeamsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamsModel.swift; sourceTree = "<group>"; };
 		7158DC24216E3D4F0083B844 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		7158DC29216E623B0083B844 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7158DC2B216E626A0083B844 /* SlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
-		7158DC2D216E6D050083B844 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		7158DC2D216E6D050083B844 /* PDVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVViewController.swift; sourceTree = "<group>"; };
 		7158DC30216E84C80083B844 /* RankedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankedCell.swift; sourceTree = "<group>"; };
 		7158DC32216E84FE0083B844 /* ChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
 		715B98F3216E251E003BE5A5 /* RED360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RED360.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +196,30 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		7109347B21A32A1800268EF1 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				7158DC30216E84C80083B844 /* RankedCell.swift */,
+				7158DC32216E84FE0083B844 /* ChartCell.swift */,
+				716C5719217F83FE00003759 /* CalendarCell.swift */,
+				71867D7D2173D394003A00F8 /* ChannelCell.swift */,
+				7107E82D2173FC81006EFF1E /* OrderCell.swift */,
+				715E42872187E4F600193B11 /* MenuCell.swift */,
+			);
+			name = Dashboard;
+			sourceTree = "<group>";
+		};
+		7109348021A3307D00268EF1 /* PDV */ = {
+			isa = PBXGroup;
+			children = (
+				7109347E21A3303800268EF1 /* PDVDetailsCell.swift */,
+				7109348121A35BCE00268EF1 /* PDVNotaRedCell.swift */,
+				7109348321A38A0600268EF1 /* PDVOpCell.swift */,
+				7109348721A398AB00268EF1 /* PDVButtonsCell.swift */,
+			);
+			name = PDV;
+			sourceTree = "<group>";
+		};
 		7158DC26216E61FB0083B844 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,8 +241,9 @@
 				7158DC29216E623B0083B844 /* LoginViewController.swift */,
 				7173877B21868EB60059A856 /* ShowImageViewController.swift */,
 				715B98F8216E251E003BE5A5 /* DashboardViewController.swift */,
+				7109347C21A32B3600268EF1 /* DashboardPDVViewController.swift */,
 				715E428521873A5E00193B11 /* IndicatorViewController.swift */,
-				7158DC2D216E6D050083B844 /* SearchViewController.swift */,
+				7158DC2D216E6D050083B844 /* PDVViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -219,6 +258,8 @@
 				716C571B217F880400003759 /* PosicaoModel.swift */,
 				716524CE218345EB0088C772 /* HistoricoModel.swift */,
 				716C56F9217E1F1400003759 /* UserModel.swift */,
+				7109347921A320E300268EF1 /* PDVModel.swift */,
+				7109348521A38C4400268EF1 /* OportunitiesModel.swift */,
 				71EC933221816EA8001498A2 /* MetasModel.swift */,
 				716C5703217E21C500003759 /* Protocols */,
 			);
@@ -228,12 +269,8 @@
 		7158DC2F216E84AA0083B844 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				7158DC30216E84C80083B844 /* RankedCell.swift */,
-				7158DC32216E84FE0083B844 /* ChartCell.swift */,
-				716C5719217F83FE00003759 /* CalendarCell.swift */,
-				71867D7D2173D394003A00F8 /* ChannelCell.swift */,
-				7107E82D2173FC81006EFF1E /* OrderCell.swift */,
-				715E42872187E4F600193B11 /* MenuCell.swift */,
+				7109347B21A32A1800268EF1 /* Dashboard */,
+				7109348021A3307D00268EF1 /* PDV */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -604,7 +641,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				716C5714217E2ACA00003759 /* FirebaseAuthenticable.swift in Sources */,
-				7158DC2E216E6D050083B844 /* SearchViewController.swift in Sources */,
+				7158DC2E216E6D050083B844 /* PDVViewController.swift in Sources */,
 				71EC933321816EA8001498A2 /* MetasModel.swift in Sources */,
 				71867D7E2173D394003A00F8 /* ChannelCell.swift in Sources */,
 				7158DC2A216E623B0083B844 /* LoginViewController.swift in Sources */,
@@ -615,6 +652,8 @@
 				7158DC33216E84FE0083B844 /* ChartCell.swift in Sources */,
 				71125B0F218A9F1700880DFC /* MyTeams2ViewController.swift in Sources */,
 				716C571A217F83FE00003759 /* CalendarCell.swift in Sources */,
+				7109348821A398AB00268EF1 /* PDVButtonsCell.swift in Sources */,
+				7109347A21A320E300268EF1 /* PDVModel.swift in Sources */,
 				716C56F1217E071000003759 /* VLoading.swift in Sources */,
 				715E428621873A5E00193B11 /* IndicatorViewController.swift in Sources */,
 				716C5700217E212900003759 /* FirebaseManager.swift in Sources */,
@@ -624,6 +663,8 @@
 				7158DC31216E84C80083B844 /* RankedCell.swift in Sources */,
 				716C56F6217E1B6A00003759 /* NotaPilarModel.swift in Sources */,
 				7107E82C2173F651006EFF1E /* ChartValueFormatter.swift in Sources */,
+				7109348621A38C4400268EF1 /* OportunitiesModel.swift in Sources */,
+				7109347D21A32B3600268EF1 /* DashboardPDVViewController.swift in Sources */,
 				716C56F4217E1A8B00003759 /* Rest.swift in Sources */,
 				7173877C21868EB60059A856 /* ShowImageViewController.swift in Sources */,
 				7107E82E2173FC81006EFF1E /* OrderCell.swift in Sources */,
@@ -634,6 +675,9 @@
 				716524CF218345EB0088C772 /* HistoricoModel.swift in Sources */,
 				71EC93352181749C001498A2 /* NotaCanalModel.swift in Sources */,
 				71125B11218AA1EE00880DFC /* MyTeamsModel.swift in Sources */,
+				7109348221A35BCE00268EF1 /* PDVNotaRedCell.swift in Sources */,
+				7109348421A38A0600268EF1 /* PDVOpCell.swift in Sources */,
+				7109347F21A3303800268EF1 /* PDVDetailsCell.swift in Sources */,
 				716C56FE217E205F00003759 /* UserManager.swift in Sources */,
 				716C56F8217E1BA700003759 /* AccessDeniedModel.swift in Sources */,
 				715E42882187E4F600193B11 /* MenuCell.swift in Sources */,

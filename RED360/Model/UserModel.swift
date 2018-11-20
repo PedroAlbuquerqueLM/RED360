@@ -116,6 +116,22 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
             })
         }
     }
+    
+    static func getCargo() -> String {
+        if let diretoria = appDelegate.user?.diretoria {
+            return diretoria
+        }
+        if let gerencia = appDelegate.user?.gerencia {
+            return gerencia
+        }
+        if let supervisao = appDelegate.user?.supervisao {
+            return supervisao
+        }
+        if let rota = appDelegate.user?.rotaVendedor {
+            return rota
+        }
+        return ""
+    }
 }
 
 public protocol ModelType {

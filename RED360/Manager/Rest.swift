@@ -319,4 +319,65 @@ class Rest{
         }
         
     }
+    
+    class func searchPDV(pdv: String, onComplete: @escaping (PDVModel?, AccessDenied?) -> Void){
+        
+        guard let user = appDelegate.user, let nivel = user.nivel else {return}
+        let cargo = UserModel.getCargo()
+        var supervisao = ""
+        if nivel == 4 {
+            supervisao = user.supervisao != nil ? user.supervisao! : ""
+        }
+        
+        let headers: HTTPHeaders = getHeaders()
+        let parameters = ["pdv" : pdv, "cargo" : cargo, "supervisao" : supervisao] as [String : Any]
+        
+        let url = baseURL+"api/pdv/resumo/\(nivel).json"
+        Alamofire.request(url, method: .post, parameters: parameters as [String: Any] , encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    let result = try JSONDecoder().decode(PDVModel.self, from: data)
+                    print(result)
+                    onComplete(result, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    class func searchPDVOportunities(pdv: String, onComplete: @escaping ([String:[OportunitiesModel]]?, AccessDenied?) -> Void){
+        
+        let headers: HTTPHeaders = getHeaders()
+        let parameters = ["pdv" : pdv] as [String : Any]
+        
+        let url = baseURL+"api/pdv/oportunidades.json"
+        Alamofire.request(url, method: .post, parameters: parameters as [String: Any] , encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    let result = try JSONDecoder().decode([String:[OportunitiesModel]].self, from: data)
+                    print(result)
+                    onComplete(result, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+            
+        }
+    }
 }
