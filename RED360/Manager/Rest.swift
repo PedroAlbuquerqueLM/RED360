@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import Firebase
 
 enum NotaCanalType: String {
     case total = "api/dashboard/pontuacao/canal/total/"
@@ -415,7 +416,7 @@ class Rest{
         }
     }
     
-    class func listUF(onComplete: @escaping ([String]?, AccessDenied?) -> Void){
+    class func listUF(onComplete: @escaping ([ListPDVModel]?, AccessDenied?) -> Void){
         
         let headers: HTTPHeaders = getHeaders()
         
@@ -424,6 +425,38 @@ class Rest{
             if let data = response.data{
                 do{
                     let result = try JSONDecoder().decode([String].self, from: data)
+                    var listPDV = [ListPDVModel]()
+                    result.forEach{
+                        var listModel = ListPDVModel()
+                        listModel.uf = $0
+                        listPDV.append(listModel)
+                    }
+                    onComplete(listPDV, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    class func listCity(uf: String, onComplete: @escaping ([ListPDVModel]?, AccessDenied?) -> Void){
+        
+        let headers: HTTPHeaders = getHeaders()
+        let parameters = ["uf" : uf] as [String : Any]
+        
+        let url = baseURL+"api/uf/cidades.json"
+        Alamofire.request(url, method: .post, parameters: parameters as [String: Any], encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    let result = try JSONDecoder().decode([ListPDVModel].self, from: data)
                     print(result)
                     onComplete(result, nil)
                     
@@ -441,16 +474,16 @@ class Rest{
         }
     }
     
-    class func listCity(uf: String, onComplete: @escaping ([String]?, AccessDenied?) -> Void){
+    class func listBairro(uf: String, cidade: String, onComplete: @escaping ([ListPDVModel]?, AccessDenied?) -> Void){
         
         let headers: HTTPHeaders = getHeaders()
-        let parameters = ["uf" : uf] as [String : Any]
+        let parameters = ["uf" : uf, "cidade" : cidade] as [String : Any]
         
-        let url = baseURL+"api/uf/index.json"
+        let url = baseURL+"api/uf/bairros.json"
         Alamofire.request(url, method: .post, parameters: parameters as [String: Any], encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
             if let data = response.data{
                 do{
-                    let result = try JSONDecoder().decode([String].self, from: data)
+                    let result = try JSONDecoder().decode([ListPDVModel].self, from: data)
                     print(result)
                     onComplete(result, nil)
                     
@@ -465,6 +498,24 @@ class Rest{
                 }
             }
             
+        }
+    }
+    
+    class func listPDVS(city: String, bairro: String, completion: @escaping (_ pdvs: [ListPDVSModel]) -> Void){
+        let reference = Firestore.firestore().collection("view_pdv_map").whereField("municipio", isEqualTo: city).whereField("bairro", isEqualTo: bairro)
+        reference.addSnapshotListener { snapshot, error in
+            guard let snapshot = snapshot else { return }
+            let docs = snapshot.documents
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            var pdvs = [ListPDVSModel]()
+            docs.forEach{
+                if let pdv = ListPDVSModel.deserialize(from: $0.data()) {
+                    pdvs.append(pdv)
+                }
+            }
+            completion(pdvs)
         }
     }
 }

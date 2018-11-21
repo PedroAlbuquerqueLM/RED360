@@ -12,6 +12,7 @@ class DashboardPDVViewController: SlideViewController {
     
     @IBOutlet weak var dashTableView: UITableView!
     
+    var titleTop = "Pesquisa por código PDV"
     var pdv: PDVModel!
     var oportunities: [String:[OportunitiesModel]]!
     var titles = ["ATIVAÇÃO", "DISPONIBILIDADE", "GDM", "PREÇO", "SOVI"]
@@ -20,7 +21,7 @@ class DashboardPDVViewController: SlideViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setTitle("Pesquisa por código PDV")
+        self.setTitle(titleTop)
         let doneItem = UIBarButtonItem(image: #imageLiteral(resourceName: "closeIcon"), style: .done, target: nil, action: #selector(closeAction))
         doneItem.tintColor = UIColor.white
         

@@ -12,6 +12,7 @@ import SnapKit
 class SlideViewController: UIViewController {
     
     var navItem: UINavigationItem?
+    var menuItem: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,10 +51,10 @@ class SlideViewController: UIViewController {
         
         self.navItem = UINavigationItem(title: "");
         
-        let doneItem = UIBarButtonItem(image: #imageLiteral(resourceName: "menuIcon"), style: .done, target: nil, action: #selector(menuAction))
-        doneItem.tintColor = UIColor.white
+        self.menuItem = UIBarButtonItem(image: #imageLiteral(resourceName: "menuIcon"), style: .done, target: nil, action: #selector(menuAction))
+        self.menuItem?.tintColor = UIColor.white
 
-        self.navItem?.leftBarButtonItem = doneItem;
+        self.navItem?.leftBarButtonItem = self.menuItem;
         
         navBar.setItems([navItem!], animated: false);
     }

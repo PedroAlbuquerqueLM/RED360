@@ -1,0 +1,6 @@
+framework module Pods_RED360Tests {
+  umbrella header "Pods-RED360Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -60,6 +60,10 @@
 		7173877C21868EB60059A856 /* ShowImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173877B21868EB60059A856 /* ShowImageViewController.swift */; };
 		7173877E218690340059A856 /* ChartsLandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173877D218690340059A856 /* ChartsLandscapeView.swift */; };
 		7182986F21A44E8300E452B9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182986E21A44E8300E452B9 /* MapViewController.swift */; };
+		7182987521A4EB4E00E452B9 /* ListPDVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182987421A4EB4E00E452B9 /* ListPDVModel.swift */; };
+		7182987721A4EC0600E452B9 /* AreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182987621A4EC0600E452B9 /* AreaViewController.swift */; };
+		7182987921A4FD5D00E452B9 /* PDVListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182987821A4FD5D00E452B9 /* PDVListCell.swift */; };
+		7182987B21A5067D00E452B9 /* ListPDVSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182987A21A5067D00E452B9 /* ListPDVSModel.swift */; };
 		71867D7E2173D394003A00F8 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71867D7D2173D394003A00F8 /* ChannelCell.swift */; };
 		71EC933321816EA8001498A2 /* MetasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC933221816EA8001498A2 /* MetasModel.swift */; };
 		71EC93352181749C001498A2 /* NotaCanalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC93342181749C001498A2 /* NotaCanalModel.swift */; };
@@ -145,6 +149,10 @@
 		7173877B21868EB60059A856 /* ShowImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowImageViewController.swift; sourceTree = "<group>"; };
 		7173877D218690340059A856 /* ChartsLandscapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsLandscapeView.swift; sourceTree = "<group>"; };
 		7182986E21A44E8300E452B9 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		7182987421A4EB4E00E452B9 /* ListPDVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPDVModel.swift; sourceTree = "<group>"; };
+		7182987621A4EC0600E452B9 /* AreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaViewController.swift; sourceTree = "<group>"; };
+		7182987821A4FD5D00E452B9 /* PDVListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVListCell.swift; sourceTree = "<group>"; };
+		7182987A21A5067D00E452B9 /* ListPDVSModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPDVSModel.swift; sourceTree = "<group>"; };
 		71867D7D2173D394003A00F8 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		71EC933221816EA8001498A2 /* MetasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetasModel.swift; sourceTree = "<group>"; };
 		71EC93342181749C001498A2 /* NotaCanalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaCanalModel.swift; sourceTree = "<group>"; };
@@ -225,6 +233,7 @@
 				7109348321A38A0600268EF1 /* PDVOpCell.swift */,
 				7109348721A398AB00268EF1 /* PDVButtonsCell.swift */,
 				7109348921A39DC300268EF1 /* PDVCompleteCell.swift */,
+				7182987821A4FD5D00E452B9 /* PDVListCell.swift */,
 			);
 			name = PDV;
 			sourceTree = "<group>";
@@ -254,6 +263,7 @@
 				7109348B21A39E8400268EF1 /* PDVCompleteViewController.swift */,
 				715E428521873A5E00193B11 /* IndicatorViewController.swift */,
 				7182986E21A44E8300E452B9 /* MapViewController.swift */,
+				7182987621A4EC0600E452B9 /* AreaViewController.swift */,
 				7158DC2D216E6D050083B844 /* PDVViewController.swift */,
 			);
 			path = Controller;
@@ -270,9 +280,11 @@
 				716524CE218345EB0088C772 /* HistoricoModel.swift */,
 				716C56F9217E1F1400003759 /* UserModel.swift */,
 				7109347921A320E300268EF1 /* PDVModel.swift */,
+				7182987A21A5067D00E452B9 /* ListPDVSModel.swift */,
 				7109348521A38C4400268EF1 /* OportunitiesModel.swift */,
 				7109348D21A3A35A00268EF1 /* PDVCompleteModel.swift */,
 				71EC933221816EA8001498A2 /* MetasModel.swift */,
+				7182987421A4EB4E00E452B9 /* ListPDVModel.swift */,
 				716C5703217E21C500003759 /* Protocols */,
 			);
 			path = Model;
@@ -656,6 +668,7 @@
 				7158DC2E216E6D050083B844 /* PDVViewController.swift in Sources */,
 				71EC933321816EA8001498A2 /* MetasModel.swift in Sources */,
 				71867D7E2173D394003A00F8 /* ChannelCell.swift in Sources */,
+				7182987721A4EC0600E452B9 /* AreaViewController.swift in Sources */,
 				7158DC2A216E623B0083B844 /* LoginViewController.swift in Sources */,
 				7158DC2C216E626A0083B844 /* SlideViewController.swift in Sources */,
 				715E428A2187E8A500193B11 /* MyTeamsViewController.swift in Sources */,
@@ -675,6 +688,7 @@
 				7158DC25216E3D4F0083B844 /* MenuViewController.swift in Sources */,
 				7109348C21A39E8400268EF1 /* PDVCompleteViewController.swift in Sources */,
 				716C5716217E2EF300003759 /* UserDefaultsKey.swift in Sources */,
+				7182987B21A5067D00E452B9 /* ListPDVSModel.swift in Sources */,
 				7158DC31216E84C80083B844 /* RankedCell.swift in Sources */,
 				716C56F6217E1B6A00003759 /* NotaPilarModel.swift in Sources */,
 				7107E82C2173F651006EFF1E /* ChartValueFormatter.swift in Sources */,
@@ -684,6 +698,7 @@
 				7173877C21868EB60059A856 /* ShowImageViewController.swift in Sources */,
 				7107E82E2173FC81006EFF1E /* OrderCell.swift in Sources */,
 				716C5710217E21DF00003759 /* Authenticable.swift in Sources */,
+				7182987921A4FD5D00E452B9 /* PDVListCell.swift in Sources */,
 				715B98F7216E251E003BE5A5 /* AppDelegate.swift in Sources */,
 				716C5718217E2F3400003759 /* ControllerManager.swift in Sources */,
 				716C56FA217E1F1400003759 /* UserModel.swift in Sources */,
@@ -695,6 +710,7 @@
 				7109348421A38A0600268EF1 /* PDVOpCell.swift in Sources */,
 				7109347F21A3303800268EF1 /* PDVDetailsCell.swift in Sources */,
 				716C56FE217E205F00003759 /* UserManager.swift in Sources */,
+				7182987521A4EB4E00E452B9 /* ListPDVModel.swift in Sources */,
 				716C56F8217E1BA700003759 /* AccessDeniedModel.swift in Sources */,
 				715E42882187E4F600193B11 /* MenuCell.swift in Sources */,
 				7173877E218690340059A856 /* ChartsLandscapeView.swift in Sources */,

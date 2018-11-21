@@ -21,7 +21,7 @@ class PDVViewController: SlideViewController {
     
     
     @IBAction func searchButtonAction(_ sender: Any) {
-        if let vl = vLoading{
+        if let vl = vLoading {
             vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
             vl.aiLoading.startAnimating()
             view.addSubview(vl)
@@ -31,6 +31,7 @@ class PDVViewController: SlideViewController {
             Rest.searchPDVOportunities(pdv: pdv.pdv!, onComplete: { (oportunities, accessDenied) in
                 guard let oportunities = oportunities else {return}
                 if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DashboardPDVViewController") as? DashboardPDVViewController {
+                    vc.titleTop = "Pesquisa por código PDV"
                     vc.pdv = pdv
                     vc.oportunities = oportunities
                     if let vl = self.vLoading{ vl.removeFromSuperview() }

@@ -21,11 +21,11 @@ class MenuViewController: UIViewController {
 //
 //                (title: "", itens:[(title: "Sair", key: "LoginViewController")])
 //    ]
-    
+
     let menu = [
         (title: "", itens:[(title: "Meu Resultado", key: "DashboardViewController"), (title: "Meu Time", key: "MyTeamsViewController")]),
         
-        (title: "Pesquisas PDV", itens:[(title: "Por código PDV", key: "PDVViewController")]),
+        (title: "Pesquisas PDV", itens:[(title: "Por código PDV", key: "PDVViewController"), (title: "Por Área", key: "AreaViewController")]),
         
         (title: "", itens:[(title: "Sair", key: "LoginViewController")])
     ]
