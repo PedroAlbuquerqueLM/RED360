@@ -18,6 +18,8 @@ class AreaViewController: SlideViewController {
     
     var undoItem: UIBarButtonItem!
     var areaSelected = AreaType.uf
+    var isListNota = false
+    var isListOport = false
     
     var vLoading = Bundle.main.loadNibNamed("VLoading", owner: self, options: nil)?.first as? VLoading
     
@@ -34,9 +36,21 @@ class AreaViewController: SlideViewController {
         undoItem.tintColor = UIColor.white
         
         self.loading()
-        Rest.listUF { (uf, accessDenied) in
-            self.itens = uf
-            self.areaTableView.reloadData()
+        if isListNota {
+            Rest.listTop(isNota: true) { (pdvs, accessDenied) in
+                self.pdvs = pdvs
+                self.areaTableView.reloadData()
+            }
+        }else if isListOport {
+            Rest.listTop(isNota: false) { (pdvs, accessDenied) in
+                self.pdvs = pdvs
+                self.areaTableView.reloadData()
+            }
+        }else{
+            Rest.listUF { (uf, accessDenied) in
+                self.itens = uf
+                self.areaTableView.reloadData()
+            }
         }
     }
     

@@ -518,4 +518,34 @@ class Rest{
             completion(pdvs)
         }
     }
+    
+    class func listTop(isNota: Bool, onComplete: @escaping ([ListPDVSModel]?, AccessDenied?) -> Void){
+        
+        let headers: HTTPHeaders = getHeaders()
+        
+        var url = baseURL+"api/pdv/melhores-notas.json"
+        if !isNota { url = baseURL+"api/pdv/maiores-oportunidades.json" }
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    var result = try JSONDecoder().decode([ListPDVSModel].self, from: data)
+                    result.enumerated().forEach{
+                        result[$0.offset].endereco = "\($0.element.rua ?? "") - \($0.element.bairro ?? "") \($0.element.municipio ?? "") \($0.element.uf ?? "")"
+                    }
+                    onComplete(result, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+            
+        }
+    }
 }

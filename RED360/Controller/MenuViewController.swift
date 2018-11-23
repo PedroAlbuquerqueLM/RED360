@@ -25,7 +25,7 @@ class MenuViewController: UIViewController {
     let menu = [
         (title: "", itens:[(title: "Meu Resultado", key: "DashboardViewController"), (title: "Meu Time", key: "MyTeamsViewController")]),
         
-        (title: "Pesquisas PDV", itens:[(title: "Por código PDV", key: "PDVViewController"), (title: "Por Área", key: "AreaViewController")]),
+        (title: "Pesquisas PDV", itens:[(title: "Por código PDV", key: "PDVViewController"), (title: "Por Área", key: "AreaViewController"), (title: "10 Maiores notas", key: "ListNotaViewController"), (title: "10 Maiores oportunidades", key: "ListOportunitiesViewController")]),
         
         (title: "", itens:[(title: "Sair", key: "LoginViewController")])
     ]
@@ -89,11 +89,18 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.visibleCells[indexPath.row].isSelected = false
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: menu[indexPath.section].itens[indexPath.row].key)
-        
-        if menu[indexPath.section].itens[indexPath.row].key == "LoginViewController" {
+        let key = menu[indexPath.section].itens[indexPath.row].key
+        if key == "LoginViewController" {
             self.logout()
+        
+        }else if key == "ListNotaViewController" || key == "ListOportunitiesViewController" {
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "AreaViewController") as? AreaViewController else {return}
+            vc.areaSelected = .pdv
+            if key == "ListNotaViewController" {vc.isListNota = true}
+            else{vc.isListOport = true}
+            appDelegate.slideMenuController?.changeMainViewController(vc, close: true)
         }else{
+            let viewController = storyboard.instantiateViewController(withIdentifier: menu[indexPath.section].itens[indexPath.row].key)
             appDelegate.slideMenuController?.changeMainViewController(viewController, close: true)
         }
     }

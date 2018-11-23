@@ -12,7 +12,7 @@ import HandyJSON
 import CoreLocation
 import PromiseKit
 
-struct ListPDVSModel: ModelType, HandyJSON {
+struct ListPDVSModel: ModelType, HandyJSON, Codable {
     var uid: String?
     var bairro: String?
     var endereco: String?
@@ -21,6 +21,10 @@ struct ListPDVSModel: ModelType, HandyJSON {
     var nome: String?
     var pdv: String?
     var token: String?
+    
+    var rua: String?
+    var numero: String?
+    var uf: String?
     
     init() {}
     
@@ -31,6 +35,20 @@ struct ListPDVSModel: ModelType, HandyJSON {
     
     mutating func mapping(mapper: HelpingMapper) {
         
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case uid = "uid"
+        case bairro = "bairro"
+        case endereco = "endereco"
+        case id = "id"
+        case municipio = "municipio"
+        case nome = "nome"
+        case pdv = "pdv"
+        case token = "token"
+        case rua = "rua"
+        case numero = "numero"
+        case uf = "uf"
     }
 }
 
