@@ -134,9 +134,9 @@ extension AreaViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let itens = itens else {return}
         switch self.areaSelected {
         case .uf:
+            guard let itens = itens else {return}
             self.loading()
             Rest.listCity(uf: itens[indexPath.row].uf!) { (cities, accessDenied) in
                 self.navItem?.leftBarButtonItem = self.undoItem;
@@ -146,6 +146,7 @@ extension AreaViewController: UITableViewDelegate, UITableViewDataSource {
                 self.areaTableView.reloadData()
             }
         case .city:
+            guard let itens = itens else {return}
             self.loading()
             Rest.listBairro(uf: itens[indexPath.row].uf!, cidade: itens[indexPath.row].municipio!) { (bairros, accessDenied) in
                 self.navItem?.leftBarButtonItem = self.undoItem;
@@ -155,6 +156,7 @@ extension AreaViewController: UITableViewDelegate, UITableViewDataSource {
                 self.areaTableView.reloadData()
             }
         case .bairro:
+            guard let itens = itens else {return}
             self.loading()
             Rest.listPDVS(city: itens[indexPath.row].municipio!, bairro: itens[indexPath.row].bairro!) { (pdvs) in
                 self.navItem?.leftBarButtonItem = self.undoItem;
@@ -164,12 +166,8 @@ extension AreaViewController: UITableViewDelegate, UITableViewDataSource {
                 self.areaTableView.reloadData()
             }
         case .pdv:
-            if let vl = vLoading {
-                vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
-                vl.aiLoading.startAnimating()
-                view.addSubview(vl)
-            }
             guard let pdv = self.pdvs?[indexPath.row].pdv else {return}
+            self.loading()
             Rest.searchPDV(pdv: pdv) { (pdv, accessDenied) in
                 guard let pdv = pdv else {return}
                 Rest.searchPDVOportunities(pdv: pdv.pdv!, onComplete: { (oportunities, accessDenied) in
