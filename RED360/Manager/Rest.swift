@@ -548,4 +548,30 @@ class Rest{
             
         }
     }
+    
+    class func getLibrary(onComplete: @escaping ([LibraryModel]?, AccessDenied?) -> Void){
+        
+        let headers: HTTPHeaders = getHeaders()
+        
+        let url = baseURL+"api/biblioteca/index.json"
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    let result = try JSONDecoder().decode([LibraryModel].self, from: data)
+                    onComplete(result, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+            
+        }
+    }
 }

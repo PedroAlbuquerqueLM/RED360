@@ -57,6 +57,9 @@
 		716C5718217E2F3400003759 /* ControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C5717217E2F3300003759 /* ControllerManager.swift */; };
 		716C571A217F83FE00003759 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C5719217F83FE00003759 /* CalendarCell.swift */; };
 		716C571C217F880400003759 /* PosicaoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C571B217F880400003759 /* PosicaoModel.swift */; };
+		7172FA7021A78EE9004A7911 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7172FA6F21A78EE9004A7911 /* LibraryViewController.swift */; };
+		7172FA7221A79EBF004A7911 /* LibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7172FA7121A79EBF004A7911 /* LibraryModel.swift */; };
+		7172FA7421A7A027004A7911 /* LibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7172FA7321A7A027004A7911 /* LibraryCell.swift */; };
 		7173877C21868EB60059A856 /* ShowImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173877B21868EB60059A856 /* ShowImageViewController.swift */; };
 		7173877E218690340059A856 /* ChartsLandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7173877D218690340059A856 /* ChartsLandscapeView.swift */; };
 		7182986F21A44E8300E452B9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182986E21A44E8300E452B9 /* MapViewController.swift */; };
@@ -146,6 +149,9 @@
 		716C5717217E2F3300003759 /* ControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerManager.swift; sourceTree = "<group>"; };
 		716C5719217F83FE00003759 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		716C571B217F880400003759 /* PosicaoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosicaoModel.swift; sourceTree = "<group>"; };
+		7172FA6F21A78EE9004A7911 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		7172FA7121A79EBF004A7911 /* LibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModel.swift; sourceTree = "<group>"; };
+		7172FA7321A7A027004A7911 /* LibraryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCell.swift; sourceTree = "<group>"; };
 		7173877B21868EB60059A856 /* ShowImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowImageViewController.swift; sourceTree = "<group>"; };
 		7173877D218690340059A856 /* ChartsLandscapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsLandscapeView.swift; sourceTree = "<group>"; };
 		7182986E21A44E8300E452B9 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +271,7 @@
 				7182986E21A44E8300E452B9 /* MapViewController.swift */,
 				7182987621A4EC0600E452B9 /* AreaViewController.swift */,
 				7158DC2D216E6D050083B844 /* PDVViewController.swift */,
+				7172FA6F21A78EE9004A7911 /* LibraryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -285,6 +292,7 @@
 				7109348D21A3A35A00268EF1 /* PDVCompleteModel.swift */,
 				71EC933221816EA8001498A2 /* MetasModel.swift */,
 				7182987421A4EB4E00E452B9 /* ListPDVModel.swift */,
+				7172FA7121A79EBF004A7911 /* LibraryModel.swift */,
 				716C5703217E21C500003759 /* Protocols */,
 			);
 			path = Model;
@@ -293,6 +301,7 @@
 		7158DC2F216E84AA0083B844 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				7172FA7321A7A027004A7911 /* LibraryCell.swift */,
 				7109347B21A32A1800268EF1 /* Dashboard */,
 				7109348021A3307D00268EF1 /* PDV */,
 			);
@@ -574,11 +583,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-RED360/Pods-RED360-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AKMaskField/AKMaskField.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
+				"${BUILT_PRODUCTS_DIR}/PDFReader/PDFReader.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
@@ -597,11 +609,14 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AKMaskField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PDFReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
@@ -668,6 +683,7 @@
 				7158DC2E216E6D050083B844 /* PDVViewController.swift in Sources */,
 				71EC933321816EA8001498A2 /* MetasModel.swift in Sources */,
 				71867D7E2173D394003A00F8 /* ChannelCell.swift in Sources */,
+				7172FA7021A78EE9004A7911 /* LibraryViewController.swift in Sources */,
 				7182987721A4EC0600E452B9 /* AreaViewController.swift in Sources */,
 				7158DC2A216E623B0083B844 /* LoginViewController.swift in Sources */,
 				7158DC2C216E626A0083B844 /* SlideViewController.swift in Sources */,
@@ -694,6 +710,7 @@
 				7107E82C2173F651006EFF1E /* ChartValueFormatter.swift in Sources */,
 				7109348621A38C4400268EF1 /* OportunitiesModel.swift in Sources */,
 				7109347D21A32B3600268EF1 /* DashboardPDVViewController.swift in Sources */,
+				7172FA7221A79EBF004A7911 /* LibraryModel.swift in Sources */,
 				716C56F4217E1A8B00003759 /* Rest.swift in Sources */,
 				7173877C21868EB60059A856 /* ShowImageViewController.swift in Sources */,
 				7107E82E2173FC81006EFF1E /* OrderCell.swift in Sources */,
@@ -709,6 +726,7 @@
 				7109348221A35BCE00268EF1 /* PDVNotaRedCell.swift in Sources */,
 				7109348421A38A0600268EF1 /* PDVOpCell.swift in Sources */,
 				7109347F21A3303800268EF1 /* PDVDetailsCell.swift in Sources */,
+				7172FA7421A7A027004A7911 /* LibraryCell.swift in Sources */,
 				716C56FE217E205F00003759 /* UserManager.swift in Sources */,
 				7182987521A4EB4E00E452B9 /* ListPDVModel.swift in Sources */,
 				716C56F8217E1BA700003759 /* AccessDeniedModel.swift in Sources */,

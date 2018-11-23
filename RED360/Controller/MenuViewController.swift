@@ -13,17 +13,9 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     var vLoading = Bundle.main.loadNibNamed("VLoading", owner: self, options: nil)?.first as? VLoading
-    
-//    let menu = [
-//                (title: "", itens:[(title: "Meu Resultado", key: "DashboardViewController"), (title: "Meu Time", key: "MyTeamsViewController")]),
-//
-//                (title: "Pesquisas PDV", itens:[(title: "Por código PDV", key: "PDVViewController"), (title: "Por Área", key: "AreaViewController"), (title: "10 Maiores notas", key: "NotasViewController"), (title: "10 Maiores oportunidades", key: "OportunidadesViewController")]),
-//
-//                (title: "", itens:[(title: "Sair", key: "LoginViewController")])
-//    ]
 
     let menu = [
-        (title: "", itens:[(title: "Meu Resultado", key: "DashboardViewController"), (title: "Meu Time", key: "MyTeamsViewController")]),
+        (title: "", itens:[(title: "Meu Resultado", key: "DashboardViewController"), (title: "Meu Time", key: "MyTeamsViewController"), (title: "FDS", key: "LibraryViewController")]),
         
         (title: "Pesquisas PDV", itens:[(title: "Por código PDV", key: "PDVViewController"), (title: "Por Área", key: "AreaViewController"), (title: "10 Maiores notas", key: "ListNotaViewController"), (title: "10 Maiores oportunidades", key: "ListOportunitiesViewController")]),
         
