@@ -98,7 +98,7 @@ extension LibraryViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let books = books else {return}
         if let urlString = books[indexPath.row].urlArquivo {
-//            self.vLoading?.isHidden = false
+            self.vLoading?.isHidden = false
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 let remotePDFDocumentURL = URL(string: urlString)!
                 let document = PDFDocument(url: remotePDFDocumentURL)!
