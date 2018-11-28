@@ -24,7 +24,10 @@ class PDVButtonsCell: UITableViewCell {
     }
     
     @IBAction func redSimuladoAction(_ sender: UIButton) {
-        
+        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "REDSimuladoViewController") as? REDSimuladoViewController {
+            vc.pdv = superViewController.pdv
+            superViewController.present(vc, animated: true, completion: nil)
+        }
     }
     
 }

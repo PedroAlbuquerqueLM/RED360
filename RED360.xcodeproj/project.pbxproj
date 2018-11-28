@@ -22,6 +22,7 @@
 		7109348A21A39DC300268EF1 /* PDVCompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109348921A39DC300268EF1 /* PDVCompleteCell.swift */; };
 		7109348C21A39E8400268EF1 /* PDVCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109348B21A39E8400268EF1 /* PDVCompleteViewController.swift */; };
 		7109348E21A3A35A00268EF1 /* PDVCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109348D21A3A35A00268EF1 /* PDVCompleteModel.swift */; };
+		71118E7B21AEBE6400BDF521 /* RedSimuladoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71118E7A21AEBE6400BDF521 /* RedSimuladoCell.swift */; };
 		71125B0F218A9F1700880DFC /* MyTeams2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71125B0E218A9F1700880DFC /* MyTeams2ViewController.swift */; };
 		71125B11218AA1EE00880DFC /* MyTeamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71125B10218AA1EE00880DFC /* MyTeamsModel.swift */; };
 		7158DC25216E3D4F0083B844 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC24216E3D4F0083B844 /* MenuViewController.swift */; };
@@ -42,6 +43,7 @@
 		715E428A2187E8A500193B11 /* MyTeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715E42892187E8A500193B11 /* MyTeamsViewController.swift */; };
 		716524CF218345EB0088C772 /* HistoricoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716524CE218345EB0088C772 /* HistoricoModel.swift */; };
 		716524D1218354CF0088C772 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716524D0218354CF0088C772 /* StringExtension.swift */; };
+		716BF9F321AE16A7002FDDF9 /* REDSimuladoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716BF9F221AE16A7002FDDF9 /* REDSimuladoViewController.swift */; };
 		716C56ED217E061700003759 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 716C56EC217E061700003759 /* GoogleService-Info.plist */; };
 		716C56F0217E071000003759 /* VLoading.xib in Resources */ = {isa = PBXBuildFile; fileRef = 716C56EE217E070F00003759 /* VLoading.xib */; };
 		716C56F1217E071000003759 /* VLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C56EF217E071000003759 /* VLoading.swift */; };
@@ -108,6 +110,7 @@
 		7109348921A39DC300268EF1 /* PDVCompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVCompleteCell.swift; sourceTree = "<group>"; };
 		7109348B21A39E8400268EF1 /* PDVCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVCompleteViewController.swift; sourceTree = "<group>"; };
 		7109348D21A3A35A00268EF1 /* PDVCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVCompleteModel.swift; sourceTree = "<group>"; };
+		71118E7A21AEBE6400BDF521 /* RedSimuladoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedSimuladoCell.swift; sourceTree = "<group>"; };
 		71125B0E218A9F1700880DFC /* MyTeams2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTeams2ViewController.swift; sourceTree = "<group>"; };
 		71125B10218AA1EE00880DFC /* MyTeamsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamsModel.swift; sourceTree = "<group>"; };
 		7158DC24216E3D4F0083B844 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +137,7 @@
 		715E42892187E8A500193B11 /* MyTeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamsViewController.swift; sourceTree = "<group>"; };
 		716524CE218345EB0088C772 /* HistoricoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricoModel.swift; sourceTree = "<group>"; };
 		716524D0218354CF0088C772 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		716BF9F221AE16A7002FDDF9 /* REDSimuladoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REDSimuladoViewController.swift; sourceTree = "<group>"; };
 		716C56EC217E061700003759 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		716C56EE217E070F00003759 /* VLoading.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VLoading.xib; sourceTree = "<group>"; };
 		716C56EF217E071000003759 /* VLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VLoading.swift; sourceTree = "<group>"; };
@@ -240,6 +244,7 @@
 				7109348721A398AB00268EF1 /* PDVButtonsCell.swift */,
 				7109348921A39DC300268EF1 /* PDVCompleteCell.swift */,
 				7182987821A4FD5D00E452B9 /* PDVListCell.swift */,
+				71118E7A21AEBE6400BDF521 /* RedSimuladoCell.swift */,
 			);
 			name = PDV;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 				7182987621A4EC0600E452B9 /* AreaViewController.swift */,
 				7158DC2D216E6D050083B844 /* PDVViewController.swift */,
 				7172FA6F21A78EE9004A7911 /* LibraryViewController.swift */,
+				716BF9F221AE16A7002FDDF9 /* REDSimuladoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -689,6 +695,7 @@
 				7158DC2C216E626A0083B844 /* SlideViewController.swift in Sources */,
 				715E428A2187E8A500193B11 /* MyTeamsViewController.swift in Sources */,
 				715B98F9216E251E003BE5A5 /* DashboardViewController.swift in Sources */,
+				71118E7B21AEBE6400BDF521 /* RedSimuladoCell.swift in Sources */,
 				716C571C217F880400003759 /* PosicaoModel.swift in Sources */,
 				7182986F21A44E8300E452B9 /* MapViewController.swift in Sources */,
 				7158DC33216E84FE0083B844 /* ChartCell.swift in Sources */,
@@ -721,6 +728,7 @@
 				716C56FA217E1F1400003759 /* UserModel.swift in Sources */,
 				716524CF218345EB0088C772 /* HistoricoModel.swift in Sources */,
 				7109348E21A3A35A00268EF1 /* PDVCompleteModel.swift in Sources */,
+				716BF9F321AE16A7002FDDF9 /* REDSimuladoViewController.swift in Sources */,
 				71EC93352181749C001498A2 /* NotaCanalModel.swift in Sources */,
 				71125B11218AA1EE00880DFC /* MyTeamsModel.swift in Sources */,
 				7109348221A35BCE00268EF1 /* PDVNotaRedCell.swift in Sources */,
