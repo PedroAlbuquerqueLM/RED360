@@ -75,6 +75,7 @@
 		7182987921A4FD5D00E452B9 /* PDVListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182987821A4FD5D00E452B9 /* PDVListCell.swift */; };
 		7182987B21A5067D00E452B9 /* ListPDVSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182987A21A5067D00E452B9 /* ListPDVSModel.swift */; };
 		71867D7E2173D394003A00F8 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71867D7D2173D394003A00F8 /* ChannelCell.swift */; };
+		71985D9F21B1765600578C65 /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71985D9E21B1765600578C65 /* EncodableExtension.swift */; };
 		71EC933321816EA8001498A2 /* MetasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC933221816EA8001498A2 /* MetasModel.swift */; };
 		71EC93352181749C001498A2 /* NotaCanalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC93342181749C001498A2 /* NotaCanalModel.swift */; };
 /* End PBXBuildFile section */
@@ -174,6 +175,7 @@
 		7182987821A4FD5D00E452B9 /* PDVListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVListCell.swift; sourceTree = "<group>"; };
 		7182987A21A5067D00E452B9 /* ListPDVSModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPDVSModel.swift; sourceTree = "<group>"; };
 		71867D7D2173D394003A00F8 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
+		71985D9E21B1765600578C65 /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
 		71EC933221816EA8001498A2 /* MetasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetasModel.swift; sourceTree = "<group>"; };
 		71EC93342181749C001498A2 /* NotaCanalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaCanalModel.swift; sourceTree = "<group>"; };
 		84A56D90A65C876D3AB59338 /* Pods-RED360Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RED360Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RED360Tests/Pods-RED360Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				716524D0218354CF0088C772 /* StringExtension.swift */,
+				71985D9E21B1765600578C65 /* EncodableExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -714,6 +717,7 @@
 				71118E7B21AEBE6400BDF521 /* RedSimuladoCell.swift in Sources */,
 				716C571C217F880400003759 /* PosicaoModel.swift in Sources */,
 				7182986F21A44E8300E452B9 /* MapViewController.swift in Sources */,
+				71985D9F21B1765600578C65 /* EncodableExtension.swift in Sources */,
 				7158DC33216E84FE0083B844 /* ChartCell.swift in Sources */,
 				71125B0F218A9F1700880DFC /* MyTeams2ViewController.swift in Sources */,
 				716C571A217F83FE00003759 /* CalendarCell.swift in Sources */,

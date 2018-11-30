@@ -27,7 +27,7 @@ class PDVViewController: SlideViewController {
             view.addSubview(vl)
         }
         Rest.searchPDV(pdv: self.searchText.text!) { (pdv, accessDenied) in
-            guard let pdv = pdv else {return}
+            guard let pdv = pdv else {if let vl = self.vLoading{ vl.removeFromSuperview() }; return;}
             Rest.searchPDVOportunities(pdv: pdv.pdv!, onComplete: { (oportunities, accessDenied) in
                 guard let oportunities = oportunities else {return}
                 if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DashboardPDVViewController") as? DashboardPDVViewController {

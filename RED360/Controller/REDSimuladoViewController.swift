@@ -106,9 +106,12 @@ class REDSimuladoViewController: SlideViewController {
                         percentualTotal: String(format: "%.1f", getValues(pdvType: .ativacao).pontuaTotal!*100/getValues(pdvType: .ativacao).pontosTotais!)
         )
         
-        let p = redSimulado?.compactMap{$0.pergunta}
+        var perguntas = [PerguntaModel]()
         
-        let perguntas = [PerguntaModel]()
+        self.redSimulado?.forEach{
+            let newP = PerguntaModel(pdv: self.pdv, redSimulado: $0)
+            perguntas.append(newP)
+        }
         
         if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "REDFormViewController") as? REDFormViewController {
             vc.pesquisaSimulada = pesquisaSimulada
@@ -128,7 +131,26 @@ class REDSimuladoViewController: SlideViewController {
 
     
     @objc func closeAction() {
-        self.dismiss(animated: true, completion: nil)
+        // Create the alert controller
+        let alertController = UIAlertController(title: "Todos os Registros desse simulado serão perdidos, você deseja realmente sair?", message: "", preferredStyle: .alert)
+        
+        // Create the actions
+        let okAction = UIAlertAction(title: "Sair", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            NSLog("OK Pressed")
+            self.dismiss(animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.cancel) {
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        
+        // Add the actions
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        // Present the controller
+        self.present(alertController, animated: true, completion: nil)
     }
     
 }

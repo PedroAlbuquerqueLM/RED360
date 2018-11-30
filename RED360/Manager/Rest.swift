@@ -30,7 +30,7 @@ enum PDVCompleteType: String {
 class Rest{
     
     //Api de produção
-    static private let baseURL = "http://kpi.dimensiva.io/"
+    static private let baseURL = "https://api.red360.app/"
     class private func getHash() -> String{
         
         let hash = Date().description
@@ -601,14 +601,26 @@ class Rest{
         }
     }
     
-    class func saveSaveREDSimulado(pesquisaSimulada: PesquisaSimuladaModel, perguntas: [PerguntaModel], onComplete: @escaping (AccessDenied?) -> Void){
+    class func saveSaveREDSimulado(pesquisaSimulada: PesquisaSimuladaModel, perguntas: [PerguntaModel], onComplete: @escaping (Bool?, AccessDenied?) -> Void){
         
         let headers: HTTPHeaders = getHeaders()
-        let parameters = ["pesquisaSimulada" : pesquisaSimulada, "perguntas" : perguntas] as [String : Any]
         
         let url = baseURL+"api/red_simulado/cadastro.json"
-        Alamofire.request(url, method: .post, parameters: parameters as [String: Any], encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
-            onComplete(nil)
+        
+        do{
+            var perguntasDic = [[String:Any]]()
+            for pergunta in perguntas {
+                perguntasDic.append(try pergunta.asDictionary())
+            }
+            let pesquisaDic = try pesquisaSimulada.asDictionary()
+            let parameters = ["pesquisaSimulada" : pesquisaDic, "perguntas" : perguntasDic] as [String : Any]
+            
+            Alamofire.request(url, method: .post, parameters: parameters as [String: Any], encoding: Alamofire.JSONEncoding.default, headers: headers).responseJSON { (response) in
+                onComplete(true, nil)
+            }
+        }catch{
+            print(error.localizedDescription)
+            onComplete(false, nil)
         }
     }
 }

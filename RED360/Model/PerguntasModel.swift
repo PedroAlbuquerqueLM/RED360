@@ -9,6 +9,7 @@
 import Foundation
 
 class PerguntaModel : Codable {
+    
     var id: Int?
     var tipo: String?
     var curva: String?
@@ -20,8 +21,8 @@ class PerguntaModel : Codable {
     var pontua: Bool?
     
     init(pdv: PDVModel, redSimulado: REDSimuladoModel){
-        self.id = 0
-        self.tipo = ""
+        self.id = redSimulado.id
+        self.tipo = redSimulado.tipo
         self.curva = pdv.curva
         self.uf = pdv.uf
         self.canal = pdv.canal

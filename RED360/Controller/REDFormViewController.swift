@@ -29,7 +29,7 @@ class REDFormViewController: UIViewController {
     @IBAction func saveAction(_ sender: Any) {
         guard let pesquisaSimulada = self.pesquisaSimulada, let perguntas = self.perguntas else {return}
         
-        Rest.saveSaveREDSimulado(pesquisaSimulada: pesquisaSimulada, perguntas: perguntas) { (_) in
+        Rest.saveSaveREDSimulado(pesquisaSimulada: pesquisaSimulada, perguntas: perguntas) { _,_  in
             
             self.dismiss(animated: true, completion: nil)
         }
