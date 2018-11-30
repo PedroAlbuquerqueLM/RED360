@@ -14,8 +14,24 @@ class REDSimuladoCell: UITableViewCell {
     @IBOutlet weak var subtitle: UILabel!
     @IBOutlet weak var pontos: UILabel!
     @IBOutlet weak var pontua: UISwitch!
+    var superViewController: REDSimuladoViewController!
+    
+    var pdv: REDSimuladoModel? {
+        didSet{
+            guard let redS = pdv else {return}
+            self.titleLabel.text = redS.pergunta
+            self.subtitle.text = "(\(redS.kpi ?? "-"))"
+            self.pontos.text = "Pontos: \(redS.pontosPossiveis ?? "-")"
+            self.pontua.setOn((redS.pontua ?? false), animated: false)
+        }
+    }
     
     override func awakeFromNib() {
         
+    }
+    
+    @IBAction func pontuaSwitchAction(_ sender: Any) {
+        self.pdv?.pontua = self.pontua.isOn
+        superViewController.loadValues()
     }
 }

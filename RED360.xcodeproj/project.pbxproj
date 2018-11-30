@@ -10,6 +10,8 @@
 		03263653CB406F3BDE6356C4 /* Pods_RED360.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F734AB938BAFCB4A4C1ACB /* Pods_RED360.framework */; };
 		10909EC8A8090579611F5E8E /* Pods_RED360Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EDD9F5460D6D07CD97BBD5B /* Pods_RED360Tests.framework */; };
 		1A72301962F33744AC432B2F /* Pods_RED360UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F69EEE99B86DC20C0E1BBB /* Pods_RED360UITests.framework */; };
+		7102486C21B0369100447202 /* PesquisaSimuladaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102486B21B0369100447202 /* PesquisaSimuladaModel.swift */; };
+		7102486E21B0381E00447202 /* PerguntasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102486D21B0381E00447202 /* PerguntasModel.swift */; };
 		7107E82C2173F651006EFF1E /* ChartValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */; };
 		7107E82E2173FC81006EFF1E /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107E82D2173FC81006EFF1E /* OrderCell.swift */; };
 		7109347A21A320E300268EF1 /* PDVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109347921A320E300268EF1 /* PDVModel.swift */; };
@@ -23,6 +25,7 @@
 		7109348C21A39E8400268EF1 /* PDVCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109348B21A39E8400268EF1 /* PDVCompleteViewController.swift */; };
 		7109348E21A3A35A00268EF1 /* PDVCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109348D21A3A35A00268EF1 /* PDVCompleteModel.swift */; };
 		71118E7B21AEBE6400BDF521 /* RedSimuladoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71118E7A21AEBE6400BDF521 /* RedSimuladoCell.swift */; };
+		71118E7D21AECA7D00BDF521 /* REDSimuladoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71118E7C21AECA7D00BDF521 /* REDSimuladoModel.swift */; };
 		71125B0F218A9F1700880DFC /* MyTeams2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71125B0E218A9F1700880DFC /* MyTeams2ViewController.swift */; };
 		71125B11218AA1EE00880DFC /* MyTeamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71125B10218AA1EE00880DFC /* MyTeamsModel.swift */; };
 		7158DC25216E3D4F0083B844 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC24216E3D4F0083B844 /* MenuViewController.swift */; };
@@ -98,6 +101,8 @@
 		33EC9FE4D993D439C123C5A3 /* Pods-RED360.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RED360.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RED360/Pods-RED360.debug.xcconfig"; sourceTree = "<group>"; };
 		4057D3D2CFC156F1CB8E5560 /* Pods-RED360UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RED360UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RED360UITests/Pods-RED360UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		66F734AB938BAFCB4A4C1ACB /* Pods_RED360.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RED360.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7102486B21B0369100447202 /* PesquisaSimuladaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PesquisaSimuladaModel.swift; sourceTree = "<group>"; };
+		7102486D21B0381E00447202 /* PerguntasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerguntasModel.swift; sourceTree = "<group>"; };
 		7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartValueFormatter.swift; sourceTree = "<group>"; };
 		7107E82D2173FC81006EFF1E /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		7109347921A320E300268EF1 /* PDVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVModel.swift; sourceTree = "<group>"; };
@@ -111,6 +116,7 @@
 		7109348B21A39E8400268EF1 /* PDVCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVCompleteViewController.swift; sourceTree = "<group>"; };
 		7109348D21A3A35A00268EF1 /* PDVCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVCompleteModel.swift; sourceTree = "<group>"; };
 		71118E7A21AEBE6400BDF521 /* RedSimuladoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedSimuladoCell.swift; sourceTree = "<group>"; };
+		71118E7C21AECA7D00BDF521 /* REDSimuladoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REDSimuladoModel.swift; sourceTree = "<group>"; };
 		71125B0E218A9F1700880DFC /* MyTeams2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTeams2ViewController.swift; sourceTree = "<group>"; };
 		71125B10218AA1EE00880DFC /* MyTeamsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamsModel.swift; sourceTree = "<group>"; };
 		7158DC24216E3D4F0083B844 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -299,6 +305,9 @@
 				71EC933221816EA8001498A2 /* MetasModel.swift */,
 				7182987421A4EB4E00E452B9 /* ListPDVModel.swift */,
 				7172FA7121A79EBF004A7911 /* LibraryModel.swift */,
+				71118E7C21AECA7D00BDF521 /* REDSimuladoModel.swift */,
+				7102486B21B0369100447202 /* PesquisaSimuladaModel.swift */,
+				7102486D21B0381E00447202 /* PerguntasModel.swift */,
 				716C5703217E21C500003759 /* Protocols */,
 			);
 			path = Model;
@@ -704,6 +713,8 @@
 				7109348A21A39DC300268EF1 /* PDVCompleteCell.swift in Sources */,
 				7109348821A398AB00268EF1 /* PDVButtonsCell.swift in Sources */,
 				7109347A21A320E300268EF1 /* PDVModel.swift in Sources */,
+				7102486C21B0369100447202 /* PesquisaSimuladaModel.swift in Sources */,
+				71118E7D21AECA7D00BDF521 /* REDSimuladoModel.swift in Sources */,
 				716C56F1217E071000003759 /* VLoading.swift in Sources */,
 				715E428621873A5E00193B11 /* IndicatorViewController.swift in Sources */,
 				716C5700217E212900003759 /* FirebaseManager.swift in Sources */,
@@ -736,6 +747,7 @@
 				7109347F21A3303800268EF1 /* PDVDetailsCell.swift in Sources */,
 				7172FA7421A7A027004A7911 /* LibraryCell.swift in Sources */,
 				716C56FE217E205F00003759 /* UserManager.swift in Sources */,
+				7102486E21B0381E00447202 /* PerguntasModel.swift in Sources */,
 				7182987521A4EB4E00E452B9 /* ListPDVModel.swift in Sources */,
 				716C56F8217E1BA700003759 /* AccessDeniedModel.swift in Sources */,
 				715E42882187E4F600193B11 /* MenuCell.swift in Sources */,

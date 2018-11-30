@@ -29,6 +29,17 @@ class MyTeamsViewController: SlideViewController {
         }
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let nivel = appDelegate.user?.nivel else {return}
+        if nivel == 0 || nivel == 13 {
+            if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyTeams2ViewController") as? MyTeams2ViewController {
+                vc.selectedTime = self.menuItens[0].title
+                self.present(vc, animated: true, completion: nil)
+            }
+        }
+    }
 }
 
 extension MyTeamsViewController: UITableViewDelegate, UITableViewDataSource {

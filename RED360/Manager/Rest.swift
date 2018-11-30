@@ -574,4 +574,41 @@ class Rest{
             
         }
     }
+    
+    class func getREDSimulado(uf: String, canal: String, curva: String, tipo: String? = "RED", onComplete: @escaping ([REDSimuladoModel]?, AccessDenied?) -> Void){
+        
+        let headers: HTTPHeaders = getHeaders()
+        
+        let url = baseURL+"api/pergunta/\(uf)/\(canal)/\(curva)/\(tipo!).json"
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    let result = try JSONDecoder().decode([REDSimuladoModel].self, from: data)
+                    onComplete(result, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    class func saveSaveREDSimulado(pesquisaSimulada: PesquisaSimuladaModel, perguntas: [PerguntaModel], onComplete: @escaping (AccessDenied?) -> Void){
+        
+        let headers: HTTPHeaders = getHeaders()
+        let parameters = ["pesquisaSimulada" : pesquisaSimulada, "perguntas" : perguntas] as [String : Any]
+        
+        let url = baseURL+"api/red_simulado/cadastro.json"
+        Alamofire.request(url, method: .post, parameters: parameters as [String: Any], encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            onComplete(nil)
+        }
+    }
 }
