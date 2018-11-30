@@ -91,6 +91,17 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             if key == "ListNotaViewController" {vc.isListNota = true}
             else{vc.isListOport = true}
             appDelegate.slideMenuController?.changeMainViewController(vc, close: true)
+        }else if key == "MyTeamsViewController" {
+            guard let nivel = appDelegate.user?.nivel else {return}
+            if nivel == 0 || nivel == 13 {
+                if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyTeams2ViewController") as? MyTeams2ViewController {
+                    vc.selectedTime = "Regionais"
+                    appDelegate.slideMenuController?.changeMainViewController(vc, close: true)
+                }
+            }else{
+                let viewController = storyboard.instantiateViewController(withIdentifier: menu[indexPath.section].itens[indexPath.row].key)
+                appDelegate.slideMenuController?.changeMainViewController(viewController, close: true)
+            }
         }else{
             let viewController = storyboard.instantiateViewController(withIdentifier: menu[indexPath.section].itens[indexPath.row].key)
             appDelegate.slideMenuController?.changeMainViewController(viewController, close: true)

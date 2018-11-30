@@ -110,13 +110,20 @@ class REDSimuladoViewController: SlideViewController {
         
         let perguntas = [PerguntaModel]()
         
-        Rest.saveSaveREDSimulado(pesquisaSimulada: pesquisaSimulada, perguntas: perguntas) { (_) in
-            self.dismiss(animated: true, completion: nil)
+        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "REDFormViewController") as? REDFormViewController {
+            vc.pesquisaSimulada = pesquisaSimulada
+            vc.perguntas = perguntas
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: true, completion: nil)
         }
     }
 
     @objc func observationAction() {
-        self.dismiss(animated: true, completion: nil)
+        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ObservacaoViewController") as? ObservacaoViewController {
+            vc.observacao = self.observacao
+            vc.modalPresentationStyle = .overCurrentContext
+            self.present(vc, animated: true, completion: nil)
+        }
     }
 
     

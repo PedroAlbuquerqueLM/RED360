@@ -12,6 +12,8 @@
 		1A72301962F33744AC432B2F /* Pods_RED360UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F69EEE99B86DC20C0E1BBB /* Pods_RED360UITests.framework */; };
 		7102486C21B0369100447202 /* PesquisaSimuladaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102486B21B0369100447202 /* PesquisaSimuladaModel.swift */; };
 		7102486E21B0381E00447202 /* PerguntasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102486D21B0381E00447202 /* PerguntasModel.swift */; };
+		7102487021B0CD1400447202 /* ObservacaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102486F21B0CD1400447202 /* ObservacaoViewController.swift */; };
+		7102487221B0D85C00447202 /* REDFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102487121B0D85C00447202 /* REDFormViewController.swift */; };
 		7107E82C2173F651006EFF1E /* ChartValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */; };
 		7107E82E2173FC81006EFF1E /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107E82D2173FC81006EFF1E /* OrderCell.swift */; };
 		7109347A21A320E300268EF1 /* PDVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109347921A320E300268EF1 /* PDVModel.swift */; };
@@ -103,6 +105,8 @@
 		66F734AB938BAFCB4A4C1ACB /* Pods_RED360.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RED360.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7102486B21B0369100447202 /* PesquisaSimuladaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PesquisaSimuladaModel.swift; sourceTree = "<group>"; };
 		7102486D21B0381E00447202 /* PerguntasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerguntasModel.swift; sourceTree = "<group>"; };
+		7102486F21B0CD1400447202 /* ObservacaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservacaoViewController.swift; sourceTree = "<group>"; };
+		7102487121B0D85C00447202 /* REDFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REDFormViewController.swift; sourceTree = "<group>"; };
 		7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartValueFormatter.swift; sourceTree = "<group>"; };
 		7107E82D2173FC81006EFF1E /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		7109347921A320E300268EF1 /* PDVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVModel.swift; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 				7158DC2D216E6D050083B844 /* PDVViewController.swift */,
 				7172FA6F21A78EE9004A7911 /* LibraryViewController.swift */,
 				716BF9F221AE16A7002FDDF9 /* REDSimuladoViewController.swift */,
+				7102486F21B0CD1400447202 /* ObservacaoViewController.swift */,
+				7102487121B0D85C00447202 /* REDFormViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -698,6 +704,7 @@
 				7158DC2E216E6D050083B844 /* PDVViewController.swift in Sources */,
 				71EC933321816EA8001498A2 /* MetasModel.swift in Sources */,
 				71867D7E2173D394003A00F8 /* ChannelCell.swift in Sources */,
+				7102487221B0D85C00447202 /* REDFormViewController.swift in Sources */,
 				7172FA7021A78EE9004A7911 /* LibraryViewController.swift in Sources */,
 				7182987721A4EC0600E452B9 /* AreaViewController.swift in Sources */,
 				7158DC2A216E623B0083B844 /* LoginViewController.swift in Sources */,
@@ -752,6 +759,7 @@
 				716C56F8217E1BA700003759 /* AccessDeniedModel.swift in Sources */,
 				715E42882187E4F600193B11 /* MenuCell.swift in Sources */,
 				7173877E218690340059A856 /* ChartsLandscapeView.swift in Sources */,
+				7102487021B0CD1400447202 /* ObservacaoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
