@@ -114,17 +114,17 @@ class ChartsLandscapeView: UIView {
                 months1 = ["Jan","","", "Fev","","", "Mar","","", "Abr"]
                 months2 = ["Mai","","", "Jun","","", "Jul","","", "Ago"]
                 self.charts.first!.xAxis.valueFormatter = IndexAxisValueFormatter(values:months1)
-                self.charts.first!.noDataText = "Nenhuma informação disponível."
+                self.charts.first!.noDataText = "Please provide data for the chart."
                 self.charts[1].xAxis.valueFormatter = IndexAxisValueFormatter(values:months2)
-                self.charts[1].noDataText = "Nenhuma informação disponível."
+                self.charts[1].noDataText = "Please provide data for the chart."
                 self.charts.last!.xAxis.valueFormatter = IndexAxisValueFormatter(values:months3)
-                self.charts.last!.noDataText = "Nenhuma informação disponível."
+                self.charts.last!.noDataText = "Please provide data for the chart."
                 dataSets = [[BarChartDataSet]() ,[BarChartDataSet](), [BarChartDataSet]()]
             }else{
                 self.charts.first!.xAxis.valueFormatter = IndexAxisValueFormatter(values:months1)
-                self.charts.first!.noDataText = "Nenhuma informação disponível."
+                self.charts.first!.noDataText = "Please provide data for the chart."
                 self.charts.last!.xAxis.valueFormatter = IndexAxisValueFormatter(values:months2)
-                self.charts.last!.noDataText = "Nenhuma informação disponível."
+                self.charts.last!.noDataText = "Please provide data for the chart."
             }
             
             
@@ -175,7 +175,7 @@ class ChartsLandscapeView: UIView {
             var dataSets = [[BarChartDataSet]()]
             
             self.charts.first!.xAxis.valueFormatter = IndexAxisValueFormatter(values:titles)
-            self.charts.first!.noDataText = "Nenhuma informação disponível."
+            self.charts.first!.noDataText = "Please provide data for the chart."
             
             var offset = 0
             

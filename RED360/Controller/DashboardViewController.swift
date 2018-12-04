@@ -47,7 +47,11 @@ class DashboardViewController: SlideViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        if let vl = vLoading{
+            vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+            vl.aiLoading.startAnimating()
+            view.addSubview(vl)
+        }
         Rest.loadNotaPilar(user: self.user) { (notasPilar, accessDenied) in
             self.notasPilar = notasPilar
             if self.user != nil {
