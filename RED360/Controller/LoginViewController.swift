@@ -79,7 +79,12 @@ class LoginViewController: UIViewController {
     
     func didSelectLogIn(with cpf: String, and password: String) {
         UserModel(cpf: cpf, password: password).signIn { (user) in
-            UserModel.getUser(email: (user?.email)!) { (u) in
+            guard let user = user else {
+                if let vl = self.vLoading{ vl.removeFromSuperview() }
+                self.createAlertWith(title: "Erro", andMessage: "Login/Senha Incorretos")
+                return
+            }
+            UserModel.getUser(email: (user.email)!) { (u) in
                 appDelegate.user = u
                 UserModel.getToken(completion: { (token) in
                     appDelegate.user?.token = token

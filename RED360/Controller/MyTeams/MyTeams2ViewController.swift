@@ -46,6 +46,7 @@ class MyTeams2ViewController: SlideViewController {
             Rest.loadMeuTime(cargoTime: self.selectedTime) { (myTeams, accessDenied) in
                 if let vl = self.vLoading{ vl.removeFromSuperview() }
                 self.menuShow = myTeams
+                myTeams?.emptyAlert("Nenhum time encontrado", self)
                 self.tableMenu.reloadData()
             }
         }

@@ -25,6 +25,9 @@ extension FirebaseAuthenticable {
         Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
             if let user = user {
                 onComplete(user.user)
+            }else{
+                onComplete(nil)
+                
             }
         })
     }

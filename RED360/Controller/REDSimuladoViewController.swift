@@ -73,6 +73,9 @@ class REDSimuladoViewController: SlideViewController {
         self.redSimuladoFiltered = self.redSimulado?.filter{$0.kpi! == pdvType.rawValue}
         self.loadValues()
         self.dashTableView.reloadData()
+        if self.dashTableView.numberOfRows(inSection: 0) > 0 {
+            self.dashTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        }
     }
     
     func loadValues(){
@@ -117,6 +120,7 @@ class REDSimuladoViewController: SlideViewController {
             vc.pesquisaSimulada = pesquisaSimulada
             vc.perguntas = perguntas
             vc.modalPresentationStyle = .overCurrentContext
+            vc.delegate = self
             self.present(vc, animated: true, completion: nil)
         }
     }
@@ -195,6 +199,14 @@ extension REDSimuladoViewController: UITabBarDelegate {
 extension REDSimuladoViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.location = manager.location!.coordinate
+    }
+}
+
+extension REDSimuladoViewController: REDFormDelegate {
+    func resignView() {
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1.0) {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
 

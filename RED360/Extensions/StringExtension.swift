@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 fileprivate let months = ["Janeiro" : 1, "Fevereiro" : 2, "Março" : 3, "Abril" : 4, "Maio" : 5, "Junho" : 6, "Julho" : 7, "Agosto" : 8, "Setembro" : 9, "Outubro" : 10, "Novembro" : 11, "Dezembro" : 12]
 
@@ -17,5 +18,20 @@ extension String {
     
     var toDouble: Double? {
         return Double(self.replacingOccurrences(of: ",", with: "."))
+    }
+}
+
+extension Array {
+    func emptyAlert(_ message: String, _ superViewController: UIViewController){
+        let alertController = UIAlertController(title: message, message: "", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) {
+            UIAlertAction in
+        }
+        
+        alertController.addAction(cancelAction)
+        
+        // Present the controller
+        superViewController.present(alertController, animated: true, completion: nil)
     }
 }

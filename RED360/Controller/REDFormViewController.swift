@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol REDFormDelegate: class {
+    func resignView()
+}
+
 class REDFormViewController: UIViewController {
     
     @IBOutlet weak var resumoLabel: UITextView!
@@ -15,6 +19,8 @@ class REDFormViewController: UIViewController {
     
     var pesquisaSimulada: PesquisaSimuladaModel?
     var perguntas: [PerguntaModel]?
+    
+    weak var delegate: REDFormDelegate?
     
     override func viewDidLoad() {
         self.resumoLabel.text = "Ativação: \(pesquisaSimulada?.percentualAtivacao ?? "")%, Disponibilidade: \(pesquisaSimulada?.percentualDisponibilidade ?? "")%, Gdm: \(pesquisaSimulada?.percentualGdm ?? "")%, Preço: \(pesquisaSimulada?.percentualPreco ?? "")%, Sovi: \(pesquisaSimulada?.percentualSovi ?? "")%, Total: \(pesquisaSimulada?.percentualTotal ?? "")%"
@@ -31,6 +37,7 @@ class REDFormViewController: UIViewController {
         
         Rest.saveSaveREDSimulado(pesquisaSimulada: pesquisaSimulada, perguntas: perguntas) { _,_  in
             
+            self.delegate?.resignView()
             self.dismiss(animated: true, completion: nil)
         }
     }

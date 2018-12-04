@@ -46,7 +46,7 @@ extension MyTeamsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyTeams2ViewController") as? MyTeams2ViewController {
-            vc.selectedTime = self.menuItens[indexPath.row].title
+            vc.selectedTime = menuShow[indexPath.row]
             self.present(vc, animated: true, completion: nil)
         }
     }

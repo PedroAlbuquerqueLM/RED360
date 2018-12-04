@@ -31,12 +31,8 @@ class PDVDetailsCell: UITableViewCell {
     @IBAction func mapButtonAction(_ sender: Any) {
         guard let pdv = pdv else{return}
         if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MapViewController") as? MapViewController {
-            var la = "\(pdv.latitude ?? 0)"
-            var ln = "\(pdv.longitude ?? 0)"
-            la.insert(".", at: la.index(la.startIndex, offsetBy: 2))
-            ln.insert(".", at: ln.index(ln.startIndex, offsetBy: 3))
-            la.removeLast(2)
-            ln.removeLast(2)
+            let la = "\(pdv.latitude ?? 0)"
+            let ln = "\(pdv.longitude ?? 0)"
             
             guard let latitude = Double(la), let longitude = Double(ln) else {return}
             vc.location = GeoPoint(latitude: (latitude == 0 ? -3.7541127 : latitude), longitude: (longitude == 0 ? -38.4906188 : longitude))
