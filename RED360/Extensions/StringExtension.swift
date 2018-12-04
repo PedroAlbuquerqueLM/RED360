@@ -16,6 +16,14 @@ extension String {
         return months[self]
     }
     
+    var getNextMonth: String {
+        let month = months[self]! == 12 ? 1 : months[self]!+1
+        if let asult = months.someKey(forValue: month) {
+            return asult
+        }
+        return ""
+    }
+    
     var toDouble: Double? {
         return Double(self.replacingOccurrences(of: ",", with: "."))
     }
@@ -33,5 +41,11 @@ extension Array {
         
         // Present the controller
         superViewController.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension Dictionary where Value: Equatable {
+    func someKey(forValue val: Value) -> Key? {
+        return first(where: { $1 == val })?.key
     }
 }
