@@ -14,6 +14,8 @@ class DashboardViewController: SlideViewController {
     
     @IBOutlet weak var dashTableView: UITableView!
     
+    @IBOutlet weak var emptyView: UIView!
+    
     var notasPilar: [NotaPilarModel]?
     var notasCanal: [NotaCanalModel]?
     var historico: [HistoricoModel]?
@@ -94,6 +96,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 3 {
+            self.emptyView.isHidden = !(self.notasPilar == nil || self.notasPilar!.isEmpty)
             guard let notasCanal = self.notasCanal else {return 1}
             return notasCanal.count
         }

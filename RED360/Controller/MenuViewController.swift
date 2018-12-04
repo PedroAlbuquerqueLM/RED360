@@ -93,7 +93,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             appDelegate.slideMenuController?.changeMainViewController(vc, close: true)
         }else if key == "MyTeamsViewController" {
             guard let nivel = appDelegate.user?.nivel else {return}
-            if nivel == 0 || nivel == 13 {
+            if nivel == 13 {
                 if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyTeams2ViewController") as? MyTeams2ViewController {
                     vc.selectedTime = "Regionais"
                     appDelegate.slideMenuController?.changeMainViewController(vc, close: true)

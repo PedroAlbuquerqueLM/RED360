@@ -41,7 +41,12 @@ class Rest{
     class private func getHeaders() -> HTTPHeaders{
         
         guard let idToken = appDelegate.user?.token, let uID = appDelegate.user?.uid else{
-            fatalError("Erro ao tentar pegar as credenciais")
+//            fatalError("Erro ao tentar pegar as credenciais")
+            let headers: HTTPHeaders = [
+                "Authorization" : "0",
+                "Uid" : "0"
+            ]
+            return headers
         }
         
         let headers: HTTPHeaders = [

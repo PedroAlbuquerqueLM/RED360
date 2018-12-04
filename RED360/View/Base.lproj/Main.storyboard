@@ -72,6 +72,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nz5-cl-Gda">
                                 <rect key="frame" x="16" y="60" width="343" height="607"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="1500" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalendarCell" id="aRJ-hz-FzG" customClass="CalendarCell" customModule="RED360" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
@@ -561,18 +562,42 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="pcK-Ix-loh"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7b-N7-YHe">
+                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nenhuma informação disponível." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpW-4e-ATL">
+                                        <rect key="frame" x="17.5" y="293" width="340" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="340" id="AUv-SQ-aE0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94098168611526489" green="0.94524556398391724" blue="0.94094854593276978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="bpW-4e-ATL" firstAttribute="centerX" secondItem="k7b-N7-YHe" secondAttribute="centerX" id="NhB-VB-Tui"/>
+                                    <constraint firstItem="bpW-4e-ATL" firstAttribute="centerY" secondItem="k7b-N7-YHe" secondAttribute="centerY" id="sqx-Ya-Fh0"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.94098168611526489" green="0.94524556398391724" blue="0.94094854593276978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="k7b-N7-YHe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3MT-0l-nt2"/>
                             <constraint firstItem="Nz5-cl-Gda" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="W6c-ZQ-jz7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="k7b-N7-YHe" secondAttribute="bottom" id="Xwj-zu-oEk"/>
+                            <constraint firstItem="k7b-N7-YHe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="Zi1-mb-dOF"/>
                             <constraint firstItem="Nz5-cl-Gda" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="dM1-kJ-AU6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Nz5-cl-Gda" secondAttribute="bottom" id="kG5-jm-baR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Nz5-cl-Gda" secondAttribute="trailing" constant="16" id="ldM-mM-rTQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="k7b-N7-YHe" secondAttribute="trailing" id="opb-Xd-P7G"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="dashTableView" destination="Nz5-cl-Gda" id="2ae-wv-CUi"/>
+                        <outlet property="emptyView" destination="k7b-N7-YHe" id="Rl9-hs-Wwf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
