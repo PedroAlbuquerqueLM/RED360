@@ -26,11 +26,11 @@
 		<true/>
 	</dict>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Poderia fornecer acesso a sua localização?</string>
+	<string>RED 360 precisa de sua permissão para acessar a sua localização para realizar o RED Simulado</string>
 	<key>NSLocationUsageDescription</key>
-	<string>Poderia fornecer acesso a sua localização?</string>
+	<string>RED 360 precisa de sua permissão para acessar a sua localização para realizar o RED Simulado</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Poderia fornecer acesso a sua localização?</string>
+	<string>RED 360 precisa de sua permissão para acessar a sua localização para realizar o RED Simulado</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

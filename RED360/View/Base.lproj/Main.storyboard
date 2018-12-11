@@ -1464,10 +1464,13 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmZ-UA-437">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmZ-UA-437">
                                                     <rect key="frame" x="15" y="241" width="313" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="313" id="Hwy-FQ-SxG"/>
+                                                        <constraint firstAttribute="height" constant="44" id="vfV-fN-1pO"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                     <state key="normal" title="Ver no mapa">
                                                         <color key="titleColor" red="0.96078431369999995" green="0.36862745099999999" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1484,6 +1487,10 @@
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.96078431369999995" green="0.36862745099999999" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="WmZ-UA-437" firstAttribute="centerX" secondItem="IP5-XX-sZR" secondAttribute="centerX" id="Lg9-zh-5Ti"/>
+                                                <constraint firstItem="WmZ-UA-437" firstAttribute="top" secondItem="IP5-XX-sZR" secondAttribute="top" constant="241" id="mjk-PU-47a"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="canalLabel" destination="yDb-Yy-2mT" id="1fn-jx-TUl"/>
