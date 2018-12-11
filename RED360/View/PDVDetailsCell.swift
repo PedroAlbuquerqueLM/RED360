@@ -35,7 +35,9 @@ class PDVDetailsCell: UITableViewCell {
             let ln = "\(pdv.longitude ?? 0)"
             
             guard let latitude = Double(la), let longitude = Double(ln) else {return}
-            vc.location = GeoPoint(latitude: (latitude == 0 ? -3.7541127 : latitude), longitude: (longitude == 0 ? -38.4906188 : longitude))
+            let vLong = (longitude > 100 && longitude < 0) || (longitude < 100 && longitude > 0)
+            let vLat = (latitude > 100 && latitude < 0) || (latitude < 100 && latitude > 0)
+            vc.location = GeoPoint(latitude: vLat ? (latitude == 0 ? -3.7541127 : latitude) : -3.7541127, longitude: vLong ? (longitude == 0 ? -38.4906188 : longitude) : -38.4906188)
             superViewController.present(vc, animated: true, completion: nil)
         }
     }

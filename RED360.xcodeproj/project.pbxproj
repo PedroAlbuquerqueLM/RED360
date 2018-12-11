@@ -49,7 +49,6 @@
 		716524CF218345EB0088C772 /* HistoricoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716524CE218345EB0088C772 /* HistoricoModel.swift */; };
 		716524D1218354CF0088C772 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716524D0218354CF0088C772 /* StringExtension.swift */; };
 		716BF9F321AE16A7002FDDF9 /* REDSimuladoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716BF9F221AE16A7002FDDF9 /* REDSimuladoViewController.swift */; };
-		716C56ED217E061700003759 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 716C56EC217E061700003759 /* GoogleService-Info.plist */; };
 		716C56F0217E071000003759 /* VLoading.xib in Resources */ = {isa = PBXBuildFile; fileRef = 716C56EE217E070F00003759 /* VLoading.xib */; };
 		716C56F1217E071000003759 /* VLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C56EF217E071000003759 /* VLoading.swift */; };
 		716C56F4217E1A8B00003759 /* Rest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716C56F3217E1A8B00003759 /* Rest.swift */; };
@@ -76,6 +75,7 @@
 		7182987B21A5067D00E452B9 /* ListPDVSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7182987A21A5067D00E452B9 /* ListPDVSModel.swift */; };
 		71867D7E2173D394003A00F8 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71867D7D2173D394003A00F8 /* ChannelCell.swift */; };
 		71985D9F21B1765600578C65 /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71985D9E21B1765600578C65 /* EncodableExtension.swift */; };
+		71C52FF421C04E5300B64E9E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71C52FF321C04E5300B64E9E /* GoogleService-Info.plist */; };
 		71EC933321816EA8001498A2 /* MetasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC933221816EA8001498A2 /* MetasModel.swift */; };
 		71EC93352181749C001498A2 /* NotaCanalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EC93342181749C001498A2 /* NotaCanalModel.swift */; };
 /* End PBXBuildFile section */
@@ -149,7 +149,6 @@
 		716524CE218345EB0088C772 /* HistoricoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricoModel.swift; sourceTree = "<group>"; };
 		716524D0218354CF0088C772 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		716BF9F221AE16A7002FDDF9 /* REDSimuladoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REDSimuladoViewController.swift; sourceTree = "<group>"; };
-		716C56EC217E061700003759 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		716C56EE217E070F00003759 /* VLoading.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VLoading.xib; sourceTree = "<group>"; };
 		716C56EF217E071000003759 /* VLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VLoading.swift; sourceTree = "<group>"; };
 		716C56F3217E1A8B00003759 /* Rest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rest.swift; sourceTree = "<group>"; };
@@ -176,6 +175,7 @@
 		7182987A21A5067D00E452B9 /* ListPDVSModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPDVSModel.swift; sourceTree = "<group>"; };
 		71867D7D2173D394003A00F8 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		71985D9E21B1765600578C65 /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
+		71C52FF321C04E5300B64E9E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71EC933221816EA8001498A2 /* MetasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetasModel.swift; sourceTree = "<group>"; };
 		71EC93342181749C001498A2 /* NotaCanalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaCanalModel.swift; sourceTree = "<group>"; };
 		84A56D90A65C876D3AB59338 /* Pods-RED360Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RED360Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RED360Tests/Pods-RED360Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -363,7 +363,7 @@
 				7158DC26216E61FB0083B844 /* View */,
 				7158DC27216E62090083B844 /* Controller */,
 				715B98FD216E251E003BE5A5 /* Assets.xcassets */,
-				716C56EC217E061700003759 /* GoogleService-Info.plist */,
+				71C52FF321C04E5300B64E9E /* GoogleService-Info.plist */,
 				715B9902216E251E003BE5A5 /* Info.plist */,
 			);
 			path = RED360;
@@ -556,10 +556,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				715B9901216E251E003BE5A5 /* LaunchScreen.storyboard in Resources */,
-				716C56ED217E061700003759 /* GoogleService-Info.plist in Resources */,
 				716C56F0217E071000003759 /* VLoading.xib in Resources */,
 				715B98FE216E251E003BE5A5 /* Assets.xcassets in Resources */,
 				715B98FC216E251E003BE5A5 /* Main.storyboard in Resources */,
+				71C52FF421C04E5300B64E9E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

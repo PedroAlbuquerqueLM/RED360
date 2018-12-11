@@ -82,7 +82,12 @@ class REDSimuladoViewController: SlideViewController {
         let pdvType = self.selectedPDVType
         let values = getValues(pdvType: pdvType)
         
-        self.totalLabel.text = "Total: \(String(format: "%.1f", values.pontuaTotal!*100/values.pontosTotais!))%"
+        guard let pontuaTotal = values.pontuaTotal, let pontosTotais = values.pontosTotais else {
+            self.alertEmpty()
+            return
+        }
+        
+        self.totalLabel.text = "Total: \(String(format: "%.1f", pontuaTotal*100/pontosTotais))%"
         
         self.subtitleLabel.text = "\(pdvType.rawValue): \(String(format: "%.1f", values.pontua!*100/values.pontos!))%"
     }
@@ -133,6 +138,22 @@ class REDSimuladoViewController: SlideViewController {
         }
     }
 
+    func alertEmpty(){
+        let alertController = UIAlertController(title: "Sem dados para simular.", message: "", preferredStyle: .alert)
+        
+        // Create the actions
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            NSLog("OK Pressed")
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        // Add the actions
+        alertController.addAction(okAction)
+        
+        // Present the controller
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     @objc func closeAction() {
         // Create the alert controller
