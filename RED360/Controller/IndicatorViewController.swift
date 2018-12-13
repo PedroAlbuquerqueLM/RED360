@@ -14,7 +14,7 @@ class IndicatorViewController: UIViewController{
     @IBOutlet weak var dataTable: UITableView!
     
     var channel = ""
-    var dicNota: [String: NotaCanalModel]?
+    var dicNota: [String: NotaCanalModel?]?
     
     var titles = ["total", "ativacao", "disponibilidade", "gdm", "preco", "sovi"]
     var titlesNames = ["Total", "Ativacao", "Disponibilidade", "GDM", "Preço", "Sovi"]

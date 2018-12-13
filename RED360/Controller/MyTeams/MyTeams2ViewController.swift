@@ -23,12 +23,12 @@ class MyTeams2ViewController: SlideViewController {
         
         self.setTitle("Meu Time")
         guard let nivel = appDelegate.user?.nivel else {return}
-        if nivel != 0 && nivel != 13 {
+//        if nivel != 0 && nivel != 13 {
             let doneItem = UIBarButtonItem(image: #imageLiteral(resourceName: "closeIcon"), style: .done, target: nil, action: #selector(closeAction))
             doneItem.tintColor = UIColor.white
         
             self.navItem?.leftBarButtonItem = doneItem;
-        }
+//        }
         
     }
     

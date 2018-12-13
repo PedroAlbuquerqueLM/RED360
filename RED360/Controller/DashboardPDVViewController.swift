@@ -89,8 +89,8 @@ extension DashboardPDVViewController: UITableViewDelegate, UITableViewDataSource
             case 0: return 296
             case 1: return 150
             case 2: return 280
-            case 3: return 100
-            case 9: return 120 //120 liberar quando tiver o RED SIMULADO
+            case 3: return 92
+            case 9: return 124
             default:
                 if indexPath.row > 0 { return 60}
                 if self.oportunities[titlesOut[indexPath.section-4]]?.count == 0 { return 80 }

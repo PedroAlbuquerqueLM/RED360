@@ -30,7 +30,13 @@ class AreaViewController: SlideViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setTitle("Selecione um \(self.areaSelected.rawValue)")
+        if isListNota{
+            self.setTitle("10 maiores notas")
+        }else if isListOport{
+            self.setTitle("10 maiores oportunidades")
+        }else{
+            self.setTitle("Selecione um \(self.areaSelected.rawValue)")
+        }
         
         self.undoItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backIcon"), style: .plain, target: nil, action: #selector(undoAction))
         undoItem.tintColor = UIColor.white
@@ -169,7 +175,11 @@ extension AreaViewController: UITableViewDelegate, UITableViewDataSource {
             guard let pdv = self.pdvs?[indexPath.row].pdv else {return}
             self.loading()
             Rest.searchPDV(pdv: pdv) { (pdv, accessDenied) in
-                guard let pdv = pdv else {return}
+                guard let pdv = pdv else {
+                    [Int]().emptyAlert("PDV não cadastrado.", self);
+                    if let vl = self.vLoading{ vl.removeFromSuperview() }
+                    return
+                }
                 Rest.searchPDVOportunities(pdv: pdv.pdv!, onComplete: { (oportunities, accessDenied) in
                     guard let oportunities = oportunities else {return}
                     if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DashboardPDVViewController") as? DashboardPDVViewController {

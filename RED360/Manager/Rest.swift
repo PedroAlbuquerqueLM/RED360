@@ -262,7 +262,7 @@ class Rest{
         }
     }
     
-    class func loadIndicator(channel: String, onComplete: @escaping ([String: NotaCanalModel]?, AccessDenied?) -> Void){
+    class func loadIndicator(channel: String, onComplete: @escaping ([String: NotaCanalModel?]?, AccessDenied?) -> Void){
         
         guard let user = appDelegate.user, let nivel = user.nivel else {return}
         var cargo = ""
@@ -279,7 +279,7 @@ class Rest{
         Alamofire.request(url, method: .post, parameters: parameters as [String: Any] , encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
             if let data = response.data{
                 do{
-                    let result = try JSONDecoder().decode([String: NotaCanalModel].self, from: data)
+                    let result = try JSONDecoder().decode([String: NotaCanalModel?].self, from: data)
                     print(result)
                     onComplete(result, nil)
                     
@@ -364,7 +364,6 @@ class Rest{
                     }
                 }
             }
-            
         }
     }
     
@@ -584,7 +583,7 @@ class Rest{
         
         let headers: HTTPHeaders = getHeaders()
         
-        let url = baseURL+"api/pergunta/\(uf)/\(canal)/\(curva)/\(tipo!).json"
+        let url = baseURL+"api/pergunta/\(uf)/\(canal.replacingOccurrences(of: " ", with: "%20"))/\(curva)/\(tipo!).json"
         
         Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
             if let data = response.data{
