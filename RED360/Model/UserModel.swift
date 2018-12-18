@@ -47,6 +47,7 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
         self.nome = team.nome
         self.regional = team.regional
         self.rotaVendedor = team.rotaVendedor
+        self.supervisao = team.supervisao
         self.uid = team.uid
     }
     
@@ -129,7 +130,7 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
         case 4:
             return user.rotaVendedor!
         default:
-            return "-"
+            return user.diretoria!
         }
     }
     
