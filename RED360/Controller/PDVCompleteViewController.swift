@@ -58,8 +58,10 @@ extension PDVCompleteViewController: UITableViewDelegate, UITableViewDataSource 
             cell.title.text = pdv.pergunta
             cell.possiveisLabel.text = pdv.pontosPossiveis
             cell.realizadosLabel.text = pdv.pontosRealizados
-            cell.ttcSugeridoLabel.text = pdv.ttcSugerido
-            cell.ttcPesquisadoLabel.text = pdv.ttcPesquisado
+            let ttcS = Double(pdv.ttcSugerido?.replacingOccurrences(of: ",", with: ".") ?? "0.0")
+            let ttcP = Double(pdv.ttcPesquisado?.replacingOccurrences(of: ",", with: ".") ?? "0.0")
+            cell.ttcSugeridoLabel.text = String(format: "%.1f", ttcS ?? 0).replacingOccurrences(of: ".", with: ",")
+            cell.ttcPesquisadoLabel.text = String(format: "%.1f", ttcP ?? 0).replacingOccurrences(of: ".", with: ",")
             return cell
         }else if pdv.percentualSovi != nil {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PDVCompleteSoviCell", for: indexPath) as! PDVCompleteSoviCell
