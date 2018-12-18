@@ -117,6 +117,22 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
         }
     }
     
+    static func getcargoByNivel() -> String {
+        guard let user = appDelegate.user, let nivel = appDelegate.user?.nivel else {return "-"}
+        switch nivel {
+        case 1:
+            return user.diretoria!
+        case 2:
+            return user.gerencia!
+        case 3:
+            return user.supervisao!
+        case 4:
+            return user.rotaVendedor!
+        default:
+            return "-"
+        }
+    }
+    
     static func getCargo() -> String {
         if let diretoria = appDelegate.user?.diretoria {
             return diretoria

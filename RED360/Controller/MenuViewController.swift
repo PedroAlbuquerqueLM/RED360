@@ -27,7 +27,7 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
         
         self.nameLabel.text = appDelegate.user?.nome
-        self.subtitleLabel.text = appDelegate.user?.diretoria
+        self.subtitleLabel.text = UserModel.getcargoByNivel()
         
     }
     

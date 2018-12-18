@@ -284,6 +284,7 @@ class Rest{
         guard let user = appDelegate.user, let nivel = user.nivel else {return}
         var cargo = ""
         var supervisao = ""
+        
         switch nivel {
         case 1:
             cargo = user.diretoria != nil ? user.diretoria! : ""
