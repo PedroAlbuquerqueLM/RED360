@@ -80,7 +80,7 @@ class SlideViewController: UIViewController {
     }
     
     func setTitle(_ title: String){
-        self.navItem?.title = title.uppercased()
+        self.navItem?.title = title
     }
     
     func isNotch() -> Bool{

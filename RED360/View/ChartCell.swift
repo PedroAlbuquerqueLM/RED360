@@ -87,7 +87,7 @@ class ChartCell: UITableViewCell {
     var values: (line: [Double], bar: [Double], finishMonths: Bool)? {
         didSet{
             self.chart.isHidden = true
-            self.titleLabel.text = "Histórico"
+            self.titleLabel.text = "Histórico".uppercased()
             self.titleBarGreen.text = "Nota RED"
             self.titleBarGray.text = "Meta"
             self.viewBarGreen.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
@@ -136,7 +136,7 @@ class ChartCell: UITableViewCell {
     var pdv: PDVModel? {
         didSet{
             self.chart.isHidden = true
-            self.titleLabel.text = "NOTA POR PILAR"
+            self.titleLabel.text = "NOTA POR PILAR".uppercased()
             self.chartsLandscapeView?.removeFromSuperview()
             self.chartsLandscapeView = ChartsLandscapeView(frame: CGRect(x: 0, y: 50, width: Int(self.frame.width), height: Int(self.frame.height) - 70), qnt: 1, isLand: false)
             self.chartsLandscapeView!.pdv = self.pdv
@@ -148,7 +148,7 @@ class ChartCell: UITableViewCell {
         didSet{
             self.chart.isHidden = false
             self.chartsLandscapeView?.removeFromSuperview()
-            self.titleLabel.text = "Nota por pilar"
+            self.titleLabel.text = "Nota por pilar".uppercased()
             self.titleBarGreen.text = "Mês Atual"
             self.titleBarGray.text = "Mês Anterior"
             self.viewBarGreen.backgroundColor = #colorLiteral(red: 0.07754790038, green: 0.692034781, blue: 0.3123155236, alpha: 1)

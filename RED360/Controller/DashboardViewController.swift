@@ -173,7 +173,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             }
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChartCell", for: indexPath) as! ChartCell
-            cell.titleLabel.text = "Histórico"
+            cell.titleLabel.text = "Histórico".uppercased()
             
             guard self.historico != nil && self.metas != nil else {
                 cell.emptyView.isHidden = false
