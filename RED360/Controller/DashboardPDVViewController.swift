@@ -86,7 +86,7 @@ extension DashboardPDVViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
-            case 0: return 296
+            case 0: return 311
             case 1: return 150
             case 2: return 280
             case 3: return 92

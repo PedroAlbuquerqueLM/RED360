@@ -66,7 +66,7 @@ class DashboardViewController: SlideViewController {
                 self.metas = appDelegate.user?.metas?.getMetasDic()
             }
             self.mes = notasPilar?.first?.mesNome?.getMonth
-            let mesForMeta = notasPilar?.first?.mesNome?.getNextMonth
+            let mesForMeta = notasPilar?.first?.mesNome
             if let notasFirst = notasPilar?.first, let notasLast = notasPilar?.last {
                 self.rank = ((nota: notasFirst.total!, vari: ((notasFirst.total)! - (notasLast.total)!), meta: 0.0, rank: 0))
             }

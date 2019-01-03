@@ -52,7 +52,7 @@ class PDVDetailsCell: UITableViewCell {
             self.gerenciaLabel.text = pdv.gerencia
             self.supervisaoLabel.text = pdv.supervisao
             self.rotaLabel.text = pdv.rotaVendedor
-            self.enderecoLabel.text = "\(pdv.rua ?? "")"
+            self.enderecoLabel.text = "\(pdv.rua ?? "") \(pdv.bairro ?? "") - \(pdv.municipio ?? "") \(pdv.uf ?? "") - \(pdv.cep ?? "")"
         }
     }
     
