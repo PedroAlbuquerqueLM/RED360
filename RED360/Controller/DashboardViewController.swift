@@ -47,18 +47,16 @@ class DashboardViewController: SlideViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        self.initLoad()
         
-        guard (self.user != nil) else {
+        if self.user == nil { self.user = appDelegate.user}
+        guard (self.user != nil && self.user?.nivel != nil) else {
             self.createAlertWith(title: "Erro", andMessage: "Você não foi cadastrado no app")
             appDelegate.logout()
             return
         }
         
-        if let vl = vLoading{
-            vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
-            vl.aiLoading.startAnimating()
-            view.addSubview(vl)
-        }
         
         Rest.loadNotaPilar(user: self.user) { (notasPilar, accessDenied) in
             self.notasPilar = notasPilar
@@ -87,11 +85,7 @@ class DashboardViewController: SlideViewController {
     }
     
     func loadNotaCanal(type: NotaCanalType, move: Bool = false){
-        if let vl = vLoading{
-            vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
-            vl.aiLoading.startAnimating()
-            view.addSubview(vl)
-        }
+        self.initLoad()
         Rest.loadNotaCanal(user: self.user, type: type, onComplete: { (notasCanal, accessDenied) in
             if let vl = self.vLoading{ vl.removeFromSuperview() }
             self.notasCanal = notasCanal
@@ -100,6 +94,14 @@ class DashboardViewController: SlideViewController {
                 self.dashTableView.scrollToRow(at: IndexPath(row: 0, section: 3), at: .top, animated: false)
             }
         })
+    }
+    
+    func initLoad(){
+        if let vl = vLoading{
+            vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+            vl.aiLoading.startAnimating()
+            view.addSubview(vl)
+        }
     }
     
     func createAlertWith(title: String, andMessage message: String){

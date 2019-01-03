@@ -105,6 +105,7 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
                 }
                 let json = snapshot.data()
                 completion(MetasModel.deserialize(from: json))
+                return
             }
             
             completion(nil)
