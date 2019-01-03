@@ -103,6 +103,18 @@ extension MyTeams2ViewController: UITableViewDelegate, UITableViewDataSource {
                 var user = UserModel(team: time)
                 UserModel.getMetas(cpf: cpf, completion: { (metas) in
                     user.metas = metas
+                    switch self.selectedTime {
+                    case "Diretores":
+                        user.nome = user.diretoria
+                    case "Gerentes":
+                        user.nome = user.gerencia
+                    case "Supervisores":
+                        user.nome = user.supervisao
+                    case "Rotas Vendedores":
+                        user.nome = user.rotaVendedor
+                    default:
+                        return
+                    }
                     vc.user = user
                     self.present(vc, animated: true, completion: nil)
                 })

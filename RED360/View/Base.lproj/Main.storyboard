@@ -128,13 +128,13 @@
                                                     <color key="textColor" white="0.48999999999999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VAR(%)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbW-jw-eC7">
-                                                    <rect key="frame" x="123" y="8" width="97" height="31"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VAR VS MÊS ANTERIOR" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbW-jw-eC7">
+                                                    <rect key="frame" x="123" y="5" width="97" height="37"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="97" id="9As-Dc-dAo"/>
-                                                        <constraint firstAttribute="height" constant="31" id="A0k-wq-zUq"/>
+                                                        <constraint firstAttribute="height" constant="37" id="A0k-wq-zUq"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.48860231160000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -205,7 +205,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="wbW-jw-eC7" firstAttribute="top" secondItem="BPA-bO-shu" secondAttribute="top" constant="8" id="B7J-Te-EwW"/>
+                                                <constraint firstItem="wbW-jw-eC7" firstAttribute="top" secondItem="BPA-bO-shu" secondAttribute="top" constant="5" id="B7J-Te-EwW"/>
                                                 <constraint firstItem="fn5-HH-JJj" firstAttribute="centerX" secondItem="wbW-jw-eC7" secondAttribute="centerX" id="BL0-lz-zVI"/>
                                                 <constraint firstItem="Vmp-Kf-y5G" firstAttribute="top" secondItem="4tB-Jk-Owu" secondAttribute="bottom" constant="-2" id="EJ9-Uw-PBc"/>
                                                 <constraint firstItem="UrW-SA-4dJ" firstAttribute="top" secondItem="BPA-bO-shu" secondAttribute="top" constant="8" id="IGE-dP-ELF"/>
@@ -217,7 +217,7 @@
                                                 <constraint firstItem="N8w-st-9Ga" firstAttribute="leading" secondItem="BPA-bO-shu" secondAttribute="leading" constant="8" id="Xd8-wn-TLT"/>
                                                 <constraint firstItem="Vmp-Kf-y5G" firstAttribute="centerX" secondItem="4tB-Jk-Owu" secondAttribute="centerX" id="XyS-WL-cYq"/>
                                                 <constraint firstItem="wbW-jw-eC7" firstAttribute="leading" secondItem="4tB-Jk-Owu" secondAttribute="trailing" constant="9" id="c4p-CF-0CE"/>
-                                                <constraint firstItem="fn5-HH-JJj" firstAttribute="top" secondItem="wbW-jw-eC7" secondAttribute="bottom" constant="-2" id="ee6-Q6-aP2"/>
+                                                <constraint firstItem="fn5-HH-JJj" firstAttribute="top" secondItem="wbW-jw-eC7" secondAttribute="bottom" constant="-5" id="ee6-Q6-aP2"/>
                                                 <constraint firstItem="xtb-RI-vok" firstAttribute="top" secondItem="UrW-SA-4dJ" secondAttribute="bottom" constant="-2" id="kgf-4Y-zLm"/>
                                                 <constraint firstItem="TLo-rV-HuH" firstAttribute="top" secondItem="xtb-RI-vok" secondAttribute="bottom" constant="15" id="rTN-ew-JjG"/>
                                                 <constraint firstAttribute="trailing" secondItem="TLo-rV-HuH" secondAttribute="trailing" constant="8" id="ulA-0O-2WI"/>
