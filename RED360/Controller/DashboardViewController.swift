@@ -134,6 +134,15 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChartCell", for: indexPath) as! ChartCell
             
+            guard self.notasPilar != nil else {
+                cell.emptyView.isHidden = false
+                cell.expandButton.isHidden = true
+                return cell
+            }
+            
+            cell.expandButton.isHidden = false
+            cell.emptyView.isHidden = true
+            
             cell.viewController = self
             cell.notaPilar = self.notasPilar
             cell.titleBarGreen.text = self.date
@@ -159,9 +168,18 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             }
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChartCell", for: indexPath) as! ChartCell
+            cell.titleLabel.text = "Histórico"
+            
+            guard self.historico != nil && self.metas != nil else {
+                cell.emptyView.isHidden = false
+                cell.expandButton.isHidden = true
+                return cell
+            }
+            
+            cell.expandButton.isHidden = false
+            cell.emptyView.isHidden = true
             let total = self.historico?.compactMap{Double($0.total ?? "0")}
             let metas = self.metas?.values.compactMap{$0}
-            
             guard let bar = total, let line = metas, let mes = self.mes else {return cell}
             
             var barElements = [Double]()

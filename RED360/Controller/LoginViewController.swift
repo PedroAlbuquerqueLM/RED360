@@ -88,14 +88,13 @@ class LoginViewController: UIViewController {
                 appDelegate.user = u
                 UserModel.getToken(completion: { (token) in
                     appDelegate.user?.token = token
-                    if let vl = self.vLoading{ vl.removeFromSuperview() }
                     UserModel.getMetas(cpf: user.email!) { (metas) in
                         appDelegate.user?.metas = metas
+                        if let vl = self.vLoading{ vl.removeFromSuperview() }
                         ControllerManager.toMenu()
                     }
                 })
             }
-            ControllerManager.toMenu()
         }
     }
 }

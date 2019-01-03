@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import SnapKit
 
 class ChartCell: UITableViewCell {
     
@@ -15,6 +16,8 @@ class ChartCell: UITableViewCell {
     @IBOutlet weak var titleBarGreen: UILabel!
     @IBOutlet weak var titleBarGray: UILabel!
     @IBOutlet weak var viewBarGreen: UIView!
+    @IBOutlet weak var expandButton: UIButton!
+    let emptyView = UILabel(frame: CGRect.zero)
     
     @IBOutlet weak var chart: HorizontalBarChartView!
     var chartsLandscapeView: ChartsLandscapeView?
@@ -28,6 +31,21 @@ class ChartCell: UITableViewCell {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 5
         self.clipsToBounds = true
+        
+        self.emptyView.isHidden = true
+        self.emptyView.backgroundColor = UIColor.white
+        emptyView.text = "Nenhuma informação disponível."
+        emptyView.textAlignment = .center
+        emptyView.textColor = #colorLiteral(red: 0.5529411765, green: 0.5882352941, blue: 0.631372549, alpha: 1)
+        
+        self.addSubview(emptyView)
+        
+        emptyView.snp.makeConstraints { (make) in
+            make.leading.equalTo(self)
+            make.trailing.equalTo(self)
+            make.top.equalTo(self).offset(40)
+            make.bottom.equalTo(self)
+        }
         
         self.chart.xAxis.labelPosition = .bottom
         self.chart.leftAxis.axisMinimum = 0.0

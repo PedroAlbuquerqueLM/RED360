@@ -328,6 +328,7 @@
                                         <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="chart" destination="NAK-fd-TOH" id="Hw8-fb-vgF"/>
+                                            <outlet property="expandButton" destination="huL-bT-Tr7" id="qKp-xH-Dd8"/>
                                             <outlet property="titleBarGray" destination="rQJ-dq-IIo" id="1Vp-GV-tLF"/>
                                             <outlet property="titleBarGreen" destination="2HS-84-ttf" id="g5E-6v-kcH"/>
                                             <outlet property="titleLabel" destination="bxT-q4-Skt" id="l52-su-h1T"/>
