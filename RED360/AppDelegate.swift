@@ -56,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserModel.getToken(completion: { (token) in
                 self.user?.token = token
                 UserModel.getMetas(cpf: user.email!) { (metas) in
+                    guard let metas = metas else { self.logout(); return; }
                     self.user?.metas = metas
                     ControllerManager.toMenu()
                 }
@@ -72,6 +73,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         slideMenuController?.addLeftGestures()
         SlideMenuOptions.contentViewScale = 1
+    }
+    
+    func logout(){
+        UserModel.signOut()
+        appDelegate.user = nil
+        ControllerManager.toLogin()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

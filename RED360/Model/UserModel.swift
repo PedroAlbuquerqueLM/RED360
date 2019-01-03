@@ -93,7 +93,7 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
         }
     }
     
-    static func getMetas(cpf: String, completion: @escaping (_ metas: MetasModel) -> Void){
+    static func getMetas(cpf: String, completion: @escaping (_ metas: MetasModel?) -> Void){
         let cpf = cpf.replacingOccurrences(of: "@red360.app", with: "")
         let reference = Firestore.firestore().collection("metas").document(cpf)
         reference.addSnapshotListener { snapshot, error in
@@ -104,8 +104,10 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
                     print(error.localizedDescription)
                 }
                 let json = snapshot.data()
-                completion(MetasModel.deserialize(from: json)!)
+                completion(MetasModel.deserialize(from: json))
             }
+            
+            completion(nil)
         }
     }
     
