@@ -18,6 +18,7 @@ class IndicatorViewController: UIViewController{
     
     var titles = ["total", "ativacao", "disponibilidade", "gdm", "preco", "sovi"]
     var titlesNames = ["Total", "Ativacao", "Disponibilidade", "GDM", "Preço", "Sovi"]
+    var vLoading = Bundle.main.loadNibNamed("VLoading", owner: self, options: nil)?.first as? VLoading
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,14 @@ class IndicatorViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if let vl = vLoading{
+            vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+            vl.aiLoading.startAnimating()
+            view.addSubview(vl)
+        }
+        
         Rest.loadIndicator(channel: channel) { (dicNota, accessDenied) in
+            if let vl = self.vLoading{ vl.removeFromSuperview() }
             self.dicNota = dicNota
             self.dataTable.reloadData()
         }
