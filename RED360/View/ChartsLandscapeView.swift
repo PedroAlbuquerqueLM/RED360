@@ -104,15 +104,15 @@ class ChartsLandscapeView: UIView {
         didSet{
             
             guard let values = values else {return}
-            var months1 = ["Jan","","", "Fev","","", "Mar","","", "Abr","","", "Mai","","", "Jun"]
-            var months2 =  ["Jul","","", "Ago","","", "Set","","", "Out","","", "Nov","","","Dez"]
-            let months3 =  ["Set","","", "Out","","", "Nov","","","Dez"]
+            var months1 = ["Dez","","", "Nov","","", "Out","","", "Set","","", "Ago","","", "Jul"]
+            var months2 =  ["Jun","","", "Mai","","", "Abr","","", "Mar","","", "Fev","","","Jan"]
+            let months3 =  ["Abr","","", "Mar","","", "Fev","","","Jan"]
             
             var dataSets = [[BarChartDataSet]() ,[BarChartDataSet]()]
             
             if !isLand {
-                months1 = ["Jan","","", "Fev","","", "Mar","","", "Abr"]
-                months2 = ["Mai","","", "Jun","","", "Jul","","", "Ago"]
+                months1 = ["Dez","","", "Nov","","", "Out","","", "Set"]
+                months2 = ["Ago","","", "Jul","","", "Jun","","", "Mai"]
                 self.charts.first!.xAxis.valueFormatter = IndexAxisValueFormatter(values:months1)
                 self.charts.first!.noDataText = "Please provide data for the chart."
                 self.charts[1].xAxis.valueFormatter = IndexAxisValueFormatter(values:months2)
@@ -138,7 +138,7 @@ class ChartsLandscapeView: UIView {
                     offset = 0
                 }
                 let dataSet = BarChartDataSet(values: [BarChartDataEntry(x: Double(offset + (dataSets[index].count * 2)), y: values.line[$0.offset]), BarChartDataEntry(x: Double(offset + 1 + (dataSets[index].count * 2)), y: $0.element)], label: "")
-                dataSet.colors = [#colorLiteral(red: 0.5529411765, green: 0.5882352941, blue: 0.631372549, alpha: 1), #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)]
+                dataSet.colors = [#colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1), #colorLiteral(red: 0.5529411765, green: 0.5882352941, blue: 0.631372549, alpha: 1)]
                 
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal

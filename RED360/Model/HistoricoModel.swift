@@ -10,11 +10,15 @@ import Foundation
 
 struct HistoricoModel : Codable {
     let dhpId : Int?
-    let total : String?
+    let mes : String?
+    let notaRed : String?
+    let meta : String?
     
     enum CodingKeys: String, CodingKey {
         case dhpId = "dhpId"
-        case total = "total"
+        case mes = "mes"
+        case notaRed = "notaRed"
+        case meta = "meta"
     }
     
 }

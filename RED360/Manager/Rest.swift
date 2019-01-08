@@ -210,9 +210,9 @@ class Rest{
         }
         
         let headers: HTTPHeaders = getHeaders()
-        let parameters = ["cargo" : cargo , "supervisao" : supervisao] as [String : Any]
+        let parameters = ["cargo" : cargo , "supervisao" : supervisao, "cpf" : user.cpf!] as [String : Any]
         
-        let url = baseURL+"api/dashboard/historico/\(nivel).json"
+        let url = baseURL+"api/dashboard/v3/historico/\(nivel).json"
         Alamofire.request(url, method: .post, parameters: parameters as [String: Any] , encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
             if let data = response.data{
                 do{

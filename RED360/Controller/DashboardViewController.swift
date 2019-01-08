@@ -183,9 +183,9 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.expandButton.isHidden = false
             cell.emptyView.isHidden = true
-            let total = self.historico?.compactMap{Double($0.total ?? "0")}
-            let metas = self.metas?.values.compactMap{$0}
-            guard let bar = total, let line = metas, let mes = self.mes else {return cell}
+            let total = self.historico?.compactMap{Double($0.notaRed ?? "0")}
+            let metas = self.historico?.compactMap{Double($0.meta ?? "0")}
+            guard let bar = metas, let line = total, let mes = self.mes else {return cell}
             
             var barElements = [Double]()
             var lineElements = [Double]()
