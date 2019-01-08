@@ -66,22 +66,19 @@ class DashboardViewController: SlideViewController {
                 self.metas = appDelegate.user?.metas?.getMetasDic()
             }
             self.mes = notasPilar?.first?.mesNome?.getMonth
-            let mesForMeta = notasPilar?.first?.mesNome
             if let notasFirst = notasPilar?.first, let notasLast = notasPilar?.last {
                 self.rank = ((nota: notasFirst.total!, vari: ((notasFirst.total)! - (notasLast.total)!), meta: 0.0, rank: 0))
             }
             
-            if let meta = self.metas?[mesForMeta ?? ""] {
-                self.rank?.meta = meta ?? 0
-            }
-            
-            self.date = "\(notasPilar?.first?.mesNome ?? "")/\(notasPilar?.first?.ano ?? "")"
+//            self.date = "\(notasPilar?.first?.mesNome ?? "")/\(notasPilar?.first?.ano ?? "")"
             
             Rest.loadHistorico(user: self.user, onComplete: { (historico, accessDenied) in
                 self.historico = historico
                 
                 Rest.loadPosicao(user: self.user) { (posicao, accessDenied) in
                     self.rank?.rank = (posicao?.posicao!)!
+                    self.rank?.meta = Double(historico?.first?.meta ?? "0.0") ?? 0.0
+                    self.date = historico?.first?.mes ?? "-"
                     self.loadNotaCanal(type: .total)
                 }
             })
