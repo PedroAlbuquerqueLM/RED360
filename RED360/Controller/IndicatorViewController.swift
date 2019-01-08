@@ -17,7 +17,7 @@ class IndicatorViewController: UIViewController{
     var dicNota: [String: NotaCanalModel?]?
     
     var titles = ["total", "ativacao", "disponibilidade", "gdm", "preco", "sovi"]
-    var titlesNames = ["Total", "Ativacao", "Disponibilidade", "GDM", "Preço", "Sovi"]
+    var titlesNames = ["Total", "Ativação", "Disponibilidade", "GDM", "Preço", "Sovi"]
     var vLoading = Bundle.main.loadNibNamed("VLoading", owner: self, options: nil)?.first as? VLoading
     
     override func viewDidLoad() {

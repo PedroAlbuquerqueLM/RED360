@@ -167,7 +167,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 guard let notasCanal = self.notasCanal else {return cell}
                 cell.borders = true
-                cell.notaCanal = notasCanal[indexPath.row]
+                cell.notaCanal = notasCanal[indexPath.row-1]
                 
                 return cell
             }

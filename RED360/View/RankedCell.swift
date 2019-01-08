@@ -27,6 +27,11 @@ class RankedCell: UITableViewCell {
             guard let rankSet = rankSet else {return}
             self.notaRed.text = "\(String(format: "%.01f", rankSet.nota).replacingOccurrences(of: ".", with: ","))%"
             self.variable.text = "\(String(format: "%.01f", rankSet.vari).replacingOccurrences(of: ".", with: ","))%"
+            if rankSet.vari > 0 {
+                self.variable.textColor = #colorLiteral(red: 0.05882352941, green: 0.7568627451, blue: 0.3333333333, alpha: 1)
+            }else if rankSet.vari < 0 {
+                self.variable.textColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
+            }
             self.meta.text = "\(String(format: "%.01f", rankSet.meta).replacingOccurrences(of: ".", with: ","))%"
             self.rank.text = "\(rankSet.rank)º"
         }
