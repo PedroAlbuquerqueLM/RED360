@@ -100,19 +100,26 @@ class ChartsLandscapeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var values: (line: [Double], bar: [Double])? {
+    var values: (line: [Double], bar: [Double], titles: [String])? {
         didSet{
             
             guard let values = values else {return}
-            var months1 = ["Dez","","", "Nov","","", "Out","","", "Set","","", "Ago","","", "Jul"]
-            var months2 =  ["Jun","","", "Mai","","", "Abr","","", "Mar","","", "Fev","","","Jan"]
-            let months3 =  ["Abr","","", "Mar","","", "Fev","","","Jan"]
+            var months21 = [String]()
+            values.titles.forEach{
+                months21.append($0)
+                months21.append("")
+                months21.append("")
+
+            }
+            var months1: [String] = months21.enumerated().filter{$0.offset < 16}.compactMap{$0.element}
+            var months2: [String] = months21.enumerated().filter{$0.offset > 17}.compactMap{$0.element}
+            let months3: [String] = months21.enumerated().filter{$0.offset > 23 && $0.offset < 34}.compactMap{$0.element}
             
             var dataSets = [[BarChartDataSet]() ,[BarChartDataSet]()]
             
             if !isLand {
-                months1 = ["Dez","","", "Nov","","", "Out","","", "Set"]
-                months2 = ["Ago","","", "Jul","","", "Jun","","", "Mai"]
+                months1 = months21.enumerated().filter{$0.offset < 10}.compactMap{$0.element}
+                months2 = months21.enumerated().filter{$0.offset > 11 && $0.offset < 22}.compactMap{$0.element}
                 self.charts.first!.xAxis.valueFormatter = IndexAxisValueFormatter(values:months1)
                 self.charts.first!.noDataText = "Please provide data for the chart."
                 self.charts[1].xAxis.valueFormatter = IndexAxisValueFormatter(values:months2)

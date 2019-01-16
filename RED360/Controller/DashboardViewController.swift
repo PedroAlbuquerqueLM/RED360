@@ -182,24 +182,13 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             cell.emptyView.isHidden = true
             let total = self.historico?.compactMap{Double($0.notaRed ?? "0")}
             let metas = self.historico?.compactMap{Double($0.meta ?? "0")}
-            guard let bar = metas, let line = total, let mes = self.mes else {return cell}
-            
-            var barElements = [Double]()
-            var lineElements = [Double]()
-            var finishMonths = false
-            if mes >= 6 {
-                barElements = Array(bar.dropFirst(6))
-                lineElements = Array(line.dropFirst(6))
-                finishMonths = true
-            }else{
-                barElements = Array(bar.dropLast(6))
-                lineElements = Array(line.dropLast(6))
-            }
+            let titlesM = self.historico?.compactMap{$0.mes}
+            guard let bar = metas, let line = total, let titles = titlesM, let mes = self.mes else {return cell}
             
             cell.viewController = self
-            cell.valuesComplete = (line: line, bar: bar)
+            cell.valuesComplete = (line: line, bar: bar, titles: titles)
             cell.isCombinated = true
-            cell.values = (line: lineElements, bar: barElements, finishMonths: finishMonths)
+            cell.loadValues()
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath) as! OrderCell

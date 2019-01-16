@@ -19,9 +19,9 @@ class ChannelCell: UITableViewCell {
     weak var delegate: ChannelDelegate?
     
     override func awakeFromNib() {
-        self.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.7959920805)
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 5
+//        self.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.7959920805)
+//        self.layer.borderWidth = 1
+//        self.layer.cornerRadius = 5
         self.clipsToBounds = true
     }
     

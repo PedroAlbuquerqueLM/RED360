@@ -16,9 +16,9 @@ class RankedCell: UITableViewCell {
     @IBOutlet weak var rank: UILabel!
     
     override func awakeFromNib() {
-        self.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.7959920805)
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 5
+//        self.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.7959920805)
+//        self.layer.borderWidth = 1
+//        self.layer.cornerRadius = 5
         self.clipsToBounds = true
     }
     
@@ -28,9 +28,11 @@ class RankedCell: UITableViewCell {
             self.notaRed.text = "\(String(format: "%.01f", rankSet.nota).replacingOccurrences(of: ".", with: ","))%"
             self.variable.text = "\(String(format: "%.01f", rankSet.vari).replacingOccurrences(of: ".", with: ","))%"
             if rankSet.vari > 0 {
-                self.variable.textColor = #colorLiteral(red: 0.05882352941, green: 0.7568627451, blue: 0.3333333333, alpha: 1)
+                self.variable.textColor = #colorLiteral(red: 0, green: 0.7843137255, blue: 0.3254901961, alpha: 1)
             }else if rankSet.vari < 0 {
-                self.variable.textColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
+                self.variable.textColor = #colorLiteral(red: 1, green: 0.8431372549, blue: 0.2509803922, alpha: 1)
+            }else{
+                self.variable.textColor = #colorLiteral(red: 0.6196078431, green: 0.6196078431, blue: 0.6196078431, alpha: 1)
             }
             self.meta.text = "\(String(format: "%.01f", rankSet.meta).replacingOccurrences(of: ".", with: ","))%"
             self.rank.text = "\(rankSet.rank)º"

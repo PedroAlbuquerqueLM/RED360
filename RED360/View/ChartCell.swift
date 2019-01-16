@@ -22,14 +22,14 @@ class ChartCell: UITableViewCell {
     @IBOutlet weak var chart: HorizontalBarChartView!
     var chartsLandscapeView: ChartsLandscapeView?
     var viewController: UIViewController!
-    var valuesComplete: (line: [Double], bar: [Double])?
+    var valuesComplete: (line: [Double], bar: [Double], titles: [String])?
     var isCombinated = false
     
     override func awakeFromNib() {
         
-        self.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.7959920805)
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 5
+//        self.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.7959920805)
+//        self.layer.borderWidth = 1
+//        self.layer.cornerRadius = 5
         self.clipsToBounds = true
         
         self.emptyView.isHidden = true
@@ -84,18 +84,16 @@ class ChartCell: UITableViewCell {
         }
     }
     
-    var values: (line: [Double], bar: [Double], finishMonths: Bool)? {
-        didSet{
-            self.chart.isHidden = true
-            self.titleLabel.text = "Histórico".uppercased()
-            self.titleBarGreen.text = "Nota RED"
-            self.titleBarGray.text = "Meta"
-            self.viewBarGreen.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
-            self.chartsLandscapeView?.removeFromSuperview()
-            self.chartsLandscapeView = ChartsLandscapeView(frame: CGRect(x: 0, y: 50, width: Int(self.frame.width), height: Int(self.frame.height) - 100), qnt: 3, isLand: false)
-            self.chartsLandscapeView!.values = self.valuesComplete
-            self.insertSubview(self.chartsLandscapeView!, at: 1)
-        }
+    func loadValues() {
+        self.chart.isHidden = true
+        self.titleLabel.text = "Histórico".uppercased()
+        self.titleBarGreen.text = "Nota RED"
+        self.titleBarGray.text = "Meta"
+        self.viewBarGreen.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
+        self.chartsLandscapeView?.removeFromSuperview()
+        self.chartsLandscapeView = ChartsLandscapeView(frame: CGRect(x: 0, y: 50, width: Int(self.frame.width), height: Int(self.frame.height) - 100), qnt: 3, isLand: false)
+        self.chartsLandscapeView!.values = self.valuesComplete
+        self.insertSubview(self.chartsLandscapeView!, at: 1)
     }
     
     var pdv: PDVModel? {

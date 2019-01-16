@@ -13,7 +13,7 @@ class ShowImageViewController: UIViewController {
     
     var notasPilar: [NotaPilarModel]?
     var date: String?
-    var values: (line: [Double], bar: [Double])?
+    var values: (line: [Double], bar: [Double], titles: [String])?
     var isCombinated: Bool = false
     @IBOutlet weak var subtitleGreenView: UIView!
     @IBOutlet weak var subtitleGreenLabel: UILabel!
