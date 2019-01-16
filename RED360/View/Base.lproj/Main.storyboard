@@ -69,25 +69,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7b-N7-YHe">
-                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nenhuma informação disponível." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpW-4e-ATL">
-                                        <rect key="frame" x="17.5" y="293" width="340" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="340" id="AUv-SQ-aE0"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.94098168611526489" green="0.94524556398391724" blue="0.94094854593276978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="bpW-4e-ATL" firstAttribute="centerX" secondItem="k7b-N7-YHe" secondAttribute="centerX" id="NhB-VB-Tui"/>
-                                    <constraint firstItem="bpW-4e-ATL" firstAttribute="centerY" secondItem="k7b-N7-YHe" secondAttribute="centerY" id="sqx-Ya-Fh0"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nz5-cl-Gda">
                                 <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -583,6 +564,25 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="pcK-Ix-loh"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7b-N7-YHe">
+                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nenhuma informação disponível." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpW-4e-ATL">
+                                        <rect key="frame" x="17.5" y="293" width="340" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="340" id="AUv-SQ-aE0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94098168611526489" green="0.94524556398391724" blue="0.94094854593276978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="bpW-4e-ATL" firstAttribute="centerX" secondItem="k7b-N7-YHe" secondAttribute="centerX" id="NhB-VB-Tui"/>
+                                    <constraint firstItem="bpW-4e-ATL" firstAttribute="centerY" secondItem="k7b-N7-YHe" secondAttribute="centerY" id="sqx-Ya-Fh0"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.94098168611526489" green="0.94524556398391724" blue="0.94094854593276978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
