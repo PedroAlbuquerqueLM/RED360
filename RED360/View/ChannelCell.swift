@@ -31,7 +31,7 @@ class ChannelCell: UITableViewCell {
     
     func showOptions(){
         let appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
+            kWindowWidth: screenWidth, kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
             kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
             kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
             showCloseButton: false, showCircularIcon: false
