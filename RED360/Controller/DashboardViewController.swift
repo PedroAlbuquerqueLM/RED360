@@ -70,7 +70,7 @@ class DashboardViewController: SlideViewController {
                 self.rank = ((nota: notasFirst.total!, vari: ((notasFirst.total)! - (notasLast.total)!), meta: 0.0, rank: 0))
             }
             
-//            self.date = "\(notasPilar?.first?.mesNome ?? "")/\(notasPilar?.first?.ano ?? "")"
+            self.date = "\(notasPilar?.first?.mesNome ?? "")/\(notasPilar?.first?.ano ?? "")"
             
             Rest.loadHistorico(user: self.user, onComplete: { (historico, accessDenied) in
                 self.historico = historico
@@ -78,7 +78,7 @@ class DashboardViewController: SlideViewController {
                 Rest.loadPosicao(user: self.user) { (posicao, accessDenied) in
                     self.rank?.rank = (posicao?.posicao!)!
                     self.rank?.meta = Double(historico?.first?.meta ?? "0.0") ?? 0.0
-                    self.date = historico?.first?.mes ?? "-"
+//                    self.date = historico?.first?.mes ?? "-"
                     self.loadNotaCanal(type: .total)
                 }
             })
@@ -122,7 +122,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 3 {
             self.emptyView.isHidden = !(self.notasPilar == nil || self.notasPilar!.isEmpty)
             guard let notasCanal = self.notasCanal else {return 1}
-            return notasCanal.count
+            return notasCanal.count + 1
         }
         return 1
     }
