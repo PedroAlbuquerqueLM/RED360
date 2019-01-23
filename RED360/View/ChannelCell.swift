@@ -64,7 +64,7 @@ class ChannelCell: UITableViewCell {
         }
         let closeBtn = alertView.addButton("Fechar") {}
         
-        alertView.showTitle("Selecione o Canal", subTitle: "", style: .error)
+        alertView.showTitle("Selecione um KPI", subTitle: "", style: .error)
         totalBtn.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
         ativBtn.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
         dispBtn.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.368627451, blue: 0.3529411765, alpha: 1)
