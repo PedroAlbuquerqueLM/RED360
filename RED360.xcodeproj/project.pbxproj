@@ -14,6 +14,9 @@
 		7102486E21B0381E00447202 /* PerguntasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102486D21B0381E00447202 /* PerguntasModel.swift */; };
 		7102487021B0CD1400447202 /* ObservacaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102486F21B0CD1400447202 /* ObservacaoViewController.swift */; };
 		7102487221B0D85C00447202 /* REDFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102487121B0D85C00447202 /* REDFormViewController.swift */; };
+		7106BF2B220143F3005E43DB /* MyRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7106BF2A220143F3005E43DB /* MyRouteViewController.swift */; };
+		7106BF2D22014954005E43DB /* RouteListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7106BF2C22014954005E43DB /* RouteListCell.swift */; };
+		7106BF2F22014E07005E43DB /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7106BF2E22014E07005E43DB /* RouteModel.swift */; };
 		7107E82C2173F651006EFF1E /* ChartValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */; };
 		7107E82E2173FC81006EFF1E /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107E82D2173FC81006EFF1E /* OrderCell.swift */; };
 		7109347A21A320E300268EF1 /* PDVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109347921A320E300268EF1 /* PDVModel.swift */; };
@@ -108,6 +111,9 @@
 		7102486D21B0381E00447202 /* PerguntasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerguntasModel.swift; sourceTree = "<group>"; };
 		7102486F21B0CD1400447202 /* ObservacaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservacaoViewController.swift; sourceTree = "<group>"; };
 		7102487121B0D85C00447202 /* REDFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REDFormViewController.swift; sourceTree = "<group>"; };
+		7106BF2A220143F3005E43DB /* MyRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRouteViewController.swift; sourceTree = "<group>"; };
+		7106BF2C22014954005E43DB /* RouteListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteListCell.swift; sourceTree = "<group>"; };
+		7106BF2E22014E07005E43DB /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
 		7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartValueFormatter.swift; sourceTree = "<group>"; };
 		7107E82D2173FC81006EFF1E /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		7109347921A320E300268EF1 /* PDVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVModel.swift; sourceTree = "<group>"; };
@@ -287,6 +293,7 @@
 				715E428521873A5E00193B11 /* IndicatorViewController.swift */,
 				7182986E21A44E8300E452B9 /* MapViewController.swift */,
 				7182987621A4EC0600E452B9 /* AreaViewController.swift */,
+				7106BF2A220143F3005E43DB /* MyRouteViewController.swift */,
 				7158DC2D216E6D050083B844 /* PDVViewController.swift */,
 				7172FA6F21A78EE9004A7911 /* LibraryViewController.swift */,
 				716BF9F221AE16A7002FDDF9 /* REDSimuladoViewController.swift */,
@@ -310,6 +317,7 @@
 				7182987A21A5067D00E452B9 /* ListPDVSModel.swift */,
 				7109348521A38C4400268EF1 /* OportunitiesModel.swift */,
 				7109348D21A3A35A00268EF1 /* PDVCompleteModel.swift */,
+				7106BF2E22014E07005E43DB /* RouteModel.swift */,
 				71EC933221816EA8001498A2 /* MetasModel.swift */,
 				7182987421A4EB4E00E452B9 /* ListPDVModel.swift */,
 				7172FA7121A79EBF004A7911 /* LibraryModel.swift */,
@@ -324,6 +332,7 @@
 		7158DC2F216E84AA0083B844 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				7106BF2C22014954005E43DB /* RouteListCell.swift */,
 				7172FA7321A7A027004A7911 /* LibraryCell.swift */,
 				7109347B21A32A1800268EF1 /* Dashboard */,
 				7109348021A3307D00268EF1 /* PDV */,
@@ -707,6 +716,7 @@
 				7158DC2E216E6D050083B844 /* PDVViewController.swift in Sources */,
 				71EC933321816EA8001498A2 /* MetasModel.swift in Sources */,
 				71867D7E2173D394003A00F8 /* ChannelCell.swift in Sources */,
+				7106BF2B220143F3005E43DB /* MyRouteViewController.swift in Sources */,
 				7102487221B0D85C00447202 /* REDFormViewController.swift in Sources */,
 				7172FA7021A78EE9004A7911 /* LibraryViewController.swift in Sources */,
 				7182987721A4EC0600E452B9 /* AreaViewController.swift in Sources */,
@@ -745,9 +755,11 @@
 				7107E82E2173FC81006EFF1E /* OrderCell.swift in Sources */,
 				716C5710217E21DF00003759 /* Authenticable.swift in Sources */,
 				7182987921A4FD5D00E452B9 /* PDVListCell.swift in Sources */,
+				7106BF2F22014E07005E43DB /* RouteModel.swift in Sources */,
 				715B98F7216E251E003BE5A5 /* AppDelegate.swift in Sources */,
 				716C5718217E2F3400003759 /* ControllerManager.swift in Sources */,
 				716C56FA217E1F1400003759 /* UserModel.swift in Sources */,
+				7106BF2D22014954005E43DB /* RouteListCell.swift in Sources */,
 				716524CF218345EB0088C772 /* HistoricoModel.swift in Sources */,
 				7109348E21A3A35A00268EF1 /* PDVCompleteModel.swift in Sources */,
 				716BF9F321AE16A7002FDDF9 /* REDSimuladoViewController.swift in Sources */,

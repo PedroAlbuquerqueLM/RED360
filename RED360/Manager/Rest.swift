@@ -41,7 +41,7 @@ class Rest{
     class private func getHeaders() -> HTTPHeaders{
         
         guard let idToken = appDelegate.user?.token, let uID = appDelegate.user?.uid else{
-//            fatalError("Erro ao tentar pegar as credenciais")
+            //            fatalError("Erro ao tentar pegar as credenciais")
             let headers: HTTPHeaders = [
                 "Authorization" : "0",
                 "Uid" : "0"
@@ -628,4 +628,77 @@ class Rest{
             onComplete(false, nil)
         }
     }
+    
+    
+    
+    
+    
+    class func listRoutes(onComplete: @escaping ([ListRouteModel]?, AccessDenied?) -> Void){
+        guard let cpf = appDelegate.user?.cpf else {return}
+        let headers: HTTPHeaders = getHeaders()
+        let parameters = ["cpf" : cpf] as [String : Any]
+        
+        let url = baseURL+"api/pdv/minha-rota-usuario.json"
+        Alamofire.request(url, method: .post, parameters: parameters as [String: Any], encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    let result = try JSONDecoder().decode([ListRouteModel].self, from: data)
+                    print(result)
+                    onComplete(result, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    class func listGerentes(rotinaId: Int?, onComplete: @escaping ([ListGerentesModel]?, AccessDenied?) -> Void){
+        guard let user = appDelegate.user, let nivel = appDelegate.user?.nivel, let rotinaId = rotinaId else {return}
+        var cargo = ""
+        switch nivel {
+        case 1:
+            cargo = user.diretoria != nil ? user.diretoria! : ""
+        case 2:
+            cargo = user.gerencia != nil ? user.gerencia! : ""
+        case 3:
+            cargo = user.supervisao != nil ? user.supervisao! : ""
+        case 4:
+            cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
+        default:
+            cargo = ""
+        }
+        
+        let headers: HTTPHeaders = getHeaders()
+        let parameters = ["rotinaId" : rotinaId, "cargoId" : nivel] as [String : Any]
+        
+        let url = baseURL+"api/pdv/estrutura-rotina.json"
+        Alamofire.request(url, method: .post, parameters: parameters as [String: Any], encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    let result = try JSONDecoder().decode([ListGerentesModel].self, from: data)
+                    print(result)
+                    onComplete(result, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+            
+        }
+    }
+    
 }
