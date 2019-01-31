@@ -48,6 +48,7 @@ class MyRouteViewController: SlideViewController {
             self.loading()
             self.navItem?.leftBarButtonItem = self.menuItem;
             self.areaSelected = .route
+            self.setTitle("Minha Rota")
             self.areaTableView.reloadData()
         case .pdv:
             self.loading()
@@ -168,6 +169,7 @@ extension MyRouteViewController: UITableViewDelegate, UITableViewDataSource {
             guard let gerentes = gerentes else {return}
             self.loading()
             let gerente = gerentes[indexPath.row]
+            self.setTitle(gerente.rota ?? "Minha Rota")
             Rest.listRoutesStructPDV(rotinaId: self.routeIdSelected, rota: gerente.rota) { (pdvs, accessDenied) in
                 self.navItem?.leftBarButtonItem = self.undoItem;
                 self.areaSelected = .pdv
@@ -188,7 +190,7 @@ extension MyRouteViewController: UITableViewDelegate, UITableViewDataSource {
                     guard let oportunities = oportunities else {return}
                     Rest.listRotines(pdv: pdv.pdv!, onComplete: { (rotines, accessDenied) in
                         if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DashboardPDVViewController") as? DashboardPDVViewController {
-                            vc.titleTop = "Pesquisa por Área"
+                            vc.titleTop = self.getTitle()
                             vc.pdv = pdv
                             vc.oportunities = oportunities
                             vc.rotines = rotines

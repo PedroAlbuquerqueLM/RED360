@@ -83,6 +83,10 @@ class SlideViewController: UIViewController {
         self.navItem?.title = title
     }
     
+    func getTitle() -> String {
+        return self.navItem?.title ?? ""
+    }
+    
     func isNotch() -> Bool{
         if UIDevice().userInterfaceIdiom == .phone {
             switch UIScreen.main.nativeBounds.height {
