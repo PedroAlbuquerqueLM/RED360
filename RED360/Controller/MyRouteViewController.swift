@@ -15,11 +15,11 @@ class MyRouteViewController: SlideViewController {
     
     var routes: [ListRouteModel]?
     var gerentes: [ListGerentesModel]?
-    var pdvs : [ListPDVSModel]?
+    var pdvs : [PDVModel]?
     
     var undoItem: UIBarButtonItem!
     var areaSelected = AreaType.route
-    var gerenteSelectedId: Int?
+    var routeIdSelected: Int?
     
     var vLoading = Bundle.main.loadNibNamed("VLoading", owner: self, options: nil)?.first as? VLoading
     
@@ -51,9 +51,16 @@ class MyRouteViewController: SlideViewController {
             self.areaTableView.reloadData()
         case .pdv:
             self.loading()
-            Rest.listGerentes(rotinaId: self.gerenteSelectedId) { (gerentes, accessDenied) in
-                self.areaSelected = .gerente
-                self.gerentes = gerentes
+            guard let user = appDelegate.user else {return}
+            if user.cargoLideranca ?? false {
+                Rest.listGerentes(rotinaId: self.routeIdSelected) { (gerentes, accessDenied) in
+                    self.areaSelected = .gerente
+                    self.gerentes = gerentes
+                    self.areaTableView.reloadData()
+                }
+            }else{
+                self.navItem?.leftBarButtonItem = self.menuItem;
+                self.areaSelected = .route
                 self.areaTableView.reloadData()
             }
         case .route: return
@@ -70,6 +77,15 @@ class MyRouteViewController: SlideViewController {
     
     func stopLoading(){
         if let vl = self.vLoading{ vl.removeFromSuperview() }
+    }
+    
+    func orderPDVs(){
+        var pdvs = [PDVModel]()
+        let actives = self.pdvs?.filter{$0.respondida != nil}
+        let inactives = self.pdvs?.filter{$0.respondida == nil}
+        actives?.forEach{pdvs.append($0)}
+        inactives?.forEach{pdvs.append($0)}
+        self.pdvs = pdvs
     }
 }
 
@@ -93,9 +109,17 @@ extension MyRouteViewController: UITableViewDelegate, UITableViewDataSource {
         if self.areaSelected == .pdv {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PDVListCell", for: indexPath) as! PDVListCell
             guard let pdvs = pdvs else {return cell}
-            cell.titleLabel.text = pdvs[indexPath.row].nome
-            cell.addressLabel.text = pdvs[indexPath.row].endereco
-            cell.pdvLabel.text = pdvs[indexPath.row].pdv
+            let pdv = pdvs[indexPath.row]
+            cell.titleLabel.text = pdv.nome
+            cell.addressLabel.text = "\(pdv.rua ?? "") \(pdv.bairro ?? "") - \(pdv.municipio ?? "") \(pdv.uf ?? "") - \(pdv.cep ?? "")"
+            cell.pdvLabel.text = pdv.pdv
+            
+            if pdv.respondida == nil {
+                cell.backgroundColor = #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.6864271567)
+            }else{
+                cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            }
+            
             return cell
         }else if self.areaSelected == .route {
             let cell = tableView.dequeueReusableCell(withIdentifier: "RouteListCell", for: indexPath) as! RouteListCell
@@ -118,30 +142,43 @@ extension MyRouteViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch self.areaSelected {
         case .route:
+            guard let user = appDelegate.user else {return}
             guard let routes = routes else {return}
             self.loading()
             let selectedRoute = routes[indexPath.row]
-            self.gerenteSelectedId = selectedRoute.id
-            Rest.listGerentes(rotinaId: self.gerenteSelectedId) { (gerentes, accessDenied) in
-                self.navItem?.leftBarButtonItem = self.undoItem;
-                self.areaSelected = .gerente
-                self.gerentes = gerentes
-                self.areaTableView.reloadData()
+            if user.cargoLideranca ?? false {
+                self.routeIdSelected = selectedRoute.id
+                Rest.listGerentes(rotinaId: self.routeIdSelected) { (gerentes, accessDenied) in
+                    self.navItem?.leftBarButtonItem = self.undoItem;
+                    self.areaSelected = .gerente
+                    self.gerentes = gerentes
+                    self.areaTableView.reloadData()
+                }
+            }else{
+                self.routeIdSelected = selectedRoute.id
+                Rest.listRoutesPDV(rotinaId: self.routeIdSelected) { (pdvs, accessDenied) in
+                    self.navItem?.leftBarButtonItem = self.undoItem;
+                    self.areaSelected = .pdv
+                    self.pdvs = pdvs
+                    self.orderPDVs()
+                    self.areaTableView.reloadData()
+                }
             }
         case .gerente:
-            guard let gerente = gerentes else {return}
+            guard let gerentes = gerentes else {return}
             self.loading()
-//            Rest.listPDVS(city: itens[indexPath.row].municipio!, bairro: itens[indexPath.row].bairro!) { (pdvs) in
-//                self.navItem?.leftBarButtonItem = self.undoItem;
-//                self.areaSelected = .pdv
-//                self.setTitle("Selecione um \(self.areaSelected.rawValue)")
-//                self.pdvs = pdvs
-//                self.areaTableView.reloadData()
-//            }
+            let gerente = gerentes[indexPath.row]
+            Rest.listRoutesStructPDV(rotinaId: self.routeIdSelected, rota: gerente.rota) { (pdvs, accessDenied) in
+                self.navItem?.leftBarButtonItem = self.undoItem;
+                self.areaSelected = .pdv
+                self.pdvs = pdvs
+                self.orderPDVs()
+                self.areaTableView.reloadData()
+            }
         case .pdv:
-            guard let pdv = self.pdvs?[indexPath.row].pdv else {return}
+            guard let pdv = self.pdvs?[indexPath.row] else {return}
             self.loading()
-            Rest.searchPDV(pdv: pdv) { (pdv, accessDenied) in
+            Rest.searchPDV(pdv: pdv.pdv ?? "") { (pdv, accessDenied) in
                 guard let pdv = pdv else {
                     [Int]().emptyAlert("PDV não cadastrado.", self);
                     if let vl = self.vLoading{ vl.removeFromSuperview() }
@@ -149,13 +186,16 @@ extension MyRouteViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 Rest.searchPDVOportunities(pdv: pdv.pdv!, onComplete: { (oportunities, accessDenied) in
                     guard let oportunities = oportunities else {return}
-                    if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DashboardPDVViewController") as? DashboardPDVViewController {
-                        vc.titleTop = "Pesquisa por Área"
-                        vc.pdv = pdv
-                        vc.oportunities = oportunities
-                        if let vl = self.vLoading{ vl.removeFromSuperview() }
-                        self.present(vc, animated: true, completion: nil)
-                    }
+                    Rest.listRotines(pdv: pdv.pdv!, onComplete: { (rotines, accessDenied) in
+                        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DashboardPDVViewController") as? DashboardPDVViewController {
+                            vc.titleTop = "Pesquisa por Área"
+                            vc.pdv = pdv
+                            vc.oportunities = oportunities
+                            vc.rotines = rotines
+                            if let vl = self.vLoading{ vl.removeFromSuperview() }
+                            self.present(vc, animated: true, completion: nil)
+                        }
+                    })
                 })
             }
         }

@@ -661,23 +661,10 @@ class Rest{
     }
     
     class func listGerentes(rotinaId: Int?, onComplete: @escaping ([ListGerentesModel]?, AccessDenied?) -> Void){
-        guard let user = appDelegate.user, let nivel = appDelegate.user?.nivel, let rotinaId = rotinaId else {return}
-        var cargo = ""
-        switch nivel {
-        case 1:
-            cargo = user.diretoria != nil ? user.diretoria! : ""
-        case 2:
-            cargo = user.gerencia != nil ? user.gerencia! : ""
-        case 3:
-            cargo = user.supervisao != nil ? user.supervisao! : ""
-        case 4:
-            cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
-        default:
-            cargo = ""
-        }
+        guard let user = appDelegate.user, let cargoId = user.cargoId, let rotinaId = rotinaId else {return}
         
         let headers: HTTPHeaders = getHeaders()
-        let parameters = ["rotinaId" : rotinaId, "cargoId" : nivel] as [String : Any]
+        let parameters = ["rotinaId" : rotinaId, "cargoId" : cargoId] as [String : Any]
         
         let url = baseURL+"api/pdv/estrutura-rotina.json"
         Alamofire.request(url, method: .post, parameters: parameters as [String: Any], encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
@@ -701,4 +688,88 @@ class Rest{
         }
     }
     
+    
+    class func listRoutesPDV(rotinaId: Int?, onComplete: @escaping ([PDVModel]?, AccessDenied?) -> Void){
+        guard let user = appDelegate.user, let cpf = user.cpf, let rotinaId = rotinaId else {return}
+        
+        let headers: HTTPHeaders = getHeaders()
+        let parameters = ["rotinaId" : rotinaId, "cpf" : cpf] as [String : Any]
+        
+        let url = baseURL+"api/pdv/minha-rota/rotinas.json"
+        Alamofire.request(url, method: .post, parameters: parameters as [String: Any], encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    let result = try JSONDecoder().decode([PDVModel].self, from: data)
+                    print(result)
+                    onComplete(result, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    class func listRoutesStructPDV(rotinaId: Int?, rota: String?, onComplete: @escaping ([PDVModel]?, AccessDenied?) -> Void){
+        guard let user = appDelegate.user, let cpf = user.cpf, let rotinaId = rotinaId, let rota = rota, let cargoId = user.cargoId else {return}
+        
+        let headers: HTTPHeaders = getHeaders()
+        let parameters = ["rotinaId" : rotinaId, "cpf" : cpf, "rota" : rota, "cargoId" : cargoId] as [String : Any]
+        
+        let url = baseURL+"api/pdv/estrutura-rotina/pdvs.json"
+        Alamofire.request(url, method: .post, parameters: parameters as [String: Any], encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    let result = try JSONDecoder().decode([PDVModel].self, from: data)
+                    print(result)
+                    onComplete(result, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    class func listRotines(pdv: String?, onComplete: @escaping ([RotinesModel]?, AccessDenied?) -> Void){
+        guard let pdv = pdv else {return}
+        
+        let headers: HTTPHeaders = getHeaders()
+        let parameters = ["pdv" : pdv] as [String : Any]
+        
+        let url = baseURL+"api/pdv/rotinas.json"
+        Alamofire.request(url, method: .post, parameters: parameters as [String: Any], encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    let result = try JSONDecoder().decode([RotinesModel].self, from: data)
+                    print(result)
+                    onComplete(result, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+            
+        }
+    }
 }

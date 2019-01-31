@@ -9,6 +9,12 @@
 import Foundation
 
 struct PDVModel : Codable {
+    
+    let id: Int?
+    let de: String?
+    let ate: String?
+    let rotinaUsuarioId: Int?
+    let respondida: Bool?
     let pdv : String?
     let nome : String?
     let canal : String?
@@ -39,6 +45,11 @@ struct PDVModel : Codable {
 
     
     enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case de = "de"
+        case ate = "ate"
+        case rotinaUsuarioId = "rotinaUsuarioId"
+        case respondida = "respondida"
         case pdv = "pdv"
         case nome = "nome"
         case canal = "canal"

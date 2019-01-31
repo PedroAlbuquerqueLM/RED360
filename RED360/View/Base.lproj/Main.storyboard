@@ -2976,7 +2976,9 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <outlet property="pdvLabel" destination="r7o-1F-7FV" id="mLt-YB-pq9"/>
+                                            <outlet property="addressLabel" destination="EZo-Ra-2FM" id="lKg-dL-QW5"/>
+                                            <outlet property="pdvLabel" destination="r7o-1F-7FV" id="EdQ-T1-CTv"/>
+                                            <outlet property="titleLabel" destination="WlV-yg-wDd" id="OpL-Eu-uIv"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RouteListCell" rowHeight="102" id="ODr-ZB-ACe" customClass="RouteListCell" customModule="RED360" customModuleProvider="target">

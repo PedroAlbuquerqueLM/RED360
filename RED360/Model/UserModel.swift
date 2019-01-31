@@ -36,6 +36,8 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
     var uid: String?
     var token: String?
     var metas: MetasModel?
+    var cargoId: Int?
+    var cargoLideranca: Bool?
     
     init(team: MyTeamsModel) {
         self.email = team.email

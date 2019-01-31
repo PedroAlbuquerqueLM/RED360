@@ -28,16 +28,18 @@ class PDVViewController: SlideViewController {
         }
         Rest.searchPDV(pdv: self.searchText.text!) { (pdv, accessDenied) in
             guard let pdv = pdv else {if let vl = self.vLoading{Array<Any>().emptyAlert("Nenhum PDV encontrado com este código", self); vl.removeFromSuperview() }; return;}
-            
             Rest.searchPDVOportunities(pdv: pdv.pdv!, onComplete: { (oportunities, accessDenied) in
                 guard let oportunities = oportunities else {return}
-                if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DashboardPDVViewController") as? DashboardPDVViewController {
-                    vc.titleTop = "Pesquisa por código PDV"
-                    vc.pdv = pdv
-                    vc.oportunities = oportunities
-                    if let vl = self.vLoading{ vl.removeFromSuperview() }
-                    self.present(vc, animated: true, completion: nil)
-                }
+                Rest.listRotines(pdv: pdv.pdv!, onComplete: { (rotines, accessDenied) in
+                    if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DashboardPDVViewController") as? DashboardPDVViewController {
+                        vc.titleTop = "Pesquisa por Área"
+                        vc.pdv = pdv
+                        vc.oportunities = oportunities
+                        vc.rotines = rotines
+                        if let vl = self.vLoading{ vl.removeFromSuperview() }
+                        self.present(vc, animated: true, completion: nil)
+                    }
+                })
             })
         }
     }

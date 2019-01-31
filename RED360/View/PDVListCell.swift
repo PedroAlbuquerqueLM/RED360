@@ -15,6 +15,6 @@ class PDVListCell: UITableViewCell {
     @IBOutlet weak var pdvLabel: UILabel!
     
     override func awakeFromNib() {
-        
+        self.selectionStyle = .none
     }
 }

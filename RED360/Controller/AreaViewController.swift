@@ -172,9 +172,9 @@ extension AreaViewController: UITableViewDelegate, UITableViewDataSource {
                 self.areaTableView.reloadData()
             }
         case .pdv:
-            guard let pdv = self.pdvs?[indexPath.row].pdv else {return}
+            guard let pdv = self.pdvs?[indexPath.row] else {return}
             self.loading()
-            Rest.searchPDV(pdv: pdv) { (pdv, accessDenied) in
+            Rest.searchPDV(pdv: pdv.pdv ?? "") { (pdv, accessDenied) in
                 guard let pdv = pdv else {
                     [Int]().emptyAlert("PDV não cadastrado.", self);
                     if let vl = self.vLoading{ vl.removeFromSuperview() }
@@ -182,13 +182,16 @@ extension AreaViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 Rest.searchPDVOportunities(pdv: pdv.pdv!, onComplete: { (oportunities, accessDenied) in
                     guard let oportunities = oportunities else {return}
-                    if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DashboardPDVViewController") as? DashboardPDVViewController {
-                        vc.titleTop = "Pesquisa por Área"
-                        vc.pdv = pdv
-                        vc.oportunities = oportunities
-                        if let vl = self.vLoading{ vl.removeFromSuperview() }
-                        self.present(vc, animated: true, completion: nil)
-                    }
+                    Rest.listRotines(pdv: pdv.pdv!, onComplete: { (rotines, accessDenied) in
+                        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DashboardPDVViewController") as? DashboardPDVViewController {
+                            vc.titleTop = "Pesquisa por Área"
+                            vc.pdv = pdv
+                            vc.oportunities = oportunities
+                            vc.rotines = rotines
+                            if let vl = self.vLoading{ vl.removeFromSuperview() }
+                            self.present(vc, animated: true, completion: nil)
+                        }
+                    })
                 })
             }
         }

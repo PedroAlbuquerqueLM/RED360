@@ -15,6 +15,7 @@ class DashboardPDVViewController: SlideViewController {
     var titleTop = "Pesquisa por código PDV"
     var pdv: PDVModel!
     var oportunities: [String:[OportunitiesModel]]!
+    var rotines: [RotinesModel]?
     var titles = ["ATIVAÇÃO", "DISPONIBILIDADE", "GDM", "PREÇO", "SOVI"]
     var titlesOut = ["ativacao", "disponibilidade", "gdm", "preco", "sovi"]
     
