@@ -48,13 +48,13 @@ class MyRouteViewController: SlideViewController {
             self.loading()
             self.navItem?.leftBarButtonItem = self.menuItem;
             self.areaSelected = .route
-            self.setTitle("Minha Rota")
             self.areaTableView.reloadData()
         case .pdv:
             self.loading()
             guard let user = appDelegate.user else {return}
             if user.cargoLideranca ?? false {
                 Rest.listGerentes(rotinaId: self.routeIdSelected) { (gerentes, accessDenied) in
+                    self.setTitle("Minha Rota")
                     self.areaSelected = .gerente
                     self.gerentes = gerentes
                     self.areaTableView.reloadData()
@@ -117,8 +117,10 @@ extension MyRouteViewController: UITableViewDelegate, UITableViewDataSource {
             
             if pdv.respondida == nil {
                 cell.backgroundColor = #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.6864271567)
+                cell.isUserInteractionEnabled = false
             }else{
                 cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                cell.isUserInteractionEnabled = true
             }
             
             return cell
