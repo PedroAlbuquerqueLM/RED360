@@ -88,6 +88,16 @@ class MyRouteViewController: SlideViewController {
         inactives?.forEach{pdvs.append($0)}
         self.pdvs = pdvs
     }
+    
+    func orderRotines(_ rotines: [RotinesModel]?) -> [RotinesModel]?{
+        guard let rotines = rotines else {return nil}
+        var rotinesNew = [RotinesModel]()
+        let actives = rotines.filter{$0.respondida == nil || $0.respondida == false}
+        let inactives = rotines.filter{$0.respondida == true}
+        actives.forEach{rotinesNew.append($0)}
+        inactives.forEach{rotinesNew.append($0)}
+        return rotinesNew
+    }
 }
 
 extension MyRouteViewController: UITableViewDelegate, UITableViewDataSource {
@@ -195,7 +205,7 @@ extension MyRouteViewController: UITableViewDelegate, UITableViewDataSource {
                             vc.titleTop = self.getTitle()
                             vc.pdv = pdv
                             vc.oportunities = oportunities
-                            vc.rotines = rotines
+                            vc.rotines = self.orderRotines(rotines)
                             if let vl = self.vLoading{ vl.removeFromSuperview() }
                             self.present(vc, animated: true, completion: nil)
                         }

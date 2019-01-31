@@ -40,11 +40,13 @@ class DashboardPDVViewController: SlideViewController {
 
 extension DashboardPDVViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        if self.rotines?.isEmpty ?? true { return 10 }
+        return 12
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (section < 4) || (section > 8) { return 1 }
+        if (section == 11) { return self.rotines?.count ?? 0 }
+        if (section < 4) || (section > 8) || (section == 10) { return 1 }
         return (self.oportunities[titlesOut[section-4]]?.count ?? 0) + 1
     }
     
@@ -66,11 +68,7 @@ extension DashboardPDVViewController: UITableViewDelegate, UITableViewDataSource
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OportunitiesCell", for: indexPath)
             return cell
-        case 9:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PDVButtonsCell", for: indexPath) as! PDVButtonsCell
-            cell.superViewController = self
-            return cell
-        default:
+        case 4,5,6,7,8:
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "PDVOpTitleCell", for: indexPath) as! PDVOpTitleCell
                 cell.title.text = self.titles[indexPath.section-4]
@@ -82,6 +80,27 @@ extension DashboardPDVViewController: UITableViewDelegate, UITableViewDataSource
                 cell.pontuacao.text = value?.oportunidade
                 return cell
             }
+        case 9:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PDVButtonsCell", for: indexPath) as! PDVButtonsCell
+            cell.superViewController = self
+            return cell
+        case 10:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RoutinesCell", for: indexPath)
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RoutinesListCell", for: indexPath) as! RoutinesListCell
+            guard let rotine = self.rotines?[indexPath.row] else {return cell}
+            cell.titleLabel.text = rotine.rotina
+            cell.dateLabel.text = rotine.ate
+            
+            if rotine.respondida ?? false {
+                cell.backgroundColor = #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.6864271567)
+                cell.isUserInteractionEnabled = false
+            }else{
+                cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                cell.isUserInteractionEnabled = true
+            }
+            return cell
         }
     }
     
@@ -91,11 +110,13 @@ extension DashboardPDVViewController: UITableViewDelegate, UITableViewDataSource
             case 1: return 150
             case 2: return 280
             case 3: return 92
-            case 9: return 124
-            default:
+            case 4,5,6,7,8:
                 if indexPath.row > 0 { return 60}
                 if self.oportunities[titlesOut[indexPath.section-4]]?.count == 0 { return 80 }
                 return 45;
+            case 9: return 124
+            case 10: return 40
+            default: return 80
         }
     }
     

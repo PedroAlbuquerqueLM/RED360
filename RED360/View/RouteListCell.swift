@@ -15,6 +15,16 @@ class RouteListCell: UITableViewCell {
     @IBOutlet weak var pdvLabel: UILabel!
     
     override func awakeFromNib() {
-        
+        self.selectionStyle = .none
+    }
+}
+
+class RoutinesListCell: UITableViewCell {
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    override func awakeFromNib() {
+        self.selectionStyle = .none
     }
 }
