@@ -772,4 +772,32 @@ class Rest{
             
         }
     }
+    
+    class func listQuizz(rotine: RotinesModel?, onComplete: @escaping ([QuizzModel]?, AccessDenied?) -> Void){
+        guard let tipo = rotine?.rotina else {return}
+        
+        let headers: HTTPHeaders = getHeaders()
+        let parameters = ["tipo" : tipo] as [String : Any]
+        
+        let url = baseURL+"api/rotina/perguntas.json"
+        Alamofire.request(url, method: .post, parameters: parameters as [String: Any], encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+            if let data = response.data{
+                do{
+                    let result = try JSONDecoder().decode([QuizzModel].self, from: data)
+                    print(result)
+                    onComplete(result, nil)
+                    
+                }catch{
+                    do{
+                        let error = try JSONDecoder().decode(AccessDenied.self, from: data)
+                        onComplete(nil, error)
+                    }catch{
+                        print(error.localizedDescription)
+                        onComplete(nil, nil)
+                    }
+                }
+            }
+            
+        }
+    }
 }

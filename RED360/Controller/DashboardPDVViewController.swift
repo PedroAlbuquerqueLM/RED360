@@ -19,6 +19,8 @@ class DashboardPDVViewController: SlideViewController {
     var titles = ["ATIVAÇÃO", "DISPONIBILIDADE", "GDM", "PREÇO", "SOVI"]
     var titlesOut = ["ativacao", "disponibilidade", "gdm", "preco", "sovi"]
     
+    var vLoading = Bundle.main.loadNibNamed("VLoading", owner: self, options: nil)?.first as? VLoading
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -130,6 +132,23 @@ extension DashboardPDVViewController: UITableViewDelegate, UITableViewDataSource
                 guard let cell = tableView.cellForRow(at: indexPath) as? ChannelCellList else {return}
                 if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IndicatorViewController") as? IndicatorViewController {
                     vc.channel = cell.notaCanal?.canal ?? ""
+                    vc.modalPresentationStyle = .overCurrentContext
+                    self.present(vc, animated: true, completion: nil)
+                }
+            }
+        case 11:
+            guard let rotine = rotines?[indexPath.row] else {return}
+            if let vl = vLoading{
+                vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+                vl.aiLoading.startAnimating()
+                view.addSubview(vl)
+            }
+            Rest.listQuizz(rotine: rotine) { (quizz, accessDenied) in
+                if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RotineViewController") as? RotineViewController {
+                    if let vl = self.vLoading{ vl.removeFromSuperview() }
+                    guard let quizz = quizz else {return}
+                    vc.quizz = quizz
+                    vc.titleQuizz = rotine.rotina
                     vc.modalPresentationStyle = .overCurrentContext
                     self.present(vc, animated: true, completion: nil)
                 }

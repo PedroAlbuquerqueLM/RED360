@@ -27,6 +27,13 @@ extension String {
     var toDouble: Double? {
         return Double(self.replacingOccurrences(of: ",", with: "."))
     }
+    
+    var qntHeight: Int {
+        let sizeWidth = screenWidth - 30
+        let sizePergunta = CGFloat(self.count) * 9
+        let qntHeight = sizePergunta.truncatingRemainder(dividingBy: sizeWidth) > 0 ? (sizePergunta/sizeWidth) + 2 : (sizePergunta/sizeWidth)
+        return Int(qntHeight)
+    }
 }
 
 extension Array {

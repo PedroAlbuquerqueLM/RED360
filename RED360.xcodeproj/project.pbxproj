@@ -14,6 +14,9 @@
 		7102486E21B0381E00447202 /* PerguntasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102486D21B0381E00447202 /* PerguntasModel.swift */; };
 		7102487021B0CD1400447202 /* ObservacaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102486F21B0CD1400447202 /* ObservacaoViewController.swift */; };
 		7102487221B0D85C00447202 /* REDFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7102487121B0D85C00447202 /* REDFormViewController.swift */; };
+		7105E107220350300029A53B /* RotineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7105E106220350300029A53B /* RotineViewController.swift */; };
+		7105E109220353360029A53B /* RotineQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7105E108220353360029A53B /* RotineQuestionCell.swift */; };
+		7105E10B2203631D0029A53B /* QuizzModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7105E10A2203631D0029A53B /* QuizzModel.swift */; };
 		7106BF2B220143F3005E43DB /* MyRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7106BF2A220143F3005E43DB /* MyRouteViewController.swift */; };
 		7106BF2D22014954005E43DB /* RouteListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7106BF2C22014954005E43DB /* RouteListCell.swift */; };
 		7106BF2F22014E07005E43DB /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7106BF2E22014E07005E43DB /* RouteModel.swift */; };
@@ -111,6 +114,9 @@
 		7102486D21B0381E00447202 /* PerguntasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerguntasModel.swift; sourceTree = "<group>"; };
 		7102486F21B0CD1400447202 /* ObservacaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservacaoViewController.swift; sourceTree = "<group>"; };
 		7102487121B0D85C00447202 /* REDFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REDFormViewController.swift; sourceTree = "<group>"; };
+		7105E106220350300029A53B /* RotineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotineViewController.swift; sourceTree = "<group>"; };
+		7105E108220353360029A53B /* RotineQuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotineQuestionCell.swift; sourceTree = "<group>"; };
+		7105E10A2203631D0029A53B /* QuizzModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzModel.swift; sourceTree = "<group>"; };
 		7106BF2A220143F3005E43DB /* MyRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRouteViewController.swift; sourceTree = "<group>"; };
 		7106BF2C22014954005E43DB /* RouteListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteListCell.swift; sourceTree = "<group>"; };
 		7106BF2E22014E07005E43DB /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
@@ -297,6 +303,7 @@
 				7158DC2D216E6D050083B844 /* PDVViewController.swift */,
 				7172FA6F21A78EE9004A7911 /* LibraryViewController.swift */,
 				716BF9F221AE16A7002FDDF9 /* REDSimuladoViewController.swift */,
+				7105E106220350300029A53B /* RotineViewController.swift */,
 				7102486F21B0CD1400447202 /* ObservacaoViewController.swift */,
 				7102487121B0D85C00447202 /* REDFormViewController.swift */,
 			);
@@ -320,6 +327,7 @@
 				7106BF2E22014E07005E43DB /* RouteModel.swift */,
 				71EC933221816EA8001498A2 /* MetasModel.swift */,
 				7182987421A4EB4E00E452B9 /* ListPDVModel.swift */,
+				7105E10A2203631D0029A53B /* QuizzModel.swift */,
 				7172FA7121A79EBF004A7911 /* LibraryModel.swift */,
 				71118E7C21AECA7D00BDF521 /* REDSimuladoModel.swift */,
 				7102486B21B0369100447202 /* PesquisaSimuladaModel.swift */,
@@ -333,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				7106BF2C22014954005E43DB /* RouteListCell.swift */,
+				7105E108220353360029A53B /* RotineQuestionCell.swift */,
 				7172FA7321A7A027004A7911 /* LibraryCell.swift */,
 				7109347B21A32A1800268EF1 /* Dashboard */,
 				7109348021A3307D00268EF1 /* PDV */,
@@ -735,6 +744,7 @@
 				7109348821A398AB00268EF1 /* PDVButtonsCell.swift in Sources */,
 				7109347A21A320E300268EF1 /* PDVModel.swift in Sources */,
 				7102486C21B0369100447202 /* PesquisaSimuladaModel.swift in Sources */,
+				7105E10B2203631D0029A53B /* QuizzModel.swift in Sources */,
 				71118E7D21AECA7D00BDF521 /* REDSimuladoModel.swift in Sources */,
 				716C56F1217E071000003759 /* VLoading.swift in Sources */,
 				715E428621873A5E00193B11 /* IndicatorViewController.swift in Sources */,
@@ -766,11 +776,13 @@
 				71EC93352181749C001498A2 /* NotaCanalModel.swift in Sources */,
 				71125B11218AA1EE00880DFC /* MyTeamsModel.swift in Sources */,
 				7109348221A35BCE00268EF1 /* PDVNotaRedCell.swift in Sources */,
+				7105E109220353360029A53B /* RotineQuestionCell.swift in Sources */,
 				7109348421A38A0600268EF1 /* PDVOpCell.swift in Sources */,
 				7109347F21A3303800268EF1 /* PDVDetailsCell.swift in Sources */,
 				7172FA7421A7A027004A7911 /* LibraryCell.swift in Sources */,
 				716C56FE217E205F00003759 /* UserManager.swift in Sources */,
 				7102486E21B0381E00447202 /* PerguntasModel.swift in Sources */,
+				7105E107220350300029A53B /* RotineViewController.swift in Sources */,
 				7182987521A4EB4E00E452B9 /* ListPDVModel.swift in Sources */,
 				716C56F8217E1BA700003759 /* AccessDeniedModel.swift in Sources */,
 				715E42882187E4F600193B11 /* MenuCell.swift in Sources */,
