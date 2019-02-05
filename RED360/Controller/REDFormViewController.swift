@@ -25,6 +25,7 @@ class REDFormViewController: UIViewController {
     var perguntas: [PerguntaModel]?
     
     var quizz: [QuizzModel]?
+    var rotineId: Int?
     var location: CLLocationCoordinate2D?
     var obs: String?
     
@@ -58,7 +59,8 @@ class REDFormViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             }
         }else{
-            Rest.saveRotine(quizzes: self.quizz!, location: self.location!, obs: self.obs!) { (_,_) in
+            guard let rotineId = self.rotineId else {return}
+            Rest.saveRotine(quizzes: self.quizz!, location: self.location!, obs: self.obs!, rotineId: rotineId) { (_,_) in
                 
                 self.delegate?.resignView()
                 self.dismiss(animated: true, completion: nil)

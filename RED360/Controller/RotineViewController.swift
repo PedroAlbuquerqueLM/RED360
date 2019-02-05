@@ -9,12 +9,19 @@
 import UIKit
 import CoreLocation
 
+protocol RotineViewControllerDelegate:class {
+    func resignView()
+}
+
 class RotineViewController: SlideViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dashTableView: UITableView!
     
+    weak var delegate: RotineViewControllerDelegate?
+    
     var titleQuizz: String?
+    var rotine: RotinesModel?
     var quizz: [QuizzModel]!
     let locationManager = CLLocationManager()
     var location: CLLocationCoordinate2D?
@@ -25,7 +32,7 @@ class RotineViewController: SlideViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setTitle(titleQuizz ?? "")
+        self.setTitle("Rotina")
         let doneItem = UIBarButtonItem(image: #imageLiteral(resourceName: "closeIcon"), style: .done, target: nil, action: #selector(closeAction))
         let checkItem = UIBarButtonItem(image: #imageLiteral(resourceName: "checkIcon"), style: .done, target: nil, action: #selector(checkAction))
         let observationItem = UIBarButtonItem(image: #imageLiteral(resourceName: "observationIcon"), style: .done, target: nil, action: #selector(observationAction))
@@ -44,8 +51,18 @@ class RotineViewController: SlideViewController {
     }
     
     @objc func checkAction() {
+        guard let quizz = self.quizz else {return}
+        quizz.forEach{
+            $0.perguntas?.forEach{
+                if $0.respostaId < 0{
+                    alertEmpty(message: "Por gentileza, marque todas as respostas", dismiss: false)
+                    return
+                }
+            }
+        }
         if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "REDFormViewController") as? REDFormViewController {
             vc.quizz = self.quizz
+            vc.rotineId = self.rotine?.id
             vc.obs = self.observacao
             vc.location = self.location
             vc.modalPresentationStyle = .overCurrentContext
@@ -62,14 +79,16 @@ class RotineViewController: SlideViewController {
         }
     }
     
-    func alertEmpty(){
-        let alertController = UIAlertController(title: "Sem dados para simular.", message: "", preferredStyle: .alert)
+    func alertEmpty(message: String = "Sem dados para simular.", dismiss: Bool = true){
+        let alertController = UIAlertController(title: message, message: "", preferredStyle: .alert)
         
         // Create the actions
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
             UIAlertAction in
             NSLog("OK Pressed")
-            self.dismiss(animated: true, completion: nil)
+            if dismiss{
+                self.dismiss(animated: true, completion: nil)
+            }
         }
         
         // Add the actions
@@ -154,6 +173,8 @@ extension RotineViewController: CLLocationManagerDelegate {
 extension RotineViewController: REDFormDelegate {
     func resignView() {
         DispatchQueue.main.asyncAfter(wallDeadline: .now() + 1.0) {
+            self.rotine?.respondida = true
+            self.delegate?.resignView()
             self.dismiss(animated: true, completion: nil)
         }
     }

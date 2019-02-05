@@ -149,6 +149,8 @@ extension DashboardPDVViewController: UITableViewDelegate, UITableViewDataSource
                     guard let quizz = quizz else {return}
                     vc.quizz = quizz
                     vc.titleQuizz = rotine.rotina
+                    vc.rotine = rotine
+                    vc.delegate = self
                     vc.modalPresentationStyle = .overCurrentContext
                     self.present(vc, animated: true, completion: nil)
                 }
@@ -166,5 +168,11 @@ extension DashboardPDVViewController: UITableViewDelegate, UITableViewDataSource
         let headerView = UIView()
         headerView.backgroundColor = UIColor.clear
         return headerView
+    }
+}
+
+extension DashboardPDVViewController: RotineViewControllerDelegate {
+    func resignView() {
+        self.dashTableView.reloadData()
     }
 }

@@ -696,25 +696,26 @@ class Rest{
         }
     }
     
-    class func saveRotine(quizzes: [QuizzModel], location: CLLocationCoordinate2D, obs: String, onComplete: @escaping (Bool?, AccessDenied?) -> Void){
+    class func saveRotine(quizzes: [QuizzModel], location: CLLocationCoordinate2D, obs: String, rotineId: Int, onComplete: @escaping (Bool?, AccessDenied?) -> Void){
         
         let headers: HTTPHeaders = getHeaders()
         
         let url = baseURL+"api/rotina/v2/cadastrar.json"
         
         do{
-            let quizzDic = ["id" : appDelegate.user?.id ?? 0, "pesquisador" : appDelegate.user?.nome ?? "", "dhi" : Date(), "latitude" : location.latitude, "longitude" : location.longitude, "obs" : obs] as [String : Any]
+            let quizzDic = ["id" : rotineId, "pesquisador" : appDelegate.user?.nome ?? "", "dhi" : Date().toString(dateFormat: "yyyy-MM-dd HH:mm:ss"), "latitude" : location.latitude, "longitude" : location.longitude, "obs" : obs] as [String : Any]
             
             var answerArray = [[String : Any]]()
             for quizz in quizzes {
                 for answer in quizz.perguntas! {
                     var answerDic = try answer.asDictionary()
                     answerDic["respostaId"] = answer.respostaId
+                    answerDic.removeValue(forKey: "respostas")
                     answerArray.append(answerDic)
                 }
             }
             
-            let parameters = ["RotinaPdv" : quizzDic, "PerguntaFormulario" : answerArray] as [String : Any]
+            let parameters = ["rotinaPdv" : quizzDic, "perguntas" : answerArray] as [String : Any]
             
             Alamofire.request(url, method: .post, parameters: parameters as [String: Any], encoding: Alamofire.JSONEncoding.default, headers: headers).responseJSON { (response) in
                 onComplete(true, nil)

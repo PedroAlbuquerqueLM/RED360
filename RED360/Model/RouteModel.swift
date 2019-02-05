@@ -36,7 +36,7 @@ struct ListGerentesModel : Codable {
     }
 }
 
-struct RotinesModel : Codable {
+class RotinesModel : Codable {
     var id : Int?
     var rotinaUsuarioId : Int?
     var pdv : String?
