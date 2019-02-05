@@ -66,6 +66,7 @@ extension RotineQuestionCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.answer?.respostaIndex = indexPath.row
+        self.answer?.respostaId = self.answer?.respostas?[indexPath.row].id ?? -1
         tableView.reloadData()
     }
     

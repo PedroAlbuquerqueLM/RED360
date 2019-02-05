@@ -30,6 +30,7 @@ class AnswerModel : Codable {
     var pergunta : String?
     var pontosPossiveis : String?
     var pontua : Bool?
+    var respostaId: Int = -1
     var respostas : [ResponseModel]?
     var respostaIndex: Int = -1
     

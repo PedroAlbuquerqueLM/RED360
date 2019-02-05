@@ -2960,7 +2960,10 @@
                     <navigationItem key="navigationItem" id="DKp-hI-ByA"/>
                     <connections>
                         <outlet property="obsLabel" destination="uSA-fq-qDN" id="ZWO-yb-gl5"/>
+                        <outlet property="obsTitle" destination="exo-Qt-bdb" id="zAW-vs-g5S"/>
                         <outlet property="resumoLabel" destination="Ths-Gn-5d7" id="czp-T5-FJF"/>
+                        <outlet property="resumoTitle" destination="iOe-0L-PJV" id="k4x-iw-WUG"/>
+                        <outlet property="titleBox" destination="fwJ-wS-ro5" id="g0N-UL-xYj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gkV-Wq-6Ph" userLabel="First Responder" sceneMemberID="firstResponder"/>

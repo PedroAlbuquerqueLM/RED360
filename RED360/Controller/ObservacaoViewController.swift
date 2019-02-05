@@ -27,6 +27,9 @@ class ObservacaoViewController: UIViewController {
         if let presenter = presentingViewController as? REDSimuladoViewController {
             presenter.observacao = obsText.text
         }
+        if let presenter = presentingViewController as? RotineViewController {
+            presenter.observacao = obsText.text
+        }
         self.dismiss(animated: true, completion: nil)
     }
     

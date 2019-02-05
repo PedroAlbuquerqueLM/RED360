@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import Firebase
+import CoreLocation
 
 enum NotaCanalType: String {
     case total = "api/dashboard/pontuacao/canal/total/"
@@ -798,6 +799,35 @@ class Rest{
                 }
             }
             
+        }
+    }
+    
+    class func saveRotine(quizzes: [QuizzModel], location: CLLocationCoordinate2D, obs: String, onComplete: @escaping (Bool?, AccessDenied?) -> Void){
+        
+        let headers: HTTPHeaders = getHeaders()
+        
+        let url = baseURL+"api/rotina/v2/cadastrar.json"
+        
+        do{
+            let quizzDic = ["id" : appDelegate.user?.id ?? 0, "pesquisador" : appDelegate.user?.nome ?? "", "dhi" : Date(), "latitude" : location.latitude, "longitude" : location.longitude, "obs" : obs] as [String : Any]
+            
+            var answerArray = [[String : Any]]()
+            for quizz in quizzes {
+                for answer in quizz.perguntas! {
+                    var answerDic = try answer.asDictionary()
+                    answerDic["respostaId"] = answer.respostaId
+                    answerArray.append(answerDic)
+                }
+            }
+
+            let parameters = ["RotinaPdv" : quizzDic, "PerguntaFormulario" : answerArray] as [String : Any]
+            
+            Alamofire.request(url, method: .post, parameters: parameters as [String: Any], encoding: Alamofire.JSONEncoding.default, headers: headers).responseJSON { (response) in
+                onComplete(true, nil)
+            }
+        }catch{
+            print(error.localizedDescription)
+            onComplete(false, nil)
         }
     }
 }

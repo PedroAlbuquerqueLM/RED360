@@ -44,10 +44,10 @@ class RotineViewController: SlideViewController {
     }
     
     @objc func checkAction() {
-        
         if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "REDFormViewController") as? REDFormViewController {
-//            vc.pesquisaSimulada = pesquisaSimulada
-//            vc.perguntas = perguntas
+            vc.quizz = self.quizz
+            vc.obs = self.observacao
+            vc.location = self.location
             vc.modalPresentationStyle = .overCurrentContext
             vc.delegate = self
             self.present(vc, animated: true, completion: nil)
