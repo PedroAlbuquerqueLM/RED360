@@ -46,6 +46,7 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
         self.cargoId = team.cargoId
         self.nivel = team.cargoId
         self.nome = team.cargo
+        self.cargo = team.cargo
         self.supervisao = team.cargoSuperior
         self.cargoSuperior = team.cargoSuperior
     }
