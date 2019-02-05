@@ -77,22 +77,10 @@ extension MyTeams2ViewController: UITableViewDelegate, UITableViewDataSource {
         switch self.selectedTime {
         case "Regionais":
             cell.textLabel?.text = self.regionais[indexPath.row]
-        case "Diretores":
-            guard let time = self.menuShow?[indexPath.row] else {return cell}
-            cell.textLabel?.text = time.diretoria
-        case "Gerentes":
-            guard let time = self.menuShow?[indexPath.row] else {return cell}
-            cell.textLabel?.text = time.gerencia
-        case "Supervisores":
-            guard let time = self.menuShow?[indexPath.row] else {return cell}
-            cell.textLabel?.text = time.supervisao
-        case "Rotas Vendedores":
-            guard let time = self.menuShow?[indexPath.row] else {return cell}
-            cell.textLabel?.text = time.rotaVendedor
         default:
-            cell.textLabel?.text = "-"
+            guard let time = self.menuShow?[indexPath.row] else {return cell}
+            cell.textLabel?.text = time.cargo
         }
-        
         return cell
     }
     
@@ -101,23 +89,13 @@ extension MyTeams2ViewController: UITableViewDelegate, UITableViewDataSource {
             if !(self.selectedTime == "Regionais") {
                 guard let time = self.menuShow?[indexPath.row], let cpf = time.cpf else {return}
                 var user = UserModel(team: time)
-                UserModel.getMetas(cpf: cpf, completion: { (metas) in
-                    user.metas = metas
-                    switch self.selectedTime {
-                    case "Diretores":
-                        user.nome = user.diretoria
-                    case "Gerentes":
-                        user.nome = user.gerencia
-                    case "Supervisores":
-                        user.nome = user.supervisao
-                    case "Rotas Vendedores":
-                        user.nome = user.rotaVendedor
-                    default:
-                        return
-                    }
+//                UserModel.getMetas(cpf: cpf, completion: { (metas) in
+//                    user.metas = metas
+                    user.cpf = cpf
+                    user.nome = user.cargo
                     vc.user = user
                     self.present(vc, animated: true, completion: nil)
-                })
+//                })
             }else{
                 let regional = self.regionais[indexPath.row]
                 var user = UserModel(cpf: "11111111111", nivel: 11, nome: "Regional 1")
@@ -125,11 +103,11 @@ extension MyTeams2ViewController: UITableViewDelegate, UITableViewDataSource {
                     user = UserModel(cpf: "22222222222", nivel: 12, nome: "Regional 2")
                 }
                 
-                UserModel.getMetas(cpf: user.cpf!, completion: { (metas) in
-                    user.metas = metas
+//                UserModel.getMetas(cpf: user.cpf!, completion: { (metas) in
+//                    user.metas = metas
                     vc.user = user
                     self.present(vc, animated: true, completion: nil)
-                })
+//                })
             }
         }
     }

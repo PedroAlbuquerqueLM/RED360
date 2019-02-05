@@ -81,7 +81,7 @@ class RotineViewController: SlideViewController {
     
     @objc func closeAction() {
         // Create the alert controller
-        let alertController = UIAlertController(title: "Todos os Registros desse simulado serão perdidos, você deseja realmente sair?", message: "", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Todos os Registros serão perdidos, você deseja realmente sair?", message: "", preferredStyle: .alert)
         
         // Create the actions
         let okAction = UIAlertAction(title: "Sair", style: UIAlertActionStyle.default) {

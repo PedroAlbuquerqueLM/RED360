@@ -42,22 +42,18 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
     var cargoSuperior: String?
     
     init(team: MyTeamsModel) {
-        self.email = team.email
         self.cpf = team.cpf
-        self.diretoria = team.diretoria
-        self.gerencia = team.gerencia
-        self.id = team.id
-        self.nivel = team.nivel
-        self.nome = team.nome
-        self.regional = team.regional
-        self.rotaVendedor = team.rotaVendedor
-        self.supervisao = team.supervisao
-        self.uid = team.uid
+        self.cargoId = team.cargoId
+        self.nivel = team.cargoId
+        self.nome = team.cargo
+        self.supervisao = team.cargoSuperior
+        self.cargoSuperior = team.cargoSuperior
     }
     
     init(cpf: String?, nivel: Int?, nome: String?) {
         self.cpf = cpf
         self.nivel = nivel
+        self.cargoId = nivel
         self.nome = nome
     }
     
@@ -97,24 +93,24 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
         }
     }
     
-    static func getMetas(cpf: String, completion: @escaping (_ metas: MetasModel?) -> Void){
-        let cpf = cpf.replacingOccurrences(of: "@red360.app", with: "")
-        let reference = Firestore.firestore().collection("metas").document(cpf)
-        reference.addSnapshotListener { snapshot, error in
-            
-            guard let snapshot = snapshot else { return }
-            if snapshot.exists {
-                if let error = error {
-                    print(error.localizedDescription)
-                }
-                let json = snapshot.data()
-                completion(MetasModel.deserialize(from: json))
-                return
-            }
-            
-            completion(nil)
-        }
-    }
+//    static func getMetas(cpf: String, completion: @escaping (_ metas: MetasModel?) -> Void){
+//        let cpf = cpf.replacingOccurrences(of: "@red360.app", with: "")
+//        let reference = Firestore.firestore().collection("metas").document(cpf)
+//        reference.addSnapshotListener { snapshot, error in
+//            
+//            guard let snapshot = snapshot else { return }
+//            if snapshot.exists {
+//                if let error = error {
+//                    print(error.localizedDescription)
+//                }
+//                let json = snapshot.data()
+//                completion(MetasModel.deserialize(from: json))
+//                return
+//            }
+//            
+//            completion(nil)
+//        }
+//    }
     
     static func getToken(completion: @escaping (_ token: String) -> Void) {
         if let user = Auth.auth().currentUser {
@@ -124,38 +120,7 @@ struct UserModel: ModelType, HandyJSON, FirebaseAuthenticable {
             })
         }
     }
-    
-    static func getcargoByNivel() -> String {
-        guard let user = appDelegate.user, let nivel = appDelegate.user?.nivel else {return "-"}
-        switch nivel {
-        case 1:
-            return user.diretoria!
-        case 2:
-            return user.gerencia!
-        case 3:
-            return user.supervisao!
-        case 4:
-            return user.rotaVendedor!
-        default:
-            return user.diretoria!
-        }
-    }
-    
-    static func getCargo() -> String {
-        if let diretoria = appDelegate.user?.diretoria {
-            return diretoria
-        }
-        if let gerencia = appDelegate.user?.gerencia {
-            return gerencia
-        }
-        if let supervisao = appDelegate.user?.supervisao {
-            return supervisao
-        }
-        if let rota = appDelegate.user?.rotaVendedor {
-            return rota
-        }
-        return ""
-    }
+
 }
 
 public protocol ModelType {

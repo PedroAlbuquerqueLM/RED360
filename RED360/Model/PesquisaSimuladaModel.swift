@@ -28,8 +28,8 @@ class PesquisaSimuladaModel : Codable {
     init(pdv: String?, location: CLLocationCoordinate2D?, ativacao: String?, percentualAtivacao: String?, percentualDisponibilidade: String?, percentualGdm: String?, percentualPreco: String?, percentualSovi: String?, percentualTotal: String?){
         self.pesquisador = appDelegate.user?.nome
         self.nivel = appDelegate.user?.nivel
-        self.cargo = UserModel.getCargo()
-        self.supervisao = appDelegate.user?.supervisao
+        self.cargo = appDelegate.user?.cargo
+        self.supervisao = appDelegate.user?.cargoSuperior
         if let location = location {
             self.latitude = location.latitude
             self.longitude = location.longitude

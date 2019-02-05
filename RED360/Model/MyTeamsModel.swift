@@ -9,31 +9,17 @@
 import Foundation
 
 struct MyTeamsModel : Codable {
-    let id : Int?
-    let regional : String?
-    let diretoria : String?
-    let gerencia : String?
-    let supervisao : String?
-    let rotaVendedor : String?
+    let cargoId : Int?
+    let cargo : String?
+    let cargoSuperior : String?
     let cpf : String?
-    let nome : String?
-    let email : String?
-    let nivel : Int?
-    let uid: String?
     
     enum CodingKeys: String, CodingKey {
         
-        case id = "id"
-        case regional = "regional"
-        case diretoria = "diretoria"
-        case gerencia = "gerencia"
-        case supervisao = "supervisao"
-        case rotaVendedor = "rotaVendedor"
+        case cargoId = "cargoId"
+        case cargo = "cargo"
+        case cargoSuperior = "cargoSuperior"
         case cpf = "cpf"
-        case nome = "nome"
-        case email = "email"
-        case nivel = "nivel"
-        case uid = "uid"
         
     }
     

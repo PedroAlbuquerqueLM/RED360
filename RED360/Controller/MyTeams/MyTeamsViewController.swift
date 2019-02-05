@@ -10,7 +10,7 @@ import UIKit
 
 class MyTeamsViewController: SlideViewController {
     
-    let menuItens = [(title: "Regionais", nivel: [0, 13]), (title: "Diretores", nivel: [0, 13]), (title: "Gerentes", nivel: [0, 1, 13]), (title: "Supervisores", nivel: [0, 1, 2, 13]), (title: "Rotas Vendedores", nivel: [0, 1, 2, 3, 13])]
+    let menuItens = [(title: "Regionais", nivel: [10, 13]), (title: "Diretores", nivel: [10, 13]), (title: "Gerentes", nivel: [20, 10, 13]), (title: "Supervisores", nivel: [30, 10, 20, 13]), (title: "Rotas Vendedores", nivel: [40, 10, 20, 30, 13])]
     
     var menuShow = [String]()
     
@@ -21,7 +21,7 @@ class MyTeamsViewController: SlideViewController {
         
         self.setTitle("Meu Time")
 
-        guard let nivel = appDelegate.user?.nivel else {return}
+        guard let nivel = appDelegate.user?.cargoId else {return}
         menuItens.forEach{
             if $0.nivel.contains(nivel) {
                 self.menuShow.append($0.title)

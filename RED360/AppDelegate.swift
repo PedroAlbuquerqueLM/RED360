@@ -56,11 +56,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.user = u
             UserModel.getToken(completion: { (token) in
                 self.user?.token = token
-                UserModel.getMetas(cpf: user.email!) { (metas) in
-                    guard let metas = metas else { self.logout(); return; }
-                    self.user?.metas = metas
+//                UserModel.getMetas(cpf: user.email!) { (metas) in
+//                    guard let metas = metas else { self.logout(); return; }
+//                    self.user?.metas = metas
                     ControllerManager.toMenu()
-                }
+//                }
             })
         }
     }

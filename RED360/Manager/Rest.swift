@@ -59,25 +59,10 @@ class Rest{
     
     class func loadNotaPilar(user: UserModel?, onComplete: @escaping ([NotaPilarModel]?, AccessDenied?) -> Void){
         let u = (user == nil) ? appDelegate.user : user
-        guard let user = u, let nivel = user.nivel else {return}
-        var cargo = ""
-        var supervisao = ""
-        switch nivel {
-        case 1:
-            cargo = user.diretoria != nil ? user.diretoria! : ""
-        case 2:
-            cargo = user.gerencia != nil ? user.gerencia! : ""
-        case 3:
-            cargo = user.supervisao != nil ? user.supervisao! : ""
-        case 4:
-            cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
-            supervisao = user.supervisao != nil ? user.supervisao! : ""
-        default:
-            cargo = ""
-        }
+        guard let user = u, let nivel = user.cargoId else {return}
         
         let headers: HTTPHeaders = getHeaders()
-        let parameters = ["cargo" : cargo , "supervisao" : supervisao] as [String : Any]
+        let parameters = ["cargo" : user.cargo ?? "" , "supervisao" : user.cargoSuperior ?? ""] as [String : Any]
         
         let url = baseURL+"api/dashboard/nota_pilar/\(nivel).json"
         Alamofire.request(url, method: .post, parameters: parameters as [String: Any] , encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
@@ -104,25 +89,10 @@ class Rest{
     
     class func loadNotaCanal(user: UserModel?, type: NotaCanalType, onComplete: @escaping ([NotaCanalModel]?, AccessDenied?) -> Void){
         let u = (user == nil) ? appDelegate.user : user
-        guard let user = u, let nivel = user.nivel else {return}
-        var cargo = ""
-        var supervisao = ""
-        switch nivel {
-        case 1:
-            cargo = user.diretoria != nil ? user.diretoria! : ""
-        case 2:
-            cargo = user.gerencia != nil ? user.gerencia! : ""
-        case 3:
-            cargo = user.supervisao != nil ? user.supervisao! : ""
-        case 4:
-            cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
-            supervisao = user.supervisao != nil ? user.supervisao! : ""
-        default:
-            cargo = ""
-        }
+        guard let user = u, let nivel = user.cargoId else {return}
         
         let headers: HTTPHeaders = getHeaders()
-        let parameters = ["cargo" : cargo , "supervisao" : supervisao] as [String : Any]
+        let parameters = ["cargo" : user.cargo ?? "" , "supervisao" : user.cargoSuperior ?? ""] as [String : Any]
         
         let url = baseURL+"\(type.rawValue)\(nivel).json"
         Alamofire.request(url, method: .post, parameters: parameters as [String: Any] , encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
@@ -149,25 +119,10 @@ class Rest{
     
     class func loadPosicao(user: UserModel?, onComplete: @escaping (PosicaoModel?, AccessDenied?) -> Void){
         let u = (user == nil) ? appDelegate.user : user
-        guard let user = u, let nivel = user.nivel else {return}
-        var cargo = ""
-        var supervisao = ""
-        switch nivel {
-        case 1:
-            cargo = user.diretoria != nil ? user.diretoria! : ""
-        case 2:
-            cargo = user.gerencia != nil ? user.gerencia! : ""
-        case 3:
-            cargo = user.supervisao != nil ? user.supervisao! : ""
-        case 4:
-            cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
-            supervisao = user.supervisao != nil ? user.supervisao! : ""
-        default:
-            cargo = ""
-        }
+        guard let user = u, let nivel = user.cargoId else {return}
         
         let headers: HTTPHeaders = getHeaders()
-        let parameters = ["cargo" : cargo , "supervisao" : supervisao] as [String : Any]
+        let parameters = ["cargo" : user.cargo ?? "" , "supervisao" : user.cargoSuperior ?? ""] as [String : Any]
         
         let url = baseURL+"api/dashboard/posicao_ranking/\(nivel).json"
         Alamofire.request(url, method: .post, parameters: parameters as [String: Any] , encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
@@ -193,27 +148,12 @@ class Rest{
     
     class func loadHistorico(user: UserModel?, onComplete: @escaping ([HistoricoModel]?, AccessDenied?) -> Void){
         let u = (user == nil) ? appDelegate.user : user
-        guard let user = u, let nivel = user.nivel else {return}
-        var cargo = ""
-        var supervisao = ""
-        switch nivel {
-        case 1:
-            cargo = user.diretoria != nil ? user.diretoria! : ""
-        case 2:
-            cargo = user.gerencia != nil ? user.gerencia! : ""
-        case 3:
-            cargo = user.supervisao != nil ? user.supervisao! : ""
-        case 4:
-            cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
-            supervisao = user.supervisao != nil ? user.supervisao! : ""
-        default:
-            cargo = ""
-        }
+        guard let user = u else {return}
         
         let headers: HTTPHeaders = getHeaders()
-        let parameters = ["cargo" : cargo , "supervisao" : supervisao, "cpf" : user.cpf!] as [String : Any]
+        let parameters = ["cargo" : u?.cargo ?? "" , "supervisao" : u?.cargoSuperior ?? "", "cpf" : user.cpf!] as [String : Any]
         
-        let url = baseURL+"api/dashboard/v3/historico/\(nivel).json"
+        let url = baseURL+"api/dashboard/v4/historico/\(u?.cargoId ?? 0).json"
         Alamofire.request(url, method: .post, parameters: parameters as [String: Any] , encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
             if let data = response.data{
                 do{
@@ -237,25 +177,10 @@ class Rest{
     
     class func loadIndicator(channel: String, onComplete: @escaping ([String: NotaCanalModel?]?, AccessDenied?) -> Void){
         
-        guard let user = appDelegate.user, let nivel = user.nivel else {return}
-        var cargo = ""
-        var supervisao = ""
-        switch nivel {
-        case 1:
-            cargo = user.diretoria != nil ? user.diretoria! : ""
-        case 2:
-            cargo = user.gerencia != nil ? user.gerencia! : ""
-        case 3:
-            cargo = user.supervisao != nil ? user.supervisao! : ""
-        case 4:
-            cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
-            supervisao = user.supervisao != nil ? user.supervisao! : ""
-        default:
-            cargo = ""
-        }
+        guard let user = appDelegate.user, let nivel = user.cargoId else {return}
         
         let headers: HTTPHeaders = getHeaders()
-        let parameters = ["cargo" : cargo , "supervisao" : supervisao, "canal" : channel] as [String : Any]
+        let parameters = ["cargo" : user.cargo ?? "" , "supervisao" : user.cargoSuperior ?? "", "canal" : channel] as [String : Any]
         
         let url = baseURL+"api/dashboard/pontuacao/canal/indicadores/\(nivel).json"
         Alamofire.request(url, method: .post, parameters: parameters as [String: Any] , encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
@@ -282,28 +207,12 @@ class Rest{
     
     class func loadMeuTime(cargoTime: String, onComplete: @escaping ([MyTeamsModel]?, AccessDenied?) -> Void){
         
-        guard let user = appDelegate.user, let nivel = user.nivel else {return}
-        var cargo = ""
-        var supervisao = ""
-        
-        switch nivel {
-        case 1:
-            cargo = user.diretoria != nil ? user.diretoria! : ""
-        case 2:
-            cargo = user.gerencia != nil ? user.gerencia! : ""
-        case 3:
-            cargo = user.supervisao != nil ? user.supervisao! : ""
-        case 4:
-            cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
-            supervisao = user.supervisao != nil ? user.supervisao! : ""
-        default:
-            cargo = ""
-        }
+        guard let user = appDelegate.user else {return}
         
         let headers: HTTPHeaders = getHeaders()
-        let parameters = ["cargo" : cargo , "cargoTime" : cargoTime] as [String : Any]
+        let parameters = ["cargo" : user.cargo ?? "", "cargoTime" : cargoTime] as [String : Any]
         
-        let url = baseURL+"api/meutime/\(nivel).json"
+        let url = baseURL+"api/meutime/v2/\(user.cargoId ?? 0).json"
         Alamofire.request(url, method: .post, parameters: parameters as [String: Any] , encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
             if let data = response.data{
                 do{
@@ -328,25 +237,10 @@ class Rest{
     
     class func searchPDV(pdv: String, onComplete: @escaping (PDVModel?, AccessDenied?) -> Void){
         
-        guard let user = appDelegate.user, let nivel = user.nivel else {return}
-        var cargo = ""
-        var supervisao = ""
-        switch nivel {
-        case 1:
-            cargo = user.diretoria != nil ? user.diretoria! : ""
-        case 2:
-            cargo = user.gerencia != nil ? user.gerencia! : ""
-        case 3:
-            cargo = user.supervisao != nil ? user.supervisao! : ""
-        case 4:
-            cargo = user.rotaVendedor != nil ? user.rotaVendedor! : ""
-            supervisao = user.supervisao != nil ? user.supervisao! : ""
-        default:
-            cargo = ""
-        }
+        guard let user = appDelegate.user, let nivel = user.cargoId else {return}
         
         let headers: HTTPHeaders = getHeaders()
-        let parameters = ["pdv" : pdv, "cargo" : cargo, "supervisao" : supervisao] as [String : Any]
+        let parameters = ["pdv" : pdv, "cargo" : user.cargo ?? "", "supervisao" : user.cargoSuperior ?? ""] as [String : Any]
         
         let url = baseURL+"api/pdv/resumo/\(nivel).json"
         Alamofire.request(url, method: .post, parameters: parameters as [String: Any] , encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
@@ -819,7 +713,7 @@ class Rest{
                     answerArray.append(answerDic)
                 }
             }
-
+            
             let parameters = ["RotinaPdv" : quizzDic, "PerguntaFormulario" : answerArray] as [String : Any]
             
             Alamofire.request(url, method: .post, parameters: parameters as [String: Any], encoding: Alamofire.JSONEncoding.default, headers: headers).responseJSON { (response) in

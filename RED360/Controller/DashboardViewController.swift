@@ -19,7 +19,7 @@ class DashboardViewController: SlideViewController {
     var notasPilar: [NotaPilarModel]?
     var notasCanal: [NotaCanalModel]?
     var historico: [HistoricoModel]?
-    var metas: [String:Double?]?
+//    var metas: [String:Double?]?
     var rank: (nota: Double, vari: Double, meta: Double, rank: Int)?
     var date = ""
     var mes: Int?
@@ -60,11 +60,11 @@ class DashboardViewController: SlideViewController {
         
         Rest.loadNotaPilar(user: self.user) { (notasPilar, accessDenied) in
             self.notasPilar = notasPilar
-            if self.user != nil {
-                self.metas = self.user?.metas?.getMetasDic()
-            }else{
-                self.metas = appDelegate.user?.metas?.getMetasDic()
-            }
+//            if self.user != nil {
+//                self.metas = self.user?.metas?.getMetasDic()
+//            }else{
+//                self.metas = appDelegate.user?.metas?.getMetasDic()
+//            }
             self.mes = notasPilar?.first?.mesNome?.getMonth
             if let notasFirst = notasPilar?.first, let notasLast = notasPilar?.last {
                 self.rank = ((nota: notasFirst.total!, vari: ((notasFirst.total)! - (notasLast.total)!), meta: 0.0, rank: 0))
@@ -172,7 +172,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChartCell", for: indexPath) as! ChartCell
             cell.titleLabel.text = "Histórico".uppercased()
             
-            guard self.historico != nil && self.metas != nil else {
+            guard self.historico != nil else {
                 cell.emptyView.isHidden = false
                 cell.expandButton.isHidden = true
                 return cell
