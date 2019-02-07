@@ -10,7 +10,7 @@ import UIKit
 
 class MyTeamsViewController: SlideViewController {
     
-    let menuItens = [(title: "Regionais", nivel: [10, 13]), (title: "Diretores", nivel: [10, 13]), (title: "Gerentes", nivel: [20, 10, 13]), (title: "Supervisores", nivel: [30, 10, 20, 13]), (title: "Rotas Vendedores", nivel: [40, 10, 20, 30, 13])]
+    let menuItens = [(title: "Regionais", nivel: [11, 12, 10, 13]), (title: "Diretores", nivel: [11, 12, 10, 13]), (title: "Gerentes", nivel: [20, 11, 12, 10, 13]), (title: "Supervisores", nivel: [30, 10, 11, 12, 20, 13]), (title: "Rotas Vendedores", nivel: [40, 10, 20, 11, 12, 30, 13])]
     
     var menuShow = [String]()
     

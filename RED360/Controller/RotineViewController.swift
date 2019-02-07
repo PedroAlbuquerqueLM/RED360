@@ -22,6 +22,7 @@ class RotineViewController: SlideViewController {
     
     var titleQuizz: String?
     var rotine: RotinesModel?
+    var pdv: String?
     var quizz: [QuizzModel]!
     let locationManager = CLLocationManager()
     var location: CLLocationCoordinate2D?
@@ -62,7 +63,8 @@ class RotineViewController: SlideViewController {
         }
         if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "REDFormViewController") as? REDFormViewController {
             vc.quizz = self.quizz
-            vc.rotineId = self.rotine?.id
+            vc.rotine = self.rotine
+            vc.pdv = self.pdv
             vc.obs = self.observacao
             vc.location = self.location
             vc.modalPresentationStyle = .overCurrentContext

@@ -36,8 +36,7 @@ class MyTeams2ViewController: SlideViewController {
         super.viewWillAppear(animated)
         
         UIApplication.shared.statusBarStyle = .lightContent
-        
-        if !(self.selectedTime == "Regionais") {
+
             if let vl = vLoading{
                 vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
                 vl.aiLoading.startAnimating()
@@ -49,7 +48,7 @@ class MyTeams2ViewController: SlideViewController {
                 myTeams?.emptyAlert("Nenhum time encontrado", self)
                 self.tableMenu.reloadData()
             }
-        }
+        
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -64,23 +63,15 @@ class MyTeams2ViewController: SlideViewController {
 
 extension MyTeams2ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.selectedTime == "Regionais"{
-            return self.regionais.count
-        }
         
         guard let menuShow = self.menuShow else {return 0}
         return menuShow.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
-        switch self.selectedTime {
-        case "Regionais":
-            cell.textLabel?.text = self.regionais[indexPath.row]
-        default:
-            guard let time = self.menuShow?[indexPath.row] else {return cell}
-            cell.textLabel?.text = time.cargo
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyTeamsCell", for: indexPath) as! MyTeamsCell
+        guard let time = self.menuShow?[indexPath.row] else {return cell}
+        cell.myTeams = time
         return cell
     }
     
@@ -113,7 +104,7 @@ extension MyTeams2ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 120
     }
     
 }

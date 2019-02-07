@@ -13,6 +13,9 @@ struct MyTeamsModel : Codable {
     let cargo : String?
     let cargoSuperior : String?
     let cpf : String?
+    let mes: String?
+    let notaRed: String?
+    let meta: String?
     
     enum CodingKeys: String, CodingKey {
         
@@ -20,6 +23,9 @@ struct MyTeamsModel : Codable {
         case cargo = "cargo"
         case cargoSuperior = "cargoSuperior"
         case cpf = "cpf"
+        case mes = "mes"
+        case notaRed = "notaRed"
+        case meta = "meta"
         
     }
     

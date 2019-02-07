@@ -150,6 +150,7 @@ extension DashboardPDVViewController: UITableViewDelegate, UITableViewDataSource
                     vc.quizz = quizz
                     vc.titleQuizz = rotine.rotina
                     vc.rotine = rotine
+                    vc.pdv = self.pdv.pdv
                     vc.delegate = self
                     vc.modalPresentationStyle = .overCurrentContext
                     self.present(vc, animated: true, completion: nil)

@@ -696,14 +696,15 @@ class Rest{
         }
     }
     
-    class func saveRotine(quizzes: [QuizzModel], location: CLLocationCoordinate2D, obs: String, rotineId: Int, onComplete: @escaping (Bool?, AccessDenied?) -> Void){
+    class func saveRotine(pdv: String, quizzes: [QuizzModel], location: CLLocationCoordinate2D, obs: String, rotine: RotinesModel, onComplete: @escaping (Bool?, AccessDenied?) -> Void){
         
         let headers: HTTPHeaders = getHeaders()
-        
         let url = baseURL+"api/rotina/v2/cadastrar.json"
         
+        guard let rotineId = rotine.id, let rotineUserId = rotine.rotinaUsuarioId else {return}
+        
         do{
-            let quizzDic = ["id" : rotineId, "pesquisador" : appDelegate.user?.nome ?? "", "dhi" : Date().toString(dateFormat: "yyyy-MM-dd HH:mm:ss"), "latitude" : location.latitude, "longitude" : location.longitude, "obs" : obs] as [String : Any]
+            let quizzDic = ["pdv" : pdv, "id" : rotineId, "rotinaUsuarioId" : rotineUserId, "pesquisador" : appDelegate.user?.nome ?? "", "dhi" : Date().toString(dateFormat: "yyyy-MM-dd HH:mm:ss"), "latitude" : location.latitude, "longitude" : location.longitude, "obs" : obs] as [String : Any]
             
             var answerArray = [[String : Any]]()
             for quizz in quizzes {

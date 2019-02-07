@@ -20,6 +20,7 @@
 		7106BF2B220143F3005E43DB /* MyRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7106BF2A220143F3005E43DB /* MyRouteViewController.swift */; };
 		7106BF2D22014954005E43DB /* RouteListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7106BF2C22014954005E43DB /* RouteListCell.swift */; };
 		7106BF2F22014E07005E43DB /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7106BF2E22014E07005E43DB /* RouteModel.swift */; };
+		71077E63220C7CD100C9F2BF /* MyTeamsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71077E62220C7CD100C9F2BF /* MyTeamsCell.swift */; };
 		7107E82C2173F651006EFF1E /* ChartValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */; };
 		7107E82E2173FC81006EFF1E /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107E82D2173FC81006EFF1E /* OrderCell.swift */; };
 		7109347A21A320E300268EF1 /* PDVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109347921A320E300268EF1 /* PDVModel.swift */; };
@@ -120,6 +121,7 @@
 		7106BF2A220143F3005E43DB /* MyRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRouteViewController.swift; sourceTree = "<group>"; };
 		7106BF2C22014954005E43DB /* RouteListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteListCell.swift; sourceTree = "<group>"; };
 		7106BF2E22014E07005E43DB /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
+		71077E62220C7CD100C9F2BF /* MyTeamsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamsCell.swift; sourceTree = "<group>"; };
 		7107E82B2173F651006EFF1E /* ChartValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartValueFormatter.swift; sourceTree = "<group>"; };
 		7107E82D2173FC81006EFF1E /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		7109347921A320E300268EF1 /* PDVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDVModel.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 			children = (
 				7106BF2C22014954005E43DB /* RouteListCell.swift */,
 				7105E108220353360029A53B /* RotineQuestionCell.swift */,
+				71077E62220C7CD100C9F2BF /* MyTeamsCell.swift */,
 				7172FA7321A7A027004A7911 /* LibraryCell.swift */,
 				7109347B21A32A1800268EF1 /* Dashboard */,
 				7109348021A3307D00268EF1 /* PDV */,
@@ -721,6 +724,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71077E63220C7CD100C9F2BF /* MyTeamsCell.swift in Sources */,
 				716C5714217E2ACA00003759 /* FirebaseAuthenticable.swift in Sources */,
 				7158DC2E216E6D050083B844 /* PDVViewController.swift in Sources */,
 				71EC933321816EA8001498A2 /* MetasModel.swift in Sources */,
