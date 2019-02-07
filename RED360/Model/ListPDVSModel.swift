@@ -21,6 +21,7 @@ struct ListPDVSModel: ModelType, HandyJSON, Codable {
     var nome: String?
     var pdv: String?
     var token: String?
+    var notaRed: String?
     
     var rua: String?
     var numero: String?
@@ -49,6 +50,7 @@ struct ListPDVSModel: ModelType, HandyJSON, Codable {
         case rua = "rua"
         case numero = "numero"
         case uf = "uf"
+        case notaRed = "total"
     }
 }
 

@@ -125,6 +125,7 @@ extension AreaViewController: UITableViewDelegate, UITableViewDataSource {
             cell.titleLabel.text = pdvs[indexPath.row].nome
             cell.addressLabel.text = pdvs[indexPath.row].endereco
             cell.pdvLabel.text = pdvs[indexPath.row].pdv
+            cell.notaRedLabel.text = pdvs[indexPath.row].notaRed
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell", for: indexPath)
@@ -199,7 +200,7 @@ extension AreaViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.areaSelected == .pdv {
-            return 97
+            return 130
         }
         return 50
     }

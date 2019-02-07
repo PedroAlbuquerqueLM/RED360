@@ -421,12 +421,15 @@ class Rest{
     
     class func listTop(isNota: Bool, onComplete: @escaping ([ListPDVSModel]?, AccessDenied?) -> Void){
         
+        guard let user = appDelegate.user else {return}
         let headers: HTTPHeaders = getHeaders()
         
-        var url = baseURL+"api/pdv/melhores-notas.json"
-        if !isNota { url = baseURL+"api/pdv/maiores-oportunidades.json" }
+        var url = baseURL+"api/pdv/v2/melhores-notas.json"
+        if !isNota { url = baseURL+"api/pdv/v2/maiores-oportunidades.json" }
         
-        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
+        let parameters = ["cargoId" : user.cargoId ?? "", "cargo" : user.cargo ?? "", "cargoSuperior" : user.cargoSuperior ?? ""] as [String : Any]
+        
+        Alamofire.request(url, method: .post, parameters: parameters as [String : Any], encoding: URLEncoding.httpBody, headers: headers).responseJSON { (response) in
             if let data = response.data{
                 do{
                     var result = try JSONDecoder().decode([ListPDVSModel].self, from: data)
