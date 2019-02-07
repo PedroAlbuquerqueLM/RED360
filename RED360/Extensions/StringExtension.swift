@@ -28,6 +28,10 @@ extension String {
         return Double(self.replacingOccurrences(of: ",", with: "."))
     }
     
+    var toVirgula: String? {
+        return self.replacingOccurrences(of: ".", with: ",")
+    }
+    
     var qntHeight: Int {
         let sizeWidth = screenWidth - 30
         let sizePergunta = CGFloat(self.count) * 9
