@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.2.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -29,6 +29,10 @@
 	<string>RED 360 precisa de sua permissão para acessar a sua localização para realizar o RED Simulado</string>
 	<key>NSLocationUsageDescription</key>
 	<string>RED 360 precisa de sua permissão para acessar a sua localização para realizar o RED Simulado</string>
+	<key>NSCameraUsageDescription</key>
+	<string>RED 360 precisa de sua permissão para acessar a sua camera para realizar o RED Simulado</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>RED 360 precisa de sua permissão para acessar a sua biblioteca para realizar o RED Simulado</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>RED 360 precisa de sua permissão para acessar a sua localização para realizar o RED Simulado</string>
 	<key>UILaunchStoryboardName</key>

@@ -37,6 +37,8 @@
 		71118E7D21AECA7D00BDF521 /* REDSimuladoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71118E7C21AECA7D00BDF521 /* REDSimuladoModel.swift */; };
 		71125B0F218A9F1700880DFC /* MyTeams2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71125B0E218A9F1700880DFC /* MyTeams2ViewController.swift */; };
 		71125B11218AA1EE00880DFC /* MyTeamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71125B10218AA1EE00880DFC /* MyTeamsModel.swift */; };
+		71560B1F221A100E005F26C9 /* ResponseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71560B1E221A100E005F26C9 /* ResponseCell.swift */; };
+		71560B21221A154D005F26C9 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71560B20221A154D005F26C9 /* GalleryCell.swift */; };
 		7158DC25216E3D4F0083B844 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC24216E3D4F0083B844 /* MenuViewController.swift */; };
 		7158DC2A216E623B0083B844 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC29216E623B0083B844 /* LoginViewController.swift */; };
 		7158DC2C216E626A0083B844 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158DC2B216E626A0083B844 /* SlideViewController.swift */; };
@@ -138,6 +140,8 @@
 		71118E7C21AECA7D00BDF521 /* REDSimuladoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REDSimuladoModel.swift; sourceTree = "<group>"; };
 		71125B0E218A9F1700880DFC /* MyTeams2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTeams2ViewController.swift; sourceTree = "<group>"; };
 		71125B10218AA1EE00880DFC /* MyTeamsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamsModel.swift; sourceTree = "<group>"; };
+		71560B1E221A100E005F26C9 /* ResponseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCell.swift; sourceTree = "<group>"; };
+		71560B20221A154D005F26C9 /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
 		7158DC24216E3D4F0083B844 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		7158DC29216E623B0083B844 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7158DC2B216E626A0083B844 /* SlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
@@ -343,6 +347,8 @@
 			isa = PBXGroup;
 			children = (
 				7106BF2C22014954005E43DB /* RouteListCell.swift */,
+				71560B1E221A100E005F26C9 /* ResponseCell.swift */,
+				71560B20221A154D005F26C9 /* GalleryCell.swift */,
 				7105E108220353360029A53B /* RotineQuestionCell.swift */,
 				71077E62220C7CD100C9F2BF /* MyTeamsCell.swift */,
 				7172FA7321A7A027004A7911 /* LibraryCell.swift */,
@@ -634,6 +640,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/ImagePicker/ImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
 				"${BUILT_PRODUCTS_DIR}/PDFReader/PDFReader.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
@@ -660,6 +667,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PDFReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
@@ -760,6 +768,7 @@
 				7182987B21A5067D00E452B9 /* ListPDVSModel.swift in Sources */,
 				7158DC31216E84C80083B844 /* RankedCell.swift in Sources */,
 				716C56F6217E1B6A00003759 /* NotaPilarModel.swift in Sources */,
+				71560B21221A154D005F26C9 /* GalleryCell.swift in Sources */,
 				7107E82C2173F651006EFF1E /* ChartValueFormatter.swift in Sources */,
 				7109348621A38C4400268EF1 /* OportunitiesModel.swift in Sources */,
 				7109347D21A32B3600268EF1 /* DashboardPDVViewController.swift in Sources */,
@@ -774,6 +783,7 @@
 				716C5718217E2F3400003759 /* ControllerManager.swift in Sources */,
 				716C56FA217E1F1400003759 /* UserModel.swift in Sources */,
 				7106BF2D22014954005E43DB /* RouteListCell.swift in Sources */,
+				71560B1F221A100E005F26C9 /* ResponseCell.swift in Sources */,
 				716524CF218345EB0088C772 /* HistoricoModel.swift in Sources */,
 				7109348E21A3A35A00268EF1 /* PDVCompleteModel.swift in Sources */,
 				716BF9F321AE16A7002FDDF9 /* REDSimuladoViewController.swift in Sources */,
@@ -958,6 +968,7 @@
 			baseConfigurationReference = 33EC9FE4D993D439C123C5A3 /* Pods-RED360.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PC5TYU3PVQ;
 				INFOPLIST_FILE = RED360/Info.plist;
@@ -965,6 +976,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.red360;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -975,6 +987,7 @@
 			baseConfigurationReference = 02F3A27B23FE2D22CF419008 /* Pods-RED360.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PC5TYU3PVQ;
 				INFOPLIST_FILE = RED360/Info.plist;
@@ -982,6 +995,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.red360;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

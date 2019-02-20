@@ -15,7 +15,7 @@ class MenuViewController: UIViewController {
     var vLoading = Bundle.main.loadNibNamed("VLoading", owner: self, options: nil)?.first as? VLoading
 
     let menu = [
-        (title: "", itens:[(title: "Meu Resultado", key: "DashboardViewController"), (title: "Meu Time", key: "MyTeamsViewController"), (title: "Minha Rota", key: "MyRouteViewController"), (title: "FDS", key: "LibraryViewController")]),
+        (title: "", itens:[(title: "Meu Resultado", key: "DashboardViewController"), (title: "Meu Time", key: "MyTeamsViewController"), (title: "Minha Rotina", key: "MyRouteViewController"), (title: "FDS", key: "LibraryViewController")]),
         
         (title: "Pesquisas PDV", itens:[(title: "Por código PDV", key: "PDVViewController"), (title: "Por Área", key: "AreaViewController"), (title: "10 Maiores notas", key: "ListNotaViewController"), (title: "10 Maiores oportunidades", key: "ListOportunitiesViewController")]),
         

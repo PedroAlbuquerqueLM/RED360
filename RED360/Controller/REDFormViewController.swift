@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import ImagePicker
 
 protocol REDFormDelegate: class {
     func resignView()
@@ -15,11 +16,8 @@ protocol REDFormDelegate: class {
 
 class REDFormViewController: UIViewController {
     
-    @IBOutlet weak var resumoLabel: UITextView!
-    @IBOutlet weak var obsLabel: UITextView!
+    @IBOutlet weak var infoTable: UITableView!
     @IBOutlet weak var titleBox: UILabel!
-    @IBOutlet weak var obsTitle: UILabel!
-    @IBOutlet weak var resumoTitle: UILabel!
     
     var pesquisaSimulada: PesquisaSimuladaModel?
     var perguntas: [PerguntaModel]?
@@ -30,19 +28,22 @@ class REDFormViewController: UIViewController {
     var location: CLLocationCoordinate2D?
     var obs: String?
     
+    var info = [(title: String, info: String)]()
+    var images = [UIImage]()
+    
     weak var delegate: REDFormDelegate?
     
     override func viewDidLoad() {
         if quizz == nil {
             self.titleBox.text = "Enviar o formulário do RED Simulado?"
-            self.resumoLabel.text = "Ativação: \(pesquisaSimulada?.percentualAtivacao ?? "")%, Disponibilidade: \(pesquisaSimulada?.percentualDisponibilidade ?? "")%, Gdm: \(pesquisaSimulada?.percentualGdm ?? "")%, Preço: \(pesquisaSimulada?.percentualPreco ?? "")%, Sovi: \(pesquisaSimulada?.percentualSovi ?? "")%, Total: \(pesquisaSimulada?.percentualTotal ?? "")%"
+            info.append((title: "Resumo", info: "Ativação: \(pesquisaSimulada?.percentualAtivacao ?? "")%, Disponibilidade: \(pesquisaSimulada?.percentualDisponibilidade ?? "")%, Gdm: \(pesquisaSimulada?.percentualGdm ?? "")%, Preço: \(pesquisaSimulada?.percentualPreco ?? "")%, Sovi: \(pesquisaSimulada?.percentualSovi ?? "")%, Total: \(pesquisaSimulada?.percentualTotal ?? "")%"))
+            if pesquisaSimulada?.ativacao != ""{
+                info.append((title: "Observação", info: pesquisaSimulada?.ativacao ?? "-"))
+            }
             
-            self.obsLabel.text = pesquisaSimulada?.ativacao
         }else{
             self.titleBox.text = "Enviar o formulário?"
-            self.resumoTitle.text = "Observação"
-            self.obsTitle.isHidden = true
-            self.resumoLabel.text = "\(self.obs ?? "")"
+            info.append((title: "Observação", info: "\(self.obs ?? "")"))
         }
     }
     
@@ -52,6 +53,7 @@ class REDFormViewController: UIViewController {
     
     @IBAction func saveAction(_ sender: Any) {
         if self.quizz == nil {
+//            Rest.uploadImagesREDSimulado(images: self.images) {}
             guard let pesquisaSimulada = self.pesquisaSimulada, let perguntas = self.perguntas else {return}
             
             Rest.saveSaveREDSimulado(pesquisaSimulada: pesquisaSimulada, perguntas: perguntas) { _,_  in
@@ -73,5 +75,54 @@ class REDFormViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func imagesAction(_ sender: Any) {
+        let imagePickerController = ImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
 }
 
+extension REDFormViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.info.count + (self.images.count > 0 ? 1 : 0)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == self.info.count {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "GalleryCell", for: indexPath) as? GalleryCell else { return GalleryCell() }
+            cell.listImages = self.images
+            cell.superViewController = self
+            return cell
+        }else{
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResponseCell", for: indexPath) as? ResponseCell else { return ResponseCell() }
+            cell.titleLabel.text = self.info[indexPath.row].title
+            cell.detailLabel.text = self.info[indexPath.row].info
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == self.info.count { return 170 }
+        return UITableViewAutomaticDimension
+    }
+}
+
+extension REDFormViewController: ImagePickerDelegate {
+    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        print(images)
+    }
+    
+    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        print(images)
+        self.images = images
+        self.infoTable.reloadData()
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    
+}

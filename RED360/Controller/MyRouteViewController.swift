@@ -30,7 +30,7 @@ class MyRouteViewController: SlideViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setTitle("Minha Rota")
+        self.setTitle("Minha Rotina")
         
         self.undoItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backIcon"), style: .plain, target: nil, action: #selector(undoAction))
         undoItem.tintColor = UIColor.white
@@ -54,7 +54,7 @@ class MyRouteViewController: SlideViewController {
             guard let user = appDelegate.user else {return}
             if user.cargoLideranca ?? false {
                 Rest.listGerentes(rotinaId: self.routeIdSelected) { (gerentes, accessDenied) in
-                    self.setTitle("Minha Rota")
+                    self.setTitle("Minha Rotina")
                     self.areaSelected = .gerente
                     self.gerentes = gerentes
                     self.areaTableView.reloadData()
@@ -82,8 +82,8 @@ class MyRouteViewController: SlideViewController {
     
     func orderPDVs(){
         var pdvs = [PDVModel]()
-        let actives = self.pdvs?.filter{$0.respondida != nil}
-        let inactives = self.pdvs?.filter{$0.respondida == nil}
+        let actives = self.pdvs?.filter{$0.respondida == nil || $0.respondida == false}
+        let inactives = self.pdvs?.filter{$0.respondida == true}
         actives?.forEach{pdvs.append($0)}
         inactives?.forEach{pdvs.append($0)}
         self.pdvs = pdvs
@@ -125,7 +125,7 @@ extension MyRouteViewController: UITableViewDelegate, UITableViewDataSource {
             cell.addressLabel.text = "\(pdv.rua ?? "") \(pdv.bairro ?? "") - \(pdv.municipio ?? "") \(pdv.uf ?? "") - \(pdv.cep ?? "")"
             cell.pdvLabel.text = pdv.pdv
             
-            if pdv.respondida == nil {
+            if pdv.respondida == true {
                 cell.backgroundColor = #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.6864271567)
                 cell.isUserInteractionEnabled = false
             }else{
@@ -181,7 +181,7 @@ extension MyRouteViewController: UITableViewDelegate, UITableViewDataSource {
             guard let gerentes = gerentes else {return}
             self.loading()
             let gerente = gerentes[indexPath.row]
-            self.setTitle(gerente.rota ?? "Minha Rota")
+            self.setTitle(gerente.rota ?? "Minha Rotina")
             Rest.listRoutesStructPDV(rotinaId: self.routeIdSelected, rota: gerente.rota) { (pdvs, accessDenied) in
                 self.navItem?.leftBarButtonItem = self.undoItem;
                 self.areaSelected = .pdv

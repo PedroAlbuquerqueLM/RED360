@@ -508,7 +508,7 @@ class Rest{
         
         let headers: HTTPHeaders = getHeaders()
         
-        let url = baseURL+"api/red_simulado/cadastro.json"
+        let url = baseURL+"api/red_simulado/v2/cadastro.json"
         
         do{
             var perguntasDic = [[String:Any]]()
@@ -527,7 +527,35 @@ class Rest{
         }
     }
     
-    
+    class func uploadImagesREDSimulado(images: [UIImage], onComplete: @escaping () -> Void){
+        
+        let headers: HTTPHeaders = getHeaders()
+        
+        let url = baseURL+"api/red_simulado/\(appDelegate.user?.cpf ?? "")\(Date().toString(dateFormat: "ddmmYYYY"))/upload-fotos.json"
+        
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            let pathName = "\(appDelegate.user?.cpf ?? "")\(Date().toString(dateFormat: "ddmmYYYY"))"
+            
+            for image in images {
+                multipartFormData.append(UIImagePNGRepresentation(image)!, withName: "\(pathName)[]", fileName: "\(Date().timeIntervalSince1970).png", mimeType: "image/png")
+            }
+            //                for (key, value) in parameters {
+            //                    multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+            //                }
+        }, to: url,
+           
+           encodingCompletion: { encodingResult in
+            switch encodingResult {
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    
+                }
+            case .failure(let error):
+                print(error)
+            }
+            
+        })
+    }
     
     
     

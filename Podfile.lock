@@ -116,6 +116,7 @@ PODS:
     - gRPC-RxLibrary (= 1.14.0)
   - GTMSessionFetcher/Core (1.2.0)
   - HandyJSON (4.2.0)
+  - ImagePicker (3.1.0)
   - ImageSlideshow (1.7.0):
     - ImageSlideshow/Core (= 1.7.0)
   - ImageSlideshow/Alamofire (1.7.0):
@@ -153,6 +154,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
   - HandyJSON (~> 4.2.0)
+  - ImagePicker
   - ImageSlideshow (~> 1.6)
   - ImageSlideshow/Alamofire
   - PDFReader
@@ -185,6 +187,7 @@ SPEC REPOS:
     - gRPC-RxLibrary
     - GTMSessionFetcher
     - HandyJSON
+    - ImagePicker
     - ImageSlideshow
     - leveldb-library
     - nanopb
@@ -218,6 +221,7 @@ SPEC CHECKSUMS:
   gRPC-RxLibrary: 3c305f32155024b116b780f389323c73a28197e6
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
   HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
+  ImagePicker: db1fd7626337b2577c523bef5f499bbbe5a37079
   ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
@@ -229,6 +233,6 @@ SPEC CHECKSUMS:
   SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: 8870fb4491cc71999124af088993444f1cdc59fe
+PODFILE CHECKSUM: 11ebc9877bae7559bc9db740a1576c8210b7b7f1
 
 COCOAPODS: 1.5.3

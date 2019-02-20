@@ -13,6 +13,7 @@ target 'RED360' do
   pod 'SnapKit'
   pod 'SkyFloatingLabelTextField'
   pod 'Firebase/Core'
+  pod 'ImagePicker'
   pod 'AKMaskField'
   pod 'Alamofire'
   pod 'AlamofireImage'
