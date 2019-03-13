@@ -43,6 +43,13 @@ class REDFormViewController: UIViewController {
             
         }else{
             self.titleBox.text = "Enviar o formulário?"
+            var pontuacao: Double = 0
+            self.quizz?.forEach{
+                $0.perguntas?.forEach{
+                    pontuacao += $0.respostas?[$0.respostaIndex].pontuacao?.toDouble ?? 0
+                }
+            }
+            info.append((title: "Pontuação Total:", info: "\(pontuacao)"))
             info.append((title: "Observação", info: "\(self.obs ?? "")"))
         }
     }
@@ -53,7 +60,7 @@ class REDFormViewController: UIViewController {
     
     @IBAction func saveAction(_ sender: Any) {
         if self.quizz == nil {
-//            Rest.uploadImagesREDSimulado(images: self.images) {}
+            Rest.uploadImagesREDSimulado(images: self.images) {}
             guard let pesquisaSimulada = self.pesquisaSimulada, let perguntas = self.perguntas else {return}
             
             Rest.saveSaveREDSimulado(pesquisaSimulada: pesquisaSimulada, perguntas: perguntas) { _,_  in

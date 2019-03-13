@@ -71,6 +71,10 @@ extension RotineQuestionCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat((self.answer?.respostas?[indexPath.row].resposta ?? "").qntHeight * 20 + 12)
+        let height = CGFloat((self.answer?.respostas?[indexPath.row].resposta ?? "").qntHeight)
+        if height > CGFloat(1) {
+            return height * 15.0 + 15.0
+        }
+        return 30.0
     }
 }

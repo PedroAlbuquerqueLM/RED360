@@ -32,8 +32,15 @@ extension String {
         return self.replacingOccurrences(of: ".", with: ",")
     }
     
-    var qntHeight: Int {
+    var qntHeightTitle: Int {
         let sizeWidth = screenWidth - 30
+        let sizePergunta = CGFloat(self.count) * 9
+        let qntHeight = sizePergunta.truncatingRemainder(dividingBy: sizeWidth) > 0 ? (sizePergunta/sizeWidth) + 2 : (sizePergunta/sizeWidth)
+        return Int(qntHeight)
+    }
+    
+    var qntHeight: Int {
+        let sizeWidth = screenWidth - 70
         let sizePergunta = CGFloat(self.count) * 9
         let qntHeight = sizePergunta.truncatingRemainder(dividingBy: sizeWidth) > 0 ? (sizePergunta/sizeWidth) + 2 : (sizePergunta/sizeWidth)
         return Int(qntHeight)

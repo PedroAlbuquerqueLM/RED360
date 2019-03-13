@@ -146,7 +146,13 @@ extension RotineViewController: UITableViewDelegate, UITableViewDataSource {
         guard let quizz = self.quizz[indexPath.section].perguntas?[indexPath.row], let pergunta = quizz.pergunta, let resps = quizz.respostas else {return 0}
         var strResps = ""
         resps.forEach{ strResps += ($0.resposta ?? "") }
-        return CGFloat((pergunta.qntHeight * 20) + 16) + CGFloat((resps.count * strResps.qntHeight * 20 + 12))
+        var height: CGFloat = 0
+        if strResps.qntHeight > resps.count {
+            height = CGFloat((strResps.qntHeight + 2) * 20) + CGFloat((resps.count + 2) * 14)
+        }else{
+            height = CGFloat((resps.count + 2) * 30)
+        }
+        return CGFloat((pergunta.qntHeightTitle * 18) + 16) + height
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
