@@ -12,8 +12,8 @@ import CoreLocation
 class PesquisaSimuladaModel : Codable {
     var pesquisador: String?
     var pdv: String?
-    var latitude: Double?
-    var longitude: Double?
+    var latitude: Double = -3.753472
+    var longitude: Double = 38.490833
     var nivel: Int?
     var cargo: String?
     var supervisao: String?
@@ -24,11 +24,14 @@ class PesquisaSimuladaModel : Codable {
     var percentualPreco: String?
     var percentualSovi: String?
     var percentualTotal: String?
+    var token: String?
+    var cpf: String?
     
     init(pdv: String?, location: CLLocationCoordinate2D?, ativacao: String?, percentualAtivacao: String?, percentualDisponibilidade: String?, percentualGdm: String?, percentualPreco: String?, percentualSovi: String?, percentualTotal: String?){
         self.pesquisador = appDelegate.user?.nome
         self.nivel = appDelegate.user?.nivel
         self.cargo = appDelegate.user?.cargo
+        self.cpf = appDelegate.user?.cpf
         self.supervisao = appDelegate.user?.cargoSuperior
         if let location = location {
             self.latitude = location.latitude
@@ -61,6 +64,8 @@ class PesquisaSimuladaModel : Codable {
         case percentualPreco = "percentualPreco"
         case percentualSovi = "percentualSovi"
         case percentualTotal = "percentualTotal"
+        case token = "token"
+        case cpf = "cpf"
     }
 }
 

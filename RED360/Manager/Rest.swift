@@ -39,7 +39,7 @@ class Rest{
         return hash
     }
     
-    class private func getHeaders() -> HTTPHeaders{
+    class private func getHeaders(isMultipart: Bool? = false) -> HTTPHeaders{
         
         guard let idToken = appDelegate.user?.token, let uID = appDelegate.user?.uid else{
             //            fatalError("Erro ao tentar pegar as credenciais")
@@ -54,7 +54,15 @@ class Rest{
             "Authorization" : idToken,
             "Uid" : uID
         ]
-        return headers
+        
+        let headersMultipart: HTTPHeaders = [
+            "Authorization" : idToken,
+            "Uid" : uID,
+            "Content-type": "multipart/form-data",
+            "Content-Disposition" : "form-data"
+        ]
+        
+        return (isMultipart ?? false) ?  headersMultipart : headers
     }
     
     class func loadNotaPilar(user: UserModel?, onComplete: @escaping ([NotaPilarModel]?, AccessDenied?) -> Void){
@@ -527,33 +535,52 @@ class Rest{
         }
     }
     
-    class func uploadImagesREDSimulado(images: [UIImage], onComplete: @escaping () -> Void){
+    class func uploadImages(isRedSimulado: Bool? = true, token: String, images: [UIImage], onComplete: @escaping () -> Void){
         
-        let headers: HTTPHeaders = getHeaders()
-        
-        let url = baseURL+"api/red_simulado/\(appDelegate.user?.cpf ?? "")\(Date().toString(dateFormat: "ddmmYYYY"))/upload-fotos.json"
+        let headers: HTTPHeaders = getHeaders(isMultipart: true)
+        var url = baseURL+"api/red_simulado/\(token)/upload-fotos.json"
+        if (isRedSimulado ?? true) == false {
+            url = baseURL+"api/rotina/\(token)/upload-fotos.json"
+        }
+
+        var imgData = [Data]()
+        images.forEach{
+            if let imageData = UIImageJPEGRepresentation($0, 0.5) {
+                imgData.append(imageData)
+            }
+        }
         
         Alamofire.upload(multipartFormData: { multipartFormData in
-            let pathName = "\(appDelegate.user?.cpf ?? "")\(Date().toString(dateFormat: "ddmmYYYY"))"
-            
-            for image in images {
-                multipartFormData.append(UIImagePNGRepresentation(image)!, withName: "\(pathName)[]", fileName: "\(Date().timeIntervalSince1970).png", mimeType: "image/png")
+            for (index, value) in imgData.enumerated()
+            {
+                multipartFormData.append(value, withName: "\(token)\(index)", fileName: "\(token)\(index).jpeg", mimeType: "image/jpeg")
             }
-            //                for (key, value) in parameters {
-            //                    multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
-            //                }
-        }, to: url,
-           
-           encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
+            
+        }, usingThreshold:UInt64.init(),
+           to: url, //URL Here
+            method: .post,
+            headers: headers, //pass header dictionary here
+            encodingCompletion: { (result) in
+                
+                switch result {
+                case .success(let upload, _, _):
+                    print("the status code is :")
                     
+                    upload.uploadProgress(closure: { (progress) in
+                        print("something")
+                    })
+                    
+                    upload.responseString { response in
+                        print("the resopnse code is : \(response.response?.statusCode)")
+                        print("the response is : \(response)")
+                        onComplete()
+                    }
+                    break
+                case .failure(let encodingError):
+                    print("the error is  : \(encodingError.localizedDescription)")
+                    onComplete()
+                    break
                 }
-            case .failure(let error):
-                print(error)
-            }
-            
         })
     }
     

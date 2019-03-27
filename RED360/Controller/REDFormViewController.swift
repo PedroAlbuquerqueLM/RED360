@@ -31,6 +31,8 @@ class REDFormViewController: UIViewController {
     var info = [(title: String, info: String)]()
     var images = [UIImage]()
     
+    var vLoading = Bundle.main.loadNibNamed("VLoading", owner: self, options: nil)?.first as? VLoading
+    
     weak var delegate: REDFormDelegate?
     
     override func viewDidLoad() {
@@ -59,21 +61,36 @@ class REDFormViewController: UIViewController {
     }
     
     @IBAction func saveAction(_ sender: Any) {
+        let token = "\(Int(appDelegate.user?.cpf ?? "0") ?? 0)\(Int(Date().toString(dateFormat: "ddmmYYYYHHMMss")) ?? 0)1"
+        
+        if let vl = vLoading{
+            vl.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+            vl.aiLoading.startAnimating()
+            view.addSubview(vl)
+        }
+        
         if self.quizz == nil {
-            Rest.uploadImagesREDSimulado(images: self.images) {}
+            
+            
+            self.pesquisaSimulada?.token = token
             guard let pesquisaSimulada = self.pesquisaSimulada, let perguntas = self.perguntas else {return}
             
             Rest.saveSaveREDSimulado(pesquisaSimulada: pesquisaSimulada, perguntas: perguntas) { _,_  in
                 
-                self.delegate?.resignView()
-                self.dismiss(animated: true, completion: nil)
+                Rest.uploadImages(token: token, images: self.images) {
+                    if let vl = self.vLoading{ vl.removeFromSuperview() }
+                    self.delegate?.resignView()
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }else{
             guard let rotine = self.rotine, let pdv = self.pdv else {return}
             Rest.saveRotine(pdv: pdv, quizzes: self.quizz!, location: self.location!, obs: self.obs!, rotine: rotine) { (_,_) in
-                
-                self.delegate?.resignView()
-                self.dismiss(animated: true, completion: nil)
+                Rest.uploadImages(isRedSimulado: false, token: token, images: self.images) {
+                    if let vl = self.vLoading{ vl.removeFromSuperview() }
+                    self.delegate?.resignView()
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }
     }
