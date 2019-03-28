@@ -15,6 +15,7 @@ class MyRouteViewController: SlideViewController {
     
     var routes: [ListRouteModel]?
     var gerentes: [ListGerentesModel]?
+    var allGerentes: [Int]?
     var pdvs : [PDVModel]?
     
     var undoItem: UIBarButtonItem!
@@ -39,7 +40,28 @@ class MyRouteViewController: SlideViewController {
         Rest.listRoutes(onComplete: { (routes, accessDenied) in
             self.routes = routes
             self.areaTableView.reloadData()
+            self.allGerentes = [Int]()
+            self.loadGerentes()
         })
+    }
+    
+    func loadGerentes(routeIndex: Int? = 0){
+        self.loading()
+        guard let user = appDelegate.user else {return}
+        if user.cargoLideranca ?? false {
+            if (routeIndex ?? 0) < (self.routes?.count ?? 0) {
+                Rest.listGerentes(rotinaId: self.routes?[routeIndex ?? 0].id) { (gerentes, accessDenied) in
+                    if let gerentes = gerentes {
+                        let a = gerentes.compactMap{$0.qtdePdvs!}
+                        let total = a.reduce(0, +)
+                        self.allGerentes?.append(total)
+                        self.loadGerentes(routeIndex: (routeIndex ?? 0) + 1)
+                    }
+                }
+            } else {
+                self.areaTableView.reloadData()
+            }
+        }
     }
     
     @objc func undoAction() {
@@ -139,7 +161,12 @@ extension MyRouteViewController: UITableViewDelegate, UITableViewDataSource {
             guard let routes = routes else {return cell}
             cell.titleLabel.text = routes[indexPath.row].rotina?.uppercased()
             cell.dateLabel.text = "Até \(routes[indexPath.row].ate ?? " - ")"
-            cell.pdvLabel.text = "\(routes[indexPath.row].qtdePdvPendente ?? 0) PDV"
+            let qtPdvsPend = routes[indexPath.row].qtdePdvPendente ?? 0
+            var qtPdvs = 0
+            if indexPath.row < (allGerentes?.count ?? 0) {
+                qtPdvs = allGerentes?[indexPath.row] ?? 0
+            }
+            cell.pdvLabel.text = "PDV \(qtPdvs - qtPdvsPend) de \(qtPdvs)"
             return cell
         }
         
