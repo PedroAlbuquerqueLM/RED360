@@ -2,8 +2,8 @@
 //  Authenticable.swift
 //  Bookinder
 //
-//  Created by Pedro Albuquerque on 06/06/18.
-//  Copyright © 2018 Pedro Albuquerque. All rights reserved.
+//  Created by Argo Solucoes on 06/06/18.
+//  Copyright © 2018 Argo Solucoes. All rights reserved.
 //
 
 import PromiseKit

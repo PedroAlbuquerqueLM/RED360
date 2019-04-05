@@ -2,7 +2,7 @@
 //  RED360UITests.swift
 //  RED360UITests
 //
-//  Created by Pedro Albuquerque on 10/10/18.
+//  Created by Argo Solucoes on 10/10/18.
 //  Copyright © 2018 com.dimensiva.tecnologia.red360.app. All rights reserved.
 //
 

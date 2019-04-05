@@ -2,7 +2,7 @@
 //  MyRouteViewController.swift
 //  RED360
 //
-//  Created by Pedro Albuquerque on 29/01/19.
+//  Created by Argo Solucoes on 29/01/19.
 //  Copyright © 2019 com.dimensiva.tecnologia.red360.app. All rights reserved.
 //
 

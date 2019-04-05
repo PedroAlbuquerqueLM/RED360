@@ -2,7 +2,7 @@
 //  ShowImageViewController.swift
 //  Motivi
 //
-//  Created by Pedro Albuquerque on 16/10/18.
+//  Created by Argo Solucoes on 16/10/18.
 //  Copyright © 2018 Argo Soluções. All rights reserved.
 //
 

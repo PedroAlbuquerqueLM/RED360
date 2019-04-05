@@ -2,7 +2,7 @@
 //  MyTeamsCell.swift
 //  RED360
 //
-//  Created by Pedro Albuquerque on 07/02/19.
+//  Created by Argo Solucoes on 07/02/19.
 //  Copyright © 2019 com.dimensiva.tecnologia.red360.app. All rights reserved.
 //
 

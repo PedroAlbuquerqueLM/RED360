@@ -2,7 +2,7 @@
 //  ChartValueFormatter.swift
 //  
 //
-//  Created by Pedro Albuquerque on 14/10/18.
+//  Created by Argo Solucoes on 14/10/18.
 //
 
 import Foundation

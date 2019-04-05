@@ -2,7 +2,7 @@
 //  StringExtension.swift
 //  RED360
 //
-//  Created by Pedro Albuquerque on 26/10/18.
+//  Created by Argo Solucoes on 26/10/18.
 //  Copyright © 2018 com.dimensiva.tecnologia.red360.app. All rights reserved.
 //
 
